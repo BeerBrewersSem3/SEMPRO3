@@ -1,1 +1,1 @@
-# igdb
+# Semester project 3 - Beer brewing!
