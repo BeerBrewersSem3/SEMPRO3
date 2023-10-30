@@ -7,9 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BrewingApplication
 {
     @Autowired
-    private OpcuaClientConnection connection;
+    private OpcuaClientConnection opcuaClientConnection;
     public static void main(String[] args)
     {
         SpringApplication.run(BrewingApplication.class, args);
+        SupabaseConnection supabaseConnection = SupabaseConnection.getInstance();
+        supabaseConnection.testQueryForDatabase();
     }
+
 }
