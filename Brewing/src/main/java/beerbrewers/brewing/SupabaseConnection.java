@@ -29,7 +29,7 @@ public class SupabaseConnection {
     private void connectToSupabaseDatabase() {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
-            connection =DriverManager.getConnection(
+            connection = DriverManager.getConnection(
                     "jdbc:postgresql://" + databaseURL
                             +":" + databasePort
                             +"/" + databaseName
