@@ -1,0 +1,185 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+/*Top*/
+/*_________________________________________________________________________________*/
+.topBar{
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.menuBtns{
+    text-align: left;
+}
+
+.menuBtn{
+    background-color: #555555;
+    color: white;
+    border: 2px solid #555555;
+    padding: 15px 32px;
+    font-size: 20px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.menuBtn:hover{
+    background-color: white;
+    color: black;
+}
+
+.header{
+    text-align: center;
+    flex: 1;
+}
+
+.header .title{
+    margin: 0;
+    font-size: 72px;
+}
+
+.line{
+    border: 1px solid #7a7d7d;
+    margin: 5px;
+}
+
+.emerBtn{
+    background-color: #a82011;
+    border: 2px solid #a82011;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.emerBtn:hover{
+    background-color: white;
+    color: black;
+}
+/*^^Top^^*/
+/*_________________________________________________________________________________*/
+
+
+/*Bottom*/
+/*_________________________________________________________________________________*/
+.bottom{
+    display: flex;
+    margin: 20px 20px;
+    height: max-content;
+}
+
+/*Bottom Left*/
+/*_________________________________________________________________________________*/
+.bottom .left{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.bottom .left .leftTop{
+    display: flex;
+    flex: 1;
+}
+
+.bottom .left .leftTop .batchBtns{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.batchBtns button{
+    padding: 15px 32px;
+    font-size: 24px;
+    background-color: #555555;
+    color: white;
+    border: 2px solid #555555;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.batchBtns button:hover{
+    background-color: white;
+    color: black;
+}
+
+.batch{
+    flex: 1;
+    margin-bottom: 10px;
+    white-space: pre-line;
+}
+
+.infoBox{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    padding: 15px;
+}
+
+.picture{
+    width: 65px;
+}
+
+.leftBot{
+    display: flex;
+    align-items: center;
+}
+
+.maintenance{
+    width: 50%;
+    height: 25%;
+    border: 1px solid #7a7d7d;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/*^^Bottom Left^^*/
+/*_________________________________________________________________________________*/
+
+
+
+/*Bottom Right*/
+/*_________________________________________________________________________________*/
+.bottom .right{
+    display: flex;
+    flex-direction: column;
+}
+
+.topSilos{
+    display: flex;
+}
+
+.botSilos{
+    display: flex;
+    justify-content: center;
+}
+
+.silos{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+}
+
+.silos label{
+    font-size: 20px;
+}
+
+.silos .silo{
+    width: 250px;
+
+}
+
+/*^^Bottom Right^^*/
+/*_________________________________________________________________________________*/
