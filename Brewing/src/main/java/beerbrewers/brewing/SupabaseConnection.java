@@ -9,13 +9,12 @@ import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
+import java.util.Map;
 
 
 @Component
 public class SupabaseConnection {
 
-    @Autowired
-    private DataSource dataSource;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -27,8 +26,8 @@ public class SupabaseConnection {
     public void testQueryForDatabase() {
         try {
 
-        String query = "SELECT * FROM test_table WHERE id = ?";
-        System.out.println("Database query status: " + jdbcTemplate.queryForObject(query, String.class, 1));
+            String query = "SELECT information FROM test_table WHERE id = ?";
+            System.out.println("Database query status: " + jdbcTemplate.queryForObject(query, String.class, 1));
         } catch (EmptyResultDataAccessException e) {
             System.out.println("No data found for the specified ID.");
             // Handle accordingly or rethrow if needed.
