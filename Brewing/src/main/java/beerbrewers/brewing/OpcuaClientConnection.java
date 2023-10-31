@@ -29,12 +29,10 @@ public class OpcuaClientConnection {
             client.connect().get();
             System.out.println("Connected");
 
-        } catch (UaException e) {
+        } catch (UaException | InterruptedException e) {
             System.out.println("Connection Error");
         } catch (ExecutionException e) {
             System.out.println("Execution Error");
-        } catch (InterruptedException e) {
-            System.out.println("Connection Error");
         }
     }
 }
