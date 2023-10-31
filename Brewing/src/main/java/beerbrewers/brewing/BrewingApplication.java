@@ -12,7 +12,6 @@ public class BrewingApplication
     {
         SpringApplication.run(BrewingApplication.class, args);
         SupabaseConnection supabaseConnection = SupabaseConnection.getInstance();
-        supabaseConnection.testQueryForDatabase();
     }
 
 }

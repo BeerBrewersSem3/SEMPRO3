@@ -44,20 +44,6 @@ public class SupabaseConnection {
         }
     }
 
-    public void testQueryForDatabase() {
-        try {
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM test_table WHERE id = ?");
-            queryStatement.setInt(1, 1);
-            ResultSet sqlReturnValues = queryStatement.executeQuery();
-
-            while (sqlReturnValues.next()) {
-                System.out.println("Database query status: " + sqlReturnValues.getString(2));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     public Connection getConnection() {
         return connection;
     }
