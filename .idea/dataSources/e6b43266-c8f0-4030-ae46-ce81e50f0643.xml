@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="postgres@db.hbdjtgvmsnqkxcufwgwh.supabase.co">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.49">
     <root id="1">
       <DateStyle>mdy</DateStyle>
       <IntrospectionStateNumber>1073</IntrospectionStateNumber>
@@ -1485,10 +1485,6 @@ true posixrules
 16949||16420|U|G
 16949||16732|U|G</Grants>
       <IntrospectionStateNumber>1073</IntrospectionStateNumber>
-      <Relations>sequence|table|16789|16790|6
-sequence|table|16500|16501|2
-sequence|table|28585|28582|1
-</Relations>
     </database>
     <database id="3" parent="1" name="template0"/>
     <database id="4" parent="1" name="template1"/>
@@ -5195,13 +5191,15 @@ idle_in_transaction_session_timeout=60000</Config>
       <Event>ddl_command_end</Event>
       <ObjectId>16947</ObjectId>
       <StateNumber>912</StateNumber>
-      <Tags>SECURITY LABEL
-ALTER TABLE</Tags>
+      <Tags>ALTER TABLE
+SECURITY LABEL</Tags>
       <CallRoutineId>16831</CallRoutineId>
     </trigger>
     <sequence id="304" parent="291" name="test_table_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28585</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1064</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
@@ -5212,15 +5210,16 @@ ALTER TABLE</Tags>
       <OwnerName>postgres</OwnerName>
     </table>
     <column id="306" parent="305" name="id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1064</StateNumber>
+      <SequenceId>28585</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="307" parent="305" name="information">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1065</StateNumber>
