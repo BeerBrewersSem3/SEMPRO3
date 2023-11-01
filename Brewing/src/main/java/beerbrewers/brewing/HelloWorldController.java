@@ -1,6 +1,8 @@
 package beerbrewers.brewing;
 
 /* Imports */
+import beerbrewers.BrewMaster9000.OpcUaClientConnection;
+import beerbrewers.BrewMaster9000.OpcUaNodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -22,6 +24,8 @@ import java.util.Map;
 public class HelloWorldController {
     @Autowired
     private BrewingApplication brewingApplication;
+    @Autowired
+    private OpcUaClientConnection opcUaClientConnection;
 
     @GetMapping("/")
     @ResponseBody
@@ -32,17 +36,29 @@ public class HelloWorldController {
 
         // Convert the bytes to a string using UTF-8 encoding
         String html = new String(bytes, StandardCharsets.UTF_8);
-        return html.replace("<!--Current-State-Value-->",brewingApplication.getCurrentState());
+        html = html.replace("<!--Current-State-Value-->", opcUaClientConnection.getState(OpcUaNodes.STATE_CURRENT));
+        return html.replace("<!--Cntrl-Cmd-Value-->", opcUaClientConnection.getState(OpcUaNodes.CNTRL_CMD));
     }
 
+    // Mapping a handle for HTTP Post request sent with /sendCommand endpoint
     @PostMapping("/sendCommand")
     public ResponseEntity<String> sendData(@RequestBody Map<String, String> payload) {
         try {
-            String number = payload.get("number");
-            brewingApplication.sendCommand(Integer.parseInt(number));
-            return ResponseEntity.ok("Number sent successfully");
+            // Extracts the value from the payload (In string format, converts to int).
+            int number = Integer.parseInt(payload.get("number"));
+            // Validates the number
+            if(number >= 0 && number <= 5) {
+                // Send command to OPC UA Server if number is valid
+                opcUaClientConnection.sendCommand(number);
+                // Return a response (code 200)
+                return ResponseEntity.ok("Number sent successfully");
+            } else {
+                // Returns a response upon invalid (code 400)
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Number must be between 0 and 5");
+            }
         } catch (Exception e) {
             e.printStackTrace();
+            // Return a response upon error (code 500)
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
@@ -50,7 +66,7 @@ public class HelloWorldController {
     @PostMapping("/executeCommand")
     public ResponseEntity<String> setBooleanTrue() {
         try {
-            brewingApplication.executeCommand(true);
+            opcUaClientConnection.executeCommand(true);
             return ResponseEntity.ok("Boolean value set successfully");
         } catch (Exception e) {
             e.printStackTrace();
