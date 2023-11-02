@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.util.Map;
 
-
+/**
+ * This class uses the JdbcTemplate to handle the connection to the database hosted on Supabase.
+ */
 @Component
 public class SupabaseConnection {
 
@@ -23,6 +25,10 @@ public class SupabaseConnection {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    /**
+     * Simple test query that fetches a test string from a test_table in the database, and prints it in the console
+     * to show that the application has access to the database and can receive query results.
+     */
     public void testQueryForDatabase() {
         try {
 

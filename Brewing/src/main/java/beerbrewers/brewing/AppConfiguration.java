@@ -13,6 +13,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.util.Objects;
 
+/**
+ * This class configures the datasource for the database and gets the necessary username, driver, password and URL from
+ * the application.properties file.
+ */
+
 @Configuration
 @ComponentScan("beerbrewers.brewing")
 public class AppConfiguration {
