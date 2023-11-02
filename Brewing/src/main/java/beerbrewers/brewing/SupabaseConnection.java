@@ -12,7 +12,8 @@ import javax.sql.DataSource;
 import java.util.Map;
 
 /**
- * This class uses the JdbcTemplate to handle the connection to the database hosted on Supabase.
+ * This class uses the JdbcTemplate from the Spring framework to handle the connection to the database hosted on
+ * Supabase.
  */
 @Component
 public class SupabaseConnection {
