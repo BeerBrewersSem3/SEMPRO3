@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class DatabaseTests {
+//@SpringBootTest
+//class DatabaseTests {
 //
 //    @Test
 //    void DatabaseIsConnected() {
@@ -43,5 +43,5 @@ class DatabaseTests {
 //        SupabaseConnection supabaseConnection = SupabaseConnection.getInstance();
 //        assertTrue(supabaseConnection instanceof SupabaseConnection);
 //    }
-
-}
+//
+//}
