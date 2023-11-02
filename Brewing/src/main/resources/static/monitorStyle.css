@@ -62,6 +62,14 @@ body{
     background-color: white;
     color: black;
 }
+
+.navRight{
+    display: flex;
+}
+
+.siren{
+    margin: 0 5px;
+}
 /*^^Top^^*/
 /*_________________________________________________________________________________*/
 
@@ -75,10 +83,15 @@ body{
 
 /*Bottom Left*/
 /*_________________________________________________________________________________*/
-.bottom .left{
+.left{
     display: flex;
     flex-direction: column;
-    flex: 1;
+    width: 50%;
+}
+
+.leftTop{
+    width: 100%;
+    justify-content: space-between;
 }
 
 .bottom .left .leftTop{
@@ -90,6 +103,7 @@ body{
     display: flex;
     flex-direction: column;
     margin: 0 10px;
+    width: 12%;
 }
 
 .batchBtns button{
@@ -116,8 +130,9 @@ body{
 .infoBox{
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    width: 83%;
 }
 
 .info{
@@ -125,10 +140,15 @@ body{
     flex-direction: column;
     place-items: center;
     padding: 15px;
+    justify-content: center;
+}
+
+.rotate{
+    transform: rotate(30deg);
 }
 
 .picture{
-    width: 65px;
+    width: 64px;
 }
 
 .leftBot{
@@ -144,9 +164,12 @@ body{
 
 /*Bottom Right*/
 /*_________________________________________________________________________________*/
-.bottom .right{
+.right{
     display: flex;
     flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
 .topSilos{
