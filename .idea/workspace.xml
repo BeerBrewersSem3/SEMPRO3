@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/HelloWorldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/HelloWorldController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging GUI",
+    "git-widget-placeholder": "GUI",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "19",
     "list.type.of.created.stylesheet": "CSS",
@@ -69,11 +72,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lasse\OneDrive\Skrivebord\Uni\3. Semester\SemPro\SEMPRO3\Brewing\src\main\resources\public" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="BrewingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Brewing" />
@@ -100,10 +98,10 @@
       <workItem from="1698580775858" duration="28385000" />
       <workItem from="1698662200025" duration="1647000" />
       <workItem from="1698684661145" duration="520000" />
-      <workItem from="1698910816775" duration="10739000" />
-      <workItem from="1698924330427" duration="85000" />
-      <workItem from="1698924543090" duration="433000" />
-      <workItem from="1698924988953" duration="1025000" />
+      <workItem from="1698910816775" duration="8581000" />
+      <workItem from="1698920691818" duration="427000" />
+      <workItem from="1698926393232" duration="241000" />
+      <workItem from="1698926646309" duration="15704000" />
     </task>
     <servers />
   </component>

@@ -104,7 +104,6 @@ body{
     display: flex;
     flex-direction: column;
     margin: 0 10px;
-    width: 12%;
 }
 
 .batchBtns button{
@@ -115,6 +114,7 @@ body{
     border: 2px solid #555555;
     cursor: pointer;
     transition-duration: 0.4s;
+    text-align: center;
 }
 
 .batchBtns button:hover{
