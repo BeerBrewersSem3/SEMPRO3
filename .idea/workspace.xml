@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,6 +95,7 @@
       <workItem from="1698662200025" duration="1647000" />
       <workItem from="1698684661145" duration="520000" />
       <workItem from="1698910816775" duration="8581000" />
+      <workItem from="1698920691818" duration="427000" />
     </task>
     <servers />
   </component>
