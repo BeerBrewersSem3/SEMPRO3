@@ -1,0 +1,106 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+/*Top*/
+/*_________________________________________________________________________________*/
+.topBar{
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.menuBtns{
+    text-align: left;
+}
+
+.menuBtn{
+    background-color: #555555;
+    color: white;
+    border: 2px solid #555555;
+    padding: 15px 32px;
+    font-size: 20px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.menuBtn:hover{
+    background-color: white;
+    color: black;
+}
+
+.header{
+    text-align: center;
+    flex: 1;
+}
+
+.header .title{
+    margin: 0;
+    font-size: 72px;
+}
+
+.line{
+    border: 1px solid #7a7d7d;
+    margin: 5px;
+}
+
+.emerBtn{
+    background-color: #a82011;
+    border: 2px solid #a82011;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.emerBtn:hover{
+    background-color: white;
+    color: black;
+}
+
+.navRight{
+    display: flex;
+}
+
+.siren{
+    margin: 0 5px;
+    width: 64px;
+}
+/*^^Top^^*/
+/*_________________________________________________________________________________*/
+
+
+/*Main*/
+/*_________________________________________________________________________________*/
+.main{
+    border: solid 1px red;
+    padding: 2px 2px;
+    width: 100%;
+    height: 100%;
+}
+
+.mainLeft{
+    border: solid 1px red;
+    padding: 2px 2px;
+    height: 33%;
+    width: 33%;
+}
+
+.mainMiddle{
+    border: solid 1px red;
+    padding: 2px 2px;
+    height: 33%;
+    width: 33%;
+}
+
+.mainRight{
+    border: solid 1px red;
+    padding: 2px 2px;
+    height: 33%;
+    width: 33%;
+}
