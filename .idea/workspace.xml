@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/BrewingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/BrewingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/OpcuaClientConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/SupabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/brewing/BrewingApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/brewing/DatabaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +16,6 @@
   </component>
   <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="CoverageOptionsProvider">
-    <option name="myAddOrReplace" value="0" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,9 +31,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2W1CQICeMVqa8NXaaqJWWeq9d6j" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -52,6 +46,10 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -67,10 +65,10 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;68bf21090846e0a8ab4fd46a991ab46f&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -80,97 +78,18 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="JUnit.DatabaseTests">
-    <configuration name="BrewingApplication" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="19" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.brewing.BrewingApplication" />
-      <module name="Brewing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="beerbrewers.brewing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BrewingApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.brewing.BrewingApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="beerbrewers.brewing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DatabaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Brewing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="beerbrewers.brewing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="beerbrewers.brewing" />
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.brewing.DatabaseTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DatabaseTests.DatabaseIsConnected" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Brewing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="beerbrewers.brewing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="beerbrewers.brewing" />
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.brewing.DatabaseTests" />
-      <option name="METHOD_NAME" value="DatabaseIsConnected" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DatabaseTests.canQueryData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Brewing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="beerbrewers.brewing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="beerbrewers.brewing" />
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.brewing.DatabaseTests" />
-      <option name="METHOD_NAME" value="canQueryData" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DatabaseTests.supabaseIsSupabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Brewing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="beerbrewers.brewing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="beerbrewers.brewing" />
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.brewing.DatabaseTests" />
-      <option name="METHOD_NAME" value="supabaseIsSupabase" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hrc\Desktop\SDU\3. Semester\SEMPRO3\Brewing\src\main\resources" />
+      <recent name="C:\Users\hrc\Desktop\SDU\3. Semester\SEMPRO3\Brewing\src\main\java" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunManager">
     <configuration name="BrewingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Brewing" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="beerbrewers.brewing.BrewingApplication" />
@@ -178,15 +97,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.DatabaseTests" />
-        <item itemvalue="JUnit.DatabaseTests.supabaseIsSupabase" />
-        <item itemvalue="JUnit.DatabaseTests.canQueryData" />
-        <item itemvalue="JUnit.DatabaseTests.DatabaseIsConnected" />
-        <item itemvalue="Application.BrewingApplication (1)" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -199,9 +109,9 @@
       <workItem from="1695890692520" duration="137000" />
       <workItem from="1695892044680" duration="1866000" />
       <workItem from="1698309034058" duration="5792000" />
-      <workItem from="1698675926053" duration="11423000" />
-      <workItem from="1698750173937" duration="148000" />
-      <workItem from="1698750342210" duration="4859000" />
+      <workItem from="1698675926053" duration="20052000" />
+      <workItem from="1698743787471" duration="4977000" />
+      <workItem from="1698753988408" duration="5676000" />
     </task>
     <servers />
   </component>
@@ -222,12 +132,14 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SEMPRO3$DatabaseTests.ic" NAME="DatabaseTests Coverage Results" MODIFIED="1698756351017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>beerbrewers.brewing.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/SEMPRO3$DatabaseTests_supabaseIsSupabase.ic" NAME="DatabaseTests.supabaseIsSupabase Coverage Results" MODIFIED="1698756243724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>beerbrewers.brewing.*</FILTER>
-    </SUITE>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

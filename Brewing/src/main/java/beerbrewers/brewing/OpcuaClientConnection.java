@@ -27,14 +27,12 @@ public class OpcuaClientConnection {
             );
 
             client.connect().get();
-            System.out.println("Connected");
+            System.out.println("Connected to OPC UA Sever");
 
-        } catch (UaException e) {
-            System.out.println("Connection Error");
+        } catch (UaException | InterruptedException e) {
+            System.out.println("Connection Error (OPC UA Server)");
         } catch (ExecutionException e) {
-            System.out.println("Execution Error");
-        } catch (InterruptedException e) {
-            System.out.println("Connection Error");
+            System.out.println("Execution Error (OPC UA Server)");
         }
     }
 }
