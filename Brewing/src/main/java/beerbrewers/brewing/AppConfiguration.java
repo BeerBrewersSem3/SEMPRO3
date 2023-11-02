@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 
 @Configuration
-@ComponentScan("beerbrewers.brewing")
+@ComponentScan("beerbrewers")
 public class AppConfiguration {
     @Autowired
     Environment environment;

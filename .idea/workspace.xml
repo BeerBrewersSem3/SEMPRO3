@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/OpcuaClientConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/SupabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/AppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/AppConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +29,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2W1CQICeMVqa8NXaaqJWWeq9d6j" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -112,6 +110,7 @@
       <workItem from="1698675926053" duration="20052000" />
       <workItem from="1698743787471" duration="4977000" />
       <workItem from="1698753988408" duration="5676000" />
+      <workItem from="1698912093975" duration="3998000" />
     </task>
     <servers />
   </component>
@@ -123,7 +122,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev-database" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
