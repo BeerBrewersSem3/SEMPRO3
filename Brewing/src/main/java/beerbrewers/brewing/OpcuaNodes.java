@@ -20,7 +20,7 @@ public enum OpcuaNodes {
 
     /* COMMAND */
     CNTRL_CMD(6, "::Program:Cube.Command.CntrlCmd", "cntrlCmd"),                              // [R/W] PackML command = 1: Reset 2: Start 3: Stop 4: Abort 5: Clear
-    CMD_CHANGE_REQUEST(6, "::Program:Cube.Command.CmdChangeRequest", "cmdChangeRequest"),     // [R/W] When true, executes commando in Control Command
+    CMD_CHANGE_REQUEST(6, "::Program:Cube.Command.CmdChangeRequest", "cmdChangeRequest");     // [R/W] When true, executes commando in Control Command
 
 
 
