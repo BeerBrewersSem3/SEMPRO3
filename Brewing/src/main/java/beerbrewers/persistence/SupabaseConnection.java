@@ -1,4 +1,4 @@
-package beerbrewers.brewing;
+package beerbrewers.persistence;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;

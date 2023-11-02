@@ -5,7 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/AppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/AppConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewmaster9000/models/Batch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewmaster9000/models/Brew.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewmaster9000/models/Operation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewmaster9000/models/OperationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewmaster9000/models/Sensor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewmaster9000/models/SensorReading.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewmaster9000/models/Worker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/WorkerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/AppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/AppConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/BrewingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/HelloWorldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/HelloWorldController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/OpcuaClientConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/brewing/DatabaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +38,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -110,7 +130,7 @@
       <workItem from="1698675926053" duration="20052000" />
       <workItem from="1698743787471" duration="4977000" />
       <workItem from="1698753988408" duration="5676000" />
-      <workItem from="1698912093975" duration="3998000" />
+      <workItem from="1698912093975" duration="15704000" />
     </task>
     <servers />
   </component>

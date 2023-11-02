@@ -1,4 +1,4 @@
-package beerbrewers.brewing;
+package beerbrewers;
 import javax.sql.DataSource;
 
 import jakarta.annotation.PostConstruct;
