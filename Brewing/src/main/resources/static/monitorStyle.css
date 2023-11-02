@@ -138,6 +138,9 @@ body{
 
 .info{
     display: flex;
+    border: black solid 2px;
+    box-shadow: 2px 4px;
+    border-radius: 10%;
     flex-direction: column;
     place-items: center;
     padding: 15px;
