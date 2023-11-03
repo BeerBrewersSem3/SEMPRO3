@@ -1,15 +1,21 @@
-package beerbrewers.brewmaster9000.models;
+package beerbrewers.worker;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table
 public class Worker {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "worker_sequence",
+            sequenceName = "worker_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "worker_sequence"
+    )
     private long workerId;
     private String name;
 
@@ -29,10 +35,16 @@ public class Worker {
      * @param password
      */
     public Worker(String name, String password) {
-        super();
         this.name = name;
         this.password = password;
     }
+
+    public Worker(long workerId, String name, String password) {
+        this.workerId = workerId;
+        this.name = name;
+        this.password = password;
+    }
+
     public long getWorkerId() {
         return workerId;
     }

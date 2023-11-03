@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="postgres@db.hbdjtgvmsnqkxcufwgwh.supabase.co">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.49">
     <root id="1">
       <DateStyle>mdy</DateStyle>
       <Grants>5||-9223372036854775808|c|G
@@ -11,7 +11,7 @@
 5||-9223372036854775808|T|G
 5||10|T|G
 5||16595|T|G</Grants>
-      <IntrospectionStateNumber>1164</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1191</IntrospectionStateNumber>
       <ServerVersion>15.1</ServerVersion>
       <StartupTime>1698310781</StartupTime>
       <TimeZones>true ACDT
@@ -1493,18 +1493,8 @@ true posixrules
 16949||16732|C|G
 16949||16420|U|G
 16949||16732|U|G</Grants>
-      <IntrospectionStateNumber>1164</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1191</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
-      <Relations>sequence|table|16500|16501|2
-sequence|table|16789|16790|6
-sequence|table|28585|28582|1
-sequence|table|28608|28605|1
-sequence|table|28619|28616|1
-sequence|table|28628|28625|1
-sequence|table|28659|28656|1
-sequence|table|28673|28670|1
-sequence|table|28700|28697|1
-</Relations>
       <OwnerName>postgres</OwnerName>
     </database>
     <role id="3" parent="1" name="anon">
@@ -4954,6 +4944,16 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>1.4.2</Version>
       <ExtSchemaId>16618</ExtSchemaId>
       <ExtSchemaName>graphql</ExtSchemaName>
+      <MemberIds>16983
+16984
+16985
+16986
+16987
+16988
+16989
+16990
+16991
+16992</MemberIds>
     </extension>
     <extension id="269" parent="2" name="pg_stat_statements">
       <Comment>track planning and execution statistics of all SQL statements executed</Comment>
@@ -4962,6 +4962,11 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>1.10</Version>
       <ExtSchemaId>16387</ExtSchemaId>
       <ExtSchemaName>extensions</ExtSchemaName>
+      <MemberIds>16395
+16402
+16403
+16413
+16414</MemberIds>
     </extension>
     <extension id="270" parent="2" name="pgcrypto">
       <Comment>cryptographic functions</Comment>
@@ -4970,6 +4975,42 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>1.3</Version>
       <ExtSchemaId>16387</ExtSchemaId>
       <ExtSchemaName>extensions</ExtSchemaName>
+      <MemberIds>16435
+16436
+16437
+16438
+16439
+16440
+16441
+16442
+16443
+16444
+16445
+16446
+16447
+16448
+16449
+16450
+16451
+16452
+16453
+16454
+16455
+16456
+16457
+16458
+16459
+16460
+16461
+16462
+16463
+16464
+16465
+16466
+16467
+16468
+16469
+16470</MemberIds>
     </extension>
     <extension id="271" parent="2" name="pgjwt">
       <Comment>JSON Web Token API for Postgresql</Comment>
@@ -4978,6 +5019,12 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>0.2.0</Version>
       <ExtSchemaId>16387</ExtSchemaId>
       <ExtSchemaName>extensions</ExtSchemaName>
+      <MemberIds>16472
+16473
+16474
+16475
+16476
+16477</MemberIds>
     </extension>
     <extension id="272" parent="2" name="pgsodium">
       <Comment>Pgsodium is a modern cryptography library for Postgres.</Comment>
@@ -4986,6 +5033,160 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>3.1.8</Version>
       <ExtSchemaId>16645</ExtSchemaId>
       <ExtSchemaName>pgsodium</ExtSchemaName>
+      <MemberIds>16647
+16648
+16649
+16650
+16651
+16652
+16653
+16654
+16655
+16656
+16657
+16658
+16661
+16663
+16664
+16665
+16668
+16670
+16671
+16672
+16673
+16674
+16675
+16676
+16677
+16678
+16679
+16680
+16684
+16685
+16686
+16687
+16690
+16691
+16692
+16693
+16694
+16695
+16696
+16697
+16698
+16699
+16700
+16701
+16702
+16703
+16704
+16705
+16706
+16707
+16708
+16709
+16710
+16711
+16712
+16713
+16714
+16715
+16716
+16717
+16718
+16719
+16720
+16721
+16722
+16723
+16724
+16725
+16726
+16727
+16728
+16729
+16730
+16731
+16735
+16736
+16737
+16738
+16739
+16740
+16741
+16742
+16743
+16744
+16745
+16746
+16747
+16748
+16749
+16750
+16751
+16752
+16753
+16754
+16755
+16758
+16761
+16762
+16763
+16764
+16765
+16766
+16767
+16768
+16769
+16772
+16773
+16775
+16784
+16789
+16790
+16813
+16814
+16815
+16816
+16817
+16818
+16819
+16820
+16826
+16827
+16828
+16829
+16830
+16831
+16832
+16894
+16898
+16899
+16900
+16901
+16902
+16903
+16904
+16905
+16906
+16907
+16908
+16909
+16910
+16915
+16920
+16930
+16931
+16932
+16933
+16934
+16935
+16936
+16937
+16939
+16940
+16945
+16947</MemberIds>
     </extension>
     <extension id="273" parent="2" name="plpgsql">
       <Comment>PL/pgSQL procedural language</Comment>
@@ -4994,6 +5195,10 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>1.0</Version>
       <ExtSchemaId>11</ExtSchemaId>
       <ExtSchemaName>pg_catalog</ExtSchemaName>
+      <MemberIds>13508
+13509
+13510
+13511</MemberIds>
     </extension>
     <extension id="274" parent="2" name="supabase_vault">
       <Comment>Supabase Vault Extension</Comment>
@@ -5002,6 +5207,9 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>0.2.8</Version>
       <ExtSchemaId>16949</ExtSchemaId>
       <ExtSchemaName>vault</ExtSchemaName>
+      <MemberIds>16951
+16976
+16977</MemberIds>
     </extension>
     <extension id="275" parent="2" name="uuid-ossp">
       <Comment>generate universally unique identifiers (UUIDs)</Comment>
@@ -5010,6 +5218,16 @@ idle_in_transaction_session_timeout=60000</Config>
       <Version>1.1</Version>
       <ExtSchemaId>16387</ExtSchemaId>
       <ExtSchemaName>extensions</ExtSchemaName>
+      <MemberIds>16424
+16425
+16426
+16427
+16428
+16429
+16430
+16431
+16432
+16433</MemberIds>
     </extension>
     <language id="276" parent="2" name="c">
       <Comment>dynamically-loaded C functions</Comment>
@@ -5402,7 +5620,9 @@ idle_in_transaction_session_timeout=60000</Config>
 28700||16478|U|G
 28700||16479|U|G
 28700||16480|U|G</Grants>
-      <IntrospectionStateNumber>1164</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1191</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2023-11-03.10:19:15.750</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-11-03.09:19:17</LocalIntrospectionTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>749</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -5478,49 +5698,63 @@ idle_in_transaction_session_timeout=60000</Config>
       <Event>ddl_command_end</Event>
       <ObjectId>16947</ObjectId>
       <StateNumber>912</StateNumber>
-      <Tags>SECURITY LABEL
-ALTER TABLE</Tags>
+      <Tags>ALTER TABLE
+SECURITY LABEL</Tags>
       <CallRoutineId>16831</CallRoutineId>
     </trigger>
     <sequence id="302" parent="289" name="batch_batch_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28659</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1106</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="303" parent="289" name="brew_brew_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28673</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1117</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="304" parent="289" name="operation_operation_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28619</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1085</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="305" parent="289" name="operation_type_operation_type_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28628</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1091</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="306" parent="289" name="sensors_sensor_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28700</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1134</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="307" parent="289" name="test_table_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28585</ObjectId>
+      <SequenceIdentity>1(2)</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1064</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="308" parent="289" name="worker_worker_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28608</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
       <StateNumber>1079</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
@@ -5566,50 +5800,51 @@ ALTER TABLE</Tags>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="316" parent="289" name="workers">
+    <table id="316" parent="289" name="workers_deprecated">
       <ObjectId>28605</ObjectId>
-      <StateNumber>1146</StateNumber>
+      <StateNumber>1174</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <column id="317" parent="309" name="batch_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1106</StateNumber>
+      <SequenceId>28659</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="318" parent="309" name="brew_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1107</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="319" parent="309" name="amount">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>1108</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="320" parent="309" name="speed">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>1109</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="321" parent="309" name="completed">
-      <DataType>boolean|0s</DataType>
+      <DasType>boolean|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>1110</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="322" parent="309" name="defective_count">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>1111</StateNumber>
@@ -5620,9 +5855,9 @@ ALTER TABLE</Tags>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>28724</ObjectId>
       <OnUpdate>cascade</OnUpdate>
-      <RefColNames>brew_id</RefColNames>
-      <RefColPositions>1</RefColPositions>
       <StateNumber>1152</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefKeyColNames>brew_id</RefKeyColNames>
       <RefTableId>28670</RefTableId>
       <RefTableName>brew</RefTableName>
       <RefTableKind>table</RefTableKind>
@@ -5643,29 +5878,30 @@ ALTER TABLE</Tags>
       <UnderlyingIndexId>28663</UnderlyingIndexId>
     </key>
     <column id="326" parent="310" name="brew_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1117</StateNumber>
+      <SequenceId>28673</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="327" parent="310" name="name">
-      <DataType>varchar|0s</DataType>
+      <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1118</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="328" parent="310" name="description">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>1119</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="329" parent="310" name="machine_commands">
-      <DataType>jsonb|0s</DataType>
+      <DasType>jsonb|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>1120</StateNumber>
@@ -5688,22 +5924,23 @@ ALTER TABLE</Tags>
       <UnderlyingIndexId>28679</UnderlyingIndexId>
     </key>
     <column id="332" parent="311" name="operation_type_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1091</StateNumber>
+      <SequenceId>28628</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="333" parent="311" name="name">
-      <DataType>varchar|0s</DataType>
+      <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1092</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="334" parent="311" name="batch_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>1114</StateNumber>
@@ -5714,9 +5951,9 @@ ALTER TABLE</Tags>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>28719</ObjectId>
       <OnUpdate>cascade</OnUpdate>
-      <RefColNames>batch_id</RefColNames>
-      <RefColPositions>1</RefColPositions>
       <StateNumber>1149</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefKeyColNames>batch_id</RefKeyColNames>
       <RefTableId>28656</RefTableId>
       <RefTableName>batches</RefTableName>
       <RefTableKind>table</RefTableKind>
@@ -5737,29 +5974,30 @@ ALTER TABLE</Tags>
       <UnderlyingIndexId>28634</UnderlyingIndexId>
     </key>
     <column id="338" parent="312" name="operation_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1085</StateNumber>
+      <SequenceId>28619</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="339" parent="312" name="worker_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1086</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="340" parent="312" name="operation_type_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>1101</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="341" parent="312" name="date">
-      <DataType>date|0s</DataType>
+      <DasType>date|0s</DasType>
       <DefaultExpression>now()</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
@@ -5771,9 +6009,9 @@ ALTER TABLE</Tags>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>28709</ObjectId>
       <OnUpdate>cascade</OnUpdate>
-      <RefColNames>worker_id</RefColNames>
-      <RefColPositions>1</RefColPositions>
       <StateNumber>1143</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefKeyColNames>worker_id</RefKeyColNames>
       <RefTableId>28605</RefTableId>
       <RefTableName>workers</RefTableName>
       <RefTableKind>table</RefTableKind>
@@ -5783,9 +6021,9 @@ ALTER TABLE</Tags>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>28714</ObjectId>
       <OnUpdate>cascade</OnUpdate>
-      <RefColNames>operation_type_id</RefColNames>
-      <RefColPositions>1</RefColPositions>
       <StateNumber>1145</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefKeyColNames>operation_type_id</RefKeyColNames>
       <RefTableId>28625</RefTableId>
       <RefTableName>operation_types</RefTableName>
       <RefTableKind>table</RefTableKind>
@@ -5806,21 +6044,21 @@ ALTER TABLE</Tags>
       <UnderlyingIndexId>28623</UnderlyingIndexId>
     </key>
     <column id="346" parent="313" name="operation_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1125</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="347" parent="313" name="sensor_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1126</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="348" parent="313" name="timestamp">
-      <DataType>time|0s</DataType>
+      <DasType>time|0s</DasType>
       <DefaultExpression>now()</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
@@ -5828,7 +6066,7 @@ ALTER TABLE</Tags>
       <TypeId>1083</TypeId>
     </column>
     <column id="349" parent="313" name="sensor_value">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>1160</StateNumber>
@@ -5839,9 +6077,9 @@ ALTER TABLE</Tags>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>28729</ObjectId>
       <OnUpdate>cascade</OnUpdate>
-      <RefColNames>operation_id</RefColNames>
-      <RefColPositions>1</RefColPositions>
       <StateNumber>1157</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefKeyColNames>operation_id</RefKeyColNames>
       <RefTableId>28616</RefTableId>
       <RefTableName>operations</RefTableName>
       <RefTableKind>table</RefTableKind>
@@ -5851,9 +6089,9 @@ ALTER TABLE</Tags>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>28734</ObjectId>
       <OnUpdate>cascade</OnUpdate>
-      <RefColNames>sensor_id</RefColNames>
-      <RefColPositions>1</RefColPositions>
       <StateNumber>1158</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefKeyColNames>sensor_id</RefKeyColNames>
       <RefTableId>28697</RefTableId>
       <RefTableName>sensors</RefTableName>
       <RefTableKind>table</RefTableKind>
@@ -5876,29 +6114,30 @@ sensor_id</ColNames>
       <UnderlyingIndexId>28740</UnderlyingIndexId>
     </key>
     <column id="354" parent="314" name="sensor_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1134</StateNumber>
+      <SequenceId>28700</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="355" parent="314" name="name">
-      <DataType>varchar|0s</DataType>
+      <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1135</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="356" parent="314" name="opc_namespace_index">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>1136</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="357" parent="314" name="opc_identifier">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>1137</StateNumber>
@@ -5921,15 +6160,16 @@ sensor_id</ColNames>
       <UnderlyingIndexId>28706</UnderlyingIndexId>
     </key>
     <column id="360" parent="315" name="id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1064</StateNumber>
+      <SequenceId>28585</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="361" parent="315" name="information">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1065</StateNumber>
@@ -5966,22 +6206,23 @@ sensor_id</ColNames>
       <UnderlyingIndexId>28586</UnderlyingIndexId>
     </key>
     <column id="366" parent="316" name="worker_id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1079</StateNumber>
+      <SequenceId>28608</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="367" parent="316" name="name">
-      <DataType>varchar|0s</DataType>
+      <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1080</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="368" parent="316" name="password">
-      <DataType>varchar|0s</DataType>
+      <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>1083</StateNumber>
