@@ -1,9 +1,7 @@
 package beerbrewers.worker;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,16 @@ public class WorkerController {
     @GetMapping
     public List<Worker> getWorkers() {
         return workerService.getWorkers();
+    }
+
+    @PostMapping
+    public void registerNewWorker(@RequestBody Worker worker) {
+        workerService.addNewWorker(worker);
+    }
+
+    @DeleteMapping(path = "{workerId}")
+    public void deleteWorker(@PathVariable("workerId") Long workerId) {
+        workerService.deleteWorker(workerId);
     }
 
 }

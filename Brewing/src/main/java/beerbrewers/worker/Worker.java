@@ -27,7 +27,7 @@ public class Worker {
     /**
      * This Constructor exists solely for JPA and is thus protected.
      */
-    protected Worker() {};
+    protected Worker() {}
 
     /**
      * This Constructor is used to create instances of Worker to be added to the database.

@@ -19,4 +19,15 @@ public class WorkerService {
         return workerRepository.findAll();
     }
 
+    public void addNewWorker(Worker worker) {
+        workerRepository.save(worker);
+    }
+
+    public void deleteWorker(Long workerId) {
+        boolean exists = workerRepository.existsById(workerId);
+        if (!exists) {
+            throw new IllegalStateException("Worker with id '" + workerId + "' does not exist.");
+        }
+        workerRepository.deleteById(workerId);
+    }
 }
