@@ -15,7 +15,7 @@ public class SensorConfig {
      * @return
      */
     @Bean
-    CommandLineRunner commandLineRunner(SensorRepository repository) {
+    CommandLineRunner sensorCommandLineRunner(SensorRepository repository) {
         return args -> {
             Sensor vibrationSensor = new Sensor(
                 1, "Vibration sensor", 6, "::Program:Data.Value.Vibration"

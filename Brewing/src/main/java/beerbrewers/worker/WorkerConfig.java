@@ -10,7 +10,7 @@ import java.util.List;
 public class WorkerConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(WorkerRepository repository) {
+    CommandLineRunner workerCommandLineRunner(WorkerRepository repository) {
         return args -> {
             Worker john = new Worker(
                     "John Smith", "hutlihut"
