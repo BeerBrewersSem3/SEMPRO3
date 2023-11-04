@@ -1,7 +1,5 @@
 package beerbrewers.sensor;
 
-import beerbrewers.worker.Worker;
-import beerbrewers.worker.WorkerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

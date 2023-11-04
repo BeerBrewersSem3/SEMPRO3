@@ -1,9 +1,6 @@
-package beerbrewers.brewmaster9000.models;
+package beerbrewers.operation;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -12,13 +9,18 @@ public class OperationType {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long operationTypeId;
+    @Column(nullable = false)
     private String name;
     private List<Long> batchIds;
 
+    public OperationType() {
+
+    }
     public OperationType(String name) {
-        super();
         this.name = name;
     }
+
+
 
     public String getName() {
         return name;

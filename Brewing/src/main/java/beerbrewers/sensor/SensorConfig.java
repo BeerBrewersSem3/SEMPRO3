@@ -10,7 +10,7 @@ import java.util.List;
 public class SensorConfig {
 
     /**
-     * The following method should be refactored to read the sensors from a txt file or JSON document.
+     * The following method could be refactored to read the sensors from a txt file or JSON document.
      * @param repository
      * @return
      */

@@ -1,6 +1,6 @@
 package beerbrewers.sensor;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -17,13 +17,25 @@ public class Sensor {
             generator = "sensor_sequence"
     )
     private long sensorId;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private long opcNamespaceIndex;
+    @Column(nullable = false)
     private String opcIdentifier;
 
+    /**
+     * The currentSensorValue attribute is intended to be constantly computed and updated by the business logic.
+     * The @Transient annotation signifies that this field should not be saved as a column in the "sensor" table of the
+     * database. This attribute is only saved to the database through the SensorReading Model/Entity, which binds the
+     * sensor reading to a specific machine operation.
+     */
     @Transient
     private float currentSensorValue;
 
+    /**
+     * This Constructor exists solely for JPA and is thus protected.
+     */
     protected Sensor() {}
 
     public Sensor(String name, long opcNamespaceIndex, String opcIdentifier) {

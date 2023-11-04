@@ -1,6 +1,6 @@
 package beerbrewers.worker;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -17,11 +17,13 @@ public class Worker {
             generator = "worker_sequence"
     )
     private long workerId;
+    @Column(nullable = false)
     private String name;
 
     /**
      * Remember to implement password encryption!!
      */
+    @Column(nullable = false)
     private String password;
 
     /**

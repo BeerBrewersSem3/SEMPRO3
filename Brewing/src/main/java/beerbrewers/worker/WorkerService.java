@@ -19,6 +19,10 @@ public class WorkerService {
         return workerRepository.findAll();
     }
 
+    /**
+     * Be aware that this method does not check if the worker already exists.
+     * @param worker
+     */
     public void addNewWorker(Worker worker) {
         workerRepository.save(worker);
     }
