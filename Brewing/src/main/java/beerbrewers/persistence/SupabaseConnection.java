@@ -1,6 +1,5 @@
 package beerbrewers.persistence;
 
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -9,7 +8,6 @@ import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
-import java.util.Map;
 
 /**
  * This class uses the JdbcTemplate from the Spring framework to handle the connection to the database hosted on
@@ -17,9 +15,7 @@ import java.util.Map;
  */
 @Component
 public class SupabaseConnection {
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public SupabaseConnection(DataSource dataSource) {

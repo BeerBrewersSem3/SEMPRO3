@@ -60,11 +60,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20230618</version>
-        </dependency>
         <!--The following is needed to work with our database-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

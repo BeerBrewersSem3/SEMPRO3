@@ -1,6 +1,6 @@
 package beerbrewers.sensor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table

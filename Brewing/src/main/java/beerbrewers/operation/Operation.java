@@ -1,9 +1,10 @@
 package beerbrewers.operation;
 
+import beerbrewers.batch.Batch;
 import beerbrewers.operationtype.OperationType;
 import beerbrewers.worker.Worker;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -23,50 +24,72 @@ public class Operation {
     private long operationId;
 
     @ManyToOne(targetEntity = Worker.class, optional = false)
-    private long workerId;
+    @JoinColumn(name = "worker_id")
+    private Worker worker;
     @ManyToOne(targetEntity = OperationType.class, optional = false)
-    private long operationTypeId;
+    @JoinColumn(name = "operation_type_id")
+    private OperationType operationType;
     @Column(nullable = false)
     private Date date;
-    @OneToOne
-    private long batchId;
+    @OneToOne(targetEntity = Batch.class)
+    private Batch batch;
 
     protected Operation() {
 
     }
-    public Operation(long workerId, long operationTypeId, Date date, long batchId) {
-        this.workerId = workerId;
-        this.operationTypeId = operationTypeId;
+    public Operation(Worker worker, OperationType operationType, Date date, Batch batch) {
+        this.worker = worker;
+        this.operationType = operationType;
         this.date = date;
-        this.batchId = batchId;
+        this.batch = batch;
     }
 
-    public Operation(long operationId, long workerId, long operationTypeId, Date date, long batchId) {
+    public Operation(long operationId, Worker worker, OperationType operationType, Date date, Batch batch) {
         this.operationId = operationId;
-        this.workerId = workerId;
-        this.operationTypeId = operationTypeId;
+        this.worker = worker;
+        this.operationType = operationType;
         this.date = date;
-        this.batchId = batchId;
+        this.batch = batch;
+    }
+
+    /**
+     * Constructors without Batch
+     * @param operationId
+     * @param worker
+     * @param operationType
+     * @param date
+     */
+    public Operation(long operationId, Worker worker, OperationType operationType, Date date) {
+        this.operationId = operationId;
+        this.worker = worker;
+        this.operationType = operationType;
+        this.date = date;
+    }
+
+    public Operation(Worker worker, OperationType operationType, Date date) {
+        this.worker = worker;
+        this.operationType = operationType;
+        this.date = date;
     }
 
     public long getOperationId() {
         return operationId;
     }
 
-    public long getWorkerId() {
-        return workerId;
+    public Worker getWorker() {
+        return worker;
     }
 
-    public void setWorkerId(long workerId) {
-        this.workerId = workerId;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
-    public long getOperationTypeId() {
-        return operationTypeId;
+    public OperationType getOperationType() {
+        return operationType;
     }
 
-    public void setOperationTypeId(long operationTypeId) {
-        this.operationTypeId = operationTypeId;
+    public void setOperationType(OperationType operationType) {
+        this.operationType = operationType;
     }
 
     public Date getDate() {
@@ -77,11 +100,11 @@ public class Operation {
         this.date = date;
     }
 
-    public long getBatchId() {
-        return batchId;
+    public Batch getBatch() {
+        return batch;
     }
 
-    public void setBatchId(long batchId) {
-        this.batchId = batchId;
+    public void setBatch(Batch batch) {
+        this.batch = batch;
     }
 }

@@ -1,6 +1,6 @@
 package beerbrewers.worker;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table

@@ -1,6 +1,6 @@
 package beerbrewers.sensorreading;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity

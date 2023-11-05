@@ -1,8 +1,6 @@
 package beerbrewers.brew;
 
-import org.json.JSONObject;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table
@@ -23,20 +21,20 @@ public class Brew {
     private String name;
     private String description;
     @Column(nullable = false)
-    private JSONObject machineCommands;
+    private String machineCommands;
 
     /**
      * This Constructor exists solely for JPA and is thus protected.
      */
     protected Brew() {}
 
-    public Brew(String name, String description, JSONObject machineCommands) {
+    public Brew(String name, String description, String machineCommands) {
         this.name = name;
         this.description = description;
         this.machineCommands = machineCommands;
     }
 
-    public Brew(long brewId, String name, String description, JSONObject machineCommands) {
+    public Brew(long brewId, String name, String description, String machineCommands) {
         this.brewId = brewId;
         this.name = name;
         this.description = description;
@@ -63,11 +61,11 @@ public class Brew {
         this.description = description;
     }
 
-    public JSONObject getMachineCommands() {
+    public String getMachineCommands() {
         return machineCommands;
     }
 
-    public void setMachineCommands(JSONObject machineCommands) {
+    public void setMachineCommands(String machineCommands) {
         this.machineCommands = machineCommands;
     }
 

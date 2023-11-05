@@ -1,6 +1,7 @@
 package beerbrewers.brew;
 
-import org.json.JSONObject;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,25 +19,28 @@ public class BrewConfig {
 
     @Bean
     CommandLineRunner brewCommandLineRunner(BrewRepository repository) {
-        JSONObject brew1Commands = new JSONObject();
-        brew1Commands.put("state commands", "placeholder1");
-        brew1Commands.put("actuator commands", "placeholder1");
-        brew1Commands.put("OPCUA id", "placeholder1");
+        JsonObject brew1Commands = Json.createObjectBuilder()
+                        .add("state commands", "placeholder1")
+                        .add("actuator commands", "placeholder1")
+                        .add("OPCUA id", "placeholder1")
+                .build();
 
-        JSONObject brew2Commands = new JSONObject();
-        brew2Commands.put("state commands", "placeholder2");
-        brew2Commands.put("actuator commands", "placeholder2");
-        brew2Commands.put("OPCUA id", "placeholder2");
+        JsonObject brew2Commands = Json.createObjectBuilder()
+                .add("state commands", "placeholder2")
+                .add("actuator commands", "placeholder2")
+                .add("OPCUA id", "placeholder2")
+                .build();
 
-        JSONObject brew3Commands = new JSONObject();
-        brew3Commands.put("state commands", "placeholder3");
-        brew3Commands.put("actuator commands", "placeholder3");
-        brew3Commands.put("OPCUA id", "placeholder3");
+        JsonObject brew3Commands = Json.createObjectBuilder()
+                .add("state commands", "placeholder3")
+                .add("actuator commands", "placeholder3")
+                .add("OPCUA id", "placeholder3")
+                .build();
 
         return args -> {
-            Brew brew1 = new Brew(1, "Dark Sensation", "Dark Ale 5,8%.", brew1Commands);
-            Brew brew2 = new Brew(2, "Fruity Palms", "Wheat Beer 4,8%.", brew2Commands);
-            Brew brew3 = new Brew(3, "Black Attack", "Imperial Stout 8,8%.", brew3Commands);
+            Brew brew1 = new Brew(1, "Dark Sensation", "Dark Ale 5,8%.", brew1Commands.toString());
+            Brew brew2 = new Brew(2, "Fruity Palms", "Wheat Beer 4,8%.", brew2Commands.toString());
+            Brew brew3 = new Brew(3, "Black Attack", "Imperial Stout 8,8%.", brew3Commands.toString());
 
             repository.saveAll(
                     List.of(

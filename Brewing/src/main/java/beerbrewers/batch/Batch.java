@@ -2,7 +2,7 @@ package beerbrewers.batch;
 
 import beerbrewers.brew.Brew;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table
@@ -20,7 +20,8 @@ public class Batch {
     )
     private long batchId;
     @ManyToOne(targetEntity = Brew.class, optional = false)
-    private long brewId;
+    @JoinColumn(name = "brew_id")
+    private Brew brew;
     @Column(nullable = false)
     private long amount;
     @Column(nullable = false)
@@ -34,17 +35,17 @@ public class Batch {
 
     }
 
-    public Batch(long brewId, long amount, long speed, boolean isCompleted, long defectiveCount) {
-        this.brewId = brewId;
+    public Batch(Brew brew, long amount, long speed, boolean isCompleted, long defectiveCount) {
+        this.brew = brew;
         this.amount = amount;
         this.speed = speed;
         this.isCompleted = isCompleted;
         this.defectiveCount = defectiveCount;
     }
 
-    public Batch(long batchId, long brewId, long amount, long speed, boolean isCompleted, long defectiveCount) {
+    public Batch(long batchId, Brew brew, long amount, long speed, boolean isCompleted, long defectiveCount) {
         this.batchId = batchId;
-        this.brewId = brewId;
+        this.brew = brew;
         this.amount = amount;
         this.speed = speed;
         this.isCompleted = isCompleted;
@@ -55,12 +56,12 @@ public class Batch {
         return batchId;
     }
 
-    public long getBrewId() {
-        return brewId;
+    public Brew getBrew() {
+        return brew;
     }
 
-    public void setBrewId(long brewId) {
-        this.brewId = brewId;
+    public void setBrew(Brew brew) {
+        this.brew = brew;
     }
 
     public long getAmount() {
