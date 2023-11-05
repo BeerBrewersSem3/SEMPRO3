@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The controller acts as API to the frontend.
+ */
 @RestController
 @RequestMapping(path = "api/v1/worker")
 public class WorkerController {

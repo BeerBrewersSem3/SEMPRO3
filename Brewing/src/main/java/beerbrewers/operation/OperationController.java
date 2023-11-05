@@ -24,5 +24,5 @@ public class OperationController {
     public void saveOperation(@RequestBody Operation operation) {
         operationService.addNewOperation(operation);
     }
-    
+
 }

@@ -1,5 +1,6 @@
 package beerbrewers.operation;
 
+import beerbrewers.operationtype.OperationType;
 import beerbrewers.worker.Worker;
 
 import javax.persistence.*;
@@ -27,21 +28,25 @@ public class Operation {
     private long operationTypeId;
     @Column(nullable = false)
     private Date date;
+    @OneToOne
+    private long batchId;
 
     protected Operation() {
 
     }
-    public Operation(long workerId, long operationTypeId, Date date) {
+    public Operation(long workerId, long operationTypeId, Date date, long batchId) {
         this.workerId = workerId;
         this.operationTypeId = operationTypeId;
         this.date = date;
+        this.batchId = batchId;
     }
 
-    public Operation(long operationId, long workerId, long operationTypeId, Date date) {
+    public Operation(long operationId, long workerId, long operationTypeId, Date date, long batchId) {
         this.operationId = operationId;
         this.workerId = workerId;
         this.operationTypeId = operationTypeId;
         this.date = date;
+        this.batchId = batchId;
     }
 
     public long getOperationId() {
@@ -70,5 +75,13 @@ public class Operation {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public long getBatchId() {
+        return batchId;
+    }
+
+    public void setBatchId(long batchId) {
+        this.batchId = batchId;
     }
 }

@@ -17,4 +17,8 @@ public class BatchService {
     public List<Batch> getBatches() {
         return batchRepository.findAll();
     }
+
+    public void addNewBatch(Batch batch) {
+        batchRepository.save(batch);
+    }
 }
