@@ -72,39 +72,71 @@ body{
     margin: 0 5px;
     width: 64px;
 }
+
+.bInfo{
+    font-size: 32px;
+    text-align: center;
+    padding-top: 5vh;
+    margin: 0 70px 0 0;
+}
 /*^^Top^^*/
 /*_________________________________________________________________________________*/
 
-.bHist{
-    font-size: 48px;
-    padding-top: 10vh;
-    text-align: center;
-    margin: 0;
-}
 
+
+/*Main*/
+/*_________________________________________________________________________________*/
 .main{
+    padding: 2px 2px;
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    padding: 5px;
 }
 
-.historyTable{
-    border-collapse: collapse;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+.mainLeft{
+    padding: 2px 2px;
+}
+
+.batchInfo{
     background-color: #555555;
-}
-
-.historyTable thead tr{
-    font-size: 24px;
-}
-
-.historyTable th, .historyTable td{
-    border: 1px solid black;
-    padding: 10px 30px;
     color: white;
+    padding: 10px 10px;
 }
 
+.mainMiddle{
+    padding: 2px 2px;
+    margin: 0 1%;
+}
+
+.historyTable, .historyTable th, .historyTable td{
+    font-size: 16px;
+    border: 1px solid black;
+}
 
 .tableHeader{
     height: 4vh;
+}
+
+.mainRight{
+    padding: 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.graphBtn{
+    padding: 15px 32px;
+    font-size: 24px;
+    background-color: #555555;
+    color: white;
+    border: 2px solid #555555;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.graphBtn:hover{
+    background-color: white;
+    color: black;
 }

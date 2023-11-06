@@ -1,8 +1,11 @@
 body{
     padding: 0;
     margin: 0;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
 /*Top*/
 /*_________________________________________________________________________________*/
@@ -10,34 +13,36 @@ body{
     display: flex;
     align-items: center;
     margin: 0 30px;
-}
-
-.menuBtns{
-    text-align: left;
+    justify-content: space-between;
+    position: relative;
 }
 
 .menuBtn{
     background-color: #555555;
-    color: white;
     border: 2px solid #555555;
+    color: white;
     padding: 15px 32px;
     font-size: 20px;
     cursor: pointer;
     transition-duration: 0.4s;
 }
+
 .menuBtn:hover{
     background-color: white;
     color: black;
 }
 
 .header{
-    text-align: center;
-    flex: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .header .title{
     margin: 0;
     font-size: 72px;
+    position: relative;
 }
 
 .line{
@@ -45,26 +50,25 @@ body{
     margin: 5px;
 }
 
+.navRight{
+    display: flex;
+    justify-content: center;
+}
+
 .emerBtn{
     background-color: #a82011;
     border: 2px solid #a82011;
     color: white;
     padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 24px;
     transition-duration: 0.4s;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 .emerBtn:hover{
     background-color: white;
     color: black;
-}
-
-.navRight{
-    display: flex;
 }
 
 .siren{
@@ -206,19 +210,27 @@ body{
 
 /*Maintenance Box*/
 /*_________________________________________________________________________________*/
+.maintenanceAdjust{
+    display: flex;
+    align-items: end;
+    flex: 1;
+}
+
 .maintenanceBox{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     width: 50%;
 }
 
 .maintenance{
     width: 100%;
-    height: 50%;
     border: 1px solid #7a7d7d;
     padding: 1%;
     text-align: left;
     vertical-align: middle;
     font-size: 20px;
 }
+/*^^Maintenance Box^^*/
+/*_________________________________________________________________________________*/
+
+

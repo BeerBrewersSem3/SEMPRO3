@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>History</title>
-    <link rel="stylesheet" href="./historyStyle.css">
+    <link rel="stylesheet" href="./historyOpenStyle.css">
+    <script src="switchPage.js"></script>
 </head>
 <body>
 <div class="topBar">
   <div class="menuBtns">
-    <button class="menuBtn">Monitor</button>
-    <button class="menuBtn">History</button>
+    <button class="menuBtn" onclick=openMonitor()>Monitor</button>
+    <button class="menuBtn" onclick=openHistory()>History</button>
   </div>
 
   <div class="header">
@@ -29,8 +30,8 @@
 <div class="main">
     <div class="mainLeft">
         <table class="batchInfo">
-            <tr class="infoRow">
-                <th>ID:</th>
+            <tr>
+                <th class="infoRow">ID:</th>
                 <td id="ID">???</td>
             </tr>
             <tr>
@@ -70,30 +71,34 @@
 
     <div class="mainMiddle">
         <table class="historyTable">
-            <tr class="tableHeader">
-                <th>Timestamp</th>
-                <th>Temperature</th>
-                <th>Humidity</th>
-                <th>Vibration</th>
-            </tr>
-            <tr>
-                <td>01/03-23 18:56</td>
-                <td>43</td>
-                <td>80</td>
-                <td>0.0</td>
-            </tr>
-            <tr>
-                <td>01/03-23 18:56</td>
-                <td>44</td>
-                <td>80</td>
-                <td>0.0</td>
-            </tr>
-            <tr>
-                <td>01/03-23 21:03</td>
-                <td>44</td>
-                <td>80</td>
-                <td>0.47</td>
-            </tr>
+            <thead>
+                <tr class="tableHeader">
+                    <th>Timestamp</th>
+                    <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Vibration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01/03-23 18:56</td>
+                    <td>43</td>
+                    <td>80</td>
+                    <td>0.0</td>
+                </tr>
+                <tr>
+                    <td>01/03-23 18:56</td>
+                    <td>44</td>
+                    <td>80</td>
+                    <td>0.0</td>
+                </tr>
+                <tr>
+                    <td>01/03-23 21:03</td>
+                    <td>44</td>
+                    <td>80</td>
+                    <td>0.47</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
