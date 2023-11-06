@@ -29,19 +29,18 @@ public class DashboardService implements OpcUaNodeObserver {
     public void initialize() {
         List<OpcUaNodes> nodesToSubscribe = List.of(
                 OpcUaNodes.STATE_CURRENT,
-                OpcUaNodes.MACH_SPEED,
+                OpcUaNodes.MACH_SPEED_READ,
                 OpcUaNodes.PROD_DEFECTIVE_COUNT,
                 OpcUaNodes.PROD_PROCESSED_COUNT,
                 OpcUaNodes.STOP_REASON,
-                OpcUaNodes.CNTRL_CMD
+                OpcUaNodes.CNTRL_CMD,
+                OpcUaNodes.CURRENT_BATCH_ID,
+                OpcUaNodes.BATCH_QTY,
+                OpcUaNodes.REL_HUMIDITY,
+                OpcUaNodes.TEMPERATURE,
+                OpcUaNodes.VIBRATION,
+                OpcUaNodes.CUR_MACH_SPEED
         );
-
-        //OpcUaNodes.BATCH_ID,
-        //OpcUaNodes.BATCH_QTY,
-        //OpcUaNodes.HUMIDITY,
-        //OpcUaNodes.TEMPERATURE,
-        //OpcUaNodes.VIBRATION
-        //OpcUaNodes.CUR_MACH_SPEED,
         nodesToSubscribe.forEach(node -> {
             opcUaNodeUpdateManager.addObserver(node, this);
             System.out.println("Subscribed from DashboardService to " + node.getName());

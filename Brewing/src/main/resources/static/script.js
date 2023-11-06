@@ -14,6 +14,15 @@ connectWebSocket();
 stompClient.connect({}, function() {
     subscribeToNode("currentState");
     subscribeToNode("cntrlCmd");
+    subscribeToNode("machSpeedRead");
+    subscribeToNode("prodDefectiveCount");
+    subscribeToNode("prodProcessedCount");
+    subscribeToNode("currentBatchId");
+    subscribeToNode("batchQty");
+    subscribeToNode("relHumidity");
+    subscribeToNode("temperature");
+    subscribeToNode("vibration");
+    subscribeToNode("machSpeed");
 });
 
 function sendCommand() {

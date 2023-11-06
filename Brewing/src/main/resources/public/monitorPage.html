@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./monitorStyle.css">
+    <link rel="stylesheet" href="./newBatch.css">
+    <script src="./switchPage.js"></script>
+    <script defer src="./script.js"></script>
+    <script src="/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+    <title>Monitor</title>
+</head>
+<body>
+<div class="topBar">
+    <div class="menuBtns">
+        <button class="menuBtn" onclick=openMonitor()>Monitor</button>
+        <button class="menuBtn" onclick="openHistory()">History</button>
+    </div>
+
+    <div class="header">
+        <label class="title">Beer Bros</label>
+    </div>
+
+    <div class="navRight">
+        <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
+        <button class="emerBtn">Emergency Stop!</button>
+    </div>
+</div>
+
+<div class="line"></div>
+
+<div class="bottom">
+    <div class="left">
+        <div class="leftTop">
+            <div class="batchBtns">
+                <button class="batch" onclick=toggleNewBatch()>B
+                    a
+                    t
+                    c
+                    h
+                </button>
+                <button>Stop</button>
+            </div>
+
+            <div class="infoBox">
+                <div class="info">
+                    <img class="picture" src="Icons/thermometer.svg" alt="Temperature">
+                    <label id="TEMPERATURE">0.0</label>
+                    <label>Temperature</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture" src="Icons/droplet.svg" alt="Humidity percentage">
+                    <label id="HUMIDITY">0.0</label>
+                    <label>Humidity</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture rotate" src="Icons/radio.svg" alt="Vibration">
+                    <label id="VIBRATION">0.0</label>
+                    <label>Vibration</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture" src="Icons/file-box.svg" alt="ID">
+                    <label id="BATCH_ID">0.0</label>
+                    <label>ID</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture" src="Icons/boxes.svg" alt="Units to be produced">
+                    <label id="AMOUNT_IN_BATCH">0.0</label>
+                    <label>Units</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture" src="Icons/gauge.svg" alt="Speed">
+                    <label id="CUR_MACH_SPEED">0.0</label>
+                    <label>Speed</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture" src="Icons/line-chart.svg" alt="Produced so far">
+                    <label>0.0</label>
+                    <label>Produced</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture" src="Icons/milk.svg" alt="Successful operations">
+                    <label id="PRODPROCESSEDCOUNT">0.0</label>
+                    <label>Success</label>
+                </div>
+
+                <div class="info">
+                    <img class="picture" src="Icons/milk-off.svg" alt="Failed operations">
+                    <label id="PROD_DEFECTIVE_COUNT">0.0</label>
+                    <label>Failure</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="topSilos">
+            <div class="silos">
+                <label>Barley</label>
+                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            </div>
+
+            <div class="silos">
+                <label>Hops</label>
+                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            </div>
+
+            <div class="silos">
+                <label>Malt</label>
+                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            </div>
+        </div>
+
+        <div class="botSilos">
+            <div class="silos">
+                <label>Wheat</label>
+                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            </div>
+
+            <div class="silos">
+                <label>Yeast</label>
+                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maintenanceAdjust">
+    <div class="maintenanceBox">
+        <img src="Icons/maintenance.png" alt="Maintenance picture">
+        <label class="maintenance">0%</label>
+    </div>
+</div>
+
+
+
+
+
+<div class="newBatch" id="newBatch">
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="newBatchMain">
+            <div class="newBatchHeader">
+                <label>Batch Specifications</label>
+            </div>
+            <div class="newBatchBottom">
+                <div class="newBatchBottomLeft">
+                    <table class="infoTable">
+                        <tr>
+                            <th>ID</th>
+                            <td>
+                                <label>
+                                    <input type="text" name="inputID" value="Insert ID">
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Type</th>
+                            <td>
+                                <button class="typesBtn">Choose Type</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Bottles #</th>
+                            <td>
+                                <label>
+                                    <input type="text" name="inputAmount" value="Insert Amount">
+                                </label>
+                            </td>
+                            <td>
+                                <label>pcs.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Speed</th>
+                            <td>
+                                <label>
+                                    <input type="text" name="inputSpeed" value="Insert Speed">
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <label>Recommended Speed: <label>???</label></label>
+                </div>
+
+                <div class="newBatchBottomMiddle">
+                    <button class="startBtn">Start</button>
+                </div>
+
+                <div class="newBatchBottomRight">
+                    <div class="stockHeader">
+                        <label>Batch Quantity Requirements</label>
+                    </div>
+
+                    <div class="stock">
+                        <table class="stockTable">
+                            <thead>
+                            <tr>
+                                <td></td>
+                                <td>Stock:</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Barley: <label>???</label></td>
+                                <td>Barley: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Hop: <label>???</label></td>
+                                <td>Hop: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Malt: <label>???</label></td>
+                                <td>Malt: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Wheat: <label>???</label></td>
+                                <td>Wheat: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Yeast: <label>???</label></td>
+                                <td>Yeast: <label>???</label></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <button class="closeBatchBtn" onclick="toggleNewBatch()">&times;</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

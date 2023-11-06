@@ -3,6 +3,7 @@ package beerbrewers;
 /* IMPORTS */
 import beerbrewers.BrewMaster9000.opcua.OpcUaClientSubscriber;
 import beerbrewers.BrewMaster9000.opcua.OpcUaNodes;
+import beerbrewers.brewing.DashboardService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +21,7 @@ public class BrewingApplication {
 
     }
 
-    @PostConstruct // Done after
+    /*@PostConstruct // Done after
     public void initialize() {
         try {
 
@@ -32,5 +33,7 @@ public class BrewingApplication {
             e.printStackTrace();
         }
     }
+
+     */
 }
 

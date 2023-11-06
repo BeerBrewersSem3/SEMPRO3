@@ -1,0 +1,110 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+/*Top*/
+/*_________________________________________________________________________________*/
+.topBar{
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menuBtn{
+    background-color: #555555;
+    border: 2px solid #555555;
+    color: white;
+    padding: 15px 32px;
+    font-size: 20px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.menuBtn:hover{
+    background-color: white;
+    color: black;
+}
+
+.header{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.header .title{
+    margin: 0;
+    font-size: 72px;
+    position: relative;
+}
+
+.line{
+    border: 1px solid #7a7d7d;
+    margin: 5px;
+}
+
+.navRight{
+    display: flex;
+    justify-content: center;
+}
+
+.emerBtn{
+    background-color: #a82011;
+    border: 2px solid #a82011;
+    color: white;
+    padding: 15px 32px;
+    font-size: 24px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.emerBtn:hover{
+    background-color: white;
+    color: black;
+}
+
+.siren{
+    margin: 0 5px;
+    width: 64px;
+}
+/*^^Top^^*/
+/*_________________________________________________________________________________*/
+
+.bHist{
+    font-size: 48px;
+    padding-top: 10vh;
+    text-align: center;
+    margin: 0;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.historyTable{
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #555555;
+}
+
+.historyTable thead tr{
+    font-size: 24px;
+}
+
+.historyTable th, .historyTable td{
+    border: 1px solid black;
+    padding: 10px 30px;
+    color: white;
+}
+
+
+.tableHeader{
+    height: 4vh;
+}

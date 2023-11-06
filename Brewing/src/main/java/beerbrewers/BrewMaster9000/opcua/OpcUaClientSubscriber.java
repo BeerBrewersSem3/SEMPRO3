@@ -1,5 +1,6 @@
 package beerbrewers.BrewMaster9000.opcua;
 
+import jakarta.annotation.PostConstruct;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
@@ -26,7 +27,27 @@ public class OpcUaClientSubscriber {
     private OpcUaClientConnection opcUaClientConnection;
     @Autowired
     private OpcUaNodeUpdateManager opcUaNodeUpdateManager;
-
+    @PostConstruct
+    public void initializeSubscriptions(){
+        List<OpcUaNodes> nodesToSubscribe = List.of(
+                OpcUaNodes.STATE_CURRENT,
+                OpcUaNodes.MACH_SPEED_READ,
+                OpcUaNodes.PROD_DEFECTIVE_COUNT,
+                OpcUaNodes.PROD_PROCESSED_COUNT,
+                OpcUaNodes.STOP_REASON,
+                OpcUaNodes.CNTRL_CMD,
+                OpcUaNodes.CURRENT_BATCH_ID,
+                OpcUaNodes.BATCH_QTY,
+                OpcUaNodes.REL_HUMIDITY,
+                OpcUaNodes.TEMPERATURE,
+                OpcUaNodes.VIBRATION,
+                OpcUaNodes.CUR_MACH_SPEED
+        );
+        nodesToSubscribe.forEach(node -> {
+            subscribe(node);
+            System.out.println("Subscribed from OpcUaClientSubscriber to " + node.getName());
+        });
+    }
 
     // Will change to the currentState of the BeerMachine, when connection is made.
     private Map<OpcUaNodes, String> nodeStates = new ConcurrentHashMap<>();

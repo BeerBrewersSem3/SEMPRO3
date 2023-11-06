@@ -1,0 +1,236 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+/*Top*/
+/*_________________________________________________________________________________*/
+.topBar{
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menuBtn{
+    background-color: #555555;
+    border: 2px solid #555555;
+    color: white;
+    padding: 15px 32px;
+    font-size: 20px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.menuBtn:hover{
+    background-color: white;
+    color: black;
+}
+
+.header{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.header .title{
+    margin: 0;
+    font-size: 72px;
+    position: relative;
+}
+
+.line{
+    border: 1px solid #7a7d7d;
+    margin: 5px;
+}
+
+.navRight{
+    display: flex;
+    justify-content: center;
+}
+
+.emerBtn{
+    background-color: #a82011;
+    border: 2px solid #a82011;
+    color: white;
+    padding: 15px 32px;
+    font-size: 24px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.emerBtn:hover{
+    background-color: white;
+    color: black;
+}
+
+.siren{
+    margin: 0 5px;
+    width: 64px;
+}
+/*^^Top^^*/
+/*_________________________________________________________________________________*/
+
+
+/*Bottom*/
+/*_________________________________________________________________________________*/
+.bottom{
+    display: flex;
+    margin: 20px 20px;
+}
+
+/*Bottom Left*/
+/*_________________________________________________________________________________*/
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.leftTop{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bottom .left .leftTop{
+    display: flex;
+    flex: 1;
+}
+
+.bottom .left .leftTop .batchBtns{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.batchBtns button{
+    padding: 15px 32px;
+    font-size: 24px;
+    background-color: #555555;
+    color: white;
+    border: 2px solid #555555;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    text-align: center;
+}
+
+.batchBtns button:hover{
+    background-color: white;
+    color: black;
+}
+
+.batch{
+    flex: 1;
+    margin-bottom: 10px;
+    white-space: pre-line;
+}
+
+.infoBox{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    width: 83%;
+}
+
+.info{
+    display: flex;
+    border: black solid 2px;
+    box-shadow: 2px 4px;
+    border-radius: 10%;
+    flex-direction: column;
+    place-items: center;
+    padding: 15px;
+    justify-content: center;
+}
+
+.rotate{
+    transform: rotate(30deg);
+}
+
+.picture{
+    width: 64px;
+}
+
+.leftBot{
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+/*^^Bottom Left^^*/
+/*_________________________________________________________________________________*/
+
+
+
+/*Bottom Right*/
+/*_________________________________________________________________________________*/
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.topSilos{
+    display: flex;
+}
+
+.botSilos{
+    display: flex;
+    justify-content: center;
+}
+
+.silos{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+}
+
+.silos label{
+    font-size: 20px;
+}
+
+.silos .silo{
+    width: 250px;
+
+}
+
+/*^^Bottom Right^^*/
+/*_________________________________________________________________________________*/
+
+
+/*Maintenance Box*/
+/*_________________________________________________________________________________*/
+.maintenanceAdjust{
+    display: flex;
+    align-items: end;
+    flex: 1;
+}
+
+.maintenanceBox{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.maintenance{
+    width: 100%;
+    border: 1px solid #7a7d7d;
+    padding: 1%;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 20px;
+}
+/*^^Maintenance Box^^*/
+/*_________________________________________________________________________________*/
+
+

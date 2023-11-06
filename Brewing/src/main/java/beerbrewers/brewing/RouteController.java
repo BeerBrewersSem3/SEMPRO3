@@ -32,6 +32,20 @@ public class RouteController {
     @ResponseBody
     public String hello() throws IOException {
         // Load the index.html file from the resources/public directory
+        //Resource resource = new ClassPathResource("public/index.html");
+        Resource resource = new ClassPathResource("public/monitorPage.html");
+        byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
+
+        // Convert the bytes to a string using UTF-8 encoding
+        String html = new String(bytes, StandardCharsets.UTF_8);
+        //html = html.replace("<!--Current-State-Value-->", dashboardService.getCurrentNodeValue(OpcUaNodes.STATE_CURRENT));
+        //return html.replace("<!--Cntrl-Cmd-Value-->", dashboardService.getCurrentNodeValue(OpcUaNodes.CNTRL_CMD));
+        return html;
+    }
+
+    @GetMapping("/old")
+    @ResponseBody
+    public String old() throws IOException {
         Resource resource = new ClassPathResource("public/index.html");
         byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
 

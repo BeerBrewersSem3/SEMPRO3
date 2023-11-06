@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HistoryPage</title>
+    <link rel="stylesheet" href="./historyStyle.css">
+    <script src="./switchPage.js"></script>
+</head>
+<body>
+
+<div class="topBar">
+    <div class="menuBtns">
+        <button class="menuBtn" onclick=openMonitor()>Monitor</button>
+        <button class="menuBtn" onclick=openHistory()>History</button>
+    </div>
+
+    <div class="header">
+        <label class="title">Beer Bros</label>
+    </div>
+
+    <div class="navRight">
+        <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
+        <button class="emerBtn">Emergency Stop!</button>
+    </div>
+</div>
+
+<div class="line"></div>
+
+<p class="bHist">Batch History</p>
+
+<div class="main">
+    <table class="historyTable">
+        <thead>
+            <tr class="tableHeader">
+                <th>ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Started</th>
+                <th>Stopped</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
