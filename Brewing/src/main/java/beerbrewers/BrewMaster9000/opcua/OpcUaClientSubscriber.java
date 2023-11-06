@@ -10,6 +10,8 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.MonitoringMode;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
@@ -23,6 +25,7 @@ import java.util.concurrent.ExecutionException;
 @Component
 @DependsOn("dashboardService")
 public class OpcUaClientSubscriber {
+    private static final Logger logger = LoggerFactory.getLogger(OpcUaClientSubscriber.class);
     @Autowired
     private OpcUaClientConnection opcUaClientConnection;
     @Autowired
@@ -34,7 +37,7 @@ public class OpcUaClientSubscriber {
                 OpcUaNodes.MACH_SPEED_READ,
                 OpcUaNodes.PROD_DEFECTIVE_COUNT,
                 OpcUaNodes.PROD_PROCESSED_COUNT,
-                OpcUaNodes.STOP_REASON,
+                //OpcUaNodes.STOP_REASON,
                 OpcUaNodes.CNTRL_CMD,
                 OpcUaNodes.CURRENT_BATCH_ID,
                 OpcUaNodes.BATCH_QTY,
@@ -45,7 +48,7 @@ public class OpcUaClientSubscriber {
         );
         nodesToSubscribe.forEach(node -> {
             subscribe(node);
-            System.out.println("Subscribed from OpcUaClientSubscriber to " + node.getName());
+            logger.debug("Subscribed from OpcUaClientSubscriber to node: " + node.getName());
         });
     }
 
@@ -55,16 +58,13 @@ public class OpcUaClientSubscriber {
     /** Subscribes to the specified node
      *  on the OPC UA Server.
      * @param node The node (from the OpcUaNodes enum) to subscribe to.
-     * @throws Exception
      */
     public void subscribe(OpcUaNodes node){
         UaSubscription subscription = null;
         // Tries to create a subscription to the OPC UA Server
         try {
             subscription = opcUaClientConnection.getClient().getSubscriptionManager().createSubscription(10.0).get();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
         // Creating a node ID of the node provided
@@ -96,10 +96,11 @@ public class OpcUaClientSubscriber {
                     for (UaMonitoredItem item : items) {
                         // For each monitoredItem, we will use the dataValue
                         item.setValueConsumer((monitoredItem, dataValue) -> {
+
                             // String for webapplication
                             String stateValue = dataValue.getValue().getValue().toString();
                             // Prints the value for dev.
-                            System.out.println("New value from OPC UA Server for: " + node.getName() + " = " + stateValue);
+                            logger.debug("New value from OPC UA Server for: " + node.getName() + " = " + stateValue);
                             nodeStates.put(node, dataValue.getValue().getValue().toString());
                             // Send the new value to the appropriate websocket destination
                             opcUaNodeUpdateManager.notifyObservers(node, stateValue);
@@ -107,6 +108,6 @@ public class OpcUaClientSubscriber {
                         });
                     }
                 });
-        System.out.println("Subscribed to node: " + node.getName());
+        logger.debug("Subscribed to node: " + node.getName());
     }
 }

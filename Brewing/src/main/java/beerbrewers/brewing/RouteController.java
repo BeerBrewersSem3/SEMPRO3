@@ -3,6 +3,9 @@ package beerbrewers.brewing;
 /* Imports */
 import beerbrewers.BrewMaster9000.opcua.OpcUaClientCommand;
 import beerbrewers.BrewMaster9000.opcua.OpcUaNodes;
+import beerbrewers.brewing.Monitoring.DashboardService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -23,6 +26,8 @@ import java.util.Map;
 @Controller
 public class RouteController {
 
+    private static final Logger logger = LoggerFactory.getLogger(RouteController.class);
+
     @Autowired
     private OpcUaClientCommand opcUaClientCommand;
     @Autowired
@@ -30,17 +35,14 @@ public class RouteController {
 
     @GetMapping("/")
     @ResponseBody
-    public String hello() throws IOException {
+    public String getHomepage() throws IOException {
         // Load the index.html file from the resources/public directory
         //Resource resource = new ClassPathResource("public/index.html");
         Resource resource = new ClassPathResource("public/monitorPage.html");
         byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
 
         // Convert the bytes to a string using UTF-8 encoding
-        String html = new String(bytes, StandardCharsets.UTF_8);
-        //html = html.replace("<!--Current-State-Value-->", dashboardService.getCurrentNodeValue(OpcUaNodes.STATE_CURRENT));
-        //return html.replace("<!--Cntrl-Cmd-Value-->", dashboardService.getCurrentNodeValue(OpcUaNodes.CNTRL_CMD));
-        return html;
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 
     @GetMapping("/old")
@@ -72,7 +74,7 @@ public class RouteController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Number must be between 0 and 5");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             // Return a response upon error (code 500)
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
@@ -84,7 +86,7 @@ public class RouteController {
             opcUaClientCommand.executeCommand(true);
             return ResponseEntity.ok("Boolean value set successfully");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }

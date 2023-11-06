@@ -7,23 +7,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/newBatch.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyOpenStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/newBatch.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/switchPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="Integrated GUI from @Hvilsted.">
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketCommandController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/Silo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/accept.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/arrow-down-up.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/beer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/beertap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/boxes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/boxes.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/defect.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/defect2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/droplet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/droplet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/file-box.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/file-box.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/gauge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/gauge.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/humidity.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/line-chart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/line-chart.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/maintenance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/milk-off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/milk-off.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/milk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/milk.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/mountain-snow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/mountain-snow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/package.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/radio.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/siren.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/speedometer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/thermometer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/thermometer.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/Icons/vibration.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaNodeUpdateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaNodeUpdateManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/DashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/DashboardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/DashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/Monitoring/DashboardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/RouteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,6 +117,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "spring.configuration.checksum": "68bf21090846e0a8ab4fd46a991ab46f",
     "vue.rearranger.settings.migration": "true"
@@ -141,8 +170,17 @@
       <workItem from="1697832468428" duration="1456000" />
       <workItem from="1698186140968" duration="42000" />
       <workItem from="1699259344308" duration="4478000" />
-      <workItem from="1699264546892" duration="4828000" />
+      <workItem from="1699264546892" duration="11591000" />
     </task>
+    <task id="LOCAL-00001" summary="Integrated GUI from @Hvilsted.">
+      <option name="closed" value="true" />
+      <created>1699270853849</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699270853849</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +188,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Integrated GUI from @Hvilsted." />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated GUI from @Hvilsted." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

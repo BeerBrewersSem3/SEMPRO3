@@ -1,4 +1,4 @@
-package beerbrewers.brewing;
+package beerbrewers.brewing.Monitoring;
 
 
 import beerbrewers.BrewMaster9000.opcua.OpcUaNodeObserver;
@@ -6,6 +6,8 @@ import beerbrewers.BrewMaster9000.opcua.OpcUaNodeUpdateManager;
 import beerbrewers.BrewMaster9000.opcua.OpcUaNodes;
 import beerbrewers.brewing.websocket.WebSocketService;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +15,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@SuppressWarnings("FieldMayBeFinal")
 @Service
 public class DashboardService implements OpcUaNodeObserver {
-
+    private static final Logger logger = LoggerFactory.getLogger(DashboardService.class);
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
-    private Map<OpcUaNodes,String> dashboardElements = new ConcurrentHashMap<>();
+    private  Map<OpcUaNodes,String> dashboardElements = new ConcurrentHashMap<>();
 
+    private final WebSocketService webSocketService;
     @Autowired
-    private WebSocketService webSocketService;
-    @Autowired
-    public DashboardService(OpcUaNodeUpdateManager opcUaNodeUpdateManager) {
+    public DashboardService(OpcUaNodeUpdateManager opcUaNodeUpdateManager, WebSocketService webSocketService) {
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
+        this.webSocketService = webSocketService;
     }
     @PostConstruct
     public void initialize() {
@@ -43,20 +46,20 @@ public class DashboardService implements OpcUaNodeObserver {
         );
         nodesToSubscribe.forEach(node -> {
             opcUaNodeUpdateManager.addObserver(node, this);
-            System.out.println("Subscribed from DashboardService to " + node.getName());
+            logger.debug("DashboardService subscribed to node: " + node.getName());
         });
 
     }
     @Override
     public void onNodeUpdate(OpcUaNodes node, String newState) {
-        System.out.println("Node: " + node.getName() + " has a new value: " + dashboardElements.get(node) + " -> " + newState);
+        logger.debug("DashboardService received update from node: " + node.getName() + " with new state: " + newState);
         dashboardElements.put(node, newState);
         sendWebSocketUpdate(node, newState);
     }
 
     private void sendWebSocketUpdate(OpcUaNodes node, String newState) {
-        System.out.println("Sending websocket update from DashboardService to " + node.getName() + ": " + newState);
-        webSocketService.updateNodeState(node.getName(), newState);
+        logger.debug("Sending websocket update from DashboardService to " + node.getName() + ": " + newState);
+        webSocketService.updateNodeState("/sensor/data/"+node.getName(), newState);
     }
     public String getCurrentNodeValue(OpcUaNodes node) {
         return dashboardElements.get(node);

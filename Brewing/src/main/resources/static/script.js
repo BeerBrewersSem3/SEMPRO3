@@ -23,8 +23,20 @@ stompClient.connect({}, function() {
     subscribeToNode("temperature");
     subscribeToNode("vibration");
     subscribeToNode("machSpeed");
+    stompClient.subscribe('/command/response', function(message) {
+        console.log('Response from server: ' + message.body);
+    });
 });
 
+function sendCommand() {
+    var number = document.getElementById('inputNumber').value;
+    stompClient.send("/app/command/sendCommand", {}, JSON.stringify({ number: number }));
+}
+
+function executeCommand() {
+    stompClient.send("/app/command/executeCommand", {}, {});
+}
+/*
 function sendCommand() {
     var number = document.getElementById('inputNumber').value;
     fetch('/sendCommand', {
@@ -55,3 +67,5 @@ function executeCommand() {
             console.error('Error setting boolean:', error);
         });
 }
+
+ */

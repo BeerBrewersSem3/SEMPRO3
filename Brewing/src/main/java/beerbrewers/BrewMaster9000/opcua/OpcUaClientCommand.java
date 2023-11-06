@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class OpcUaClientCommand {
 
-    @Autowired
-    private OpcUaClientConnection opcUaClientConnection;
+    private final OpcUaClientConnection opcUaClientConnection;
+
+    public OpcUaClientCommand(OpcUaClientConnection opcUaClientConnection) {
+        this.opcUaClientConnection = opcUaClientConnection;
+    }
+
     public void sendCommand(int number) throws Exception {
         try {
             // Creating NodeId of the CntrlCmd node
@@ -27,7 +31,6 @@ public class OpcUaClientCommand {
      * When executed with parameter true,
      * the BeerMachine will execute the command that is currently set in CntrlCmd.
      * @param value The boolean value to write to the OPC UA server.
-     * @throws Exception
      */
     public void executeCommand(boolean value) throws Exception {
         try {

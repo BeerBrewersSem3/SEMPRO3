@@ -1,5 +1,7 @@
 package beerbrewers.BrewMaster9000.opcua;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class OpcUaNodeUpdateManager {
 
+    private static final Logger logger = LoggerFactory.getLogger(OpcUaNodeUpdateManager.class);
 
     private Map<OpcUaNodes, List<OpcUaNodeObserver>> observers = new ConcurrentHashMap<>();
 
@@ -28,6 +31,7 @@ public class OpcUaNodeUpdateManager {
         List<OpcUaNodeObserver> nodeObservers = observers.getOrDefault(node, Collections.emptyList());
         for (OpcUaNodeObserver observer : nodeObservers) {
             observer.onNodeUpdate(node, newState);
+            logger.debug("OpcUaNodeUpdateManager notified observer: " + observer.getClass().getSimpleName() + " of node: " + node.getName() + " with new state: " + newState);
         }
     }
 }
