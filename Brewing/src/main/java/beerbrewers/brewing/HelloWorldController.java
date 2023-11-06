@@ -18,7 +18,7 @@ public class HelloWorldController {
     @ResponseBody
     public String hello() throws IOException {
         // Load the index.html file from the resources/public directory
-        Resource resource = new ClassPathResource("public/newBatch.html");
+        Resource resource = new ClassPathResource("public/monitorPage.html");
         byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
 
         // Convert the bytes to a string using UTF-8 encoding

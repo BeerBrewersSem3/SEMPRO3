@@ -9,3 +9,7 @@ function openMonitor() {
 function toggleNewBatch() {
     document.getElementById("newBatch").classList.toggle("active");
 }
+
+function openHistoryOpen() {
+    window.location.href = `historyPageOpen.html`
+}

@@ -5,7 +5,6 @@
     border: solid black 1px;
     background-color: #555555;
     color: white;
-    position: absolute;
     z-index: 2;
 }
 
@@ -91,13 +90,10 @@
 
 .newBatch .content{
     position: absolute;
-    top: 25vh;
-    left: 25vw;
+    top: 50vh;
+    left: 50vw;
     transform: translate(-50%,-50%) scale(0);
-    width: fit-content;
-    height: fit-content;
     z-index: 2;
-    box-sizing: border-box;
 }
 
 .newBatch .closeBatchBtn{
