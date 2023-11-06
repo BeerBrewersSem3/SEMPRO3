@@ -1,4 +1,4 @@
-package beerbrewers.websocket;
+package beerbrewers.brewing.websocket;
 
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;

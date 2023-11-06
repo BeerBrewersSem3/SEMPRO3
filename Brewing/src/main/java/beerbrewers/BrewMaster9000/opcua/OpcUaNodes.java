@@ -1,10 +1,9 @@
-package beerbrewers.BrewMaster9000;
+package beerbrewers.BrewMaster9000.opcua;
 
 public enum OpcUaNodes {
     STATE_CURRENT(6, "::Program:Cube.Status.StateCurrent", "currentState"),
     CNTRL_CMD(6, "::Program:Cube.Command.CntrlCmd", "cntrlCmd"),
     CMD_CHANGE_REQUEST(6, "::Program:Cube.Command.CmdChangeRequest", "cmdChangeRequest"),
-    // ... [add more nodes as needed]
     MACH_SPEED(6, "::Program:Cube.Command.MachSpeed", "machSpeed"),
     PROD_DEFECTIVE_COUNT(6, "::Program:Cube.Admin.ProdDefectiveCount", "prodDefectiveCount"),
     PROD_PROCESSED_COUNT(6, "::Program:Cube.Admin.ProdProcessedCount", "prodProcessedCount"),

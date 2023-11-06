@@ -16,17 +16,6 @@ stompClient.connect({}, function() {
     subscribeToNode("cntrlCmd");
 });
 
-/*stompClient.connect({}, function() {
-    stompClient.subscribe('/sensor/data/currentState', function(message) {
-        document.getElementById("CURRENT_STATE").innerText = message.body;
-    });
-    stompClient.subscribe('/sensor/data/CntrlCmd', function(message) {
-        document.getElementById("CNTRL_CMD").innerText = message.body;
-    });
-});
-
- */
-
 function sendCommand() {
     var number = document.getElementById('inputNumber').value;
     fetch('/sendCommand', {

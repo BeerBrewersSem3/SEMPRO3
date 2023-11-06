@@ -8,7 +8,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientSubscriber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaNodeObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaNodeUpdateManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/DashboardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/OpcUaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaClientConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/OpcUaNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewMaster9000/opcua/OpcUaNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/BrewingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/HelloWorldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/RouteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebSocketDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brewing/websocket/WebSocketDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +36,7 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -38,6 +55,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
   <component name="ProjectId" id="2W1CQICeMVqa8NXaaqJWWeq9d6j" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -76,13 +96,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="beerbrewers" />
       <recent name="beerbrewers.brewing" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="BrewingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Brewing" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="beerbrewers.brewing.BrewingApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="beerbrewers.BrewingApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -115,6 +136,7 @@
       <workItem from="1697735763886" duration="686000" />
       <workItem from="1697832468428" duration="1456000" />
       <workItem from="1698186140968" duration="42000" />
+      <workItem from="1699259344308" duration="4478000" />
     </task>
     <servers />
   </component>

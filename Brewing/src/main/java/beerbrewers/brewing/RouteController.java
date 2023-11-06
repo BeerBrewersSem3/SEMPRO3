@@ -1,8 +1,8 @@
 package beerbrewers.brewing;
 
 /* Imports */
-import beerbrewers.BrewMaster9000.OpcUaClientConnection;
-import beerbrewers.BrewMaster9000.OpcUaNodes;
+import beerbrewers.BrewMaster9000.opcua.OpcUaClientCommand;
+import beerbrewers.BrewMaster9000.opcua.OpcUaNodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -21,11 +21,12 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 @Controller
-public class HelloWorldController {
+public class RouteController {
+
     @Autowired
-    private BrewingApplication brewingApplication;
+    private OpcUaClientCommand opcUaClientCommand;
     @Autowired
-    private OpcUaClientConnection opcUaClientConnection;
+    private DashboardService dashboardService;
 
     @GetMapping("/")
     @ResponseBody
@@ -36,8 +37,8 @@ public class HelloWorldController {
 
         // Convert the bytes to a string using UTF-8 encoding
         String html = new String(bytes, StandardCharsets.UTF_8);
-        html = html.replace("<!--Current-State-Value-->", opcUaClientConnection.getState(OpcUaNodes.STATE_CURRENT));
-        return html.replace("<!--Cntrl-Cmd-Value-->", opcUaClientConnection.getState(OpcUaNodes.CNTRL_CMD));
+        html = html.replace("<!--Current-State-Value-->", dashboardService.getCurrentNodeValue(OpcUaNodes.STATE_CURRENT));
+        return html.replace("<!--Cntrl-Cmd-Value-->", dashboardService.getCurrentNodeValue(OpcUaNodes.CNTRL_CMD));
     }
 
     // Mapping a handle for HTTP Post request sent with /sendCommand endpoint
@@ -49,7 +50,7 @@ public class HelloWorldController {
             // Validates the number
             if(number >= 0 && number <= 5) {
                 // Send command to OPC UA Server if number is valid
-                opcUaClientConnection.sendCommand(number);
+                opcUaClientCommand.sendCommand(number);
                 // Return a response (code 200)
                 return ResponseEntity.ok("Number sent successfully");
             } else {
@@ -66,11 +67,12 @@ public class HelloWorldController {
     @PostMapping("/executeCommand")
     public ResponseEntity<String> setBooleanTrue() {
         try {
-            opcUaClientConnection.executeCommand(true);
+            opcUaClientCommand.executeCommand(true);
             return ResponseEntity.ok("Boolean value set successfully");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
+
 }
