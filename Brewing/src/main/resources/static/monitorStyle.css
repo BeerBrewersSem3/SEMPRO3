@@ -7,8 +7,14 @@ body{
     display: flex;
     flex-direction: column;
 }
-/*Top*/
-/*_________________________________________________________________________________*/
+
+
+
+
+
+
+
+/*____________________*Top*____________________*/
 .topBar{
     display: flex;
     align-items: center;
@@ -75,19 +81,21 @@ body{
     margin: 0 5px;
     width: 64px;
 }
-/*^^Top^^*/
-/*_________________________________________________________________________________*/
+/*____________________*^^Top^^*____________________*/
 
 
-/*Bottom*/
-/*_________________________________________________________________________________*/
+
+
+
+
+
+/*____________________*Bottom*____________________*/
 .bottom{
     display: flex;
     margin: 20px 20px;
 }
 
-/*Bottom Left*/
-/*_________________________________________________________________________________*/
+/*____________________*Bottom Left*____________________*/
 .left{
     display: flex;
     flex-direction: column;
@@ -97,20 +105,17 @@ body{
 .leftTop{
     width: 100%;
     justify-content: space-between;
-}
-
-.bottom .left .leftTop{
     display: flex;
     flex: 1;
 }
 
-.bottom .left .leftTop .batchBtns{
+.batchControlBtns{
     display: flex;
     flex-direction: column;
     margin: 0 10px;
 }
 
-.batchBtns button{
+.batchControlBtns button{
     padding: 15px 32px;
     font-size: 24px;
     background-color: #555555;
@@ -121,12 +126,12 @@ body{
     text-align: center;
 }
 
-.batchBtns button:hover{
+.batchControlBtns button:hover{
     background-color: white;
     color: black;
 }
 
-.batch{
+.batchBtn{
     flex: 1;
     margin-bottom: 10px;
     white-space: pre-line;
@@ -164,14 +169,15 @@ body{
     align-items: center;
     margin-top: auto;
 }
-
-/*^^Bottom Left^^*/
-/*_________________________________________________________________________________*/
+/*____________________*^^Bottom Left^^*____________________*/
 
 
 
-/*Bottom Right*/
-/*_________________________________________________________________________________*/
+
+
+
+
+/*____________________*Bottom Right*____________________*/
 .right{
     display: flex;
     flex-direction: column;
@@ -203,13 +209,17 @@ body{
     width: 250px;
 
 }
+/*____________________*^^Bottom Right^^*____________________*/
 
-/*^^Bottom Right^^*/
-/*_________________________________________________________________________________*/
+/*____________________*^^Bottom^^*____________________*/
 
 
-/*Maintenance Box*/
-/*_________________________________________________________________________________*/
+
+
+
+
+
+/*____________________*Maintenance Box*____________________*/
 .maintenanceAdjust{
     display: flex;
     align-items: end;
@@ -226,11 +236,6 @@ body{
     width: 100%;
     border: 1px solid #7a7d7d;
     padding: 1%;
-    text-align: left;
-    vertical-align: middle;
     font-size: 20px;
 }
-/*^^Maintenance Box^^*/
-/*_________________________________________________________________________________*/
-
-
+/*____________________*^^Maintenance Box^^*____________________*/

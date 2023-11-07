@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyOpenStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyOpenStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/newBatch.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/newBatch.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,6 +116,7 @@
       <workItem from="1699285996261" duration="6853000" />
       <workItem from="1699298977147" duration="110000" />
       <workItem from="1699304145589" duration="11298000" />
+      <workItem from="1699347291036" duration="19954000" />
     </task>
     <servers />
   </component>
