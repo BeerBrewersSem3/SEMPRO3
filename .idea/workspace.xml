@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brew/BrewConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brew/BrewConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +103,38 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DatabaseTests">
+    <configuration name="DatabaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Brewing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="beerbrewers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="beerbrewers" />
+      <option name="MAIN_CLASS_NAME" value="beerbrewers.DatabaseTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTests.testtest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Brewing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="beerbrewers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="beerbrewers" />
+      <option name="MAIN_CLASS_NAME" value="beerbrewers.DatabaseTests" />
+      <option name="METHOD_NAME" value="testtest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BrewingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
       <module name="Brewing" />
@@ -110,6 +143,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DatabaseTests" />
+        <item itemvalue="JUnit.DatabaseTests.testtest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -130,6 +169,7 @@
       <workItem from="1699031338119" duration="7563000" />
       <workItem from="1699089753474" duration="27292000" />
       <workItem from="1699252783545" duration="3431000" />
+      <workItem from="1699347699541" duration="818000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="postgres@db.hbdjtgvmsnqkxcufwgwh.supabase.co">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.45">
     <root id="1">
       <DateStyle>mdy</DateStyle>
       <Grants>5||-9223372036854775808|c|G
@@ -1495,10 +1495,6 @@ false posixrules
 16949||16732|U|G</Grants>
       <IntrospectionStateNumber>1356</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
-      <Relations>sequence|table|16500|16501|2
-sequence|table|16789|16790|6
-sequence|table|28585|28582|1
-</Relations>
       <OwnerName>postgres</OwnerName>
     </database>
     <role id="3" parent="1" name="anon">
@@ -5209,7 +5205,7 @@ SECURITY LABEL</Tags>
       <CallRoutineId>16831</CallRoutineId>
     </trigger>
     <sequence id="302" parent="289" name="test_table_id_seq">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <ObjectId>28585</ObjectId>
       <StateNumber>1064</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -5221,15 +5217,16 @@ SECURITY LABEL</Tags>
       <OwnerName>postgres</OwnerName>
     </table>
     <column id="304" parent="303" name="id">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1064</StateNumber>
+      <SequenceId>28585</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="305" parent="303" name="information">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>1065</StateNumber>
