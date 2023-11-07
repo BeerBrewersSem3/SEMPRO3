@@ -117,9 +117,6 @@ body{
 /*____________________*Left part of the Main*____________________*/
 .mainLeft{
     padding: 2px 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .batchInfo{
