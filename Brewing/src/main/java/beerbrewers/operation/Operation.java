@@ -48,10 +48,6 @@ public class Operation {
     private Date date;
 
     @OneToOne(targetEntity = Batch.class)
-    @Column(
-            name = "batch",
-            nullable = true
-    )
     private Batch batch;
 
     protected Operation() {
