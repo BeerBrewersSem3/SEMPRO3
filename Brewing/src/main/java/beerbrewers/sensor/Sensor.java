@@ -16,12 +16,30 @@ public class Sensor {
             strategy = GenerationType.SEQUENCE,
             generator = "sensor_sequence"
     )
+    @Column(
+            name = "sensor_id",
+            updatable = false
+    )
     private long sensorId;
-    @Column(nullable = false)
+
+    @Column(
+            name = "name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String name;
-    @Column(nullable = false)
+
+    @Column(
+            name = "opc_namespace_index",
+            nullable = false
+    )
     private long opcNamespaceIndex;
-    @Column(nullable = false)
+
+    @Column(
+            name = "opc_identifier",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String opcIdentifier;
 
     /**

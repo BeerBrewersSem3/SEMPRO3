@@ -12,12 +12,22 @@ public class SensorReading {
      * and sensorId as attributes.
      */
     @EmbeddedId
+    @Column(
+            name = "sensor_reading_id",
+            updatable = false
+    )
     private SensorReadingId sensorReadingId;
 
-    @Column(nullable = false)
+    @Column(
+            name = "timestamp",
+            nullable = false
+    )
     private Timestamp timestamp;
 
-    @Column(nullable = false)
+    @Column(
+            name = "sensor_value",
+            nullable = false
+    )
     private float sensorValue;
 
     protected SensorReading() {

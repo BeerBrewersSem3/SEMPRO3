@@ -16,14 +16,28 @@ public class Worker {
             strategy = GenerationType.SEQUENCE,
             generator = "worker_sequence"
     )
+    @Column(
+            name = "worker_id",
+            updatable = false
+    )
     private long workerId;
-    @Column(nullable = false)
+
+    @Column(
+            name = "name",
+            nullable = false,
+            columnDefinition = "TEXT"
     private String name;
 
     /**
      * Remember to implement password encryption!!
      */
     @Column(nullable = false)
+
+    @Column(
+            name = "password",
+            nullable = false,
+            columnDefinition = "VARCHAR(255)"
+    )
     private String password;
 
     /**

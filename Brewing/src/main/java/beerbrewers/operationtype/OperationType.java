@@ -16,8 +16,17 @@ public class OperationType {
             strategy = GenerationType.SEQUENCE,
             generator = "operation_type_sequence"
     )
+    @Column(
+            name = "batch_id",
+            updatable = false
+    )
     private long operationTypeId;
-    @Column(nullable = false)
+
+    @Column(
+            name = "name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String name;
 
     protected OperationType() {

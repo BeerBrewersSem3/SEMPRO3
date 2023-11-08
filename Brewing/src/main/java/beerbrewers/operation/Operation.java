@@ -21,17 +21,37 @@ public class Operation {
             strategy = GenerationType.SEQUENCE,
             generator = "operation_sequence"
     )
+    @Column(
+            name = "operation_id",
+            updatable = false
+    )
     private long operationId;
 
-    @ManyToOne(targetEntity = Worker.class, optional = false)
+    @ManyToOne(
+            targetEntity = Worker.class,
+            optional = false
+    )
     @JoinColumn(name = "worker_id")
     private Worker worker;
-    @ManyToOne(targetEntity = OperationType.class, optional = false)
+
+    @ManyToOne(
+            targetEntity = OperationType.class,
+            optional = false
+    )
     @JoinColumn(name = "operation_type_id")
     private OperationType operationType;
-    @Column(nullable = false)
+
+    @Column(
+            name = "date",
+            nullable = false
+    )
     private Date date;
+
     @OneToOne(targetEntity = Batch.class)
+    @Column(
+            name = "batch",
+            nullable = true
+    )
     private Batch batch;
 
     protected Operation() {

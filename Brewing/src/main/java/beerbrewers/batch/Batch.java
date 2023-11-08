@@ -18,17 +18,41 @@ public class Batch {
             strategy = GenerationType.SEQUENCE,
             generator = "batch_sequence"
     )
+    @Column(
+            name = "batch_id",
+            updatable = false
+    )
     private long batchId;
-    @ManyToOne(targetEntity = Brew.class, optional = false)
+
+    @ManyToOne(
+            targetEntity = Brew.class,
+            optional = false
+    )
     @JoinColumn(name = "brew_id")
     private Brew brew;
-    @Column(nullable = false)
+
+    @Column(
+            name = "amount",
+            nullable = false
+    )
     private long amount;
-    @Column(nullable = false)
+
+    @Column(
+            name = "speed",
+            nullable = false
+    )
     private long speed;
-    @Column(nullable = false)
+
+    @Column(
+            name = "is_completed",
+            nullable = false
+    )
     private boolean isCompleted;
-    @Column(nullable = false)
+
+    @Column(
+            name = "defective_count",
+            nullable = false
+    )
     private long defectiveCount;
 
     protected Batch() {

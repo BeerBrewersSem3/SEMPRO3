@@ -16,11 +16,31 @@ public class Brew {
             strategy = GenerationType.SEQUENCE,
             generator = "brew_sequence"
     )
+    @Column(
+            name = "brew_id",
+            updatable = false
+    )
     private long brewId;
-    @Column(nullable = false)
+
+    @Column(
+            name = "name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String name;
+
+    @Column(
+            name = "description",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String description;
-    @Column(nullable = false)
+
+    @Column(
+            name = "machine_commands",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String machineCommands;
 
     /**
