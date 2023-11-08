@@ -26,12 +26,12 @@ public class Worker {
             name = "name",
             nullable = false,
             columnDefinition = "TEXT"
+    )
     private String name;
 
     /**
      * Remember to implement password encryption!!
      */
-    @Column(nullable = false)
 
     @Column(
             name = "password",
