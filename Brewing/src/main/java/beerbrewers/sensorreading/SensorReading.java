@@ -12,10 +12,6 @@ public class SensorReading {
      * and sensorId as attributes.
      */
     @EmbeddedId
-    @Column(
-            name = "sensor_reading_id",
-            updatable = false
-    )
     private SensorReadingId sensorReadingId;
 
     @Column(
@@ -67,5 +63,14 @@ public class SensorReading {
 
     public void setSensorValue(float sensorValue) {
         this.sensorValue = sensorValue;
+    }
+
+    @Override
+    public String toString() {
+        return "SensorReading{" +
+                "sensorReadingId=" + sensorReadingId +
+                ", timestamp=" + timestamp +
+                ", sensorValue=" + sensorValue +
+                '}';
     }
 }

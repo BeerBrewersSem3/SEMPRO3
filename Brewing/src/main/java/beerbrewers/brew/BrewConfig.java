@@ -39,9 +39,9 @@ public class BrewConfig {
                 .build();
 
         return args -> {
-            Brew brew1 = new Brew(1, "Dark Sensation", "Dark Ale 5,8%.", brew1Commands.toString());
-            Brew brew2 = new Brew(2, "Fruity Palms", "Wheat Beer 4,8%.", brew2Commands.toString());
-            Brew brew3 = new Brew(3, "Black Attack", "Imperial Stout 8,8%.", brew3Commands.toString());
+            Brew brew1 = new Brew(1L, "Dark Sensation", "Dark Ale 5,8%.", brew1Commands.toString());
+            Brew brew2 = new Brew(2L, "Fruity Palms", "Wheat Beer 4,8%.", brew2Commands.toString());
+            Brew brew3 = new Brew(3L, "Black Attack", "Imperial Stout 8,8%.", brew3Commands.toString());
 
             repository.saveAll(
                     List.of(

@@ -25,7 +25,7 @@ public class Operation {
             name = "operation_id",
             updatable = false
     )
-    private long operationId;
+    private Long operationId;
 
     @ManyToOne(
             targetEntity = Worker.class,
@@ -60,7 +60,7 @@ public class Operation {
         this.batch = batch;
     }
 
-    public Operation(long operationId, Worker worker, OperationType operationType, Date date, Batch batch) {
+    public Operation(Long operationId, Worker worker, OperationType operationType, Date date, Batch batch) {
         this.operationId = operationId;
         this.worker = worker;
         this.operationType = operationType;
@@ -88,7 +88,7 @@ public class Operation {
         this.date = date;
     }
 
-    public long getOperationId() {
+    public Long getOperationId() {
         return operationId;
     }
 
@@ -122,5 +122,16 @@ public class Operation {
 
     public void setBatch(Batch batch) {
         this.batch = batch;
+    }
+
+    @Override
+    public String toString() {
+        return "Operation{" +
+                "operationId=" + operationId +
+                ", worker=" + worker +
+                ", operationType=" + operationType +
+                ", date=" + date +
+                ", batch=" + batch +
+                '}';
     }
 }

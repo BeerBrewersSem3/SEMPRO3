@@ -20,7 +20,7 @@ public class Worker {
             name = "worker_id",
             updatable = false
     )
-    private long workerId;
+    private Long workerId;
 
     @Column(
             name = "name",
@@ -55,13 +55,13 @@ public class Worker {
         this.password = password;
     }
 
-    public Worker(long workerId, String name, String password) {
+    public Worker(Long workerId, String name, String password) {
         this.workerId = workerId;
         this.name = name;
         this.password = password;
     }
 
-    public long getWorkerId() {
+    public Long getWorkerId() {
         return workerId;
     }
 

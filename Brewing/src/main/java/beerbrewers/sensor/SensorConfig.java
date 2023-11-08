@@ -18,39 +18,39 @@ public class SensorConfig {
     CommandLineRunner sensorCommandLineRunner(SensorRepository repository) {
         return args -> {
             Sensor vibrationSensor = new Sensor(
-                1, "Vibration sensor", 6, "::Program:Data.Value.Vibration"
+                1L, "Vibration sensor", 6, "::Program:Data.Value.Vibration"
             );
 
             Sensor temperatureSensor = new Sensor(
-                2, "Temperature sensor", 6, "::Program:Data.Value.Temperature"
+                2L, "Temperature sensor", 6, "::Program:Data.Value.Temperature"
             );
 
             Sensor humiditySensor = new Sensor(
-                3, "Humidity sensor", 6, "::Program:Data.Value.RelHumidity"
+                3L, "Humidity sensor", 6, "::Program:Data.Value.RelHumidity"
             );
 
             Sensor accelerationSensor1 = new Sensor(
-                4, "Acceleration sensor 1", 6, "::Program:Data.Value.Acceleration1"
+                4L, "Acceleration sensor 1", 6, "::Program:Data.Value.Acceleration1"
             );
 
             Sensor accelerationSensor2 = new Sensor(
-                5, "Acceleration sensor 2", 6, "::Program:Data.Value.Acceleration2"
+                5L, "Acceleration sensor 2", 6, "::Program:Data.Value.Acceleration2"
             );
 
             Sensor accelerationSensor3 = new Sensor(
-                6, "Acceleration sensor 3", 6, "::Program:Data.Value.Acceleration3"
+                6L, "Acceleration sensor 3", 6, "::Program:Data.Value.Acceleration3"
             );
 
             Sensor rotationSensor1 = new Sensor(
-                7, "Rotation sensor 1", 6, "::Program:Data.Value.Rotation1"
+                7L, "Rotation sensor 1", 6, "::Program:Data.Value.Rotation1"
             );
 
             Sensor rotationSensor2 = new Sensor(
-                8, "Rotation sensor 2", 6, "::Program:Data.Value.Rotation2"
+                8L, "Rotation sensor 2", 6, "::Program:Data.Value.Rotation2"
             );
 
             Sensor rotationSensor3 = new Sensor(
-                9, "Rotation sensor 3", 6, "::Program:Data.Value.Rotation3"
+                9L, "Rotation sensor 3", 6, "::Program:Data.Value.Rotation3"
             );
 
             repository.saveAll(

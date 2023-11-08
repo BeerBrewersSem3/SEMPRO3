@@ -20,7 +20,7 @@ public class Sensor {
             name = "sensor_id",
             updatable = false
     )
-    private long sensorId;
+    private Long sensorId;
 
     @Column(
             name = "name",
@@ -62,14 +62,14 @@ public class Sensor {
         this.opcIdentifier = opcIdentifier;
     }
 
-    public Sensor(long sensorId, String name, long opcNamespaceIndex, String opcIdentifier) {
+    public Sensor(Long sensorId, String name, long opcNamespaceIndex, String opcIdentifier) {
         this.sensorId = sensorId;
         this.name = name;
         this.opcNamespaceIndex = opcNamespaceIndex;
         this.opcIdentifier = opcIdentifier;
     }
 
-    public long getSensorId() {
+    public Long getSensorId() {
         return sensorId;
     }
 

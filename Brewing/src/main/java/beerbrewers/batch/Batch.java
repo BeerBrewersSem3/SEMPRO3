@@ -22,7 +22,7 @@ public class Batch {
             name = "batch_id",
             updatable = false
     )
-    private long batchId;
+    private Long batchId;
 
     @ManyToOne(
             targetEntity = Brew.class,
@@ -67,7 +67,7 @@ public class Batch {
         this.defectiveCount = defectiveCount;
     }
 
-    public Batch(long batchId, Brew brew, long amount, long speed, boolean isCompleted, long defectiveCount) {
+    public Batch(Long batchId, Brew brew, long amount, long speed, boolean isCompleted, long defectiveCount) {
         this.batchId = batchId;
         this.brew = brew;
         this.amount = amount;
@@ -76,7 +76,7 @@ public class Batch {
         this.defectiveCount = defectiveCount;
     }
 
-    public long getBatchId() {
+    public Long getBatchId() {
         return batchId;
     }
 
@@ -118,5 +118,17 @@ public class Batch {
 
     public void setDefectiveCount(long defectiveCount) {
         this.defectiveCount = defectiveCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Batch{" +
+                "batchId=" + batchId +
+                ", brew=" + brew +
+                ", amount=" + amount +
+                ", speed=" + speed +
+                ", isCompleted=" + isCompleted +
+                ", defectiveCount=" + defectiveCount +
+                '}';
     }
 }

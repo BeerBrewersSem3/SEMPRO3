@@ -20,7 +20,7 @@ public class Brew {
             name = "brew_id",
             updatable = false
     )
-    private long brewId;
+    private Long brewId;
 
     @Column(
             name = "name",
@@ -54,14 +54,14 @@ public class Brew {
         this.machineCommands = machineCommands;
     }
 
-    public Brew(long brewId, String name, String description, String machineCommands) {
+    public Brew(Long brewId, String name, String description, String machineCommands) {
         this.brewId = brewId;
         this.name = name;
         this.description = description;
         this.machineCommands = machineCommands;
     }
 
-    public long getBrewId() {
+    public Long getBrewId() {
         return brewId;
     }
 

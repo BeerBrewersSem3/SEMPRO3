@@ -20,7 +20,7 @@ public class OperationType {
             name = "batch_id",
             updatable = false
     )
-    private long operationTypeId;
+    private Long operationTypeId;
 
     @Column(
             name = "name",
@@ -36,12 +36,12 @@ public class OperationType {
         this.name = name;
     }
 
-    public OperationType(long operationTypeId, String name) {
+    public OperationType(Long operationTypeId, String name) {
         this.operationTypeId = operationTypeId;
         this.name = name;
     }
 
-    public long getOperationTypeId() {
+    public Long getOperationTypeId() {
         return operationTypeId;
     }
 
@@ -53,5 +53,11 @@ public class OperationType {
         this.name = name;
     }
 
-
+    @Override
+    public String toString() {
+        return "OperationType{" +
+                "operationTypeId=" + operationTypeId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
