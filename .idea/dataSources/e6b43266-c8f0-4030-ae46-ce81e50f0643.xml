@@ -11,7 +11,7 @@
 5||-9223372036854775808|T|G
 5||10|T|G
 5||16595|T|G</Grants>
-      <IntrospectionStateNumber>1356</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1723</IntrospectionStateNumber>
       <ServerVersion>15.1</ServerVersion>
       <StartupTime>1698310781</StartupTime>
       <TimeZones>true ACDT
@@ -1493,7 +1493,7 @@ false posixrules
 16949||16732|C|G
 16949||16420|U|G
 16949||16732|U|G</Grants>
-      <IntrospectionStateNumber>1356</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1723</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <Relations>sequence|table|16500|16501|2
 sequence|table|16789|16790|6
@@ -5128,7 +5128,7 @@ idle_in_transaction_session_timeout=60000</Config>
 28585||16478|U|G
 28585||16479|U|G
 28585||16480|U|G</Grants>
-      <IntrospectionStateNumber>1356</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1723</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>749</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>

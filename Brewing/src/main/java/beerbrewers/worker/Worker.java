@@ -2,7 +2,7 @@ package beerbrewers.worker;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "worker")
 @Table
 public class Worker {
 

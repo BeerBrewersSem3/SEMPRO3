@@ -4,7 +4,7 @@ import beerbrewers.brew.Brew;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "batch")
 @Table
 public class Batch {
 

@@ -2,7 +2,7 @@ package beerbrewers.sensor;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "sensor")
 @Table
 public class Sensor {
 

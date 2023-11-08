@@ -2,7 +2,7 @@ package beerbrewers.brew;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "brew")
 @Table
 public class Brew {
 
