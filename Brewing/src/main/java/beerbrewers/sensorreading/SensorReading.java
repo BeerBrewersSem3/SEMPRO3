@@ -3,8 +3,8 @@ package beerbrewers.sensorreading;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 
-@Entity(name = "sensor_reading")
-@Table
+@Entity(name = "SensorReading")
+@Table(name = "sensor_reading")
 public class SensorReading {
 
     /**

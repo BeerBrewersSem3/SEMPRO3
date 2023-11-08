@@ -2,8 +2,8 @@ package beerbrewers.worker;
 
 import jakarta.persistence.*;
 
-@Entity(name = "worker")
-@Table
+@Entity(name = "Worker")
+@Table(name = "worker")
 public class Worker {
 
     @Id

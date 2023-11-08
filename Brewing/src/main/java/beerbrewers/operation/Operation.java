@@ -7,8 +7,8 @@ import beerbrewers.worker.Worker;
 import jakarta.persistence.*;
 import java.sql.Date;
 
-@Entity(name = "operation")
-@Table
+@Entity(name = "Operation")
+@Table(name = "operation")
 public class Operation {
 
     @Id

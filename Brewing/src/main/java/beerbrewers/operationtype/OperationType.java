@@ -2,8 +2,8 @@ package beerbrewers.operationtype;
 
 import jakarta.persistence.*;
 
-@Entity(name = "operation_type")
-@Table
+@Entity(name = "OperationType")
+@Table(name = "operation_type")
 public class OperationType {
 
     @Id

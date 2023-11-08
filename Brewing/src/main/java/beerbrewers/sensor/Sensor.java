@@ -2,8 +2,8 @@ package beerbrewers.sensor;
 
 import jakarta.persistence.*;
 
-@Entity(name = "sensor")
-@Table
+@Entity(name = "Sensor")
+@Table(name = "sensor")
 public class Sensor {
 
     @Id

@@ -4,8 +4,8 @@ import beerbrewers.brew.Brew;
 
 import jakarta.persistence.*;
 
-@Entity(name = "batch")
-@Table
+@Entity(name = "Batch")
+@Table(name = "batch")
 public class Batch {
 
     @Id
