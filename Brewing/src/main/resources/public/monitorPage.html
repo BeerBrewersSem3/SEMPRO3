@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./monitorStyle.css">
-    <title>Title</title>
+    <link rel="stylesheet" href="./newBatch.css">
+    <script src="switchPage.js"></script>
+    <script defer src="./script.js"></script>
+    <script src="/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+    <title>Monitor</title>
 </head>
 <body>
 <div class="topBar">
     <div class="menuBtns">
-        <button class="menuBtn">Monitor</button>
-        <button class="menuBtn">History</button>
+        <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
+        <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
+        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
     </div>
 
     <div class="header">
         <label class="title">Beer Bros</label>
     </div>
 
-    <button class="emerBtn">Emergency Stop!</button>
+    <div class="navRight">
+        <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
+        <button class="emerBtn">Emergency Stop!</button>
+    </div>
 </div>
 
 <div class="line"></div>
@@ -24,8 +33,8 @@
 <div class="bottom">
     <div class="left">
         <div class="leftTop">
-            <div class="batchBtns">
-                <button class="batch">B
+            <div class="batchControlBtns">
+                <button class="batchBtn" onclick=toggleNewBatch()>B
                     a
                     t
                     c
@@ -36,56 +45,59 @@
 
             <div class="infoBox">
                 <div class="info">
-                    <img class="picture" src="Icons/thermometer.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/thermometer.svg" alt="Temperature">
+                    <label id="TEMPERATURE">0.0</label>
+                    <label>Temperature</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/humidity.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/droplet.svg" alt="Humidity percentage">
+                    <label id="HUMIDITY">0.0</label>
+                    <label>Humidity</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/vibration.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture rotate" src="Icons/radio.svg" alt="Vibration">
+                    <label id="VIBRATION">0.0</label>
+                    <label>Vibration</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/package.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/file-box.svg" alt="ID">
+                    <label id="BATCH_ID">0.0</label>
+                    <label>ID</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/beertap.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/boxes.svg" alt="Units to be produced">
+                    <label id="AMOUNT_IN_BATCH">0.0</label>
+                    <label>Units</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/speedometer.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/gauge.svg" alt="Speed">
+                    <label id="CUR_MACH_SPEED">0.0</label>
+                    <label>Speed</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/beer.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/line-chart.svg" alt="Produced so far">
+                    <label id="PROD_CURRENT">0.0</label>
+                    <label>Produced</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/accept.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/milk.svg" alt="Successful operations">
+                    <label id="PROD_SUCCESSFUL_COUNT">0.0</label>
+                    <label>Success</label>
                 </div>
 
                 <div class="info">
-                    <img class="picture" src="Icons/defect2.png" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <img class="picture" src="Icons/milk-off.svg" alt="Failed operations">
+                    <label id="PROD_DEFECTIVE_COUNT">0.0</label>
+                    <label>Failure</label>
                 </div>
-
             </div>
-        </div>
-
-        <div class="leftBot">
-            <img src="Icons/maintenance.png" alt="Maintenance picture">
-            <label class="maintenance">0%</label>
         </div>
     </div>
 
@@ -94,6 +106,9 @@
             <div class="silos">
                 <label>Barley</label>
                 <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+                <div class="fillHeight">
+                    <label class="fillHeightColor"></label>
+                </div>
             </div>
 
             <div class="silos">
@@ -120,5 +135,119 @@
         </div>
     </div>
 </div>
+
+<div class="maintenanceAdjust">
+    <div class="maintenanceBox">
+        <img src="Icons/maintenance.png" alt="Maintenance picture">
+        <label class="maintenance">0%</label>
+    </div>
+</div>
+
+
+
+<div class="newBatch" id="newBatch">
+    <div class="overlay" onclick=toggleNewBatch()></div>
+    <div class="content">
+        <div class="newBatchMain">
+            <div class="newBatchHeader">
+                <label>Batch Specifications</label>
+            </div>
+            <div class="newBatchBottom">
+                <div class="newBatchBottomLeft">
+                    <table class="infoTable">
+                        <tr>
+                            <th>ID</th>
+                            <td>
+                                <label>
+                                    <input type="text" name="inputID" value="Insert ID">
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Type</th>
+                            <td>
+                                <div class="typeContainer">
+                                    <select class="typeSelector">
+                                        <option>Choose type</option>
+                                        <option value="Pilsner">Pilsner</option>
+                                        <option value="Wheat">Wheat</option>
+                                        <option value="IPA">IPA</option>
+                                        <option value="Stout">Stout</option>
+                                        <option value="Ale">Ale</option>
+                                        <option value="Alcohol Free">Alcohol Free</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Bottles #</th>
+                            <td>
+                                <label>
+                                    <input type="text" name="inputAmount" value="Insert Amount">
+                                </label>
+                            </td>
+                            <td>
+                                <label>pcs.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Speed</th>
+                            <td>
+                                <label>
+                                    <input type="text" name="inputSpeed" value="Insert Speed">
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <label>Recommended Speed: <label>???</label></label>
+                </div>
+
+                <div class="newBatchBottomMiddle">
+                    <button class="startBtn">Start</button>
+                </div>
+
+                <div class="newBatchBottomRight">
+                    <div class="stockHeader">
+                        <label>Batch Quantity Requirements</label>
+                    </div>
+
+                    <div class="stock">
+                        <table class="stockTable">
+                            <thead>
+                            <tr>
+                                <td></td>
+                                <td>Stock:</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Barley: <label>???</label></td>
+                                <td>Barley: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Hop: <label>???</label></td>
+                                <td>Hop: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Malt: <label>???</label></td>
+                                <td>Malt: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Wheat: <label>???</label></td>
+                                <td>Wheat: <label>???</label></td>
+                            </tr>
+                            <tr>
+                                <td>Yeast: <label>???</label></td>
+                                <td>Yeast: <label>???</label></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -1,43 +1,54 @@
 body{
     padding: 0;
     margin: 0;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
-/*Top*/
-/*_________________________________________________________________________________*/
+
+
+
+
+
+
+
+/*____________________*Top*____________________*/
 .topBar{
     display: flex;
     align-items: center;
     margin: 0 30px;
-}
-
-.menuBtns{
-    text-align: left;
+    justify-content: space-between;
+    position: relative;
 }
 
 .menuBtn{
     background-color: #555555;
-    color: white;
     border: 2px solid #555555;
+    color: white;
     padding: 15px 32px;
     font-size: 20px;
     cursor: pointer;
     transition-duration: 0.4s;
 }
+
 .menuBtn:hover{
     background-color: white;
     color: black;
 }
 
 .header{
-    text-align: center;
-    flex: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .header .title{
     margin: 0;
     font-size: 72px;
+    position: relative;
 }
 
 .line{
@@ -45,55 +56,66 @@ body{
     margin: 5px;
 }
 
+.navRight{
+    display: flex;
+    justify-content: center;
+}
+
 .emerBtn{
     background-color: #a82011;
     border: 2px solid #a82011;
     color: white;
     padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 24px;
     transition-duration: 0.4s;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 .emerBtn:hover{
     background-color: white;
     color: black;
 }
-/*^^Top^^*/
-/*_________________________________________________________________________________*/
+
+.siren{
+    margin: 0 5px;
+    width: 64px;
+}
+/*____________________*^^Top^^*____________________*/
 
 
-/*Bottom*/
-/*_________________________________________________________________________________*/
+
+
+
+
+
+/*____________________*Bottom*____________________*/
 .bottom{
     display: flex;
     margin: 20px 20px;
-    height: max-content;
 }
 
-/*Bottom Left*/
-/*_________________________________________________________________________________*/
-.bottom .left{
+/*____________________*Bottom Left*____________________*/
+.left{
     display: flex;
     flex-direction: column;
-    flex: 1;
+    width: 50%;
 }
 
-.bottom .left .leftTop{
+.leftTop{
+    width: 100%;
+    justify-content: space-between;
     display: flex;
     flex: 1;
 }
 
-.bottom .left .leftTop .batchBtns{
+.batchControlBtns{
     display: flex;
     flex-direction: column;
     margin: 0 10px;
 }
 
-.batchBtns button{
+.batchControlBtns button{
     padding: 15px 32px;
     font-size: 24px;
     background-color: #555555;
@@ -101,14 +123,15 @@ body{
     border: 2px solid #555555;
     cursor: pointer;
     transition-duration: 0.4s;
+    text-align: center;
 }
 
-.batchBtns button:hover{
+.batchControlBtns button:hover{
     background-color: white;
     color: black;
 }
 
-.batch{
+.batchBtn{
     flex: 1;
     margin-bottom: 10px;
     white-space: pre-line;
@@ -117,44 +140,50 @@ body{
 .infoBox{
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    width: 83%;
 }
 
 .info{
     display: flex;
+    border: black solid 2px;
+    box-shadow: 2px 4px;
+    border-radius: 10%;
     flex-direction: column;
     place-items: center;
     padding: 15px;
+    justify-content: center;
+}
+
+.rotate{
+    transform: rotate(30deg);
 }
 
 .picture{
-    width: 65px;
+    width: 64px;
 }
 
 .leftBot{
     display: flex;
     align-items: center;
+    margin-top: auto;
 }
-
-.maintenance{
-    width: 50%;
-    height: 25%;
-    border: 1px solid #7a7d7d;
-    text-align: left;
-    vertical-align: middle;
-}
-
-/*^^Bottom Left^^*/
-/*_________________________________________________________________________________*/
+/*____________________*^^Bottom Left^^*____________________*/
 
 
 
-/*Bottom Right*/
-/*_________________________________________________________________________________*/
-.bottom .right{
+
+
+
+
+/*____________________*Bottom Right*____________________*/
+.right{
     display: flex;
     flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
 .topSilos{
@@ -167,6 +196,7 @@ body{
 }
 
 .silos{
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 10px 10px;
@@ -178,8 +208,42 @@ body{
 
 .silos .silo{
     width: 250px;
-
 }
 
-/*^^Bottom Right^^*/
-/*_________________________________________________________________________________*/
+.fillHeight{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+}
+/*____________________*^^Bottom Right^^*____________________*/
+
+/*____________________*^^Bottom^^*____________________*/
+
+
+
+
+
+
+
+/*____________________*Maintenance Box*____________________*/
+.maintenanceAdjust{
+    display: flex;
+    align-items: end;
+    flex: 1;
+}
+
+.maintenanceBox{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.maintenance{
+    width: 100%;
+    border: 1px solid #7a7d7d;
+    padding: 1%;
+    font-size: 20px;
+}
+/*____________________*^^Maintenance Box^^*____________________*/

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HistoryPage</title>
+    <link rel="stylesheet" href="./historyStyle.css">
+    <script src="switchPage.js"></script>
+</head>
+<body>
+
+<div class="topBar">
+    <div class="menuBtns">
+        <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
+        <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
+        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
+    </div>
+
+    <div class="header">
+        <label class="title">Beer Bros</label>
+    </div>
+
+    <div class="navRight">
+        <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
+        <button class="emerBtn">Emergency Stop!</button>
+    </div>
+</div>
+
+<div class="line"></div>
+
+<p class="bHist">Batch History</p>
+
+<div class="mainHorizAdjust">
+    <div class="main">
+        <div class="tableWrapper">
+            <table class="historyTable">
+                <thead>
+                <tr class="tableHeader">
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Started</th>
+                    <th>Stopped</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr onclick=openHistoryOpen()>
+                    <td>1</td>
+                    <td>Pilsner</td>
+                    <td>42069</td>
+                    <td>01/03-23</td>
+                    <td>03/03-23</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
