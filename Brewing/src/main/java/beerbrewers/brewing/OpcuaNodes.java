@@ -13,18 +13,15 @@ public enum OpcuaNodes {
     MACH_SPEED_READ(6, "::Program:Cube.Command.MachSpeed", "machSpeed"),                      // [R] Machine speed in primary products per minute for next batch.
     CUR_MACH_SPEED(6,"::Program:Cube.Status.CurMachSpeed","currentMachineSpeed"),             // [R] Current machine speed measured from 0-100
     CURRENT_BATCH_ID(6,"::Program:Cube.Status.Parameter[0].Value","currentBatchId"),          // [R] Current batch ID - Batch quantity number - Parameter[0]
-    AMOUNT_PRODUCED(6,"::Program:Cube.Status.Parameter[1].Value","amountProducts"),                 // [R] Amount of products in current batch. Parameter [1]
-    REL_HUMIDITY(6,"::Program:Cube.Status.Parameter[2].Value","relativeHumidity"),                  // [R] Relative Humidity - Parameter[2]
-    TEMPERATURE(6,"::Program:Cube.Status.Parameter[3].Value","temperature"),                        // [R] Temperature - Parameter [3]
-    VIBRATION(6,"::Program:Cube.Status.Parameter[4].Value","vibration"),                            // [R] Vibration - Parameter [4]
+    AMOUNT_PRODUCED(6,"::Program:Cube.Status.Parameter[1].Value","amountProducts"),           // [R] Amount of products in current batch. Parameter [1]
+    REL_HUMIDITY(6,"::Program:Cube.Status.Parameter[2].Value","relativeHumidity"),            // [R] Relative Humidity - Parameter[2]
+    TEMPERATURE(6,"::Program:Cube.Status.Parameter[3].Value","temperature"),                  // [R] Temperature - Parameter [3]
+    VIBRATION(6,"::Program:Cube.Status.Parameter[4].Value","vibration"),                      // [R] Vibration - Parameter [4]
 
     /* COMMAND */
     CNTRL_CMD(6, "::Program:Cube.Command.CntrlCmd", "cntrlCmd"),                              // [R/W] PackML command = 1: Reset 2: Start 3: Stop 4: Abort 5: Clear
-    CMD_CHANGE_REQUEST(6, "::Program:Cube.Command.CmdChangeRequest", "cmdChangeRequest");    // [R/W] When true, executes commando in Control Command
+    CMD_CHANGE_REQUEST(6, "::Program:Cube.Command.CmdChangeRequest", "cmdChangeRequest");     // [R/W] When true, executes commando in Control Command
     //MACH_SPEED_WRITE()
-
-
-
 
 
 

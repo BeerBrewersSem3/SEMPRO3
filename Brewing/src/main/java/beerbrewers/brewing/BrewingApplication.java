@@ -20,6 +20,5 @@ public class BrewingApplication
     public static void main(String[] args)
     {
         SpringApplication.run(BrewingApplication.class, args);
-
     }
 }
