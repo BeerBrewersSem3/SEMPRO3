@@ -3,10 +3,18 @@ package beerbrewers.BrewMaster9000.opcua;
 /* IMPORTS */
 import jakarta.annotation.PostConstruct;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
+import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfig;
+import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
+import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
+import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
+import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.security.cert.X509Certificate;
+import java.util.List;
 
 @Component  // Automatcally detect dependency injections
 public class OpcUaClientConnection {
@@ -22,14 +30,19 @@ public class OpcUaClientConnection {
 
     @PostConstruct
     private void initialize() throws Exception {
-        this.client = OpcUaClient.create(endPointUrl);
         connectToServer();
     }
 
     private void connectToServer(){
         try {
+            List<EndpointDescription> endpointDescriptionList = DiscoveryClient.getEndpoints("${opcua.client.endpointUrl}").get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpointDescriptionList.get(0),"192.168.0.122",4840);
+            OpcUaClientConfigBuilder configBuilder = new OpcUaClientConfigBuilder();
+            configBuilder.setEndpoint(configPoint);
+            this.client = OpcUaClient.create(configBuilder.build());
             client.connect().get();
             logger.info("Connected to OPC UA Server");
+
         } catch (Exception e) {
             logger.error("Error connecting to the OPC UA Server: " + e.getMessage());
         }
