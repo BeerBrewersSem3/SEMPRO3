@@ -196,6 +196,7 @@ body{
 }
 
 .silos{
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 10px 10px;
@@ -207,7 +208,14 @@ body{
 
 .silos .silo{
     width: 250px;
+}
 
+.fillHeight{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
 }
 /*____________________*^^Bottom Right^^*____________________*/
 

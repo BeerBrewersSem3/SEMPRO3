@@ -11,5 +11,9 @@ function toggleNewBatch() {
 }
 
 function openHistoryOpen() {
-    window.location.href = `historyPageOpen.html`
+    window.location.href = `historyPageOpen.html`;
+}
+
+function openTest() {
+    window.location.href = `test.html`;
 }

@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="./monitorStyle.css">
     <link rel="stylesheet" href="./newBatch.css">
     <script src="switchPage.js"></script>
+    <script defer src="./script.js"></script>
+    <script src="/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
     <title>Monitor</title>
 </head>
 <body>
@@ -12,6 +15,7 @@
     <div class="menuBtns">
         <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
         <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
+        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
     </div>
 
     <div class="header">
@@ -42,55 +46,55 @@
             <div class="infoBox">
                 <div class="info">
                     <img class="picture" src="Icons/thermometer.svg" alt="Temperature">
-                    <label>0.0</label>
+                    <label id="TEMPERATURE">0.0</label>
                     <label>Temperature</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/droplet.svg" alt="Humidity percentage">
-                    <label>0.0</label>
+                    <label id="HUMIDITY">0.0</label>
                     <label>Humidity</label>
                 </div>
 
                 <div class="info">
                     <img class="picture rotate" src="Icons/radio.svg" alt="Vibration">
-                    <label>0.0</label>
+                    <label id="VIBRATION">0.0</label>
                     <label>Vibration</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/file-box.svg" alt="ID">
-                    <label>0.0</label>
+                    <label id="BATCH_ID">0.0</label>
                     <label>ID</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/boxes.svg" alt="Units to be produced">
-                    <label>0.0</label>
+                    <label id="AMOUNT_IN_BATCH">0.0</label>
                     <label>Units</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/gauge.svg" alt="Speed">
-                    <label>0.0</label>
+                    <label id="CUR_MACH_SPEED">0.0</label>
                     <label>Speed</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/line-chart.svg" alt="Produced so far">
-                    <label>0.0</label>
+                    <label id="PROD_CURRENT">0.0</label>
                     <label>Produced</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/milk.svg" alt="Successful operations">
-                    <label>0.0</label>
+                    <label id="PROD_SUCCESSFUL_COUNT">0.0</label>
                     <label>Success</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/milk-off.svg" alt="Failed operations">
-                    <label>0.0</label>
+                    <label id="PROD_DEFECTIVE_COUNT">0.0</label>
                     <label>Failure</label>
                 </div>
             </div>
@@ -102,6 +106,9 @@
             <div class="silos">
                 <label>Barley</label>
                 <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+                <div class="fillHeight">
+                    <label class="fillHeightColor"></label>
+                </div>
             </div>
 
             <div class="silos">

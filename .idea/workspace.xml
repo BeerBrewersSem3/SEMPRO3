@@ -9,10 +9,8 @@
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyOpenStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyOpenStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/newBatch.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/newBatch.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/switchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/switchPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +24,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
       </list>
@@ -78,7 +75,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lasse\Desktop\Uni\SemPro3\SEMPRO3\Brewing\src\main\resources\public" />
+      <recent name="C:\Users\lasse\OneDrive\Skrivebord\Uni\3. Semester\SemPro\SEMPRO3\Brewing\src\main\resources\public" />
     </key>
   </component>
   <component name="RunManager">
@@ -107,16 +104,11 @@
       <workItem from="1698580775858" duration="28385000" />
       <workItem from="1698662200025" duration="1647000" />
       <workItem from="1698684661145" duration="520000" />
-      <workItem from="1698910816775" duration="8581000" />
-      <workItem from="1698920691818" duration="427000" />
-      <workItem from="1698926393232" duration="241000" />
-      <workItem from="1698926646309" duration="15704000" />
-      <workItem from="1699208309646" duration="22214000" />
-      <workItem from="1699266575415" duration="1009000" />
-      <workItem from="1699285996261" duration="6853000" />
-      <workItem from="1699298977147" duration="110000" />
-      <workItem from="1699304145589" duration="11298000" />
-      <workItem from="1699347291036" duration="19954000" />
+      <workItem from="1698910816775" duration="10739000" />
+      <workItem from="1698924330427" duration="85000" />
+      <workItem from="1698924543090" duration="433000" />
+      <workItem from="1698924988953" duration="1110000" />
+      <workItem from="1699428338440" duration="5605000" />
     </task>
     <servers />
   </component>
