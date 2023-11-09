@@ -1,4 +1,4 @@
-package beerbrewers.brewing;
+package beerbrewers.opcua;
 public enum OpcuaNodes {
 
     /* ADMIN */

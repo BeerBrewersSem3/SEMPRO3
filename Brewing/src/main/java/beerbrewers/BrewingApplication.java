@@ -1,5 +1,6 @@
 package beerbrewers;
 
+import beerbrewers.opcua.OpcuaClientConnection;
 import beerbrewers.persistence.SupabaseConnection;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
