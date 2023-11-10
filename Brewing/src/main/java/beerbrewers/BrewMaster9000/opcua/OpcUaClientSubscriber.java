@@ -30,7 +30,7 @@ public class OpcUaClientSubscriber {
     private OpcUaClientConnection opcUaClientConnection;
     @Autowired
     private OpcUaNodeUpdateManager opcUaNodeUpdateManager;
-   /* @PostConstruct
+    @PostConstruct
     public void initializeSubscriptions(){
         List<OpcUaNodes> nodesToSubscribe = List.of(
                 OpcUaNodes.STATE_CURRENT,
@@ -52,7 +52,6 @@ public class OpcUaClientSubscriber {
         });
     }
 
-    */
 
     // Will change to the currentState of the BeerMachine, when connection is made.
     private Map<OpcUaNodes, String> nodeStates = new ConcurrentHashMap<>();

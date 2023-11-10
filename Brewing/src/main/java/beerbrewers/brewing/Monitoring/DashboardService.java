@@ -1,6 +1,5 @@
 package beerbrewers.brewing.Monitoring;
 
-
 import beerbrewers.BrewMaster9000.opcua.OpcUaNodeObserver;
 import beerbrewers.BrewMaster9000.opcua.OpcUaNodeUpdateManager;
 import beerbrewers.BrewMaster9000.opcua.OpcUaNodes;

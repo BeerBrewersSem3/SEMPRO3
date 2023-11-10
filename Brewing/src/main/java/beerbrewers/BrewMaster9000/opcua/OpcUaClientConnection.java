@@ -35,8 +35,9 @@ public class OpcUaClientConnection {
 
     private void connectToServer(){
         try {
-            List<EndpointDescription> endpointDescriptionList = DiscoveryClient.getEndpoints("${opcua.client.endpointUrl}").get();
+            List<EndpointDescription> endpointDescriptionList = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
             EndpointDescription configPoint = EndpointUtil.updateUrl(endpointDescriptionList.get(0),"192.168.0.122",4840);
+
             OpcUaClientConfigBuilder configBuilder = new OpcUaClientConfigBuilder();
             configBuilder.setEndpoint(configPoint);
             this.client = OpcUaClient.create(configBuilder.build());
