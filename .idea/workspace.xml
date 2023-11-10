@@ -7,14 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="Integrated GUI from @Hvilsted.">
+    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="Small changes">
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaCommander.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/HelloWorldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/RouteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/OpcuaNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaNodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensor/SensorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensor/SensorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
