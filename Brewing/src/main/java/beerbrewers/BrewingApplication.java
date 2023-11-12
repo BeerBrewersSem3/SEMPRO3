@@ -40,7 +40,7 @@ public class BrewingApplication
         }
 
         commander.sendCommand(OpcuaNodes.CNTRL_CMD,2);
-        commander.sendCommand(OpcuaNodes.CMD_CHANGE_REQUEST,true);
+        commander.commandChangeRequest(true);
     }
     public static void main(String[] args)
     {
