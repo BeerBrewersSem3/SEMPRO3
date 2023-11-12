@@ -33,6 +33,7 @@ public class BrewingApplication
 
         try {
             subscriber.subscribe(OpcuaNodes.CNTRL_CMD);
+            subscriber.subscribe(OpcuaNodes.STATE_CURRENT);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
