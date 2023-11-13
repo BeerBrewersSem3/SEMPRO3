@@ -22,8 +22,11 @@ public class OpcuaSubscriber {
     private String state = "";
     private OpcuaClientConnection connection;
     @Autowired
-    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection){
+    private OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+    @Autowired
+    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager){
         this.connection = opcuaClientConnection;
+        //this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
 
 
@@ -37,8 +40,9 @@ public class OpcuaSubscriber {
         completableFuture.thenAccept(items -> {
             for (UaMonitoredItem item : items) {
                 item.setValueConsumer((moniteredItem, dataValue) -> {
-                    System.out.println(dataValue.getValue().getValue());
+                    //System.out.println(dataValue.getValue().getValue());
                     state = dataValue.getValue() + "";
+                    opcUaNodeUpdateManager.notifyObservers(node, state);
                 });
             }
         });

@@ -33,6 +33,7 @@ public class BrewingApplication
 
         try {
             subscriber.subscribe(OpcuaNodes.CNTRL_CMD);
+            subscriber.subscribe(OpcuaNodes.STATE_CURRENT);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
@@ -40,7 +41,7 @@ public class BrewingApplication
         }
 
         commander.sendCommand(OpcuaNodes.CNTRL_CMD,2);
-        commander.sendCommand(OpcuaNodes.CMD_CHANGE_REQUEST,true);
+        commander.commandChangeRequest(true);
     }
     public static void main(String[] args)
     {
