@@ -36,7 +36,6 @@ public class Batch {
             nullable = false,
             columnDefinition = "TEXT"
     )
-
     @Enumerated(EnumType.STRING)
     private BrewEnum brewName;
 
@@ -158,9 +157,9 @@ public class Batch {
     }
 
     /**
-     * The child entity, Batch, implements the equals and hashCode methods. Since we cannot rely on a natural
-     * identifier for equality checks, we need to use the entity identifier instead for the equals method. However, we
-     * need to do it properly so that equality is consistent across all entity state transitions, which is also the
+     * The Batch entity implements the equals and hashCode methods. Since we cannot rely on a natural
+     * identifier for equality checks, we need to use the entity id instead for the equals() method. However, we
+     * need to do son in a way that equality is consistent across all entity state transitions, which is also the
      * reason why the hashCode has to be a constant value. Because we rely on equality for the removeBatch, it’s good
      * practice to override equals and hashCode for the child entity in a bidirectional association.
      */
