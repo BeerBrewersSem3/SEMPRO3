@@ -1,5 +1,6 @@
 package beerbrewers.operation;
 
+import beerbrewers.batch.Batch;
 import beerbrewers.operationtype.OperationType;
 import beerbrewers.worker.Worker;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,8 +15,8 @@ import java.util.List;
 @Repository
 public interface OperationRepository extends JpaRepository<Operation, Long> {
     Operation findByOperationId(long operationId);
-    List<Operation> findAllByDate(Date date);
     List<Operation> findAllByWorker(Worker worker);
-    List<Operation> findAllByOperationType(OperationType operationType);
+
+    List<Operation> findAllByBatchListContains(Batch batch);
 
 }
