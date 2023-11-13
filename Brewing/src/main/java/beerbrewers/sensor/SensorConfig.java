@@ -29,8 +29,8 @@ public class SensorConfig {
                 3L, "Humidity sensor", 6, "::Program:Data.Value.RelHumidity"
             );
 
-            Sensor accelerationSensor1 = new Sensor(
-                4L, "Speed sensor", 6, "::Program:Data.Value.Acceleration1"
+            Sensor speedSensor = new Sensor(
+                    4L, "Speed sensor", 6, "::Program:Cube.Status.CurMachSpeed"
             );
 
             repository.saveAll(
@@ -38,12 +38,7 @@ public class SensorConfig {
                             vibrationSensor,
                             temperatureSensor,
                             humiditySensor,
-                            accelerationSensor1,
-                            accelerationSensor2,
-                            accelerationSensor3,
-                            rotationSensor1,
-                            rotationSensor2,
-                            rotationSensor3
+                            speedSensor
                     )
             );
         };

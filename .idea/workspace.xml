@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BrewEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationinputs/OperationInputsEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationinputs/OperationInputsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/Batch.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/Batch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brew/Brew.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationinputs/OperationInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brew/BrewConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brew/BrewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationinputs/OperationInputsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brew/BrewRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/brew/BrewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationinputs/OperationInputsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/Operation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationtype/OperationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationtype/OperationTypeConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationtype/OperationTypeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationtype/OperationTypeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationtype/OperationTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationinputs/OperationInputsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operationinputs/OperationInputsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensor/SensorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensor/SensorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReading.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingId.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +141,7 @@
       <workItem from="1699089753474" duration="27292000" />
       <workItem from="1699252783545" duration="3704000" />
       <workItem from="1699441965705" duration="5409000" />
-      <workItem from="1699514612089" duration="15495000" />
+      <workItem from="1699514612089" duration="19413000" />
     </task>
     <servers />
   </component>

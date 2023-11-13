@@ -17,5 +17,5 @@ public interface OperationInputsRepository extends JpaRepository<OperationInputs
 
     List<OperationInputs> findAllByTimestampBetween(String timeStart, String timeEnd);
 
-    List<OperationInputs> findAllBywOrderByTimestamp();
+    List<OperationInputs> findAllByOrderByTimestamp();
 }

@@ -25,11 +25,10 @@ public class Batch {
     private Long batchId;
 
     @ManyToOne(
+            fetch = FetchType.LAZY,
             targetEntity = Operation.class,
-            cascade = CascadeType.ALL,
             optional = false
     )
-    @JoinColumn(name = "operation_id")
     private Operation operation;
 
     @Column(
@@ -157,6 +156,30 @@ public class Batch {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+    /**
+     * The child entity, Batch, implements the equals and hashCode methods. Since we cannot rely on a natural
+     * identifier for equality checks, we need to use the entity identifier instead for the equals method. However, we
+     * need to do it properly so that equality is consistent across all entity state transitions, which is also the
+     * reason why the hashCode has to be a constant value. Because we rely on equality for the removeBatch, it’s good
+     * practice to override equals and hashCode for the child entity in a bidirectional association.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Batch )) return false;
+        return batchId != null && batchId.equals(((Batch) o).getBatchId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    /**
+     * Getters, setters and toString
+     * @return
+     */
 
     public Long getBatchId() {
         return batchId;

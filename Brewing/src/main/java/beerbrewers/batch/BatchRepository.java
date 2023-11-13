@@ -13,8 +13,6 @@ import java.util.List;
 public interface BatchRepository extends JpaRepository<Batch, Long> {
     Batch findByBatchId(Long batchId);
 
-    List<Batch> findAllByCompletedIs(boolean bool);
-
     List<Batch> findAllByAmountBetween(long minAmount, long maxAmount);
 
     List<Batch> findAllByOperation(Operation operation);
