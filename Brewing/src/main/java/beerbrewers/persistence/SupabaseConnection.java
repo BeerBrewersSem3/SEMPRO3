@@ -26,11 +26,12 @@ public class SupabaseConnection {
      * Simple test query that fetches a test string from a test_table in the database, and prints it in the console
      * to show that the application has access to the database and can receive query results.
      */
-    public void testQueryForDatabase() {
+    public boolean testQueryForDatabase() {
         try {
 
             String query = "SELECT information FROM test_table WHERE id = ?";
             System.out.println("Database query status: " + jdbcTemplate.queryForObject(query, String.class, 1));
+            return true;
         } catch (EmptyResultDataAccessException e) {
             System.out.println("No data found for the specified ID.");
             // Handle accordingly or rethrow if needed.
@@ -44,6 +45,6 @@ public class SupabaseConnection {
             System.out.println("Data access error: " + e.getMessage());
             // Handle accordingly or rethrow if needed.
         }
-
+        return false;
     }
 }

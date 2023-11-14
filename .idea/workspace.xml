@@ -8,12 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="Small changes">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeUpdateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,38 @@
       <recent name="beerbrewers.brewing" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DatabaseTests">
+    <configuration name="DatabaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Brewing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="beerbrewers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="beerbrewers" />
+      <option name="MAIN_CLASS_NAME" value="beerbrewers.DatabaseTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTests.canRetrieveFromTestTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Brewing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="beerbrewers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="beerbrewers" />
+      <option name="MAIN_CLASS_NAME" value="beerbrewers.DatabaseTests" />
+      <option name="METHOD_NAME" value="canRetrieveFromTestTable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BrewingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Brewing" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="beerbrewers.BrewingApplication" />
@@ -105,6 +135,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DatabaseTests" />
+        <item itemvalue="JUnit.DatabaseTests.canRetrieveFromTestTable" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -137,6 +173,8 @@
       <workItem from="1699264546892" duration="11591000" />
       <workItem from="1699518104556" duration="3423000" />
       <workItem from="1699524782839" duration="1290000" />
+      <workItem from="1699961889461" duration="573000" />
+      <workItem from="1699996468808" duration="1163000" />
     </task>
     <task id="LOCAL-00001" summary="Integrated GUI from @Hvilsted.">
       <option name="closed" value="true" />
