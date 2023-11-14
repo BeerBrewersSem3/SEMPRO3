@@ -35,4 +35,7 @@ public class OpcuaClientConnection {
             System.out.println("Execution Error (OPC UA Server)");
         }
     }
+    public OpcUaClient getClient() {
+        return client;
+    }
 }
