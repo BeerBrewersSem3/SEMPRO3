@@ -1,5 +1,6 @@
 package beerbrewers.opcua;
 
+import beerbrewers.websocket.WebsocketService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,17 +14,27 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
 
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
     private static final Logger logger = LoggerFactory.getLogger(OpcUaDashboardService.class);
+    private final WebsocketService websocketService;
 
     @Autowired
-    public OpcUaDashboardService(OpcUaNodeUpdateManager opcUaNodeUpdateManager){
+    public OpcUaDashboardService(OpcUaNodeUpdateManager opcUaNodeUpdateManager, WebsocketService websocketService){
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
+        this.websocketService = websocketService;
     }
 
     @PostConstruct
     public void initialize(){
         List<OpcuaNodes> nodesToSubscribe = List.of(
-                OpcuaNodes.STATE_CURRENT,
-                OpcuaNodes.CMD_CHANGE_REQUEST
+            OpcuaNodes.STATE_CURRENT,
+            OpcuaNodes.TEMPERATURE,
+            OpcuaNodes.REL_HUMIDITY,
+            OpcuaNodes.VIBRATION,
+            OpcuaNodes.CURRENT_BATCH_ID,
+            OpcuaNodes.CURRENT_BATCH_AMOUNT,
+            OpcuaNodes.CUR_MACH_SPEED,
+            OpcuaNodes.PROD_PRODUCED,
+            OpcuaNodes.PROD_PROCESSED_COUNT,
+            OpcuaNodes.PROD_DEFECTIVE_COUNT
         );
         nodesToSubscribe.forEach(node -> {
             opcUaNodeUpdateManager.addObserver(node, this);
@@ -32,6 +43,7 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
     }
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
-        logger.info(node.getName() + " has new value of: " + newState);
+        websocketService.send(node.getName(), newState);
+        logger.debug(node.getName() + " has new value of: " + newState);
     }
 }

@@ -1,5 +1,6 @@
 package beerbrewers.opcua;
 
+import jakarta.annotation.PostConstruct;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
@@ -10,7 +11,11 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,11 +28,33 @@ public class OpcuaSubscriber {
     private OpcuaClientConnection connection;
     @Autowired
     private OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+    private static final Logger logger = LoggerFactory.getLogger(OpcuaSubscriber.class);
+
     @Autowired
     public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager){
         this.connection = opcuaClientConnection;
         //this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
+    @PostConstruct
+    public void intializeSubscription() {
+        try {
+            subscribe(OpcuaNodes.STATE_CURRENT);
+            subscribe(OpcuaNodes.TEMPERATURE);
+            subscribe(OpcuaNodes.REL_HUMIDITY);
+            subscribe(OpcuaNodes.VIBRATION);
+            subscribe(OpcuaNodes.CURRENT_BATCH_ID);
+            subscribe(OpcuaNodes.CURRENT_BATCH_AMOUNT);
+            subscribe(OpcuaNodes.CUR_MACH_SPEED);
+            subscribe(OpcuaNodes.PROD_PRODUCED);
+            subscribe(OpcuaNodes.PROD_PROCESSED_COUNT);
+            subscribe(OpcuaNodes.PROD_DEFECTIVE_COUNT);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     public void subscribe(OpcuaNodes node) throws ExecutionException, InterruptedException {
@@ -40,11 +67,12 @@ public class OpcuaSubscriber {
         completableFuture.thenAccept(items -> {
             for (UaMonitoredItem item : items) {
                 item.setValueConsumer((moniteredItem, dataValue) -> {
-                    //System.out.println(dataValue.getValue().getValue());
-                    state = dataValue.getValue() + "";
+                    state = dataValue.getValue().getValue() + "";
+                    logger.debug("The node " + node.getName() + "has a new value of " + state);
                     opcUaNodeUpdateManager.notifyObservers(node, state);
                 });
             }
         });
     }
+
 }

@@ -10,18 +10,15 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.MonitoringMode;
-import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 @Component
 public class OpcuaClientConnection {
-    private String state = "";
+
     private OpcUaClient client;
     {
         try {
@@ -38,9 +35,7 @@ public class OpcuaClientConnection {
             System.out.println("Execution Error (OPC UA Server)");
         }
     }
-
-    public OpcUaClient getClient (){
+    public OpcUaClient getClient() {
         return client;
     }
 }
-
