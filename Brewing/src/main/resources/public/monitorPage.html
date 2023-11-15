@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="./newBatch.css">
     <script src="switchPage.js"></script>
     <script defer src="./script.js"></script>
-    <script src="/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+    <script defer src="websocketScript.js"></script>
     <title>Monitor</title>
 </head>
 <body>
@@ -46,55 +47,55 @@
             <div class="infoBox">
                 <div class="info">
                     <img class="picture" src="Icons/thermometer.svg" alt="Temperature">
-                    <label id="TEMPERATURE">0.0</label>
+                    <label id="temperatureLabel">0.0</label>
                     <label>Temperature</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/droplet.svg" alt="Humidity percentage">
-                    <label id="HUMIDITY">0.0</label>
+                    <label id="relativeHumidityLabel">0.0</label>
                     <label>Humidity</label>
                 </div>
 
                 <div class="info">
                     <img class="picture rotate" src="Icons/radio.svg" alt="Vibration">
-                    <label id="VIBRATION">0.0</label>
+                    <label id="vibrationLabel">0.0</label>
                     <label>Vibration</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/file-box.svg" alt="ID">
-                    <label id="BATCH_ID">0.0</label>
+                    <label id="currentBatchIdLabel">0.0</label>
                     <label>ID</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/boxes.svg" alt="Units to be produced">
-                    <label id="AMOUNT_IN_BATCH">0.0</label>
+                    <label id="currentBatchAmountLabel">0.0</label>
                     <label>Units</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/gauge.svg" alt="Speed">
-                    <label id="CUR_MACH_SPEED">0.0</label>
+                    <label id="currentMachineSpeedLabel">0.0</label>
                     <label>Speed</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/line-chart.svg" alt="Produced so far">
-                    <label id="PROD_CURRENT">0.0</label>
+                    <label id="prodProducedLabel">0.0</label>
                     <label>Produced</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/milk.svg" alt="Successful operations">
-                    <label id="PROD_SUCCESSFUL_COUNT">0.0</label>
+                    <label id="prodProcessedCountLabel">0.0</label>
                     <label>Success</label>
                 </div>
 
                 <div class="info">
                     <img class="picture" src="Icons/milk-off.svg" alt="Failed operations">
-                    <label id="PROD_DEFECTIVE_COUNT">0.0</label>
+                    <label id="prodDefectiveCountLabel">0.0</label>
                     <label>Failure</label>
                 </div>
             </div>
