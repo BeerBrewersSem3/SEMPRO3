@@ -1,5 +1,6 @@
 package beerbrewers.opcua;
 
+import jakarta.annotation.PostConstruct;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
@@ -11,6 +12,8 @@ import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateReq
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,11 +26,25 @@ public class OpcuaSubscriber {
     private OpcuaClientConnection connection;
     @Autowired
     private OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+
+    private SimpMessagingTemplate simpMessagingTemplate;
     @Autowired
-    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager){
+    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager, SimpMessagingTemplate simpMessagingTemplate){
         this.connection = opcuaClientConnection;
+        this.simpMessagingTemplate = simpMessagingTemplate;
         //this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
+    @PostConstruct
+    public void intializeSubscription() {
+        try {
+            subscribe(OpcuaNodes.STATE_CURRENT);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     public void subscribe(OpcuaNodes node) throws ExecutionException, InterruptedException {
@@ -41,14 +58,13 @@ public class OpcuaSubscriber {
             for (UaMonitoredItem item : items) {
                 item.setValueConsumer((moniteredItem, dataValue) -> {
                     //System.out.println(dataValue.getValue().getValue());
-                    state = dataValue.getValue() + "";
+                    state = dataValue.getValue().getValue() + "";
                     opcUaNodeUpdateManager.notifyObservers(node, state);
+                    simpMessagingTemplate.convertAndSend("/sensor/data/stateCurrent",state);
+
                 });
             }
         });
     }
 
-    public String getState() {
-        return state;
-    }
 }

@@ -7,23 +7,14 @@
     <title>My Website</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <script src="/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
-    <script defer src="script.js"></script>
+    <script defer src="websocketScript.js"></script>
 </head>
 <body>
 <main>
-    <h1 class="test">Beer Bros</h1>
-    <label>Current State</label>
-    <p id="CURRENTSTATE"><!--Current-State-Value--></p>
-    <label>Cntl Cmd Value</label>
-    <p id="CNTRLCMD"><!--Cntrl-Cmd-Value--></p>
-
-    <label for="inputNumber">Enter a command between 0-5:</label>
-    <input type="number" id="inputNumber" min="0" max="5">
-
-    <button onclick="sendCommand()">Send command</button>
-    <button onclick="executeCommand()">Execute command</button>
+    <p>Current State</p>
+    <label id="currentStateLabel"></label>
 </main>
 </body>
 </html>

@@ -33,5 +33,6 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
         logger.info(node.getName() + " has new value of: " + newState);
+
     }
 }
