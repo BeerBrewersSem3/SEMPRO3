@@ -1,23 +1,29 @@
 package beerbrewers.websocket;
 
-import beerbrewers.operation.Operation;
-import org.eclipse.milo.opcua.sdk.client.OpcUaSession;
-import org.eclipse.milo.opcua.stack.core.channel.messages.HelloMessage;
+import beerbrewers.opcua.OpcUaNodeUpdateManager;
+import beerbrewers.opcua.OpcuaNodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class WebsocketDataController {
-
-    private WebsocketService websocketService;
-
-
+    private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+    private final SimpMessagingTemplate messagingTemplate;
 
     @Autowired
-    @MessageMapping("/sensor/data")
-    @SendTo("/sensor/data/")
+    public WebsocketDataController(OpcUaNodeUpdateManager opcUaNodeUpdateManager, SimpMessagingTemplate messagingTemplate) {
+        this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
+        this.messagingTemplate = messagingTemplate;
+    }
 
-
+    @MessageMapping("/subscribe")
+    public void subscribeToNode(String nodeName) {
+        OpcuaNodes opcuaNode = OpcuaNodes.valueOf(nodeName);
+        opcUaNodeUpdateManager.addObserver(opcuaNode, (node, newState) -> {
+            // Send the updated value to the WebSocket clients
+            messagingTemplate.convertAndSend("/sensor/data/" + nodeName, newState);
+        });
+    }
 }

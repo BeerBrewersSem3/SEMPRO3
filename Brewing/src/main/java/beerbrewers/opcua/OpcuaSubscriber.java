@@ -47,4 +47,8 @@ public class OpcuaSubscriber {
             }
         });
     }
+
+    public String getState() {
+        return state;
+    }
 }

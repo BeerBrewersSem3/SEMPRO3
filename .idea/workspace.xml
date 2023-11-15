@@ -8,18 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="Integrated GUI from @Hvilsted.">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeUpdateManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaCommander.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e6b43266-c8f0-4030-ae46-ce81e50f0643.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/BrewingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketDataController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +68,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging dev-websocket",
+    "git-widget-placeholder": "dev-websocket",
     "jdk.selected.JAVA_MODULE": "19",
     "last_opened_file_path": "C:/Users/green/Downloads/SEMPRO3 (4)/SEMPRO3",
     "list.type.of.created.stylesheet": "CSS",
