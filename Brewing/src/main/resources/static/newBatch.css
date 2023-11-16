@@ -21,6 +21,21 @@
     padding: 10px 0;
     font-size: 32px;
 }
+
+.closeBtn{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    color: #555555;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 10px;
+    text-align: center;
+    border-radius: 50%;
+}
 /*____________________*^^Header of Batch popup^^*____________________*/
 
 
@@ -63,7 +78,16 @@
     flex: 1;
 }
 
-.infoTable input, .infoTable .typeSelector{
+.idContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.batchID{
+    flex: 1;
+}
+
+.infoTable input, .infoTable .typeSelector, .idContainer{
     padding: 5px;
     margin: 0 5px;
     background: #555555;
