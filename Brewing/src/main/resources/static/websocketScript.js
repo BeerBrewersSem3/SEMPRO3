@@ -20,6 +20,23 @@ function connectWebSocket() {
         subscribeToNode("prodDefectiveCount");
     });
 }
+function startBatch() {
+    const batchID   = document.getElementById("batchID").innerText;
+    const typeID    = document.getElementById("typeID").innerText;
+    const amountID  = document.getElementById("amountID").innerText;
+    const speedID   = document.getElementById("speedID").innerText;
+
+    const batchData = {
+        batchID,
+        typeID,
+        amountID,
+        speedID
+    }
+
+     stompClient.send("batch/newBatch", {}, batchData);
+}
+
+
 connectWebSocket();
 
 
