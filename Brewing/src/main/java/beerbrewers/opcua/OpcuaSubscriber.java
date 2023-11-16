@@ -25,15 +25,14 @@ import java.util.concurrent.ExecutionException;
 public class OpcuaSubscriber {
 
     private String state = "";
-    private OpcuaClientConnection connection;
-    @Autowired
-    private OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+    private final OpcuaClientConnection connection;
+    private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
     private static final Logger logger = LoggerFactory.getLogger(OpcuaSubscriber.class);
 
     @Autowired
     public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager){
         this.connection = opcuaClientConnection;
-        //this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
+        this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
     @PostConstruct
     public void intializeSubscription() {
@@ -48,6 +47,11 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.PROD_PRODUCED);
             subscribe(OpcuaNodes.PROD_PROCESSED_COUNT);
             subscribe(OpcuaNodes.PROD_DEFECTIVE_COUNT);
+            subscribe(OpcuaNodes.MACH_SPEED_WRITE);
+            subscribe(OpcuaNodes.NEXT_BATCH_ID);
+            subscribe(OpcuaNodes.NEXT_PRODUCT_ID);
+            subscribe(OpcuaNodes.NEXT_BATCH_AMOUNT);
+
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {

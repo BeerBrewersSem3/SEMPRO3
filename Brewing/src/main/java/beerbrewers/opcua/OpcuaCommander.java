@@ -29,6 +29,18 @@ public class OpcuaCommander {
         }
     }
 
+    public boolean sendCommand(OpcuaNodes node, float command){
+        NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
+        try {
+            connection.getClient().writeValue(nodeId, DataValue.valueOnly(new Variant(command))).get();
+            return true;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean commandChangeRequest(boolean command){
         NodeId nodeId = new NodeId(OpcuaNodes.CMD_CHANGE_REQUEST.getNamespaceIndex(),OpcuaNodes.CMD_CHANGE_REQUEST.getIdentifier());
         try {

@@ -25,7 +25,11 @@ public enum OpcuaNodes {
     /* COMMAND */
     CNTRL_CMD(6, "::Program:Cube.Command.CntrlCmd", "cntrlCmd"),                              // [R/W] PackML command = 1: Reset 2: Start 3: Stop 4: Abort 5: Clear
     CMD_CHANGE_REQUEST(6, "::Program:Cube.Command.CmdChangeRequest", "cmdChangeRequest"),     // [R/W] When true, executes commando in Control Command
-    //MACH_SPEED_WRITE()
+    MACH_SPEED_WRITE(6,"::Program:Cube.Command.MachSpeed","machSpeed"),
+    NEXT_BATCH_ID(6,"::Program:Cube.Command.Parameter[0].Value","nextBatchId"),
+    NEXT_PRODUCT_ID(6,"::Program:Cube.Command.Parameter[1].Value","nextProductId"),
+    NEXT_BATCH_AMOUNT(6,"::Program:Cube.Command.Parameter[2].Value","nextBatchAmount"),
+
 
     /* INVENTORY */
     BARLEY(6, "::Program:Inventory.Barley", "barley"),

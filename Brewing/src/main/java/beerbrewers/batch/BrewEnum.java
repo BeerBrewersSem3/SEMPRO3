@@ -19,5 +19,7 @@ public enum BrewEnum {
     public String getName(){
         return name;
     }
-    public int getI
+    public int getId(){
+        return id;
+    }
 }
