@@ -17,8 +17,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class BrewingApplication
 {
     @Autowired
-    private OpcuaClientConnection opcuaClientConnection;
-    @Autowired
     private SupabaseConnection supabaseConnection;
     @PostConstruct
     public void initialize(){
@@ -26,7 +24,6 @@ public class BrewingApplication
     }
     public static void main(String[] args)
     {
-
         SpringApplication.run(BrewingApplication.class, args);
     }
 
