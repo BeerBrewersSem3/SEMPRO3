@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/machine/MachineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/machine/MachineService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketCommandController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/machine/MachineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/machine/MachineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +147,7 @@
       <workItem from="1699441965705" duration="5409000" />
       <workItem from="1699514612089" duration="19792000" />
       <workItem from="1700127798375" duration="2385000" />
-      <workItem from="1700130337581" duration="3507000" />
+      <workItem from="1700130337581" duration="8158000" />
     </task>
     <servers />
   </component>

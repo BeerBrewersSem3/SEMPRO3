@@ -21,22 +21,22 @@ function connectWebSocket() {
     });
 }
 function startBatch() {
-    const batchID   = document.getElementById("batchID").innerText;
-    const typeID    = document.getElementById("typeID").innerText;
-    const amountID  = document.getElementById("amountID").innerText;
-    const speedID   = document.getElementById("speedID").innerText;
+    const batchID   = document.getElementById("batchID").value;
+    const batchType    = document.getElementById("batchType").value;
+    const batchAmount  = document.getElementById("batchAmount").value;
+    const batchSpeed   = document.getElementById("batchSpeed").value;
 
     const batchData = {
         batchID,
-        typeID,
-        amountID,
-        speedID
+        batchType,
+        batchAmount,
+        batchSpeed
     }
 
-     stompClient.send("batch/newBatch", {}, batchData);
+
+     stompClient.send("batch/newBatch", {}, JSON.stringify(batchData));
+     console.log(batchData)
 }
-
-
 connectWebSocket();
 
 
