@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
     <script defer src="websocketScript.js"></script>
+    <script src="./maintenanceFill.js"></script>
     <title>Monitor</title>
 </head>
 <body>
@@ -139,8 +140,13 @@
 <div class="maintenanceAdjust">
     <div class="maintenanceBox">
         <img src="Icons/maintenance.png" alt="Maintenance picture">
-        <label class="maintenance">0%</label>
+        <div class="maintenanceContainer" id="maintenanceContainer">
+            <div id="maintenanceBar" class="maintenanceBar">
+                <label class="maintenance" id="maintenance">0%</label>
+            </div>
+        </div>
     </div>
+    <button onclick=maintenanceFill()>Click me</button>
 </div>
 
 

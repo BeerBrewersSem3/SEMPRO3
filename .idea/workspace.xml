@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/maintenanceFill.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/newBatch.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/newBatch.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +25,7 @@
         <option value="Class" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -133,7 +136,7 @@
       <workItem from="1699252783545" duration="3704000" />
       <workItem from="1699441965705" duration="5409000" />
       <workItem from="1699514612089" duration="19792000" />
-      <workItem from="1700129579555" duration="4529000" />
+      <workItem from="1700129579555" duration="8513000" />
     </task>
     <servers />
   </component>
