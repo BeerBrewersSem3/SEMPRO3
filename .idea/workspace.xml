@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="3" />
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="Integrated GUI from @Hvilsted.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaNodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketDataController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" afterDir="false" />
+    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/Batch.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/Batch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,28 +19,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="spring-boot-refactor" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2W1CQICeMVqa8NXaaqJWWeq9d6j" />
   <component name="ProjectLevelVcsManager">
@@ -64,6 +46,10 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -72,9 +58,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev-websocket&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/green/Downloads/SEMPRO3 (4)/SEMPRO3&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -82,26 +66,43 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;68bf21090846e0a8ab4fd46a991ab46f&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\hrc\Desktop\SDU\3. Semester\SEMPRO3\Brewing\src\main\resources\static" />
-      <recent name="C:\Users\hrc\Desktop\SDU\3. Semester\SEMPRO3\Brewing\src\main\resources\public" />
+      <recent name="C:\Users\honor\SEMPRO3\Brewing\src\main\java\beerbrewers\worker" />
+      <recent name="C:\Users\hrc\Desktop\SDU\3. Semester\SEMPRO3\Brewing\src\main\resources" />
+      <recent name="C:\Users\hrc\Desktop\SDU\3. Semester\SEMPRO3\Brewing\src\main\java" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="beerbrewers" />
-      <recent name="beerbrewers.brewing" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="beerbrewers.operation" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager">
-    <configuration name="BrewingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="BrewingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
       <module name="Brewing" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="beerbrewers.BrewingApplication" />
       <method v="2">
@@ -119,51 +120,57 @@
       <updated>1695890689490</updated>
       <workItem from="1695890692520" duration="137000" />
       <workItem from="1695892044680" duration="1866000" />
-      <workItem from="1695921205590" duration="720000" />
-      <workItem from="1696097605406" duration="2419000" />
-      <workItem from="1696152707315" duration="755000" />
-      <workItem from="1696237508271" duration="150000" />
-      <workItem from="1696507131932" duration="1504000" />
-      <workItem from="1696510540091" duration="1296000" />
-      <workItem from="1696829215289" duration="48000" />
-      <workItem from="1697114817205" duration="1378000" />
-      <workItem from="1697290794731" duration="159000" />
-      <workItem from="1697302050898" duration="1216000" />
-      <workItem from="1697564172629" duration="1958000" />
-      <workItem from="1697635589599" duration="3776000" />
-      <workItem from="1697645304473" duration="425000" />
-      <workItem from="1697662884553" duration="1221000" />
-      <workItem from="1697735763886" duration="686000" />
-      <workItem from="1697832468428" duration="1456000" />
-      <workItem from="1698186140968" duration="42000" />
-      <workItem from="1699259344308" duration="4478000" />
-      <workItem from="1699264546892" duration="11591000" />
-      <workItem from="1699518104556" duration="3423000" />
-      <workItem from="1699524782839" duration="1290000" />
-      <workItem from="1699529127535" duration="3886000" />
-      <workItem from="1700030961298" duration="7853000" />
+      <workItem from="1698309034058" duration="5792000" />
+      <workItem from="1698675926053" duration="20052000" />
+      <workItem from="1698743787471" duration="4977000" />
+      <workItem from="1698753988408" duration="5676000" />
+      <workItem from="1698912093975" duration="19233000" />
+      <workItem from="1699001853778" duration="3043000" />
+      <workItem from="1699031338119" duration="7563000" />
+      <workItem from="1699089753474" duration="27292000" />
+      <workItem from="1699252783545" duration="3704000" />
+      <workItem from="1699441965705" duration="5409000" />
+      <workItem from="1699514612089" duration="19792000" />
     </task>
-    <task id="LOCAL-00001" summary="Integrated GUI from @Hvilsted.">
-      <option name="closed" value="true" />
-      <created>1699270853849</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1699270853849</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev-database" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Integrated GUI from @Hvilsted." />
-    <option name="LAST_COMMIT_MESSAGE" value="Integrated GUI from @Hvilsted." />
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

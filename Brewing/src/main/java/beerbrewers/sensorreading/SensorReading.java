@@ -1,5 +1,6 @@
 package beerbrewers.sensorreading;
 
+import beerbrewers.batch.Batch;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 
@@ -26,9 +27,7 @@ public class SensorReading {
     )
     private float sensorValue;
 
-    protected SensorReading() {
-
-    }
+    protected SensorReading() {}
 
     public SensorReading(Timestamp timestamp, float sensorValue) {
         this.timestamp = timestamp;
@@ -40,6 +39,11 @@ public class SensorReading {
         this.timestamp = timestamp;
         this.sensorValue = sensorValue;
     }
+
+    /**
+     * Getters, setters and toString
+     * @return
+     */
 
     public SensorReadingId getSensorReadingId() {
         return sensorReadingId;

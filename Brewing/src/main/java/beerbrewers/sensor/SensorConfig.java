@@ -30,7 +30,7 @@ public class SensorConfig {
             );
 
             Sensor speedSensor = new Sensor(
-                4L, "Speed sensor", 6, "::Program:Cube.Status.CurMachSpeed"
+                    4L, "Speed sensor", 6, "::Program:Cube.Status.CurMachSpeed"
             );
 
             repository.saveAll(
