@@ -124,6 +124,7 @@ body{
 .tableWrapper{
     border: 2px solid white;
     overflow-y: auto;
+    overflow-x: hidden;
     height: inherit;
 }
 

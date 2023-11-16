@@ -16,7 +16,6 @@
     <div class="menuBtns">
         <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
         <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
-        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
     </div>
 
     <div class="header">
@@ -159,16 +158,16 @@
                         <tr>
                             <th>ID</th>
                             <td>
-                                <label>
-                                    <input type="text" name="inputID" value="Insert ID">
-                                </label>
+                                <div class="idContainer">
+                                    <label class="batchID" id="batchID"></label>
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <th>Type</th>
                             <td>
                                 <div class="typeContainer">
-                                    <select class="typeSelector">
+                                    <select class="typeSelector" id="batchType">
                                         <option>Choose type</option>
                                         <option value="Pilsner">Pilsner</option>
                                         <option value="Wheat">Wheat</option>
@@ -184,7 +183,7 @@
                             <th>Bottles #</th>
                             <td>
                                 <label>
-                                    <input type="text" name="inputAmount" value="Insert Amount">
+                                    <input type="text" id="batchAmount" placeholder="Insert Amount">
                                 </label>
                             </td>
                             <td>
@@ -195,12 +194,12 @@
                             <th>Speed</th>
                             <td>
                                 <label>
-                                    <input type="text" name="inputSpeed" value="Insert Speed">
+                                    <input type="text" id="batchSpeed" placeholder="Insert Speed">
                                 </label>
                             </td>
                         </tr>
                     </table>
-                    <label>Recommended Speed: <label>???</label></label>
+                    <label>Recommended Speed: <label id="recSpeed">???</label></label>
                 </div>
 
                 <div class="newBatchBottomMiddle">
@@ -245,6 +244,7 @@
                         </table>
                     </div>
                 </div>
+                <button class="closeBtn" id="closeBtn" onclick=toggleNewBatch()>&times</button>
             </div>
         </div>
     </div>
