@@ -7,17 +7,14 @@
     <title>My Website</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+    <script defer src="websocketScript.js"></script>
 </head>
 <body>
 <main>
-    <div style="display:flex; flex-direction: column;">
-    <p class="test">Current State</p>
-    <label id="currentState"></label>
-    <p class="test">Control Command</p>
-    <input type="number">
-    <button id="controlCommand">Execute</button>
-    </div>
+    <p>Current State</p>
+    <label id="currentStateLabel"></label>
 </main>
-<script src="app.ts"></script>
 </body>
 </html>

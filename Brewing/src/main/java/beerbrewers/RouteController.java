@@ -1,4 +1,4 @@
-package beerbrewers.brewing;
+package beerbrewers;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @Controller
-public class HelloWorldController {
+public class RouteController {
 
     @GetMapping("/")
     @ResponseBody

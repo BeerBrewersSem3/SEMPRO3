@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+    <link rel="stylesheet" href="./historyOpenStyle.css">
+    <script src="switchPage.js"></script>
+</head>
+<body>
+<div class="topBar">
+    <div class="menuBtns">
+        <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
+        <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
+        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
+    </div>
+
+    <div class="header">
+        <label class="title">Beer Bros</label>
+    </div>
+
+    <div class="navRight">
+        <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
+        <button class="emerBtn">Emergency Stop!</button>
+    </div>
+</div>
+
+<div class="line"></div>
+
+<p class="bInfo">Batch Information</p>
+
+<div class="horizAdjust">
+    <div class="main">
+        <div class="mainLeft">
+            <table class="batchInfo">
+                <tr>
+                    <th class="infoRow">ID:</th>
+                    <td id="ID">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Type:</th>
+                    <td id="Type">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Amount:</th>
+                    <td id="Amount">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Consumed:</th>
+                    <td id="Consumed">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Successful:</th>
+                    <td id="successful">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Rejected:</th>
+                    <td id="rejected">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Speed:</th>
+                    <td id="speed">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Started:</th>
+                    <td id="started">???</td>
+                </tr>
+                <tr>
+                    <th class="infoRow">Stopped:</th>
+                    <td id="stopped">???</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="mainMiddle">
+            <div class="tableWrapper">
+                <table class="historyTable">
+                    <thead>
+                    <tr class="tableHeader">
+                        <th>Timestamp</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Vibration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>01/03-23 18:56</td>
+                        <td>43</td>
+                        <td>80</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td>01/03-23 18:56</td>
+                        <td>44</td>
+                        <td>80</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td>01/03-23 21:03</td>
+                        <td>44</td>
+                        <td>80</td>
+                        <td>0.47</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="mainRight">
+            <button class="graphBtn">S
+                H
+                O
+                W
+
+                G
+                R
+                A
+                P
+                H</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
