@@ -57,10 +57,6 @@
     margin-left: 20px;
 }
 
-.newBatchBottomLeft label{
-    text-align: center;
-}
-
 .infoTable td, .infoTable th{
     padding: 5px 0;
 }
@@ -94,6 +90,11 @@
     border: solid 1px white;
     color: white;
     box-shadow: 1px 1px white;
+}
+
+.recSpeed{
+    text-align: center;
+    margin-top: 5px;
 }
 /*____________________*^^Bottom Left of Batch popup^^*____________________*/
 
