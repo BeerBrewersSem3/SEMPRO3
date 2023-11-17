@@ -1,5 +1,6 @@
 package beerbrewers.worker;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,11 @@ public class WorkerService {
 
     public List<Worker> getWorkers() {
         return workerRepository.findAll();
+    }
+
+    @Transactional
+    public Worker findWorker(Long workerId) {
+        return workerRepository.findByWorkerId(workerId);
     }
 
     /**

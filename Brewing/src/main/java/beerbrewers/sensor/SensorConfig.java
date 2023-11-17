@@ -1,5 +1,6 @@
 package beerbrewers.sensor;
 
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ public class SensorConfig {
      * @return
      */
     @Bean
+    @Transactional
     CommandLineRunner sensorCommandLineRunner(SensorRepository repository) {
         return args -> {
             Sensor vibrationSensor = new Sensor(
