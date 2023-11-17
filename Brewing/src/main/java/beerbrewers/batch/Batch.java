@@ -1,6 +1,7 @@
 package beerbrewers.batch;
 
 import beerbrewers.operation.Operation;
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 
@@ -96,7 +97,8 @@ public class Batch {
      * @param completedCount
      * @param startTime
      */
-    public Batch(Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted, long defectiveCount, long completedCount, Timestamp startTime) {
+    public Batch(Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
+                 long defectiveCount, long completedCount, Timestamp startTime) {
         this.operation = operation;
         this.brewName = brewName;
         this.amount = amount;
@@ -107,7 +109,8 @@ public class Batch {
         this.startTime = startTime;
     }
 
-    public Batch(Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted, long defectiveCount, long completedCount, Timestamp startTime, Timestamp endTime) {
+    public Batch(Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
+                 long defectiveCount, long completedCount, Timestamp startTime, Timestamp endTime) {
         this.operation = operation;
         this.brewName = brewName;
         this.amount = amount;
@@ -131,7 +134,8 @@ public class Batch {
      * @param completedCount
      * @param startTime
      */
-    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted, long defectiveCount, long completedCount, Timestamp startTime) {
+    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
+                 long defectiveCount, long completedCount, Timestamp startTime) {
         this.batchId = batchId;
         this.operation = operation;
         this.brewName = brewName;
@@ -143,7 +147,8 @@ public class Batch {
         this.startTime = startTime;
     }
 
-    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted, long defectiveCount, long completedCount, Timestamp startTime, Timestamp endTime) {
+    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
+                 long defectiveCount, long completedCount, Timestamp startTime, Timestamp endTime) {
         this.batchId = batchId;
         this.operation = operation;
         this.brewName = brewName;
