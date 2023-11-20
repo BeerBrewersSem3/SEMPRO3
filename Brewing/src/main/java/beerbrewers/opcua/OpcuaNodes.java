@@ -35,7 +35,8 @@ public enum OpcuaNodes {
     YEAST(6,"::Program:Inventory.Yeast","yeast"),
 
     /* MAINTENANCE */
-    MAINTENANCE_COUNTER(6, "::Program:Maintenance.Counter", "maintenanceCounter");
+    MAINTENANCE_COUNTER(6, "::Program:Maintenance.Counter", "maintenanceCounter"),
+    MAINTENANCE_TRIGGER(6, "::Program:Maintenance.Trigger", "maintenanceTrigger");
 
     private final int namespaceIndex;
     private final String identifier;
