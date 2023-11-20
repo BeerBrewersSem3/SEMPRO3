@@ -14,4 +14,6 @@ public interface WorkerRepository extends JpaRepository<Worker, Long> {
     Worker findByWorkerId(Long workerId);
     List<Worker> findAllByName(String name);
 
+    Worker findTopByOrderByWorkerIdDesc();
+
 }

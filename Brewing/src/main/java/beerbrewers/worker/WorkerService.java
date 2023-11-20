@@ -1,5 +1,6 @@
 package beerbrewers.worker;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,14 @@ public class WorkerService {
         return workerRepository.findAll();
     }
 
+    public Worker getWorker(Long workerId) {
+        return workerRepository.findByWorkerId(workerId);
+    }
+
+    public Worker getFirstWorkerInDatabase() {
+        return workerRepository.findTopByOrderByWorkerIdDesc();
+    }
+
     /**
      * Be aware that this method does not check if the worker already exists.
      * @param worker
@@ -28,10 +37,13 @@ public class WorkerService {
     }
 
     public void deleteWorker(Long workerId) {
-        boolean exists = workerRepository.existsById(workerId);
-        if (!exists) {
+        if (!determineIdPresenceInDB(workerId)) {
             throw new IllegalStateException("Worker with id '" + workerId + "' does not exist.");
         }
         workerRepository.deleteById(workerId);
+    }
+
+    public boolean determineIdPresenceInDB(Long idToCheck) {
+        return workerRepository.existsById(idToCheck);
     }
 }

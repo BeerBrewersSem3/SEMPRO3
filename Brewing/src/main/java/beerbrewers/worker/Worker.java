@@ -1,6 +1,9 @@
 package beerbrewers.worker;
 
+import beerbrewers.operation.Operation;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity(name = "Worker")
 @Table(name = "worker")
@@ -28,6 +31,9 @@ public class Worker {
             columnDefinition = "TEXT"
     )
     private String name;
+
+    @OneToMany(targetEntity = Operation.class)
+    private List<Operation> operations;
 
     /**
      * Remember to implement password encryption!!
@@ -73,11 +79,21 @@ public class Worker {
         this.name = name;
     }
 
+    public List<Operation> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(List<Operation> operations) {
+        this.operations = operations;
+    }
+
     @Override
     public String toString() {
         return "Worker{" +
                 "workerId=" + workerId +
                 ", name='" + name + '\'' +
+                ", operations=" + operations +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

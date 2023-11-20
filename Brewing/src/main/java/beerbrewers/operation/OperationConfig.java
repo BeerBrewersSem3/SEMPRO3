@@ -1,32 +1,25 @@
 package beerbrewers.operation;
 
-import beerbrewers.worker.Worker;
-import beerbrewers.worker.WorkerService;
-import jakarta.transaction.Transactional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import beerbrewers.worker.WorkerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.*;
 
-@Configuration
+@Configuration("operationConfig")
+@DependsOn("workerConfig")
 public class OperationConfig {
 
-    private static final Logger logger = LoggerFactory.getLogger(OperationConfig.class);
+    private final WorkerRepository workerRepository;
 
-    @Autowired
-    private final WorkerService workerService;
-
-    public OperationConfig(WorkerService workerService) {
-        this.workerService = workerService;
+    public OperationConfig(WorkerRepository workerRepository) {
+        this.workerRepository = workerRepository;
     }
 
     @Bean
-    @Transactional
     CommandLineRunner operationCommandLineRunner(OperationRepository repository) {
         return args -> {
-                Worker worker = workerService.findWorker(1L);
-                Operation testOperation = new Operation(worker);
+                Operation testOperation = new Operation();
+
+                testOperation.setWorker(workerRepository.findByWorkerId(1L));
                 repository.save(testOperation);
 
         };

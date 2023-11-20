@@ -16,6 +16,4 @@ public interface OperationRepository extends JpaRepository<Operation, Long> {
     Operation findByOperationId(long operationId);
     List<Operation> findAllByWorker(Worker worker);
 
-    List<Operation> findAllByBatchListContains(Batch batch);
-
 }
