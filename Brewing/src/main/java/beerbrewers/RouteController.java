@@ -24,4 +24,16 @@ public class RouteController {
         // Convert the bytes to a string using UTF-8 encoding
         return new String(bytes, StandardCharsets.UTF_8);
     }
+
+    @GetMapping("/login")
+    @ResponseBody
+    public String loginPage() throws IOException {
+        // Load the index.html file from the resources/public directory
+        Resource resource = new ClassPathResource("public/login.html");
+        byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
+
+        // Convert the bytes to a string using UTF-8 encoding
+        return new String(bytes, StandardCharsets.UTF_8);
+    }
 }
+
