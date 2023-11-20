@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="postgres@db.hbdjtgvmsnqkxcufwgwh.supabase.co [2]" uuid="152744bb-b070-4732-ac0b-73a0678af688">
+    <data-source source="LOCAL" name="postgres@db.hbdjtgvmsnqkxcufwgwh.supabase.co" uuid="c584c767-be62-4cf8-93c2-827e3bc7ff92">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

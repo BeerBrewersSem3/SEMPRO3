@@ -20,9 +20,12 @@ public class WorkerService {
         return workerRepository.findAll();
     }
 
-    @Transactional
-    public Worker findWorker(Long workerId) {
+    public Worker getWorker(Long workerId) {
         return workerRepository.findByWorkerId(workerId);
+    }
+
+    public Worker getFirstWorkerInDatabase() {
+        return workerRepository.findTopByOrderByWorkerIdDesc();
     }
 
     /**
@@ -34,10 +37,13 @@ public class WorkerService {
     }
 
     public void deleteWorker(Long workerId) {
-        boolean exists = workerRepository.existsById(workerId);
-        if (!exists) {
+        if (!determineIdPresenceInDB(workerId)) {
             throw new IllegalStateException("Worker with id '" + workerId + "' does not exist.");
         }
         workerRepository.deleteById(workerId);
+    }
+
+    public boolean determineIdPresenceInDB(Long idToCheck) {
+        return workerRepository.existsById(idToCheck);
     }
 }
