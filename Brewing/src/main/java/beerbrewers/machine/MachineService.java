@@ -9,17 +9,22 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class MachineService implements OpcUaNodeObserver {
 
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
     private final OpcuaCommander opcUaCommander;
+    private CountDownLatch latch;
+    private OpcuaNodes awaitingNode;
     private static final Logger logger = LoggerFactory.getLogger(MachineService.class);
 
     @Autowired
@@ -49,18 +54,39 @@ public class MachineService implements OpcUaNodeObserver {
     }
     public boolean startBatch(Batch batch){
 
-        System.out.println((float)batch.getSpeed());
-        opcUaCommander.sendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
-        opcUaCommander.sendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
-        opcUaCommander.sendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getId());
-        opcUaCommander.sendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
-        opcUaCommander.sendCommand(OpcuaNodes.CNTRL_CMD,3);
-        opcUaCommander.commandChangeRequest(true);
+        resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
+        resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
+        resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getId());
+        resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
+        // TODO: Wait for all latch
+        resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,1);
+        waitForLatch();
+        resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,2);
+        waitForLatch();
         return true;
+    }
+
+    public void resetLatchAndSendCommand(OpcuaNodes node, Number command) {
+        this.awaitingNode = node;
+        this.latch =  new CountDownLatch(1);
+        this.opcUaCommander.sendCommand(node, command);
+    }
+
+    private void waitForLatch() {
+        try{
+            latch.await(1,TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
-
+        System.out.println("Node: " + node.getName() + " has new value of: " + newState);
+        if (node.getName().equals(awaitingNode.getName())) {
+            System.out.println("INSIDE: Node: " + node.getName() + " has new value of: " + newState);
+            latch.countDown();
+        }
     }
 }

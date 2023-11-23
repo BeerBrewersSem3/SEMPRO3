@@ -51,6 +51,8 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.NEXT_BATCH_ID);
             subscribe(OpcuaNodes.NEXT_PRODUCT_ID);
             subscribe(OpcuaNodes.NEXT_BATCH_AMOUNT);
+            subscribe(OpcuaNodes.CMD_CHANGE_REQUEST);
+            subscribe(OpcuaNodes.CNTRL_CMD);
 
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
@@ -58,8 +60,6 @@ public class OpcuaSubscriber {
             throw new RuntimeException(e);
         }
     }
-
-
 
     public void subscribe(OpcuaNodes node) throws ExecutionException, InterruptedException {
         NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
@@ -72,7 +72,7 @@ public class OpcuaSubscriber {
             for (UaMonitoredItem item : items) {
                 item.setValueConsumer((moniteredItem, dataValue) -> {
                     state = dataValue.getValue().getValue() + "";
-                    logger.debug("The node " + node.getName() + "has a new value of " + state);
+                    logger.info("The node " + node.getName() + "has a new value of " + state);
                     opcUaNodeUpdateManager.notifyObservers(node, state);
                 });
             }
