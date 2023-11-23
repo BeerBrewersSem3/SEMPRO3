@@ -24,6 +24,7 @@ public class OperationService {
 
     public void addNewOperation(Operation operation) {
         operationRepository.save(operation);
+        setCurrentRunningOperation(operation);
     }
 
     public Operation getCurrentRunningOperation() {
