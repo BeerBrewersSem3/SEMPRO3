@@ -1,5 +1,6 @@
 package beerbrewers.batch;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,15 @@ public class BatchService {
         batchRepository.save(batch);
     }
 
+    @Transactional
+    public Long saveBatchAndGetId(Batch batch) {
+        // Save the entity to the database
+        batchRepository.save(batch);
+        // Return the auto-generated ID
+        return batch.getBatchId();
+    }
+
+    @Transactional
     public Batch getLatestBatch(){
         return batchRepository.findTopByOrderByBatchIdDesc();
     }
