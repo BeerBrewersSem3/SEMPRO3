@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="./loginStyle.css">
+    <script src="switchPage.js"></script>
 </head>
 <body>
   <div class="container">
+      <p>Login</p>
       <div class="loginContainer">
           <div>
-              <label class="headers">Username</label>
-              <input type="text" class="inputs">
+              <label class="headers">Username: </label>
+              <input type="text" class="inputs" required>
           </div>
 
           <div>
-              <label class="headers">Password</label>
-              <input type="text" class="inputs">
+              <label class="headers">Password: </label>
+              <input type="text" class="inputs" required>
           </div>
       </div>
-      <button class="loginBtn">Login</button>
+      <button class="loginBtn" type="submit" onclick=openMonitor()>Login</button>
   </div>
 </body>
 </html>

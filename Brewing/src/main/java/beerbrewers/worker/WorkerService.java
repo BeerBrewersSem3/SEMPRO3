@@ -1,5 +1,6 @@
 package beerbrewers.worker;
 
+import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,10 @@ public class WorkerService {
 
     public List<Worker> getWorkers() {
         return workerRepository.findAll();
+    }
+
+    public Worker getWorker(Long workerId) {
+        return workerRepository.findByWorkerId(workerId);
     }
 
     /**

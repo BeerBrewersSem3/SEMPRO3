@@ -24,6 +24,11 @@ public class WorkerController {
         return workerService.getWorkers();
     }
 
+    @GetMapping(path = "{workerId}")
+    public Worker getWorker(@PathVariable("workerId") Long workerId) {
+        return workerService.getWorker(workerId);
+    }
+
     @PostMapping
     public void registerNewWorker(@RequestBody Worker worker) {
         workerService.addNewWorker(worker);

@@ -14,13 +14,39 @@ body {
     text-align: center;
 }
 
+.container p {
+    font-size: 28px;
+    margin: 0;
+    padding: 5px;
+}
+
 .loginContainer {
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
 
+.loginContainer div {
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginContainer div label {
+    margin-right: 5px;
+}
+
 .loginBtn {
-    width: 50%;
     margin: 10px;
+    background-color: #555555;
+    border: 2px solid white;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.loginBtn:hover{
+    background-color: white;
+    color: black;
 }
