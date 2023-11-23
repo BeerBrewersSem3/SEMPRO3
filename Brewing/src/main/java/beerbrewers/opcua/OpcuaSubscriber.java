@@ -25,15 +25,14 @@ import java.util.concurrent.ExecutionException;
 public class OpcuaSubscriber {
 
     private String state = "";
-    private OpcuaClientConnection connection;
-    @Autowired
-    private OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+    private final OpcuaClientConnection connection;
+    private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
     private static final Logger logger = LoggerFactory.getLogger(OpcuaSubscriber.class);
 
     @Autowired
     public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager){
         this.connection = opcuaClientConnection;
-        //this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
+        this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
     @PostConstruct
     public void intializeSubscription() {
@@ -50,14 +49,19 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.PROD_DEFECTIVE_COUNT);
             subscribe(OpcuaNodes.MAINTENANCE_COUNTER);
             subscribe(OpcuaNodes.MAINTENANCE_TRIGGER);
+            subscribe(OpcuaNodes.MACH_SPEED_WRITE);
+            subscribe(OpcuaNodes.NEXT_BATCH_ID);
+            subscribe(OpcuaNodes.NEXT_PRODUCT_ID);
+            subscribe(OpcuaNodes.NEXT_BATCH_AMOUNT);
+            subscribe(OpcuaNodes.CMD_CHANGE_REQUEST);
+            subscribe(OpcuaNodes.CNTRL_CMD);
+
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-
-
 
     public void subscribe(OpcuaNodes node) throws ExecutionException, InterruptedException {
         NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
@@ -69,6 +73,7 @@ public class OpcuaSubscriber {
         completableFuture.thenAccept(items -> {
             for (UaMonitoredItem item : items) {
                 item.setValueConsumer((moniteredItem, dataValue) -> {
+
                     state = dataValue.getValue().getValue().toString();
                     logger.debug("The node " + node.getName() + "has a new value of " + state);
                     opcUaNodeUpdateManager.notifyObservers(node, state);
