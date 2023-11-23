@@ -1,4 +1,5 @@
 package beerbrewers.opcua;
+import beerbrewers.websocket.WebsocketService;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
@@ -13,6 +14,8 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.MonitoringMode;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ExecutionException;
@@ -20,6 +23,8 @@ import java.util.concurrent.ExecutionException;
 public class OpcuaClientConnection {
 
     private OpcUaClient client;
+    private static final Logger logger = LoggerFactory.getLogger(OpcuaClientConnection.class);
+
     {
         try {
             client = OpcUaClient.create(
@@ -27,12 +32,12 @@ public class OpcuaClientConnection {
             );
 
             client.connect().get();
-            System.out.println("Connected to OPC UA Sever");
+            logger.info("Connected to OPC UA Sever");
 
         } catch (UaException | InterruptedException e) {
-            System.out.println("Connection Error (OPC UA Server)");
+            logger.error("Connection Error (OPC UA Server)");
         } catch (ExecutionException e) {
-            System.out.println("Execution Error (OPC UA Server)");
+            logger.error("Execution Error (OPC UA Server)");
         }
     }
     public OpcUaClient getClient() {
