@@ -32,9 +32,6 @@ public class Worker {
     )
     private String name;
 
-    @OneToMany(targetEntity = Operation.class)
-    private List<Operation> operations;
-
     /**
      * Remember to implement password encryption!!
      */
@@ -79,21 +76,11 @@ public class Worker {
         this.name = name;
     }
 
-    public List<Operation> getOperations() {
-        return operations;
-    }
-
-    public void setOperations(List<Operation> operations) {
-        this.operations = operations;
-    }
-
     @Override
     public String toString() {
         return "Worker{" +
                 "workerId=" + workerId +
                 ", name='" + name + '\'' +
-                ", operations=" + operations +
-                ", password='" + password + '\'' +
                 '}';
     }
 }
