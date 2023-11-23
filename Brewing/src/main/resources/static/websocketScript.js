@@ -79,10 +79,12 @@ function startBatch() {
     } else {
         console.error("WebSocket connection not yet established");
     }
-     //stompClient.send("batch/newBatch", {}, JSON.stringify(batchData));
-     //console.log(batchData)
+    toggleNewBatch();
 }
 
+function toggleNewBatch() {
+    document.getElementById("newBatch").classList.toggle("active");
+}
 function convertBrewType() {
     const batchType    = document.getElementById("brewType").value;
     switch(batchType) {
