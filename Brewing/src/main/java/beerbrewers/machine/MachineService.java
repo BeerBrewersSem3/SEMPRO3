@@ -1,19 +1,16 @@
 package beerbrewers.machine;
 
 import beerbrewers.batch.Batch;
+import beerbrewers.batch.BatchService;
 import beerbrewers.batch.BrewEnum;
 import beerbrewers.opcua.*;
-import beerbrewers.operation.Operation;
-import beerbrewers.worker.Worker;
+import beerbrewers.operation.OperationService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -22,15 +19,23 @@ import java.util.concurrent.TimeUnit;
 public class MachineService implements OpcUaNodeObserver {
 
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+    private final OperationService operationService;
+    private final BatchService batchService;
     private final OpcuaCommander opcUaCommander;
     private CountDownLatch latch;
     private OpcuaNodes awaitingNode;
     private static final Logger logger = LoggerFactory.getLogger(MachineService.class);
+    private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
+
 
     @Autowired
     public MachineService(OpcUaNodeUpdateManager    opcUaNodeUpdateManager,
+                          OperationService          operationService,
+                          BatchService              batchService,
                           OpcuaCommander            opcuaCommander) {
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
+        this.operationService = operationService;
+        this.batchService = batchService;
         this.opcUaCommander = opcuaCommander;
     }
 
@@ -55,6 +60,14 @@ public class MachineService implements OpcUaNodeObserver {
          */
 
 
+    }
+    public boolean startBatch(int brewId, long batchAmount, long batchSpeed){
+        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId],batchAmount,batchSpeed);
+        Long batchId = batchService.saveBatchAndGetId(batch);
+        batch.setBatchId(batchId);
+
+        startBatch(batch);
+        return true;
     }
     public boolean startBatch(Batch batch){
 

@@ -1,7 +1,7 @@
 
 function login() {
     createOperation();
-    openMonitor();
+    //openMonitor();
 }
 
 function openMonitor() {
@@ -34,6 +34,7 @@ function createOperation() {
                     }
                     // If the response is okay, you can handle it here
                     console.log('Operation saved successfully');
+                    openMonitor();
                 })
                 .catch(error => {
                     console.error('Error saving operation:', error);
