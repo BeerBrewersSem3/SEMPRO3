@@ -54,4 +54,14 @@ public enum BrewEnum {
     public int getYeast() {
         return yeast;
     }
+
+    public static BrewEnum getBrewFromId(int brewId) {
+        BrewEnum[] brewEnums = {BrewEnum.PILSNER,
+                                BrewEnum.WHEAT,
+                                BrewEnum.IPA,
+                                BrewEnum.STOUT,
+                                BrewEnum.ALE,
+                                BrewEnum.ALCOHOL_FREE};
+        return brewEnums[brewId];
+    }
 }

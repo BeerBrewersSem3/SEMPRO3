@@ -92,35 +92,18 @@ public class Batch {
      * @param brewName
      * @param amount
      * @param speed
-     * @param isCompleted
-     * @param defectiveCount
-     * @param completedCount
-     * @param startTime
      */
-    public Batch(Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
-                 long defectiveCount, long completedCount, Timestamp startTime) {
+    public Batch(Operation operation, BrewEnum brewName, long amount, long speed) {
         this.operation = operation;
         this.brewName = brewName;
         this.amount = amount;
         this.speed = speed;
-        this.isCompleted = isCompleted;
-        this.defectiveCount = defectiveCount;
-        this.completedCount = completedCount;
-        this.startTime = startTime;
+        this.isCompleted = false;
+        this.defectiveCount = 0;
+        this.completedCount = 0;
+        this.startTime = new Timestamp(System.currentTimeMillis());
     }
 
-    public Batch(Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
-                 long defectiveCount, long completedCount, Timestamp startTime, Timestamp endTime) {
-        this.operation = operation;
-        this.brewName = brewName;
-        this.amount = amount;
-        this.speed = speed;
-        this.isCompleted = isCompleted;
-        this.defectiveCount = defectiveCount;
-        this.completedCount = completedCount;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
 
     /**
      * Constructors with batchId

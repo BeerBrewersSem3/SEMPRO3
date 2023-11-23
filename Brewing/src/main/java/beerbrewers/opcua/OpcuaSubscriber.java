@@ -73,7 +73,6 @@ public class OpcuaSubscriber {
         completableFuture.thenAccept(items -> {
             for (UaMonitoredItem item : items) {
                 item.setValueConsumer((moniteredItem, dataValue) -> {
-
                     state = dataValue.getValue().getValue().toString();
                     logger.debug("The node " + node.getName() + "has a new value of " + state);
                     opcUaNodeUpdateManager.notifyObservers(node, state);

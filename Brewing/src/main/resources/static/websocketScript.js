@@ -62,13 +62,13 @@ function connectWebSocket() {
 }
 function startBatch() {
     const batchID   = document.getElementById("batchID").value;
-    const batchType    = document.getElementById("batchType").value;
+    const brewType    = convertBrewType()
     const batchAmount  = document.getElementById("batchAmount").value;
     const batchSpeed   = document.getElementById("batchSpeed").value;
 
     const batchData = {
         batchID,
-        batchType,
+        brewType,
         batchAmount,
         batchSpeed
     }
@@ -81,6 +81,18 @@ function startBatch() {
     }
      //stompClient.send("batch/newBatch", {}, JSON.stringify(batchData));
      //console.log(batchData)
+}
+
+function convertBrewType() {
+    const batchType    = document.getElementById("brewType").value;
+    switch(batchType) {
+        case "Pilsner": return 0;
+        case "Wheat": return 1;
+        case "IPA": return 2;
+        case "Stout": return 3;
+        case "Ale": return 4;
+        case "Alcohol Free": return 5
+    }
 }
 connectWebSocket();
 

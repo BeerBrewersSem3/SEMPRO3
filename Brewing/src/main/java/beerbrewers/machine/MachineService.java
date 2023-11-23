@@ -49,10 +49,15 @@ public class MachineService implements OpcUaNodeObserver {
             opcUaNodeUpdateManager.addObserver(node, this);
             logger.info("MachineService subscribed to node: " + node.getName());
         });
-        Batch batch = new Batch(1L,new Operation(new Worker("Henrik","1234")),BrewEnum.ALCOHOL_FREE,100L,200L,false,0L,0L, new Timestamp(2023,11,16,20,15,20,0));
+        /*Batch batch = new Batch(1L,new Operation(new Worker("Henrik","1234")),BrewEnum.ALCOHOL_FREE,100L,200L,false,0L,0L, new Timestamp(2023,11,16,20,15,20,0));
         startBatch(batch);
+
+         */
+
+
     }
     public boolean startBatch(Batch batch){
+
 
         resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
@@ -83,10 +88,11 @@ public class MachineService implements OpcUaNodeObserver {
 
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
-        System.out.println("Node: " + node.getName() + " has new value of: " + newState);
-        if (node.getName().equals(awaitingNode.getName())) {
-            System.out.println("INSIDE: Node: " + node.getName() + " has new value of: " + newState);
+        logger.debug("Node: " + node.getName() + " has new value of: " + newState);
+        if(awaitingNode != null && node.getName().equals(awaitingNode.getName())) {
+            logger.debug("INSIDE: Node: " + node.getName() + " has new value of: " + newState);
             latch.countDown();
         }
+
     }
 }

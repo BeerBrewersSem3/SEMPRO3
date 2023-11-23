@@ -1,30 +1,51 @@
 package beerbrewers.machine;
 
 import beerbrewers.batch.Batch;
+import beerbrewers.batch.BatchService;
+import beerbrewers.batch.BrewEnum;
+import beerbrewers.operation.Operation;
 import beerbrewers.websocket.WebsocketService;
+import beerbrewers.worker.Worker;
+import org.hibernate.boot.model.source.spi.FetchCharacteristics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.crypto.Mac;
+import java.sql.Timestamp;
 import java.util.Map;
 
 @Controller
 public class MachineController {
     private Batch batch;
-    private MachineService machineService;
+    private final MachineService machineService;
+    private final BatchService batchService;
     private static final Logger logger = LoggerFactory.getLogger(MachineController.class);
+    private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
+    @Autowired
+    public MachineController(MachineService machineService, BatchService batchService) {
+        this.machineService = machineService;
+        this.batchService = batchService;
+    }
+
     @MessageMapping("batch/newBatch")
     public void sendBatch(Map<String, String> batchMap) {
         // Testing retrieval of batch data
-        int batchID = Integer.parseInt(batchMap.get("batchID"));
-        String batchType =  batchMap.get("batchType");
-        int batchAmount = Integer.parseInt(batchMap.get("batchAmount"));
-        int batchSpeed = Integer.parseInt(batchMap.get("batchSpeed"));
+        int brewId =  Integer.parseInt(batchMap.get("brewType"));
+        long batchAmount = Long.parseLong(batchMap.get("batchAmount"));
+        long batchSpeed = Long.parseLong(batchMap.get("batchSpeed"));
+        Batch batch = new Batch(new Operation(new Worker("John Smith","1234")), BrewEnum.getBrewFromId(brewId),batchAmount,batchSpeed);
 
-        logger.debug("ID: " + batchID +
-                "\n type: " + batchType +
+        batchService.addNewBatch(batch);
+
+        Batch createdBatch = batchService.getLatestBatch();
+
+
+        machineService.startBatch(createdBatch);
+        logger.info("\n type: " + brewId +
                 "\n amount: " + batchAmount +
                 "\n speed: " + batchSpeed);
     }

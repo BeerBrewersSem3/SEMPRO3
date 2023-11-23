@@ -3,6 +3,7 @@ package beerbrewers.batch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -20,5 +21,9 @@ public class BatchService {
 
     public void addNewBatch(Batch batch) {
         batchRepository.save(batch);
+    }
+
+    public Batch getLatestBatch(){
+        return batchRepository.findTopByOrderByBatchIdDesc();
     }
 }
