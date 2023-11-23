@@ -103,35 +103,56 @@
     </div>
 
     <div class="right">
-        <div class="topSilos">
-            <div class="silos">
-                <label>Barley</label>
-                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
-                <div class="fillHeight">
-                    <label class="fillHeightColor"></label>
+        <div class="silos">
+            <div id="Barley" class="silo">
+                <div class="text_content">
+                    <div>
+                        <p id="ingredient_Barley" class="placeholder">Barley</p>
+                    </div>
+                    <div>
+                        <p id="fill_Barley" class="placeholder">0%</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="silos">
-                <label>Hops</label>
-                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            <div id="Hops" class="silo">
+                <div class="text_content">
+                    <div>
+                        <p id="ingredient_Hops" class="placeholder">Hops</p>
+                    </div>
+                    <div>
+                        <p id="fill_Hops" class="placeholder">0%</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="silos">
-                <label>Malt</label>
-                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            <div id="Malt" class="silo">
+                <div class="text_content">
+                    <div>
+                        <p id="ingredient_Malt" class="placeholder">Malt</p>
+                    </div>
+                    <div>
+                        <p id="fill_Malt" class="placeholder">0%</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="botSilos">
-            <div class="silos">
-                <label>Wheat</label>
-                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            <div id="Wheat" class="silo">
+                <div class="text_content">
+                    <div>
+                        <p id="ingredient_Wheat" class="placeholder">Wheat</p>
+                    </div>
+                    <div>
+                        <p id="fill_Wheat" class="placeholder">0%</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="silos">
-                <label>Yeast</label>
-                <img class="silo" src="Icons/Silo.png" alt="Maintenance picture">
+            <div id="Yeast" class="silo">
+                <div class="text_content">
+                    <div>
+                        <p id="ingredient_Yeast" class="placeholder">Yeast</p>
+                    </div>
+                    <div>
+                        <p id="fill_Yeast" class="placeholder">0%</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -165,7 +186,7 @@
                             <th>ID</th>
                             <td>
                                 <div class="idContainer">
-                                    <label class="batchID" id="batchID"></label>
+                                    <input type="text" class="batchID" id="batchID">
                                 </div>
                             </td>
                         </tr>
@@ -209,7 +230,7 @@
                 </div>
 
                 <div class="newBatchBottomMiddle">
-                    <button class="startBtn">Start</button>
+                    <button class="startBtn" onclick="startBatch()">Start</button>
                 </div>
 
                 <div class="newBatchBottomRight">
