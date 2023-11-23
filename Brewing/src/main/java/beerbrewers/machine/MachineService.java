@@ -25,7 +25,7 @@ public class MachineService implements OpcUaNodeObserver {
     private CountDownLatch latch;
     private OpcuaNodes awaitingNode;
     private static final Logger logger = LoggerFactory.getLogger(MachineService.class);
-    private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
+    private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.STOUT, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
 
 
     @Autowired
@@ -62,7 +62,7 @@ public class MachineService implements OpcUaNodeObserver {
 
     }
     public boolean startBatch(int brewId, long batchAmount, long batchSpeed){
-        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId-1],batchAmount,batchSpeed);
+        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId],batchAmount,batchSpeed);
         Long batchId = batchService.saveBatchAndGetId(batch);
         batch.setBatchId(batchId);
 
