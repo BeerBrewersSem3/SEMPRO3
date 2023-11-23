@@ -8,13 +8,9 @@ body{
     flex-direction: column;
 }
 
-html {
-    height: 100%;
-    width: 100%;
-    --main-beer-color: rgb(208, 202, 37);
-    margin: 0;
-    padding: 0;
-}
+
+
+
 
 
 
@@ -183,13 +179,46 @@ html {
 
 /*____________________*Bottom Right*____________________*/
 .right{
-    margin-left: 5%;
     display: flex;
     flex-direction: column;
     width: 50%;
-
+    justify-content: center;
+    align-items: center;
 }
 
+.topSilos{
+    display: flex;
+}
+
+.botSilos{
+    display: flex;
+    justify-content: center;
+}
+
+.silos{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.silos label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.silos .silo{
+    width: 250px;
+}
+
+.fillHeight{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+}
 /*____________________*^^Bottom Right^^*____________________*/
 
 /*____________________*^^Bottom^^*____________________*/
@@ -220,28 +249,3 @@ html {
     font-size: 20px;
 }
 /*____________________*^^Maintenance Box^^*____________________*/
-
-
-
-
-
-.silos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border: red solid 5px;
-    height: 100%;
-    gap: 4%;
-}
-
-.silo {
-    border: 1px solid black;
-    text-align: center;
-}
-
-.text_content{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    font-weight: 700;
-}
