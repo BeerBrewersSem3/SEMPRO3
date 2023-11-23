@@ -7,7 +7,6 @@
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/DBOperation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/DBOperation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +116,7 @@
       <workItem from="1700227610202" duration="7606000" />
       <workItem from="1700461268579" duration="5101000" />
       <workItem from="1700484683149" duration="310000" />
-      <workItem from="1700726304736" duration="12032000" />
+      <workItem from="1700726304736" duration="13697000" />
     </task>
     <servers />
   </component>

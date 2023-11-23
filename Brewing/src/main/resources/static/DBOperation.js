@@ -1,21 +1,14 @@
-function test() {
-    console.log("TEST!!!")
-}
 
 function login() {
-    test();
-    console.log("Logging in!");
     createOperation();
-    // openMonitor();
+    openMonitor();
 }
 
 function openMonitor() {
     window.location.href = 'monitorPage.html';
-    console.log("TEST2");
 }
 
 function createOperation() {
-    console.log("creating operation!")
 // Step 1: Fetch the Worker from the database
     const workerId = 1;
     fetch(`http://localhost:8080/api/v1/worker/${workerId}`)
@@ -30,8 +23,6 @@ function createOperation() {
             const operation = {
                 worker
             };
-            console.log(worker);
-            console.log(operation);
             // Step 3: Make a POST request to the saveOperation endpoint
             fetch('http://localhost:8080/api/v1/operation', {
                 method: 'POST',
