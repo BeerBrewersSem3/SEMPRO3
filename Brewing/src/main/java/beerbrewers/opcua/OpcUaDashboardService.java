@@ -36,7 +36,12 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
             OpcuaNodes.PROD_PROCESSED_COUNT,
             OpcuaNodes.PROD_DEFECTIVE_COUNT,
             OpcuaNodes.MAINTENANCE_COUNTER,
-            OpcuaNodes.MAINTENANCE_TRIGGER
+            OpcuaNodes.MAINTENANCE_TRIGGER,
+            OpcuaNodes.BARLEY,
+            OpcuaNodes.MALT,
+            OpcuaNodes.HOPS,
+            OpcuaNodes.WHEAT,
+            OpcuaNodes.YEAST
         );
 
         nodesToSubscribe.forEach(node -> {

@@ -55,7 +55,11 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.NEXT_BATCH_AMOUNT);
             subscribe(OpcuaNodes.CMD_CHANGE_REQUEST);
             subscribe(OpcuaNodes.CNTRL_CMD);
-
+            subscribe(OpcuaNodes.BARLEY);
+            subscribe(OpcuaNodes.WHEAT);
+            subscribe(OpcuaNodes.HOPS);
+            subscribe(OpcuaNodes.MALT);
+            subscribe(OpcuaNodes.YEAST);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {

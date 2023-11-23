@@ -1,9 +1,10 @@
 var stompClient = null;
-function subscribeToNode(nodeName) {
+function subscribeToStatus(nodeName) {
     stompClient.subscribe('/sensor/data/' + nodeName, (message) => {
         document.getElementById(nodeName + "Label").innerText = message.body;
     })
 }
+
 
 function maintenanceCounter() {
     stompClient.subscribe('/sensor/data/maintenanceCounter', (message) => {
@@ -31,33 +32,39 @@ function colorCalc(fill) {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-/*
-function maintenanceTrigger() {
-    stompClient.subscribe('/sensor/data/maintenanceTrigger', (message) => {
-        console.log("Message: " + message);
+
+function subscribeToInventory(nodeName){
+    stompClient.subscribe('/sensor/data/' + nodeName, (message)=>{
+        console.log("Subscribed to: " + message.body);
+        let totalStockInPercentage = Math.floor((parseInt(message.body) / 35000) * 100);
+
+        console.log("The total percantage is: " + totalStockInPercentage)
+        fillSilo(totalStockInPercentage, nodeName)
     })
 }
-*/
-
-
 
 function connectWebSocket() {
     var socket = new SockJS('/wss');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function() {
         console.log("WebSocket connection established");
-        subscribeToNode("currentState");
-        subscribeToNode("temperature");
-        subscribeToNode("relativeHumidity");
-        subscribeToNode("vibration");
-        subscribeToNode("currentBatchId");
-        subscribeToNode("currentBatchAmount");
-        subscribeToNode("currentMachineSpeed");
-        subscribeToNode("prodProduced");
-        subscribeToNode("prodProcessedCount");
-        subscribeToNode("prodDefectiveCount");
         maintenanceTrigger();
         maintenanceCounter();
+        subscribeToStatus("currentState");
+        subscribeToStatus("temperature");
+        subscribeToStatus("relativeHumidity");
+        subscribeToStatus("vibration");
+        subscribeToStatus("currentBatchId");
+        subscribeToStatus("currentBatchAmount");
+        subscribeToStatus("currentMachineSpeed");
+        subscribeToStatus("prodProduced");
+        subscribeToStatus("prodProcessedCount");
+        subscribeToStatus("prodDefectiveCount");
+        subscribeToInventory("barley");
+        subscribeToInventory("malt");
+        subscribeToInventory("yeast");
+        subscribeToInventory("hops");
+        subscribeToInventory("wheat");
     });
 }
 function startBatch() {
@@ -96,6 +103,37 @@ function convertBrewType() {
         case "Alcohol Free": return 5
     }
 }
+
+const fill = 12;
+
+function fillSilo(fill_level, ingredient) {
+    const currSilo = document.getElementById(ingredient);
+    const col = colCalculator(fill_level);
+    const gradient = fill_level;
+    currSilo.style.background = `linear-gradient(to top, ${col} ${gradient}%, white 10%)`;
+    const placeholder_prompt = "fill_"+ingredient
+    document.getElementById(placeholder_prompt).textContent = fill_level + "%";
+}
+
+
+function colCalculator(fill) {
+    if (fill >= 50) {
+        let r = 255 - ((fill - 50) * 5.1);
+        const g = 255;
+        const b = 0;
+        return `rgb(${r}, ${g}, ${b})`;
+    } else if (fill < 50 && fill > 0) {
+        const r = 255;
+        let g = (fill * 5.1);
+        const b = 0;
+        return `rgb(${r}, ${g}, ${b})`;
+    } else {
+        return `rgb(0, 0, 0)`;
+    }
+
+}
+
+
 connectWebSocket();
 
 
