@@ -48,6 +48,11 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.PROD_PRODUCED);
             subscribe(OpcuaNodes.PROD_PROCESSED_COUNT);
             subscribe(OpcuaNodes.PROD_DEFECTIVE_COUNT);
+            subscribe(OpcuaNodes.BARLEY);
+            subscribe(OpcuaNodes.WHEAT);
+            subscribe(OpcuaNodes.HOPS);
+            subscribe(OpcuaNodes.MALT);
+            subscribe(OpcuaNodes.YEAST);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {

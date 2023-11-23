@@ -1,24 +1,39 @@
 var stompClient = null;
-function subscribeToNode(nodeName) {
+function subscribeToStatus(nodeName) {
     stompClient.subscribe('/sensor/data/' + nodeName, (message) => {
         document.getElementById(nodeName + "Label").innerText = message.body;
     })
 }
+function subscribeToInventory(nodeName){
+    stompClient.subscribe('/sensor/data/' + nodeName, (message)=>{
+        console.log("Subscribed to: " + message.body);
+        let totalStockInPercentage = Math.floor((parseInt(message.body) / 35000) * 100);
+
+        console.log("The total percantage is: " + totalStockInPercentage)
+        fillSilo(totalStockInPercentage, nodeName)
+    })
+}
+
 function connectWebSocket() {
     var socket = new SockJS('/wss');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function() {
         console.log("WebSocket connection established");
-        subscribeToNode("currentState");
-        subscribeToNode("temperature");
-        subscribeToNode("relativeHumidity");
-        subscribeToNode("vibration");
-        subscribeToNode("currentBatchId");
-        subscribeToNode("currentBatchAmount");
-        subscribeToNode("currentMachineSpeed");
-        subscribeToNode("prodProduced");
-        subscribeToNode("prodProcessedCount");
-        subscribeToNode("prodDefectiveCount");
+        subscribeToStatus("currentState");
+        subscribeToStatus("temperature");
+        subscribeToStatus("relativeHumidity");
+        subscribeToStatus("vibration");
+        subscribeToStatus("currentBatchId");
+        subscribeToStatus("currentBatchAmount");
+        subscribeToStatus("currentMachineSpeed");
+        subscribeToStatus("prodProduced");
+        subscribeToStatus("prodProcessedCount");
+        subscribeToStatus("prodDefectiveCount");
+        subscribeToInventory("barley");
+        subscribeToInventory("malt");
+        subscribeToInventory("yeast");
+        subscribeToInventory("hops");
+        subscribeToInventory("wheat");
     });
 }
 function startBatch() {
@@ -46,12 +61,11 @@ function startBatch() {
 
 const fill = 12;
 
-function beerfill(fill_level, ingredient) {
+function fillSilo(fill_level, ingredient) {
     const currSilo = document.getElementById(ingredient);
     const col = colCalculator(fill_level);
     const gradient = fill_level;
     currSilo.style.background = `linear-gradient(to top, ${col} ${gradient}%, white 10%)`;
-    const title = document.getElementById("ingredient_"+ingredient).textContent = ingredient;
     const placeholder_prompt = "fill_"+ingredient
     document.getElementById(placeholder_prompt).textContent = fill_level + "%";
 }
@@ -75,15 +89,16 @@ function colCalculator(fill) {
 }
 
 
+/*
 function testDrain() {
     for (let i = 0; i < 100; i++) {
-        setTimeout(() => {       beerfill(i + 1, 'Wheat');
+        setTimeout(() => {       fillSilo(i + 1, 'Wheat');
         }, i * 250); // i * 500 milliseconds delay
     }
 }
 
 testDrain();
-
+*/
 
 
 connectWebSocket();
