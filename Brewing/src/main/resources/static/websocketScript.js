@@ -48,7 +48,6 @@ function connectWebSocket() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function() {
         console.log("WebSocket connection established");
-        maintenanceTrigger();
         maintenanceCounter();
         subscribeToStatus("currentState");
         subscribeToStatus("temperature");

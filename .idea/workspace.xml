@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="" />
+    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/maintenanceFill.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
