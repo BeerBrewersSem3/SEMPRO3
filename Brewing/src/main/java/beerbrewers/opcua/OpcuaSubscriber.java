@@ -48,6 +48,8 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.PROD_PRODUCED);
             subscribe(OpcuaNodes.PROD_PROCESSED_COUNT);
             subscribe(OpcuaNodes.PROD_DEFECTIVE_COUNT);
+            subscribe(OpcuaNodes.MAINTENANCE_COUNTER);
+            subscribe(OpcuaNodes.MAINTENANCE_TRIGGER);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
@@ -67,7 +69,7 @@ public class OpcuaSubscriber {
         completableFuture.thenAccept(items -> {
             for (UaMonitoredItem item : items) {
                 item.setValueConsumer((moniteredItem, dataValue) -> {
-                    state = dataValue.getValue().getValue() + "";
+                    state = dataValue.getValue().getValue().toString();
                     logger.debug("The node " + node.getName() + "has a new value of " + state);
                     opcUaNodeUpdateManager.notifyObservers(node, state);
                 });

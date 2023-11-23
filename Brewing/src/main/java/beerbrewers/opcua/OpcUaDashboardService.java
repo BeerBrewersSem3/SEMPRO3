@@ -34,8 +34,11 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
             OpcuaNodes.CUR_MACH_SPEED,
             OpcuaNodes.PROD_PRODUCED,
             OpcuaNodes.PROD_PROCESSED_COUNT,
-            OpcuaNodes.PROD_DEFECTIVE_COUNT
+            OpcuaNodes.PROD_DEFECTIVE_COUNT,
+            OpcuaNodes.MAINTENANCE_COUNTER,
+            OpcuaNodes.MAINTENANCE_TRIGGER
         );
+
         nodesToSubscribe.forEach(node -> {
             opcUaNodeUpdateManager.addObserver(node, this);
             logger.info("OpcuaDashboardService subscribed to node: " + node.getName());
@@ -44,6 +47,6 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
         websocketService.send(node.getName(), newState);
-        logger.debug(node.getName() + " has new value of: " + newState);
+        logger.info(node.getName() + " has new value of: " + newState);
     }
 }
