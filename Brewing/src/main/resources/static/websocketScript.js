@@ -35,10 +35,10 @@ function colorCalc(fill) {
 
 function subscribeToInventory(nodeName){
     stompClient.subscribe('/sensor/data/' + nodeName, (message)=>{
-        console.log("Subscribed to: " + message.body);
+        //console.log("Subscribed to: " + message.body);
         let totalStockInPercentage = Math.floor((parseInt(message.body) / 35000) * 100);
 
-        console.log("The total percantage is: " + totalStockInPercentage)
+        //console.log("The total percantage is: " + totalStockInPercentage)
         fillSilo(totalStockInPercentage, nodeName)
     })
 }
@@ -63,8 +63,10 @@ function connectWebSocket() {
         subscribeToInventory("yeast");
         subscribeToInventory("hops");
         subscribeToInventory("wheat");
+        onPageLoad();
     });
 }
+
 function startBatch() {
     const batchID   = document.getElementById("batchID").value;
     const brewType    = convertBrewType()
@@ -133,5 +135,9 @@ function colCalculator(fill) {
 
 
 connectWebSocket();
+function onPageLoad() {
+    console.log("Load");
+    stompClient.send("/app/sensor/data/onload", {}, {});
+}
 
 

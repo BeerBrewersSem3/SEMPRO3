@@ -32,7 +32,7 @@ public class OpcuaCommander {
         try {
             connection.getClient().writeValue(nodeId, DataValue.valueOnly(variantCommand)).get();
             if(node.equals(OpcuaNodes.CNTRL_CMD)){
-                commandChangeRequest(OpcuaNodes.CMD_CHANGE_REQUEST,true);
+                commandChangeRequest(true);
             }
             return true;
         } catch (InterruptedException | ExecutionException e) {
@@ -41,7 +41,7 @@ public class OpcuaCommander {
         }
     }
 
-    public boolean commandChangeRequest(OpcuaNodes node, boolean command){
+    public boolean commandChangeRequest(boolean command){
         NodeId nodeId = new NodeId(OpcuaNodes.CMD_CHANGE_REQUEST.getNamespaceIndex(),OpcuaNodes.CMD_CHANGE_REQUEST.getIdentifier());
         try {
             connection.getClient().writeValue(nodeId, DataValue.valueOnly(new Variant(command))).get();

@@ -1,18 +1,16 @@
 package beerbrewers.websocket;
 
-import beerbrewers.opcua.OpcuaNodes;
+import beerbrewers.opcua.OpcUaDashboardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 public class WebsocketService {
     private static final Logger logger = LoggerFactory.getLogger(WebsocketService.class);
-    private SimpMessagingTemplate simpMessagingTemplate;
+    private final SimpMessagingTemplate simpMessagingTemplate;
     @Autowired
     public WebsocketService(SimpMessagingTemplate simpMessagingTemplate) {
         this.simpMessagingTemplate = simpMessagingTemplate;

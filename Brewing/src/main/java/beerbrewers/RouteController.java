@@ -35,5 +35,15 @@ public class RouteController {
         // Convert the bytes to a string using UTF-8 encoding
         return new String(bytes, StandardCharsets.UTF_8);
     }
+
+    @GetMapping("/monitor")
+    @ResponseBody
+    public String monitorPage() throws IOException {
+        Resource resource = new ClassPathResource("public/monitorPage.html");
+        byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
+
+        // Convert the bytes to a string using UTF-8 encoding
+        return new String(bytes, StandardCharsets.UTF_8);
+    }
 }
 

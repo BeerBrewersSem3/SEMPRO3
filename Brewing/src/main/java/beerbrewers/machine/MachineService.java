@@ -52,7 +52,7 @@ public class MachineService implements OpcUaNodeObserver {
         );
         nodesToSubscribe.forEach(node -> {
             opcUaNodeUpdateManager.addObserver(node, this);
-            logger.info("MachineService subscribed to node: " + node.getName());
+            logger.debug("MachineService subscribed to node: " + node.getName());
         });
         /*Batch batch = new Batch(1L,new Operation(new Worker("Henrik","1234")),BrewEnum.ALCOHOL_FREE,100L,200L,false,0L,0L, new Timestamp(2023,11,16,20,15,20,0));
         startBatch(batch);
@@ -70,17 +70,12 @@ public class MachineService implements OpcUaNodeObserver {
         return true;
     }
     public boolean startBatch(Batch batch){
-
-
         resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
-        // TODO: Wait for all latch
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,1);
-        waitForLatch();
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,2);
-        waitForLatch();
         return true;
     }
 
@@ -88,11 +83,12 @@ public class MachineService implements OpcUaNodeObserver {
         this.awaitingNode = node;
         this.latch =  new CountDownLatch(1);
         this.opcUaCommander.sendCommand(node, command);
+        waitForLatch();
     }
 
     private void waitForLatch() {
         try{
-            latch.await(1,TimeUnit.SECONDS);
+            latch.await(3,TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new RuntimeException(e);

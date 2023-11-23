@@ -1,7 +1,5 @@
 package beerbrewers.operation;
 
-import beerbrewers.batch.Batch;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +14,7 @@ public class OperationService {
     @Autowired
     public OperationService(OperationRepository operationRepository) {
         this.operationRepository = operationRepository;
+
     }
 
     public List<Operation> getOperations() {
@@ -34,4 +33,5 @@ public class OperationService {
     public void setCurrentRunningOperation(Operation currentRunningOperation) {
         this.currentRunningOperation = currentRunningOperation;
     }
+
 }

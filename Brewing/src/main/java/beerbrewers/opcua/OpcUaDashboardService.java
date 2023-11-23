@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class OpcUaDashboardService implements OpcUaNodeObserver{
@@ -15,6 +17,8 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
     private static final Logger logger = LoggerFactory.getLogger(OpcUaDashboardService.class);
     private final WebsocketService websocketService;
+
+    private Map<OpcuaNodes, String> currentNodeValueMap = new ConcurrentHashMap<>();
 
     @Autowired
     public OpcUaDashboardService(OpcUaNodeUpdateManager opcUaNodeUpdateManager, WebsocketService websocketService){
@@ -25,7 +29,6 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
     @PostConstruct
     public void initialize(){
         List<OpcuaNodes> nodesToSubscribe = List.of(
-            OpcuaNodes.STATE_CURRENT,
             OpcuaNodes.TEMPERATURE,
             OpcuaNodes.REL_HUMIDITY,
             OpcuaNodes.VIBRATION,
@@ -46,12 +49,17 @@ public class OpcUaDashboardService implements OpcUaNodeObserver{
 
         nodesToSubscribe.forEach(node -> {
             opcUaNodeUpdateManager.addObserver(node, this);
-            logger.info("OpcuaDashboardService subscribed to node: " + node.getName());
+            logger.debug("OpcuaDashboardService subscribed to node: " + node.getName());
         });
     }
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
+        currentNodeValueMap.put(node, newState);
         websocketService.send(node.getName(), newState);
-        logger.info(node.getName() + " has new value of: " + newState);
+        logger.debug("WebSocket update: " + node.getName() + " has new value of: " + newState);
     }
+    public Map<OpcuaNodes, String> getCurrentNodeValueMap() {
+        return currentNodeValueMap;
+    }
+
 }
