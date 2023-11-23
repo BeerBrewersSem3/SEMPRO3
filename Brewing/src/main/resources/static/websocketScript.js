@@ -8,6 +8,7 @@ function connectWebSocket() {
     var socket = new SockJS('/wss');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function() {
+        console.log("WebSocket connection established");
         subscribeToNode("currentState");
         subscribeToNode("temperature");
         subscribeToNode("relativeHumidity");
@@ -33,9 +34,14 @@ function startBatch() {
         batchSpeed
     }
 
-
-     stompClient.send("batch/newBatch", {}, JSON.stringify(batchData));
-     console.log(batchData)
+    if (stompClient) {
+        stompClient.send("/app/batch/newBatch", {}, JSON.stringify(batchData));
+        console.log(batchData);
+    } else {
+        console.error("WebSocket connection not yet established");
+    }
+     //stompClient.send("batch/newBatch", {}, JSON.stringify(batchData));
+     //console.log(batchData)
 }
 connectWebSocket();
 
