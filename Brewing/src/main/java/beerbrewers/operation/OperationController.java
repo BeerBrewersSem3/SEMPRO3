@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/v1/operation")
@@ -21,8 +22,12 @@ public class OperationController {
     }
 
     @PostMapping
-    public void saveOperation(@RequestBody Operation operation) {
-        operationService.addNewOperation(operation);
+    public void saveOperation(Map<String, String> operationMap) {
+//        System.out.println("Operation: " + operation);
+        System.out.println(operationMap.get("worker"));
+        System.out.println(operationMap.get("operation"));
+        System.out.println(operationMap);
+//        operationService.addNewOperation(operation);
     }
 
 }

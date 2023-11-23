@@ -1,13 +1,54 @@
+function test() {
+    console.log("TEST!!!")
+}
 
 function login() {
+    test();
+    console.log("Logging in!");
     createOperation();
-    openMonitor();
+    // openMonitor();
 }
 
 function openMonitor() {
     window.location.href = 'monitorPage.html';
+    console.log("TEST2");
 }
 
 function createOperation() {
-    
+    console.log("creating operation!")
+// Step 1: Fetch the Worker from the database
+    const workerId = 1;
+    fetch(`http://localhost:8080/api/v1/worker/${workerId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(worker => {
+            // Step 2: Use the fetched Worker to create the Operation
+            const operation = {
+                worker
+            };
+            console.log(worker);
+            console.log(operation);
+            // Step 3: Make a POST request to the saveOperation endpoint
+            fetch('http://localhost:8080/api/v1/operation', {
+                method: 'POST',
+                body: JSON.stringify(operation),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    // If the response is okay, you can handle it here
+                    console.log('Operation saved successfully');
+                })
+                .catch(error => {
+                    console.error('Error saving operation:', error);
+                });
+        })
+        .catch(error => {
+            console.error('Error fetching worker:', error);
+        });
 }
