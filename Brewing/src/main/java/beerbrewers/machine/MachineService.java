@@ -62,7 +62,7 @@ public class MachineService implements OpcUaNodeObserver {
 
     }
     public boolean startBatch(int brewId, long batchAmount, long batchSpeed){
-        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId],batchAmount,batchSpeed);
+        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId-1],batchAmount,batchSpeed);
         Long batchId = batchService.saveBatchAndGetId(batch);
         batch.setBatchId(batchId);
 
