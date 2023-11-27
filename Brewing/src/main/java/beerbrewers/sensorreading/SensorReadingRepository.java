@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SensorReadingRepository extends JpaRepository<SensorReading, SensorReadingId> {
-    SensorReading findBySensorReadingId(SensorReadingId sensorReadingId);
-    List<SensorReading> findAllBySensorReadingId_OperationId(long operationId);
-    List<SensorReading> findAllBySensorReadingId_SensorId(long sensorId);
+public interface SensorReadingRepository extends JpaRepository<SensorReading, Long> {
+    SensorReading findBySensorReadingId(Long sensorReadingId);
 }

@@ -1,6 +1,9 @@
 package beerbrewers.sensorreading;
 
 import beerbrewers.batch.Batch;
+import beerbrewers.operation.Operation;
+import beerbrewers.sensor.Sensor;
+import beerbrewers.worker.Worker;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 
@@ -8,12 +11,37 @@ import java.sql.Timestamp;
 @Table(name = "sensor_reading")
 public class SensorReading {
 
-    /**
-     * Composite key created with a java class using the @Embeddable annotation. The composite key has operationId
-     * and sensorId as attributes.
-     */
-    @EmbeddedId
-    private SensorReadingId sensorReadingId;
+    @Id
+    @SequenceGenerator(
+            name = "sensor_reading_sequence",
+            sequenceName = "sensor_reading_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sensor_reading_sequence"
+    )
+    @Column(
+            name = "sensor_reading_id",
+            updatable = false
+    )
+    private Long sensorReadingId;
+
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            targetEntity = Operation.class,
+            optional = false
+    )
+//    @JoinColumn(name = "operation_id")
+    private Operation operation;
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            targetEntity = Sensor.class,
+            optional = false
+    )
+    private Sensor sensor;
 
     @Column(
             name = "timestamp",
@@ -29,13 +57,17 @@ public class SensorReading {
 
     protected SensorReading() {}
 
-    public SensorReading(Timestamp timestamp, float sensorValue) {
+    public SensorReading(Operation operation, Sensor sensor, Timestamp timestamp, float sensorValue) {
+        this.operation = operation;
+        this.sensor = sensor;
         this.timestamp = timestamp;
         this.sensorValue = sensorValue;
     }
 
-    public SensorReading(SensorReadingId sensorReadingId, Timestamp timestamp, float sensorValue) {
+    public SensorReading(Long sensorReadingId, Operation operation, Sensor sensor, Timestamp timestamp, float sensorValue) {
         this.sensorReadingId = sensorReadingId;
+        this.operation = operation;
+        this.sensor = sensor;
         this.timestamp = timestamp;
         this.sensorValue = sensorValue;
     }
@@ -45,12 +77,28 @@ public class SensorReading {
      * @return
      */
 
-    public SensorReadingId getSensorReadingId() {
+    public Long getSensorReadingId() {
         return sensorReadingId;
     }
 
-    public void setSensorReadingId(SensorReadingId sensorReadingId) {
+    public void setSensorReadingId(Long sensorReadingId) {
         this.sensorReadingId = sensorReadingId;
+    }
+
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public void setOperation(Operation operation) {
+        this.operation = operation;
+    }
+
+    public Sensor getSensor() {
+        return sensor;
+    }
+
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
     }
 
     public Timestamp getTimestamp() {
@@ -73,6 +121,8 @@ public class SensorReading {
     public String toString() {
         return "SensorReading{" +
                 "sensorReadingId=" + sensorReadingId +
+                ", operation=" + operation +
+                ", sensor=" + sensor +
                 ", timestamp=" + timestamp +
                 ", sensorValue=" + sensorValue +
                 '}';
