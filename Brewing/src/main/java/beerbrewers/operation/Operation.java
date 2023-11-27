@@ -28,11 +28,6 @@ public class Operation {
     )
     private Long operationId;
 
-//    @ManyToOne(
-//            targetEntity = Worker.class,
-//            optional = false
-//            cascade = CascadeType.ALL
-//    )
     @ManyToOne(
             fetch = FetchType.LAZY,
             targetEntity = Worker.class

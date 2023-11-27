@@ -19,6 +19,10 @@ public class SensorService {
         return sensorRepository.findAll();
     }
 
+    public Sensor getSensor(Long sensorId) {
+        return sensorRepository.findBySensorId(sensorId);
+    }
+
     @Transactional
     public void updateSensorValue(Long sensorId, float currentSensorValue) {
         boolean exists = sensorRepository.existsById(sensorId);
