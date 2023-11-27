@@ -30,7 +30,6 @@ public class BatchService implements OpcUaNodeObserver {
         this.operationService = operationService;
     }
 
-
     public List<Batch> getBatches() {
         return batchRepository.findAll();
     }
@@ -65,7 +64,7 @@ public class BatchService implements OpcUaNodeObserver {
 
                         currentBatch.setCompleted(true);
                         currentBatch.setEndTime(new Timestamp(System.currentTimeMillis()));
-                        batchRepository.save(currentBatch);
+                        saveBatch(currentBatch);
                     }
                 }
                 case PROD_DEFECTIVE_COUNT -> {
@@ -74,6 +73,13 @@ public class BatchService implements OpcUaNodeObserver {
 
             }
         }
+    }
+
+    public void saveBatch(Batch batch){
+        batchRepository.save(batch);
+    }
+    public Batch getCurrentBatch(){
+        return currentBatch;
     }
 
     @Override

@@ -34,14 +34,19 @@ public class MachineController {
         long batchSpeed = Long.parseLong(batchMap.get("batchSpeed"));
 
 
-        machineService.startBatch(brewId, batchAmount, batchSpeed);
+        machineService.startNewBatch(brewId, batchAmount, batchSpeed);
         logger.info("\n type: " + brewId +
                 "\n amount: " + batchAmount +
                 "\n speed: " + batchSpeed);
     }
 
-    @MessageMapping("machine/stop")
-    public void stopMachine() {
+    @MessageMapping("machine/pause")
+    public void pauseMachine() {
         machineService.stopMachine();
+    }
+
+    @MessageMapping("machine/continue")
+    public void continueBatch(){
+        machineService.continueBatch();
     }
 }

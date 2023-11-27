@@ -4,6 +4,7 @@ import beerbrewers.batch.Batch;
 import beerbrewers.batch.BatchService;
 import beerbrewers.opcua.*;
 import beerbrewers.operation.OperationService;
+import com.fasterxml.jackson.core.JsonTokenId;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,20 +41,51 @@ public class MachineService implements OpcUaNodeObserver {
         this.opcUaCommander = opcuaCommander;
     }
 
-    public void startBatch(int brewId, long batchAmount, long batchSpeed){
+
+    public void startNewBatch(int brewId, long batchAmount, long batchSpeed){
         Batch batch = batchService.saveAndGetBatch(brewId, batchAmount, batchSpeed);
+        setBatchAttributesToMachine(batch);
+        startMachine();
+    }
+
+
+    public void setBatchAttributesToMachine(Batch batch){
         resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
-        stopMachine();
+    }
+    public void setBatchAttributesToMachine(Batch batch, long amount){
+        resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
+        resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
+        resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
+        resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)amount);
+    }
+
+
+    public void startMachine(){
+        resetMachineState();
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,1);
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,2);
     }
 
-    public void stopMachine(){
+    public void resetMachineState(){
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,3);
     }
+
+    public void stopMachine(){
+        resetMachineState();
+        if(batchService.getCurrentBatch() != null){
+            batchService.saveBatch(batchService.getCurrentBatch());
+        }
+    }
+
+    public void continueBatch(){
+        Batch batch = batchService.getCurrentBatch();
+        setBatchAttributesToMachine(batch,batch.getAmount()-batch.getCompletedCount());
+        startMachine();
+    }
+
 
     private void resetLatchAndSendCommand(OpcuaNodes node, Number command) {
         this.awaitingNode = node;

@@ -88,8 +88,26 @@ function startBatch() {
     }
     toggleNewBatch();
 }
-function stopMachine(){
-    stompClient.send("/app/machine/stop", {}, {})
+
+function pauseMachine(){
+    stompClient.send("/app/machine/pause", {}, {});
+    document.getElementById("pauseBtn").innerText = "Continue";
+}
+
+function continueBatch() {
+    stompClient.send("/app/machine/continue", {}, {});
+    document.getElementById("pauseBtn").innerText = "Pause";
+}
+
+let isPaused = false;
+
+function toggleSwitchPauseStart() {
+    if (isPaused) {
+        continueBatch();
+    } else {
+        pauseMachine();
+    }
+    isPaused = !isPaused;
 }
 
 function toggleNewBatch() {

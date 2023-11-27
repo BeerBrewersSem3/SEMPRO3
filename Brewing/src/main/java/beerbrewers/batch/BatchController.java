@@ -1,5 +1,6 @@
 package beerbrewers.batch;
 
+import beerbrewers.worker.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,11 @@ public class BatchController {
     @GetMapping
     public List<Batch> getBatches() {
         return batchService.getBatches();
+    }
+
+    @GetMapping(path = "/current")
+    public Batch getCurrentBatch() {
+        return batchService.getCurrentBatch();
     }
 
     @PostMapping
