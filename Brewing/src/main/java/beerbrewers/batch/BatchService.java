@@ -3,6 +3,7 @@ package beerbrewers.batch;
 import beerbrewers.opcua.OpcUaNodeObserver;
 import beerbrewers.opcua.OpcUaNodeUpdateManager;
 import beerbrewers.opcua.OpcuaNodes;
+import beerbrewers.operation.OperationService;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,18 @@ import java.util.List;
 public class BatchService implements OpcUaNodeObserver {
     private final BatchRepository batchRepository;
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+    private final OperationService operationService;
     private Batch currentBatch;
+    private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.STOUT, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
+
 
     @Autowired
     public BatchService(BatchRepository batchRepository,
-                        OpcUaNodeUpdateManager opcUaNodeUpdateManager) {
+                        OpcUaNodeUpdateManager opcUaNodeUpdateManager,
+                        OperationService operationService) {
         this.batchRepository = batchRepository;
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
+        this.operationService = operationService;
     }
 
     @PostConstruct
@@ -44,12 +50,14 @@ public class BatchService implements OpcUaNodeObserver {
     }
 
     @Transactional
-    public Long saveBatchAndGetId(Batch batch) {
+    public Batch saveAndGetBatch(int brewId, long batchAmount, long batchSpeed) {
+        // Create batch instance
+        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId],batchAmount,batchSpeed);
         // Save the entity to the database
         batchRepository.save(batch);
         currentBatch = batch;
-        // Return the auto-generated ID
-        return batch.getBatchId();
+        // Return the batch with ID
+        return batch;
     }
 
     @Transactional

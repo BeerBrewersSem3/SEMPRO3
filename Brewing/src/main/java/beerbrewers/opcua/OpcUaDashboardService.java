@@ -12,12 +12,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
-public class OpcUaDashboardService implements OpcUaNodeObserver{
+public class OpcUaDashboardService implements OpcUaNodeObserver {
 
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
     private static final Logger logger = LoggerFactory.getLogger(OpcUaDashboardService.class);
     private final WebsocketService websocketService;
-
     private Map<OpcuaNodes, String> currentNodeValueMap = new ConcurrentHashMap<>();
 
     @Autowired

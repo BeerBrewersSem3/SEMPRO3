@@ -2,7 +2,6 @@ package beerbrewers.machine;
 
 import beerbrewers.batch.Batch;
 import beerbrewers.batch.BatchService;
-import beerbrewers.batch.BrewEnum;
 import beerbrewers.opcua.*;
 import beerbrewers.operation.OperationService;
 import jakarta.annotation.PostConstruct;
@@ -19,13 +18,11 @@ import java.util.concurrent.TimeUnit;
 public class MachineService implements OpcUaNodeObserver {
 
     private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
-    private final OperationService operationService;
     private final BatchService batchService;
     private final OpcuaCommander opcUaCommander;
     private CountDownLatch latch;
     private OpcuaNodes awaitingNode;
     private static final Logger logger = LoggerFactory.getLogger(MachineService.class);
-    private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.STOUT, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
 
 
     @Autowired
@@ -34,7 +31,6 @@ public class MachineService implements OpcUaNodeObserver {
                           BatchService              batchService,
                           OpcuaCommander            opcuaCommander) {
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
-        this.operationService = operationService;
         this.batchService = batchService;
         this.opcUaCommander = opcuaCommander;
     }
@@ -54,22 +50,9 @@ public class MachineService implements OpcUaNodeObserver {
             opcUaNodeUpdateManager.addObserver(node, this);
             logger.debug("MachineService subscribed to node: " + node.getName());
         });
-        /*Batch batch = new Batch(1L,new Operation(new Worker("Henrik","1234")),BrewEnum.ALCOHOL_FREE,100L,200L,false,0L,0L, new Timestamp(2023,11,16,20,15,20,0));
-        startBatch(batch);
-
-         */
-
-
     }
-    public boolean startBatch(int brewId, long batchAmount, long batchSpeed){
-        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId],batchAmount,batchSpeed);
-        Long batchId = batchService.saveBatchAndGetId(batch);
-        batch.setBatchId(batchId);
-
-        startBatch(batch);
-        return true;
-    }
-    public boolean startBatch(Batch batch){
+    public void startBatch(int brewId, long batchAmount, long batchSpeed){
+        Batch batch = batchService.saveAndGetBatch(brewId, batchAmount, batchSpeed);
         resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
@@ -77,8 +60,8 @@ public class MachineService implements OpcUaNodeObserver {
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,3);
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,1);
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,2);
-        return true;
     }
+
 
     public void resetLatchAndSendCommand(OpcuaNodes node, Number command) {
         this.awaitingNode = node;
