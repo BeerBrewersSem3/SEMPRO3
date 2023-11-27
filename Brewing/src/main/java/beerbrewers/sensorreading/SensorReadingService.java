@@ -57,12 +57,14 @@ public class SensorReadingService implements OpcUaNodeObserver {
      */
     @Scheduled(fixedDelay = 10000)
     public void updateSensorReadings() {
-        for (Map.Entry<Long, Float> set : currentSensorValuesMap.entrySet()) {
-            addNewSensorReading(
-                    new SensorReading(
-                            new SensorReadingId(operationService.getCurrentRunningOperation().getOperationId(), set.getKey()),
-                            new Timestamp(System.currentTimeMillis()),
-                            set.getValue()));
+        if(operationService.getCurrentRunningOperation() != null) {
+            for (Map.Entry<Long, Float> set : currentSensorValuesMap.entrySet()) {
+                addNewSensorReading(
+                        new SensorReading(
+                                new SensorReadingId(operationService.getCurrentRunningOperation().getOperationId(), set.getKey()),
+                                new Timestamp(System.currentTimeMillis()),
+                                set.getValue()));
+            }
         }
     }
 
