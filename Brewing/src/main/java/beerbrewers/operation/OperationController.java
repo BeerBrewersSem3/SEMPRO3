@@ -29,7 +29,6 @@ public class OperationController {
         try {
             // Convert JSON string to Operation object
             Operation operation = objectMapper.readValue(JSONstring, Operation.class);
-            System.out.println(operation);
             operationService.addNewOperation(operation);
         } catch (IOException e) {
             // Handle JSON parsing exception
