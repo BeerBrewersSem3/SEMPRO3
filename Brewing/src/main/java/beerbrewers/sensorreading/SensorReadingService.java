@@ -1,5 +1,6 @@
 package beerbrewers.sensorreading;
 
+import beerbrewers.opcua.OpcUaDashboardService;
 import beerbrewers.opcua.OpcUaNodeObserver;
 import beerbrewers.opcua.OpcUaNodeUpdateManager;
 import beerbrewers.opcua.OpcuaNodes;
@@ -21,28 +22,23 @@ import java.util.Map;
 @Service
 public class SensorReadingService implements OpcUaNodeObserver {
     private final SensorReadingRepository sensorReadingRepository;
-    private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
 
     private HashMap<Long, Float> currentSensorValuesMap;
 
     private final OperationService operationService;
+    private List<OpcuaNodes> subscribedNodes = List.of(
+            OpcuaNodes.REL_HUMIDITY,
+            OpcuaNodes.TEMPERATURE,
+            OpcuaNodes.VIBRATION
+    );
 
     @Autowired
     public SensorReadingService(
             SensorReadingRepository sensorReadingRepository,
-            OpcUaNodeUpdateManager opcUaNodeUpdateManager,
             OperationService operationService) {
         this.sensorReadingRepository = sensorReadingRepository;
-        this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
         this.operationService = operationService;
         this.currentSensorValuesMap = new HashMap<>();
-    }
-
-    @PostConstruct
-    public void initializeSubscription() {
-        opcUaNodeUpdateManager.addObserver(OpcuaNodes.REL_HUMIDITY, this);
-        opcUaNodeUpdateManager.addObserver(OpcuaNodes.TEMPERATURE, this);
-        opcUaNodeUpdateManager.addObserver(OpcuaNodes.VIBRATION, this);
     }
 
     public List<SensorReading> getSensorReadings() {
@@ -73,5 +69,10 @@ public class SensorReadingService implements OpcUaNodeObserver {
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
         currentSensorValuesMap.put(node.getDatabaseId(), Float.valueOf(newState));
+    }
+
+    @Override
+    public List<OpcuaNodes> getSubscribedNodes() {
+        return subscribedNodes;
     }
 }

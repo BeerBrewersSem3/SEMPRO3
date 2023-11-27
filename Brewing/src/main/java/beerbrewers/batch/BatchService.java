@@ -15,31 +15,21 @@ import java.util.List;
 @Service
 public class BatchService implements OpcUaNodeObserver {
     private final BatchRepository batchRepository;
-    private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
     private final OperationService operationService;
     private Batch currentBatch;
     private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.STOUT, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
-
+    private List<OpcuaNodes> subscribesNodes = List.of(
+            OpcuaNodes.PROD_PRODUCED,
+            OpcuaNodes.PROD_DEFECTIVE_COUNT
+    );
 
     @Autowired
     public BatchService(BatchRepository batchRepository,
-                        OpcUaNodeUpdateManager opcUaNodeUpdateManager,
                         OperationService operationService) {
         this.batchRepository = batchRepository;
-        this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
         this.operationService = operationService;
     }
 
-    @PostConstruct
-    public void initializeSubscription(){
-        List<OpcuaNodes> nodesToSubscribe = List.of(
-                OpcuaNodes.PROD_PRODUCED,
-                OpcuaNodes.PROD_DEFECTIVE_COUNT
-        );
-        nodesToSubscribe.forEach(node -> {
-            opcUaNodeUpdateManager.addObserver(node, this);
-        });
-    }
 
     public List<Batch> getBatches() {
         return batchRepository.findAll();
@@ -84,5 +74,10 @@ public class BatchService implements OpcUaNodeObserver {
 
             }
         }
+    }
+
+    @Override
+    public List<OpcuaNodes> getSubscribedNodes() {
+        return subscribesNodes;
     }
 }

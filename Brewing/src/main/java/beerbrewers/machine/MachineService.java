@@ -17,40 +17,29 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class MachineService implements OpcUaNodeObserver {
 
-    private final OpcUaNodeUpdateManager opcUaNodeUpdateManager;
+
     private final BatchService batchService;
     private final OpcuaCommander opcUaCommander;
     private CountDownLatch latch;
     private OpcuaNodes awaitingNode;
     private static final Logger logger = LoggerFactory.getLogger(MachineService.class);
-
+    private List<OpcuaNodes> subscribedNodes = List.of(
+            OpcuaNodes.CMD_CHANGE_REQUEST,
+            OpcuaNodes.CNTRL_CMD,
+            OpcuaNodes.STATE_CURRENT,
+            OpcuaNodes.MACH_SPEED_WRITE,
+            OpcuaNodes.NEXT_BATCH_ID,
+            OpcuaNodes.NEXT_PRODUCT_ID,
+            OpcuaNodes.NEXT_BATCH_AMOUNT
+    );
 
     @Autowired
-    public MachineService(OpcUaNodeUpdateManager    opcUaNodeUpdateManager,
-                          OperationService          operationService,
-                          BatchService              batchService,
+    public MachineService(BatchService              batchService,
                           OpcuaCommander            opcuaCommander) {
-        this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
         this.batchService = batchService;
         this.opcUaCommander = opcuaCommander;
     }
 
-    @PostConstruct
-    public void initializeSubscription(){
-        List<OpcuaNodes> nodesToSubscribe = List.of(
-                OpcuaNodes.CMD_CHANGE_REQUEST,
-                OpcuaNodes.CNTRL_CMD,
-                OpcuaNodes.STATE_CURRENT,
-                OpcuaNodes.MACH_SPEED_WRITE,
-                OpcuaNodes.NEXT_BATCH_ID,
-                OpcuaNodes.NEXT_PRODUCT_ID,
-                OpcuaNodes.NEXT_BATCH_AMOUNT
-        );
-        nodesToSubscribe.forEach(node -> {
-            opcUaNodeUpdateManager.addObserver(node, this);
-            logger.debug("MachineService subscribed to node: " + node.getName());
-        });
-    }
     public void startBatch(int brewId, long batchAmount, long batchSpeed){
         Batch batch = batchService.saveAndGetBatch(brewId, batchAmount, batchSpeed);
         resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
@@ -87,5 +76,9 @@ public class MachineService implements OpcUaNodeObserver {
             latch.countDown();
         }
 
+    }
+
+    public List<OpcuaNodes> getSubscribedNodes() {
+        return subscribedNodes;
     }
 }

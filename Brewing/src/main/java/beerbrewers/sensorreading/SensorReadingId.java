@@ -1,5 +1,7 @@
 package beerbrewers.sensorreading;
 
+import beerbrewers.sensor.Sensor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -8,6 +10,9 @@ import java.util.Objects;
 public class SensorReadingId implements Serializable {
     private Long operationId;
     private Long sensorId;
+
+    protected SensorReadingId(){
+    }
 
     public SensorReadingId(Long operationId, Long sensorId) {
         this.operationId = operationId;

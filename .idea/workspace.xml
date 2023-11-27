@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c584c767-be62-4cf8-93c2-827e3bc7ff92.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c584c767-be62-4cf8-93c2-827e3bc7ff92.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/RouteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/machine/MachineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/machine/MachineService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaDashboardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaCommander.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaCommander.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/operation/OperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeUpdateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcUaNodeUpdateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingId.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +127,12 @@
       <workItem from="1700748328130" duration="1150000" />
       <workItem from="1700755764466" duration="7414000" />
       <workItem from="1700763425267" duration="369000" />
+      <workItem from="1700765910056" duration="246000" />
+      <workItem from="1700938065606" duration="2142000" />
+      <workItem from="1700942178031" duration="1022000" />
+      <workItem from="1701008058361" duration="1673000" />
+      <workItem from="1701025295343" duration="793000" />
+      <workItem from="1701073019860" duration="2993000" />
     </task>
     <servers />
   </component>
