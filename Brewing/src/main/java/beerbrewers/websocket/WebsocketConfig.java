@@ -20,5 +20,6 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.setApplicationDestinationPrefixes("/app");
         registry.enableSimpleBroker("/sensor/data");
+        registry.enableSimpleBroker("/sensor/notification");
     }
 }
