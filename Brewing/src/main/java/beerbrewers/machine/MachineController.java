@@ -39,4 +39,9 @@ public class MachineController {
                 "\n amount: " + batchAmount +
                 "\n speed: " + batchSpeed);
     }
+
+    @MessageMapping("machine/stop")
+    public void stopMachine() {
+        machineService.stopMachine();
+    }
 }

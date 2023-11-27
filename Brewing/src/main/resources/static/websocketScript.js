@@ -88,6 +88,9 @@ function startBatch() {
     }
     toggleNewBatch();
 }
+function stopMachine(){
+    stompClient.send("/app/machine/stop", {}, {})
+}
 
 function toggleNewBatch() {
     document.getElementById("newBatch").classList.toggle("active");

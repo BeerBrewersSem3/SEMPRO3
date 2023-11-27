@@ -46,13 +46,16 @@ public class MachineService implements OpcUaNodeObserver {
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
-        resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,3);
+        stopMachine();
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,1);
         resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,2);
     }
 
+    public void stopMachine(){
+        resetLatchAndSendCommand(OpcuaNodes.CNTRL_CMD,3);
+    }
 
-    public void resetLatchAndSendCommand(OpcuaNodes node, Number command) {
+    private void resetLatchAndSendCommand(OpcuaNodes node, Number command) {
         this.awaitingNode = node;
         this.latch =  new CountDownLatch(1);
         this.opcUaCommander.sendCommand(node, command);
