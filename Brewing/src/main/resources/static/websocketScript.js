@@ -8,7 +8,6 @@ function connectWebSocket() {
     var socket = new SockJS('/wss');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function() {
-        subscribeToNode("currentState");
         subscribeToNode("temperature");
         subscribeToNode("relativeHumidity");
         subscribeToNode("vibration");
@@ -18,8 +17,19 @@ function connectWebSocket() {
         subscribeToNode("prodProduced");
         subscribeToNode("prodProcessedCount");
         subscribeToNode("prodDefectiveCount");
+        subscribeToNotification("currentState");
     });
 }
+
+function subscribeToNotification(nodeName){
+    stompClient.subscribe('/sensor/notification/' + nodeName, (message) => {
+        console.log(message);
+        const sirenImage = document.getElementsByClassName("siren");
+        sirenImage.src = "thermometer.png";
+    })
+}
+
+
 connectWebSocket();
 
 

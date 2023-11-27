@@ -16,4 +16,8 @@ public class WebsocketService {
     public void send(String name, String state) {
         simpMessagingTemplate.convertAndSend("/sensor/data/" + name, state);
     }
+
+    public void sendNotification(OpcuaNodes node, String state){
+        simpMessagingTemplate.convertAndSend("/sensor/notification/" + node.getName(), state);
+    }
 }
