@@ -59,10 +59,6 @@ public class SensorReadingService implements OpcUaNodeObserver {
         sensorList.add(sensor1);
         sensorList.add(sensor2);
         sensorList.add(sensor3);
-
-        System.out.println(sensor1);
-        System.out.println(sensor2);
-        System.out.println(sensor3);
     }
 
     public List<SensorReading> getSensorReadings() {

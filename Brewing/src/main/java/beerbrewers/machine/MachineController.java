@@ -35,7 +35,7 @@ public class MachineController {
 
 
         machineService.startNewBatch(brewId, batchAmount, batchSpeed);
-        logger.info("\n type: " + brewId +
+        logger.debug("\n type: " + brewId +
                 "\n amount: " + batchAmount +
                 "\n speed: " + batchSpeed);
     }
