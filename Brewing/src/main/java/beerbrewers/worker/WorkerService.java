@@ -3,6 +3,7 @@ package beerbrewers.worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -31,15 +32,17 @@ public class WorkerService {
      * Be aware that this method does not check if the worker already exists.
      * @param worker
      */
-    public void addNewWorker(Worker worker) {
-        workerRepository.save(worker);
+    public Worker addNewWorker(Worker worker) {
+        Worker returnedWorker = workerRepository.save(worker);
+        return returnedWorker;
     }
 
-    public void deleteWorker(Long workerId) {
+    public boolean deleteWorker(Long workerId) {
         if (!determineIdPresenceInDB(workerId)) {
             throw new IllegalStateException("Worker with id '" + workerId + "' does not exist.");
         }
         workerRepository.deleteById(workerId);
+        return true;
     }
 
     public boolean determineIdPresenceInDB(Long idToCheck) {

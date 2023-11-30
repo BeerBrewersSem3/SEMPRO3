@@ -51,7 +51,7 @@ public class SensorReadingService implements OpcUaNodeObserver {
         this.sensorList = new ArrayList<>();
     }
 
-    public void getAllSensors() {
+    public void fillSensorList() {
         Sensor sensor1 = sensorService.getSensor(1L);
         Sensor sensor2 = sensorService.getSensor(2L);
         Sensor sensor3 = sensorService.getSensor(3L);
@@ -79,7 +79,7 @@ public class SensorReadingService implements OpcUaNodeObserver {
     public void updateSensorReadings() {
         if (operationService.getCurrentRunningOperation() != null) {
             if (sensorList.isEmpty()) {
-                getAllSensors();
+                fillSensorList();
             }
             for (Map.Entry<Long, Float> set : currentSensorValuesMap.entrySet()) {
                 addNewSensorReading(
