@@ -1,10 +1,7 @@
 package beerbrewers.notification;
 import beerbrewers.opcua.OpcUaNodeObserver;
-import beerbrewers.opcua.OpcUaNodeUpdateManager;
 import beerbrewers.opcua.OpcuaNodes;
 import beerbrewers.websocket.WebsocketService;
-import jakarta.annotation.PostConstruct;
-import org.apache.log.output.net.SocketOutputTarget;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +17,7 @@ public class NotificationService implements OpcUaNodeObserver {
     private final WebsocketService websocketService;
     private HashMap<OpcuaNodes, String> nodeValueMap;
     private final TemperatureService temperatureService;
+    private final InventoryService inventoryService;
     private List<OpcuaNodes> subscribeNodes = List.of(
             OpcuaNodes.STATE_CURRENT,
             OpcuaNodes.TEMPERATURE,
@@ -27,9 +25,10 @@ public class NotificationService implements OpcUaNodeObserver {
     );
 
     @Autowired
-    public NotificationService(WebsocketService websocketService, TemperatureService temperatureService) {
+    public NotificationService(WebsocketService websocketService, TemperatureService temperatureService, InventoryService inventoryService) {
         this.websocketService = websocketService;
         this.temperatureService = temperatureService;
+        this.inventoryService = inventoryService;
         this.nodeValueMap = new HashMap<>();
     }
 
@@ -45,8 +44,9 @@ public class NotificationService implements OpcUaNodeObserver {
 
         if(node == OpcuaNodes.BARLEY){
             System.out.println(newState);
-
+            inventoryService.barleyWarning(node, newState);
         }
+
         //Future switch case here:
 
 //        switch(node){

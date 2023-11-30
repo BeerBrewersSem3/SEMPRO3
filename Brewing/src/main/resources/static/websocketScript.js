@@ -177,12 +177,11 @@ document.addEventListener("DOMContentLoaded", function() {
 function subscribeToNotification(nodeName) {
     stompClient.subscribe('/notification/' + nodeName, (callback) => {
         const newState = callback.body;
-        console.log(newState);
+        console.log(newState + "This is console log");
 
-        // Example: Update notification bar content based on the received float or int
         const notificationList = document.getElementById('notificationList');
         const newNotification = document.createElement('li');
-        newNotification.textContent = `New State: ${newState}`; // Adjust based on your needs
+        newNotification.textContent = `New State: ${newState}`;
         notificationList.appendChild(newNotification);
 
         // Update notification bell badge count

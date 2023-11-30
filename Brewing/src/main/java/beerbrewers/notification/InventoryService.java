@@ -15,6 +15,11 @@ public class InventoryService {
 
     public void barleyWarning(OpcuaNodes node, String newState){
         float barley = Float.parseFloat(newState);
+        float procent = (float) Math.floor((barley)/35000*100);
+
+        if(procent < 90){
+            websocketService.sendNotification(node, String.valueOf(procent));
+        }
 
     }
 }
