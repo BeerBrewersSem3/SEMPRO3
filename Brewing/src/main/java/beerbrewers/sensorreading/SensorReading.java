@@ -27,14 +27,14 @@ public class SensorReading {
 
 
     @ManyToOne(
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             targetEntity = Batch.class,
             optional = false
     )
     private Batch batch;
 
     @ManyToOne(
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             targetEntity = Sensor.class,
             optional = false
     )
