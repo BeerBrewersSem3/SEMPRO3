@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -34,6 +36,8 @@ public class MachineService implements OpcUaNodeObserver {
             OpcuaNodes.NEXT_BATCH_AMOUNT
     );
 
+    private Map<OpcuaNodes, Number> awaitingNodes = new HashMap<>();
+
     @Autowired
     public MachineService(BatchService              batchService,
                           OpcuaCommander            opcuaCommander) {
@@ -48,18 +52,46 @@ public class MachineService implements OpcUaNodeObserver {
         startMachine();
     }
 
+    public void addBatchAttributeCommandToQueue(OpcuaNodes node, Number command){
+        awaitingNodes.put(node,command);
+        this.latch =  new CountDownLatch(awaitingNodes.size());
+    }
+    public void sendBatchCommands(){
+        for(Map.Entry<OpcuaNodes, Number> entry : awaitingNodes.entrySet()){
+            this.opcUaCommander.sendCommand(entry.getKey(),entry.getValue());
+        }
+    }
+
 
     public void setBatchAttributesToMachine(Batch batch){
+        addBatchAttributeCommandToQueue(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
+        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
+        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
+        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
+        sendBatchCommands();
+        waitForLatch();
+        /*
         resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
+
+         */
     }
     public void setBatchAttributesToMachine(Batch batch, long amount){
+        addBatchAttributeCommandToQueue(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
+        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
+        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
+        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)amount);
+        sendBatchCommands();
+        waitForLatch();
+        /*
         resetLatchAndSendCommand(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
         resetLatchAndSendCommand(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)amount);
+
+         */
     }
 
 
@@ -97,17 +129,24 @@ public class MachineService implements OpcUaNodeObserver {
     private void waitForLatch() {
         try{
             latch.await(3,TimeUnit.SECONDS);
+            logger.info("Latch released");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
     }
 
+
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
         logger.debug("Node: " + node.getName() + " has new value of: " + newState);
         if(awaitingNode != null && node.getName().equals(awaitingNode.getName())) {
             logger.debug("INSIDE: Node: " + node.getName() + " has new value of: " + newState);
+            latch.countDown();
+        }
+        if(awaitingNodes.containsKey(node)){
+            awaitingNodes.remove(node);
+            logger.info("Node: " + node.getName() + " has new value of: " + newState);
             latch.countDown();
         }
 

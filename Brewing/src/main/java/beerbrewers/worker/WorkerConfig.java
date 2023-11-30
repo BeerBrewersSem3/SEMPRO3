@@ -13,10 +13,10 @@ public class WorkerConfig {
     CommandLineRunner testWorkerCommandLineRunner(WorkerRepository repository) {
         return args -> {
             Worker john = new Worker(
-                    "John Smith", "hutlihut"
+                    1L,"John Smith", "hutlihut"
             );
             Worker jane = new Worker(
-                    "Jane Doe", "hunter123"
+                    2L,"Jane Doe", "hunter123"
             );
             repository.saveAll(
                     List.of(john, jane)
