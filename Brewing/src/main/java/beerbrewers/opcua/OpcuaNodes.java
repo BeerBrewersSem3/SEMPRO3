@@ -3,7 +3,7 @@ public enum OpcuaNodes {
 
     /* ADMIN */
     PROD_DEFECTIVE_COUNT(6, "::Program:Cube.Admin.ProdDefectiveCount", "prodDefectiveCount"), // [R] Amount of defective products.
-    PROD_PROCESSED_COUNT(6, "::Program:Cube.Admin.ProdProcessedCount", "prodProcessedCount"), // [R] Amount of produced products.
+    PROD_PROCESSED_COUNT(6, "::Program:product.good", "prodProcessedCount"), // [R] Amount of produced products.
     STOP_REASON_ID(6, "::Program:Cube.Admin.StopReason.Id", "stopReasonId"),                          // [R] 10: Empty inventory 11: Maintenance needed 12: Manual stop 13: Motor power loss 14: Manual abort
     //STOP_REASON_VALUE ?? THERE IS A STOP REASON ID AND A VALUE. UPPER ENUM IS A STOP REASON ID.
     //Parameter[0] - Id of product in batch
