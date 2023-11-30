@@ -1,3 +1,4 @@
+/*
 package beerbrewers;
 
 import beerbrewers.persistence.SupabaseConnection;
@@ -18,3 +19,4 @@ public class DatabaseTests {
         //assertNotNull(supabaseConnection.testQueryForDatabase());
     }
 }
+*/

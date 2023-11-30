@@ -34,6 +34,10 @@ public class BatchService implements OpcUaNodeObserver {
         return batchRepository.findAll();
     }
 
+    public Batch getBatch(Long batchId) {
+        return batchRepository.findByBatchId(batchId);
+    }
+
     public void addNewBatch(Batch batch) {
         batchRepository.save(batch);
     }
@@ -54,6 +58,7 @@ public class BatchService implements OpcUaNodeObserver {
     public Batch getLatestBatch(){
         return batchRepository.findTopByOrderByBatchIdDesc();
     }
+
 
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {

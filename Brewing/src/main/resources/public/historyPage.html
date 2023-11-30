@@ -5,6 +5,7 @@
     <title>HistoryPage</title>
     <link rel="stylesheet" href="./historyStyle.css">
     <script src="switchPage.js"></script>
+    <script defer src="historyFetch.js"></script>
 </head>
 <body>
 
@@ -12,7 +13,6 @@
     <div class="menuBtns">
         <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
         <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
-        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
     </div>
 
     <div class="header">
@@ -32,7 +32,7 @@
 <div class="mainHorizAdjust">
     <div class="main">
         <div class="tableWrapper">
-            <table class="historyTable">
+            <table class="historyTable" id="historyTable">
                 <thead>
                 <tr class="tableHeader">
                     <th>ID</th>
