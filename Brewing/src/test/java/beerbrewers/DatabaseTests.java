@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class DatabaseTests {
@@ -14,7 +15,8 @@ public class DatabaseTests {
 
     @Test
     public void testDataSourceInjection() {
-        //assertNotNull(supabaseConnection);
-        //assertNotNull(supabaseConnection.testQueryForDatabase());
+        assertTrue(supabaseConnection instanceof SupabaseConnection);
+        assertNotNull(supabaseConnection);
+        assertNotNull(supabaseConnection.testQueryForDatabase());
     }
 }
