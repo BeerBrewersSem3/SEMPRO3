@@ -63,6 +63,8 @@ function connectWebSocket() {
         subscribeToInventory("yeast");
         subscribeToInventory("hops");
         subscribeToInventory("wheat");
+        subscribeToNotification("currentState");
+        subscribeToNotification("temperature");
         onPageLoad();
     });
 }
@@ -160,5 +162,34 @@ function onPageLoad() {
     console.log("Load");
     stompClient.send("/app/sensor/data/onload", {}, {});
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var item = document.querySelector(".notification-drop .item");
+
+    item.addEventListener("click", function() {
+        var ul = this.querySelector("ul");
+        if (ul) {
+            ul.style.display = (ul.style.display === "none" || ul.style.display === "") ? "block" : "none";
+        }
+    });
+});
+
+function subscribeToNotification(nodeName) {
+    stompClient.subscribe('/notification/' + nodeName, (callback) => {
+        const newState = callback.body;
+        console.log(newState);
+
+        // Example: Update notification bar content based on the received float or int
+        const notificationList = document.getElementById('notificationList');
+        const newNotification = document.createElement('li');
+        newNotification.textContent = `New State: ${newState}`; // Adjust based on your needs
+        notificationList.appendChild(newNotification);
+
+        // Update notification bell badge count
+        const badge = document.querySelector('.btn__badge');
+        badge.textContent = parseInt(badge.textContent) + 1;
+    });
+}
+
 
 
