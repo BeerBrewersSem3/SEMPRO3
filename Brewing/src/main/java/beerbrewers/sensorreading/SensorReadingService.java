@@ -1,5 +1,6 @@
 package beerbrewers.sensorreading;
 
+import beerbrewers.batch.BatchService;
 import beerbrewers.opcua.OpcUaNodeObserver;
 import beerbrewers.opcua.OpcuaNodes;
 import beerbrewers.operation.OperationService;
@@ -28,7 +29,7 @@ public class SensorReadingService implements OpcUaNodeObserver {
 
     private HashMap<Long, Float> currentSensorValuesMap;
 
-    private final OperationService operationService;
+    private final BatchService batchService;
 
     private final SensorService sensorService;
 
@@ -43,9 +44,9 @@ public class SensorReadingService implements OpcUaNodeObserver {
     @Autowired
     public SensorReadingService(
             SensorReadingRepository sensorReadingRepository,
-            OperationService operationService, SensorService sensorService) {
+            BatchService batchService, SensorService sensorService) {
         this.sensorReadingRepository = sensorReadingRepository;
-        this.operationService = operationService;
+        this.batchService = batchService;
         this.sensorService = sensorService;
         this.currentSensorValuesMap = new HashMap<>();
         this.sensorList = new ArrayList<>();
@@ -77,14 +78,14 @@ public class SensorReadingService implements OpcUaNodeObserver {
      */
     @Scheduled(fixedDelay = 10000)
     public void updateSensorReadings() {
-        if (operationService.getCurrentRunningOperation() != null) {
+        if (batchService.getCurrentBatch() != null) {
             if (sensorList.isEmpty()) {
                 fillSensorList();
             }
             for (Map.Entry<Long, Float> set : currentSensorValuesMap.entrySet()) {
                 addNewSensorReading(
                         new SensorReading(
-                                operationService.getCurrentRunningOperation(),
+                                batchService.getCurrentBatch(),
                                 sensorList.get((int) (set.getKey()-1)),
                                 new Timestamp(System.currentTimeMillis()),
                                 set.getValue()));

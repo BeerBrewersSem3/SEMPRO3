@@ -3,6 +3,8 @@ package beerbrewers.batch;
 import beerbrewers.operation.Operation;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity(name = "Batch")
@@ -26,7 +28,7 @@ public class Batch {
     private Long batchId;
 
     @ManyToOne(
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             targetEntity = Operation.class,
             optional = false
     )

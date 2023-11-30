@@ -29,7 +29,7 @@ public class Operation {
     private Long operationId;
 
     @ManyToOne(
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             targetEntity = Worker.class
 //            optional = false
     )

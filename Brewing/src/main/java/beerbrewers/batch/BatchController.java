@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/batch")
+@RequestMapping(path = "/api/v1/batch")
 public class BatchController {
     private final BatchService batchService;
 

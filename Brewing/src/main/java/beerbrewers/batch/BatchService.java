@@ -41,6 +41,7 @@ public class BatchService implements OpcUaNodeObserver {
     @Transactional
     public Batch saveAndGetBatch(int brewId, long batchAmount, long batchSpeed) {
         // Create batch instance
+
         Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId],batchAmount,batchSpeed);
         // Save the entity to the database
         batchRepository.save(batch);

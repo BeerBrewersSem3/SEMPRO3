@@ -1,9 +1,7 @@
 package beerbrewers.sensorreading;
 
 import beerbrewers.batch.Batch;
-import beerbrewers.operation.Operation;
 import beerbrewers.sensor.Sensor;
-import beerbrewers.worker.Worker;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 
@@ -29,15 +27,14 @@ public class SensorReading {
 
 
     @ManyToOne(
-            fetch = FetchType.LAZY,
-            targetEntity = Operation.class,
+            fetch = FetchType.EAGER,
+            targetEntity = Batch.class,
             optional = false
     )
-//    @JoinColumn(name = "operation_id")
-    private Operation operation;
+    private Batch batch;
 
     @ManyToOne(
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             targetEntity = Sensor.class,
             optional = false
     )
@@ -57,16 +54,16 @@ public class SensorReading {
 
     protected SensorReading() {}
 
-    public SensorReading(Operation operation, Sensor sensor, Timestamp timestamp, float sensorValue) {
-        this.operation = operation;
+    public SensorReading(Batch batch, Sensor sensor, Timestamp timestamp, float sensorValue) {
+        this.batch = batch;
         this.sensor = sensor;
         this.timestamp = timestamp;
         this.sensorValue = sensorValue;
     }
 
-    public SensorReading(Long sensorReadingId, Operation operation, Sensor sensor, Timestamp timestamp, float sensorValue) {
+    public SensorReading(Long sensorReadingId, Batch batch, Sensor sensor, Timestamp timestamp, float sensorValue) {
         this.sensorReadingId = sensorReadingId;
-        this.operation = operation;
+        this.batch = batch;
         this.sensor = sensor;
         this.timestamp = timestamp;
         this.sensorValue = sensorValue;
@@ -85,12 +82,12 @@ public class SensorReading {
         this.sensorReadingId = sensorReadingId;
     }
 
-    public Operation getOperation() {
-        return operation;
+    public Batch getBatch() {
+        return batch;
     }
 
-    public void setOperation(Operation operation) {
-        this.operation = operation;
+    public void setBatch(Batch batch) {
+        this.batch = batch;
     }
 
     public Sensor getSensor() {
@@ -121,7 +118,7 @@ public class SensorReading {
     public String toString() {
         return "SensorReading{" +
                 "sensorReadingId=" + sensorReadingId +
-                ", operation=" + operation +
+                ", batch=" + batch +
                 ", sensor=" + sensor +
                 ", timestamp=" + timestamp +
                 ", sensorValue=" + sensorValue +

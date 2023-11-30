@@ -3,6 +3,8 @@ package beerbrewers.opcua;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import java.util.concurrent.ExecutionException;
 public class OpcuaCommander {
 
     private OpcuaClientConnection connection;
+    private Logger logger = LoggerFactory.getLogger(OpcuaCommander.class);
     @Autowired
     public OpcuaCommander(OpcuaClientConnection opcuaClientConnection){
         this.connection = opcuaClientConnection;
@@ -31,6 +34,7 @@ public class OpcuaCommander {
 
         try {
             connection.getClient().writeValue(nodeId, DataValue.valueOnly(variantCommand)).get();
+            logger.info("Command sent to node: " + node.getIdentifier() + " with value: " + command.toString());
             if(node.equals(OpcuaNodes.CNTRL_CMD)){
                 commandChangeRequest(true);
             }
