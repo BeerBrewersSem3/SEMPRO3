@@ -17,14 +17,14 @@ function createHistoryElement(data) {
 
     const startData = document.createElement("td");
     startData.id = "historyStart";
-    startData.textContent = data.startTime;
+    startData.textContent = formatTime(data.startTime);
 
     const stopData = document.createElement("td");
     stopData.id = "historyStop";
     if (data.endTime == null) {
         data.endTime = "endtime not found"
     }
-    stopData.textContent = data.endTime; // assuming endTime is a property in your data
+    stopData.textContent = formatTime(data.endTime); // assuming endTime is a property in your data
 
     row.appendChild(idData);
     row.appendChild(typeData);
@@ -35,7 +35,7 @@ function createHistoryElement(data) {
     document.getElementById("historyTable").appendChild(row);
 
     row.addEventListener("click", function (row) {
-        window.location.href = `historyPageOpen.html?batchId=${data.batchId}`
+        window.location.href = `historyPageOpen.html?batchId=${data.batchId}`;
     });
 }
 
@@ -47,4 +47,7 @@ function fillTable() {
         })
         .catch(error => console.error("Error fetching data:", error));
 }
+
+
+
 fillTable();

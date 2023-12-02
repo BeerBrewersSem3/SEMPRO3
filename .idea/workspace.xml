@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyFetch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/formatText.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/BatchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/sensorreading/SensorReadingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyOpenStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyOpenStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/switchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/switchPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyFetch.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyFetch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +138,9 @@
       <workItem from="1701333890835" duration="7180000" />
       <workItem from="1701343641305" duration="4803000" />
       <workItem from="1701351208366" duration="16434000" />
+      <workItem from="1701382742877" duration="4785000" />
+      <workItem from="1701431513170" duration="24635000" />
+      <workItem from="1701475336179" duration="319000" />
     </task>
     <servers />
   </component>
