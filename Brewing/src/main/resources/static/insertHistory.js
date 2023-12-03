@@ -14,7 +14,7 @@ function insertInfo() {
             document.getElementById("rejected").innerText = data.defectiveCount;
             document.getElementById("speed").innerText = data.speed;
             document.getElementById("started").innerText = formatTime(data.startTime);
-            document.getElementById("workerID").innerText = data.operation.worker.workerId;
+            document.getElementById("workerID").innerText = data.operation.worker.name;
             if (data.endTime == null) {
                 document.getElementById("stopped").innerText = "endtime not found";
             }
