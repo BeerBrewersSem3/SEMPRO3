@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/TestServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/BatchTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorReadingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorReadingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/TestServlet.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +92,21 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.beerbrewers in Brewing">
+    <configuration name="BatchTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Brewing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="beerbrewers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="beerbrewers" />
+      <option name="MAIN_CLASS_NAME" value="beerbrewers.BatchTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SensorReadingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Brewing" />
       <extension name="coverage">
@@ -144,22 +152,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WorkerTests.testAddNewWorker" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Brewing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="beerbrewers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="beerbrewers" />
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.WorkerTests" />
-      <option name="METHOD_NAME" value="testAddNewWorker" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="beerbrewers in Brewing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Brewing" />
       <extension name="coverage">
@@ -185,10 +177,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.beerbrewers in Brewing" />
+        <item itemvalue="JUnit.BatchTests" />
         <item itemvalue="JUnit.SensorReadingTest" />
         <item itemvalue="JUnit.SensorTest" />
         <item itemvalue="JUnit.WorkerTests" />
-        <item itemvalue="JUnit.WorkerTests.testAddNewWorker" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +218,7 @@
       <workItem from="1701073019860" duration="2993000" />
       <workItem from="1701076413561" duration="6815000" />
       <workItem from="1701329183621" duration="13641000" />
-      <workItem from="1701342987457" duration="2133000" />
+      <workItem from="1701342987457" duration="4351000" />
     </task>
     <servers />
   </component>
@@ -260,7 +252,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SEMPRO3$beerbrewers_in_Brewing.ic" NAME="beerbrewers in Brewing Coverage Results" MODIFIED="1701343196609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/SEMPRO3$beerbrewers_in_Brewing.ic" NAME="beerbrewers in Brewing Coverage Results" MODIFIED="1701346004786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>beerbrewers.*</FILTER>
     </SUITE>
   </component>
