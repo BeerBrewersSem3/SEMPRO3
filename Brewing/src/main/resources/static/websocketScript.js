@@ -97,39 +97,6 @@ function startBatch() {
     cursorLoadingAnimation();
 }
 
-function cursorLoadingAnimation() {
-    document.body.style.cursor = 'wait';
-}
-function cursorDefault() {
-    document.body.style.cursor = 'default';
-}
-
-function emergencyStopMachine(){
-    pauseMachine();
-}
-function pauseMachine(){
-    stompClient.send("/app/machine/pause", {}, {});
-    document.getElementById("pauseBtn").innerText = "Continue";
-}
-
-function continueBatch() {
-    stompClient.send("/app/machine/continue", {}, {});
-    document.getElementById("pauseBtn").innerText = "Pause";
-}
-
-let isPaused = false;
-
-function toggleSwitchPauseStart() {
-    cursorLoadingAnimation();
-    if (isPaused) {
-        continueBatch();
-    } else {
-        pauseMachine();
-    }
-    isPaused = !isPaused;
-    cursorDefault();
-}
-
 function toggleNewBatch() {
     document.getElementById("newBatch").classList.toggle("active");
 }

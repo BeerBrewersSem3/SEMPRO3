@@ -112,12 +112,14 @@ public class MachineService implements OpcUaNodeObserver {
         if(batchService.getCurrentBatch() != null){
             batchService.saveBatch(batchService.getCurrentBatch());
         }
+        websocketService.send("batchStart","");
     }
 
     public void continueBatch(){
         Batch batch = batchService.getCurrentBatch();
         setBatchAttributesToMachine(batch,batch.getAmount()-batch.getCompletedCount());
         startMachine();
+        websocketService.send("batchStart","");
     }
 
 
