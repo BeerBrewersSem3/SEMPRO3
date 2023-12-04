@@ -95,9 +95,6 @@ function startBatch() {
     cursorLoadingAnimation();
 }
 
-function toggleNewBatch() {
-    document.getElementById("newBatch").classList.toggle("active");
-}
 function convertBrewType() {
     const batchType    = document.getElementById("brewType").value;
     switch(batchType) {
@@ -178,7 +175,6 @@ function setRequired(barley,hops,malt,wheat,yeast,amount) {
 }
 
 connectWebSocket();
-getBrewRecipe();
 function onPageLoad() {
     console.log("Load");
     stompClient.send("/app/sensor/data/onload", {}, {});

@@ -1,8 +1,7 @@
 package beerbrewers.recipe;
 
-import beerbrewers.batch.Batch;
+import beerbrewers.batch.BatchService;
 import beerbrewers.batch.BrewEnum;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,10 +10,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/recipe/brewTypes")
+@RequestMapping(path = "/recipe")
 public class RecipeController {
 
-    @GetMapping
+    private final BatchService batchService;
+
+    public RecipeController(BatchService batchService) {
+        this.batchService = batchService;
+    }
+
+    @GetMapping("/brewTypes")
     public List<Map<String, Object>> getBatches() {
         // Convert BrewEnum values to a list of Maps
         List<Map<String, Object>> brewTypes = Arrays.stream(BrewEnum.values())
@@ -32,5 +37,10 @@ public class RecipeController {
                 .collect(Collectors.toList());
 
         return brewTypes;
+    }
+
+    @GetMapping("/nextBatchId")
+    public long getNextBatchId(){
+        return batchService.getNextBatchId();
     }
 }

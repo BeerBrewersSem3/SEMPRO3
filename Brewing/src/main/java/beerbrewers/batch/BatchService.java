@@ -59,6 +59,11 @@ public class BatchService implements OpcUaNodeObserver {
         return batchRepository.findTopByOrderByBatchIdDesc();
     }
 
+    @Transactional
+    public long getNextBatchId() {
+        return batchRepository.findTopByOrderByBatchIdDesc().getBatchId()+1;
+    }
+
 
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
