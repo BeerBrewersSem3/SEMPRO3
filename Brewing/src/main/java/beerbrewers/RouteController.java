@@ -17,34 +17,31 @@ public class RouteController {
     @GetMapping("/")
     @ResponseBody
     public String hello() throws IOException {
-        // Load the index.html file from the resources/public directory
-        Resource resource = new ClassPathResource("public/login.html");
-        byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
-
-        // Convert the bytes to a string using UTF-8 encoding
-        return new String(bytes, StandardCharsets.UTF_8);
+        return convertToString("login");
     }
 
     @GetMapping("/login")
     @ResponseBody
     public String loginPage() throws IOException {
-        // Load the index.html file from the resources/public directory
-        Resource resource = new ClassPathResource("public/login.html");
-        byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
-
-        // Convert the bytes to a string using UTF-8 encoding
-        return new String(bytes, StandardCharsets.UTF_8);
+        return convertToString("login");
     }
 
     @GetMapping("/monitor")
     @ResponseBody
     public String monitorPage() throws IOException {
-        Resource resource = new ClassPathResource("public/monitorPage.html");
+        return convertToString("monitorPage");
+    }
+
+    @GetMapping("/history")
+    @ResponseBody
+    public String historyPage() throws IOException {
+        return convertToString("historyPage");
+    }
+
+    public String convertToString(String htmlString) throws IOException {
+        Resource resource = new ClassPathResource("public/" + htmlString + ".html");
         byte[] bytes = Files.readAllBytes(Paths.get(resource.getURI()));
-
-        // Convert the bytes to a string using UTF-8 encoding
         return new String(bytes, StandardCharsets.UTF_8);
-
     }
 }
 

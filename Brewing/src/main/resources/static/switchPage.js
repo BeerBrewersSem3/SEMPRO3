@@ -1,9 +1,9 @@
 function openHistory() {
-    window.location.href = 'historyPage.html';
+    window.location.href = 'history';
 }
 
 function openMonitor() {
-    window.location.href = 'monitorPage.html';
+    window.location.href = 'monitor';
 }
 
 function toggleNewBatch() {
