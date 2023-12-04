@@ -1,5 +1,7 @@
 package beerbrewers.batch;
 
+import java.io.Serializable;
+
 public enum BrewEnum {
 
     PILSNER(0, 4, 2, 1, 1, 4, "Pilsner"),
@@ -63,5 +65,18 @@ public enum BrewEnum {
                                 BrewEnum.ALE,
                                 BrewEnum.ALCOHOL_FREE};
         return brewEnums[brewId];
+    }
+
+    @Override
+    public String toString() {
+        return name + "{" +
+                "brewId=" + brewId +
+                ", wheat=" + wheat +
+                ", barley=" + barley +
+                ", hops=" + hops +
+                ", yeast=" + yeast +
+                ", malt=" + malt +
+                ", name=" + name +
+                '}';
     }
 }
