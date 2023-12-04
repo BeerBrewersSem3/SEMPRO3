@@ -61,6 +61,14 @@ function connectWebSocket() {
         subscribeToInventory("yeast");
         subscribeToInventory("hops");
         subscribeToInventory("wheat");
+        subscribeToNotification("currentState");
+        subscribeToNotification("temperature");
+        checkFilling("fillingInventory")
+        subscribeToNotification("barley");
+        subscribeToNotification("wheat");
+        subscribeToNotification("malt");
+        subscribeToNotification("yeast");
+        subscribeToNotification("hops");
         onPageLoad();
         subscribeToBatchStart();
         subscribeToConsoleMessages();
@@ -103,7 +111,7 @@ function convertBrewType() {
         case "Pilsner": return 0;
         case "Wheat": return 1;
         case "IPA": return 2;
-        case "Stout": return 3;
+        case "Stout": return 3;  
         case "Ale": return 4;
         case "Alcohol Free": return 5
     }
@@ -182,5 +190,54 @@ function onPageLoad() {
     console.log("Load");
     stompClient.send("/app/sensor/data/onload", {}, {});
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var item = document.querySelector(".notification-drop .item");
+
+    item.addEventListener("click", function() {
+        var ul = this.querySelector("ul");
+        if (ul) {
+            ul.style.display = (ul.style.display === "none" || ul.style.display === "") ? "block" : "none";
+
+            const badge = document.querySelector('.btn__badge');
+            badge.textContent = "0";
+        }
+    });
+});
+
+var boolean;
+function subscribeToNotification(nodeName) {
+    stompClient.subscribe('/notification/' + nodeName, (message) => {
+        let newState = message.body;
+
+        const notificationList = document.getElementById('notificationList');
+        const notificationId = 'notification- ' + nodeName;
+        const existingNotification = document.getElementById(notificationId);
+        console.log(boolean);
+        if (!existingNotification) {
+            const newNotification = document.createElement("li");
+            newNotification.id = notificationId;
+            newNotification.textContent = `${newState}`
+            notificationList.appendChild(newNotification);
+            const badge = document.querySelector('.btn__badge');
+            badge.textContent = parseInt(badge.textContent) + 1;
+        } else if(boolean === true) {
+            notificationList.innerHTML = "";
+        } else {
+            existingNotification.textContent = `${newState}`
+        }
+    });
+}
+    function checkFilling(nodeName) {
+        stompClient.subscribe('/sensor/data/' + nodeName, (message) => {
+            boolean = message.body;
+        });
+
+}
+
+
+
+
+
 
 

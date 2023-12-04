@@ -22,5 +22,6 @@ public class WebsocketController {
         opcUaDashboardService.getCurrentNodeValueMap().forEach((opcuaNodes, currentValue) -> {
             websocketService.send(opcuaNodes.getName(),currentValue);
         });
+
     }
 }

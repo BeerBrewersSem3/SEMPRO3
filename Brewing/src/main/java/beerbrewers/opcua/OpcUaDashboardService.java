@@ -35,7 +35,8 @@ public class OpcUaDashboardService implements OpcUaNodeObserver {
             OpcuaNodes.MALT,
             OpcuaNodes.HOPS,
             OpcuaNodes.WHEAT,
-            OpcuaNodes.YEAST
+            OpcuaNodes.YEAST,
+            OpcuaNodes.FILLING_INVENTORY
     );
 
     @Autowired

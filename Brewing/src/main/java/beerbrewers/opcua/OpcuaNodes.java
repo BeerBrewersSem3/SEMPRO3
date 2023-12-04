@@ -40,6 +40,7 @@ public enum OpcuaNodes {
     MALT(6,"::Program:Inventory.Malt", "malt"),
     WHEAT(6,"::Program:Inventory.Wheat","wheat"),
     YEAST(6,"::Program:Inventory.Yeast","yeast"),
+    FILLING_INVENTORY (6, "::Program:FillingInventory","fillingInventory"),
 
     /* MAINTENANCE */
     MAINTENANCE_COUNTER(6, "::Program:Maintenance.Counter", "maintenanceCounter"),

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./newBatch.css">
     <script src="switchPage.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
     <script defer src="websocketScript.js"></script>
     <script defer src="machine.js"></script>
@@ -25,8 +26,16 @@
     </div>
 
     <div class="navRight">
-        <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
+
+        <ul class="notification-drop">
+            <div class="item">
+                <i class="fa fa-bell-o notification-bell" aria-hidden="true"></i> <span class="btn__badge pulse-button">0</span>
+                <ul id="notificationList">
+                </ul>
+            </div>
+        </ul>
         <button class="emerBtn" onclick=emergencyStopMachine()>Emergency Stop!</button>
+
     </div>
 </div>
 

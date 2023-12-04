@@ -60,6 +60,7 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.HOPS);
             subscribe(OpcuaNodes.MALT);
             subscribe(OpcuaNodes.YEAST);
+            subscribe(OpcuaNodes.FILLING_INVENTORY);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
