@@ -66,6 +66,10 @@ function connectWebSocket() {
         subscribeToNotification("currentState");
         subscribeToNotification("temperature");
         subscribeToNotification("barley");
+        subscribeToNotification("wheat");
+        subscribeToNotification("malt");
+        subscribeToNotification("yeast");
+        subscribeToNotification("hops");
         onPageLoad();
     });
 }
@@ -171,13 +175,16 @@ document.addEventListener("DOMContentLoaded", function() {
         var ul = this.querySelector("ul");
         if (ul) {
             ul.style.display = (ul.style.display === "none" || ul.style.display === "") ? "block" : "none";
+
+            const badge = document.querySelector('.btn__badge');
+            badge.textContent = "0";
         }
     });
 });
 
 function subscribeToNotification(nodeName) {
     stompClient.subscribe('/notification/' + nodeName, (message) => {
-        let newState = nodeName + message.body;
+        let newState = message.body;
 
         const notificationList = document.getElementById('notificationList');
         const notificationId = 'notification- ' + nodeName;
@@ -186,38 +193,15 @@ function subscribeToNotification(nodeName) {
         if(!existingNotification){
             const newNotification = document.createElement("li");
             newNotification.id = notificationId;
-            newNotification.textContent = `Info: ${newState}`
+            newNotification.textContent = `${newState}`
             notificationList.appendChild(newNotification);
-        } else {
-            existingNotification.textContent = `Info: ${newState}`
-        }
-
-        // Update notification bell badge count
-        const badge = document.querySelector('.btn__badge');
-        badge.textContent = parseInt(badge.textContent) + 1;
-    });
-
-    /*
-    function subscribeToNotification(nodeName) {
-        stompClient.subscribe('/notification/' + nodeName, (message) => {
-            let newState = nodeName + message.body;
-
-            const notificationList = document.getElementById('notificationList');
-
-            if(!notificationList.querySelector('li' + nodeName)){
-                const newNotification = document.createElement('li' + nodeName);
-                newNotification.textContent = `Info: ${newState}`;
-                notificationList.appendChild(newNotification);
-            } else {
-                const oldNotification = document.getElementById('li'+ nodeName);
-                oldNotification.textContent = `Info: ${newState}`;
-            }
-
-            // Update notification bell badge count
             const badge = document.querySelector('.btn__badge');
             badge.textContent = parseInt(badge.textContent) + 1;
-        });
-     */
+        } else {
+            existingNotification.textContent = `${newState}`
+        }
+    });
+
 }
 
 

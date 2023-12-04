@@ -22,7 +22,7 @@ public class WebsocketService {
         logger.debug("Websocket message sent for node {}: {}", name, state);
     }
 
-    public void sendNotification(OpcuaNodes node, String state){
-        simpMessagingTemplate.convertAndSend("/notification/" + node.getName(), state);
+    public void sendNotification(OpcuaNodes node, String state, String uniqueMessage){
+        simpMessagingTemplate.convertAndSend("/notification/" + node.getName(), uniqueMessage + ":" + state);
     }
 }

@@ -21,7 +21,11 @@ public class NotificationService implements OpcUaNodeObserver {
     private List<OpcuaNodes> subscribeNodes = List.of(
             OpcuaNodes.STATE_CURRENT,
             OpcuaNodes.TEMPERATURE,
-            OpcuaNodes.BARLEY
+            OpcuaNodes.BARLEY,
+            OpcuaNodes.MALT,
+            OpcuaNodes.WHEAT,
+            OpcuaNodes.HOPS,
+            OpcuaNodes.YEAST
     );
 
     @Autowired
@@ -36,8 +40,8 @@ public class NotificationService implements OpcUaNodeObserver {
     public void onNodeUpdate(OpcuaNodes node, String newState) {
         nodeValueMap.put(node, newState);
 
-        if(node == OpcuaNodes.BARLEY){
-            inventoryService.barleyWarning(node, newState);
+        if(subscribeNodes.contains(node)){
+            inventoryService.inventoryWarning(node, newState);
         }
 
         //Test if statement

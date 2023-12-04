@@ -24,7 +24,7 @@ public class TemperatureService {
 
         if (temp < 40 && temp < 60) {
 
-            websocketService.sendNotification(node, newState);
+            //websocketService.sendNotification(node, newState);
         }
 
         if (temp > 60) {
