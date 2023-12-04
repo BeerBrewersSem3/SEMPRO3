@@ -35,11 +35,9 @@ function colorCalc(fill) {
 
 function subscribeToInventory(nodeName){
     stompClient.subscribe('/sensor/data/' + nodeName, (message)=>{
-        //console.log("Subscribed to: " + message.body);
         let totalStockInPercentage = Math.floor((parseInt(message.body) / 35000) * 100);
-
-        //console.log("The total percantage is: " + totalStockInPercentage)
-        fillSilo(totalStockInPercentage, nodeName)
+        fillSilo(totalStockInPercentage, nodeName);
+        fillStock(nodeName,message.body);
     })
 }
 
@@ -138,11 +136,49 @@ function colCalculator(fill) {
     } else {
         return `rgb(0, 0, 0)`;
     }
-
 }
 
+function fillStock(type,stock) {
+    document.getElementById("stock_" + type).innerText = Math.floor(stock);
+}
+
+const brewType = document.getElementById("brewType");
+const brewAmount = document.getElementById("batchAmount");
+function fillRequired() {
+    var selectedOption = brewType.options[brewType.selectedIndex].text;
+    if (selectedOption !== brewType.options[0] && brewAmount.length !== 0) {
+        getRequired(selectedOption);
+    } else {
+        setRequired(0,0,0,0,0,0)
+    }
+}
+brewType.addEventListener("change",fillRequired);
+brewAmount.addEventListener("input",fillRequired);
+
+function getRequired(type) {
+    const amount = document.getElementById("batchAmount").value;
+    fetch("http://localhost:8080/recipe/brewTypes")
+        .then(response => response.json())
+        .then(jsonArray => {
+            jsonArray.forEach(data => {
+               if (data.name == type) {
+                   setRequired(data.barley,data.hops,data.malt,data.wheat,data.yeast,amount)
+               }
+            });
+        })
+        .catch(error => console.error("Error fetching data:", error));
+}
+
+function setRequired(barley,hops,malt,wheat,yeast,amount) {
+    document.getElementById("required_barley").innerText = barley * amount;
+    document.getElementById("required_hops").innerText = hops * amount;
+    document.getElementById("required_malt").innerText = malt * amount;
+    document.getElementById("required_wheat").innerText = wheat * amount;
+    document.getElementById("required_yeast").innerText = yeast * amount;
+}
 
 connectWebSocket();
+getBrewRecipe();
 function onPageLoad() {
     console.log("Load");
     stompClient.send("/app/sensor/data/onload", {}, {});
