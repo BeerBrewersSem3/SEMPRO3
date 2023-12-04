@@ -21,6 +21,11 @@ public class BatchController {
         return batchService.getBatches();
     }
 
+    @GetMapping(path = "{batchId}")
+    public Batch getBatch(@PathVariable("batchId") Long batchId) {
+        return batchService.getBatch(batchId);
+    }
+
     @GetMapping(path = "/current")
     public Batch getCurrentBatch() {
         return batchService.getCurrentBatch();

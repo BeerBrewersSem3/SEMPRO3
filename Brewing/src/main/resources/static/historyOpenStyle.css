@@ -150,11 +150,11 @@ body{
     height: inherit;
 }
 
-.historyTable{
+.openHistoryTable{
     border-collapse: collapse;
 }
 
-.historyTable thead tr{
+.openHistoryTable thead tr{
     font-size: 24px;
     position: sticky;
     top: 0;
@@ -162,11 +162,11 @@ body{
     border: 1px solid white;
 }
 
-.historyTable tr{
+.openHistoryTable tr{
     border: 1px solid white;
 }
 
-.historyTable th, .historyTable td{
+.openHistoryTable th, .openHistoryTable td{
     padding: 10px 30px;
     color: white;
     text-align: center;
