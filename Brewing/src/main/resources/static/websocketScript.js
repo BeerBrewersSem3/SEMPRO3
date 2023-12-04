@@ -174,6 +174,7 @@ function setRequired(barley,hops,malt,wheat,yeast,amount) {
     document.getElementById("required_yeast").innerText = yeast * amount;
 }
 
+setRequired(0,0,0,0,0,0);
 connectWebSocket();
 function onPageLoad() {
     console.log("Load");
