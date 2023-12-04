@@ -35,11 +35,9 @@ function colorCalc(fill) {
 
 function subscribeToInventory(nodeName){
     stompClient.subscribe('/sensor/data/' + nodeName, (message)=>{
-        //console.log("Subscribed to: " + message.body);
         let totalStockInPercentage = Math.floor((parseInt(message.body) / 35000) * 100);
-
-        //console.log("The total percantage is: " + totalStockInPercentage)
-        fillSilo(totalStockInPercentage, nodeName)
+        fillSilo(totalStockInPercentage, nodeName);
+        fillStock(nodeName,message.body);
     })
 }
 
@@ -153,9 +151,15 @@ function colCalculator(fill) {
     } else {
         return `rgb(0, 0, 0)`;
     }
-
 }
 
+function fillStock(type,stock) {
+    document.getElementById("stock_" + type).innerText = Math.floor(stock);
+}
+
+function fillRequired() {
+    
+}
 
 connectWebSocket();
 function onPageLoad() {
