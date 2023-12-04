@@ -88,7 +88,9 @@ function startBatch() {
     }
     toggleNewBatch();
 }
-
+function emergencyStopMachine(){
+    pauseMachine();
+}
 function pauseMachine(){
     stompClient.send("/app/machine/pause", {}, {});
     document.getElementById("pauseBtn").innerText = "Continue";
