@@ -36,15 +36,14 @@ public class NotificationService implements OpcUaNodeObserver {
     public void onNodeUpdate(OpcuaNodes node, String newState) {
         nodeValueMap.put(node, newState);
 
+        if(node == OpcuaNodes.BARLEY){
+            inventoryService.barleyWarning(node, newState);
+        }
+
         //Test if statement
         if(node == OpcuaNodes.STATE_CURRENT){
             System.out.println(newState);
             temperatureService.temperatureWarning(node, newState);
-        }
-
-        if(node == OpcuaNodes.BARLEY){
-            System.out.println(newState);
-            inventoryService.barleyWarning(node, newState);
         }
 
         //Future switch case here:

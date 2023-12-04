@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="New notification service base up and running, relevant functionality todo">
+    <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="small changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/notification/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/notification/InventoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/notification/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/notification/NotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/websocket/WebsocketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/monitorPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,6 +151,8 @@
       <workItem from="1701086668544" duration="7960000" />
       <workItem from="1701244682508" duration="594000" />
       <workItem from="1701330323710" duration="6363000" />
+      <workItem from="1701439664510" duration="1230000" />
+      <workItem from="1701703418382" duration="2014000" />
     </task>
     <task id="LOCAL-00001" summary="Yes">
       <created>1701087121646</created>
@@ -164,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701088164878</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="small changes">
+      <created>1701343993404</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701343993404</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +208,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Yes" />
     <MESSAGE value="New notification service base up and running, relevant functionality todo" />
-    <option name="LAST_COMMIT_MESSAGE" value="New notification service base up and running, relevant functionality todo" />
+    <MESSAGE value="small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

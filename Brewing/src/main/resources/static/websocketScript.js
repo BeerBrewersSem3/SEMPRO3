@@ -65,6 +65,7 @@ function connectWebSocket() {
         subscribeToInventory("wheat");
         subscribeToNotification("currentState");
         subscribeToNotification("temperature");
+        subscribeToNotification("barley");
         onPageLoad();
     });
 }
@@ -121,7 +122,7 @@ function convertBrewType() {
         case "Pilsner": return 0;
         case "Wheat": return 1;
         case "IPA": return 2;
-        case "Stout": return 3;
+        case "Stout": return 3;  
         case "Ale": return 4;
         case "Alcohol Free": return 5
     }
@@ -175,20 +176,53 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function subscribeToNotification(nodeName) {
-    stompClient.subscribe('/notification/' + nodeName, (callback) => {
-        const newState = callback.body;
-        console.log(newState + "This is console log");
+    stompClient.subscribe('/notification/' + nodeName, (message) => {
+        let newState = nodeName + message.body;
 
         const notificationList = document.getElementById('notificationList');
-        const newNotification = document.createElement('li');
-        newNotification.textContent = `New State: ${newState}`;
-        notificationList.appendChild(newNotification);
+        const notificationId = 'notification- ' + nodeName;
+        const existingNotification = document.getElementById(notificationId);
+
+        if(!existingNotification){
+            const newNotification = document.createElement("li");
+            newNotification.id = notificationId;
+            newNotification.textContent = `Info: ${newState}`
+            notificationList.appendChild(newNotification);
+        } else {
+            existingNotification.textContent = `Info: ${newState}`
+        }
 
         // Update notification bell badge count
         const badge = document.querySelector('.btn__badge');
         badge.textContent = parseInt(badge.textContent) + 1;
     });
+
+    /*
+    function subscribeToNotification(nodeName) {
+        stompClient.subscribe('/notification/' + nodeName, (message) => {
+            let newState = nodeName + message.body;
+
+            const notificationList = document.getElementById('notificationList');
+
+            if(!notificationList.querySelector('li' + nodeName)){
+                const newNotification = document.createElement('li' + nodeName);
+                newNotification.textContent = `Info: ${newState}`;
+                notificationList.appendChild(newNotification);
+            } else {
+                const oldNotification = document.getElementById('li'+ nodeName);
+                oldNotification.textContent = `Info: ${newState}`;
+            }
+
+            // Update notification bell badge count
+            const badge = document.querySelector('.btn__badge');
+            badge.textContent = parseInt(badge.textContent) + 1;
+        });
+     */
 }
+
+
+
+
 
 
 
