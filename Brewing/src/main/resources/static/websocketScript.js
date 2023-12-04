@@ -64,6 +64,13 @@ function connectWebSocket() {
         subscribeToInventory("hops");
         subscribeToInventory("wheat");
         onPageLoad();
+        subscribeToBatchStart();
+    });
+}
+
+function subscribeToBatchStart(){
+    stompClient.subscribe('/sensor/data/batchStart', (body) => {
+        cursorDefault();
     });
 }
 
@@ -87,7 +94,16 @@ function startBatch() {
         console.error("WebSocket connection not yet established");
     }
     toggleNewBatch();
+    cursorLoadingAnimation();
 }
+
+function cursorLoadingAnimation() {
+    document.body.style.cursor = 'wait';
+}
+function cursorDefault() {
+    document.body.style.cursor = 'default';
+}
+
 function emergencyStopMachine(){
     pauseMachine();
 }
@@ -104,12 +120,14 @@ function continueBatch() {
 let isPaused = false;
 
 function toggleSwitchPauseStart() {
+    cursorLoadingAnimation();
     if (isPaused) {
         continueBatch();
     } else {
         pauseMachine();
     }
     isPaused = !isPaused;
+    cursorDefault();
 }
 
 function toggleNewBatch() {

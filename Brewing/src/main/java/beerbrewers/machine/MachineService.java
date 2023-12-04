@@ -3,9 +3,7 @@ package beerbrewers.machine;
 import beerbrewers.batch.Batch;
 import beerbrewers.batch.BatchService;
 import beerbrewers.opcua.*;
-import beerbrewers.operation.OperationService;
-import com.fasterxml.jackson.core.JsonTokenId;
-import jakarta.annotation.PostConstruct;
+import beerbrewers.websocket.WebsocketService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +21,7 @@ public class MachineService implements OpcUaNodeObserver {
 
     private final BatchService batchService;
     private final OpcuaCommander opcUaCommander;
+    private final WebsocketService websocketService;
     private CountDownLatch latch;
     private OpcuaNodes awaitingNode;
     private static final Logger logger = LoggerFactory.getLogger(MachineService.class);
@@ -39,10 +38,12 @@ public class MachineService implements OpcUaNodeObserver {
     private Map<OpcuaNodes, Number> awaitingNodes = new HashMap<>();
 
     @Autowired
-    public MachineService(BatchService              batchService,
-                          OpcuaCommander            opcuaCommander) {
+    public MachineService(BatchService      batchService,
+                          OpcuaCommander    opcuaCommander,
+                          WebsocketService  websocketService) {
         this.batchService = batchService;
         this.opcUaCommander = opcuaCommander;
+        this.websocketService = websocketService;
     }
 
 
@@ -50,6 +51,7 @@ public class MachineService implements OpcUaNodeObserver {
         Batch batch = batchService.saveAndGetBatch(brewId, batchAmount, batchSpeed);
         setBatchAttributesToMachine(batch);
         startMachine();
+        websocketService.send("batchStart","");
     }
 
     public void addBatchAttributeCommandToQueue(OpcuaNodes node, Number command){
