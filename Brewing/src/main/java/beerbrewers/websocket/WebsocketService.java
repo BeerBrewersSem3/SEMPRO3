@@ -20,4 +20,8 @@ public class WebsocketService {
         simpMessagingTemplate.convertAndSend("/sensor/data/" + name, state);
         logger.debug("Websocket message sent for node {}: {}", name, state);
     }
+
+    public void sendConsoleInfo(String message){
+        simpMessagingTemplate.convertAndSend("/console/message",message);
+    }
 }

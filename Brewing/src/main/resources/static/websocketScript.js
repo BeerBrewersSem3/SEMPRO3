@@ -63,6 +63,7 @@ function connectWebSocket() {
         subscribeToInventory("wheat");
         onPageLoad();
         subscribeToBatchStart();
+        subscribeToConsoleMessages();
     });
 }
 
@@ -73,6 +74,7 @@ function subscribeToBatchStart(){
 }
 
 function startBatch() {
+    clearConsole();
     const batchID   = document.getElementById("batchID").value;
     const brewType    = convertBrewType()
     const batchAmount  = document.getElementById("batchAmount").value;
