@@ -32,6 +32,8 @@ public class RecipeController {
                     map.put("malt", brewEnum.getMalt());
                     map.put("yeast", brewEnum.getYeast());
                     map.put("name", brewEnum.getBrewName());
+                    map.put("minMachSpeed",brewEnum.getMinMachSpeed());
+                    map.put("maxMachSpeed",brewEnum.getMaxMachSpeed());
                     return map;
                 })
                 .collect(Collectors.toList());

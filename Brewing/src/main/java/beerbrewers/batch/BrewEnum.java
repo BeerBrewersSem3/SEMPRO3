@@ -1,15 +1,13 @@
 package beerbrewers.batch;
 
-import java.io.Serializable;
-
 public enum BrewEnum {
 
-    PILSNER(0, 4, 2, 1, 1, 4, "Pilsner"),
-    WHEAT(1, 1, 4, 6, 1, 3,"Wheat"),
-    IPA(2, 4, 1, 4, 5, 1,"IPA"),
-    STOUT(3, 3, 4, 1, 6, 2,"Stout"),
-    ALE(4, 4, 6, 2, 2, 8,"Ale"),
-    ALCOHOL_FREE(5, 1, 1, 5, 4, 0,"Alcohol Free");
+    PILSNER(0, 4, 2, 1, 1, 4, "Pilsner", 1, 600),
+    WHEAT(1, 1, 4, 6, 1, 3,"Wheat", 1, 300),
+    IPA(2, 4, 1, 4, 5, 1,"IPA", 1, 150),
+    STOUT(3, 3, 4, 1, 6, 2,"Stout", 1, 200),
+    ALE(4, 4, 6, 2, 2, 8,"Ale", 1, 100),
+    ALCOHOL_FREE(5, 1, 1, 5, 4, 0,"Alcohol Free", 1, 125);
 
 
     private final int brewId;
@@ -19,8 +17,10 @@ public enum BrewEnum {
     private final int malt;
     private final int yeast;
     private final String name;
+    private final int minMachSpeed;
+    private final int maxMachSpeed;
 
-    BrewEnum(int brewId, int barley, int hops, int wheat, int malt, int yeast, String name) {
+    BrewEnum(int brewId, int barley, int hops, int wheat, int malt, int yeast, String name, int minMachSpeed, int maxMachSpeed) {
         this.brewId = brewId;
         this.barley = barley;
         this.hops = hops;
@@ -28,6 +28,8 @@ public enum BrewEnum {
         this.malt = malt;
         this.yeast = yeast;
         this.name = name;
+        this.minMachSpeed = minMachSpeed;
+        this.maxMachSpeed = maxMachSpeed;
     }
     public String getBrewName(){
         return name;
@@ -78,5 +80,13 @@ public enum BrewEnum {
                 ", malt=" + malt +
                 ", name=" + name +
                 '}';
+    }
+
+    public int getMinMachSpeed() {
+        return minMachSpeed;
+    }
+
+    public int getMaxMachSpeed() {
+        return maxMachSpeed;
     }
 }

@@ -155,7 +155,6 @@ function fillRequired() {
     var selectedOption = brewType.options[brewType.selectedIndex].text;
     if (selectedOption !== "Choose type" && brewAmount.length !== 0) {
         getRequired(selectedOption);
-        console.log("pølle");
     } else {
         setRequired(0,0,0,0,0,0);
         console.log("pøls");
@@ -171,7 +170,8 @@ function getRequired(type) {
         .then(jsonArray => {
             jsonArray.forEach(data => {
                if (data.name == type) {
-                   setRequired(data.barley,data.hops,data.malt,data.wheat,data.yeast,amount)
+                   setRequired(data.barley,data.hops,data.malt,data.wheat,data.yeast,amount);
+                   setMachSpeed(data.minMachSpeed, data.maxMachSpeed,((data.maxMachSpeed-data.minMachSpeed)/2));
                }
             });
         })
@@ -184,6 +184,17 @@ function setRequired(barley,hops,malt,wheat,yeast,amount) {
     document.getElementById("required_malt").innerText = malt * amount;
     document.getElementById("required_wheat").innerText = wheat * amount;
     document.getElementById("required_yeast").innerText = yeast * amount;
+}
+
+function setMachSpeed(minMachSpeed, maxMachSpeed, recommendedMachSpeed){
+    //let batchSpeedInput = document.getElementById("batchSpeed");
+    //batchSpeedInput.setAttribute("min",minMachSpeed);
+    //batchSpeedInput.setAttribute("max",maxMachSpeed);
+    //batchSpeedInput.value = Math.round(recommendedMachSpeed);
+    document.getElementById("minMachSpeed").innerText = minMachSpeed;
+    document.getElementById("maxMachSpeed").innerText = maxMachSpeed;
+
+    document.getElementById("recSpeed").innerText = Math.round(recommendedMachSpeed);
 }
 
 setRequired(0,0,0,0,0,0);

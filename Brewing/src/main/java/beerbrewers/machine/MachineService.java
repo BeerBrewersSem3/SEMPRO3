@@ -155,7 +155,7 @@ public class MachineService implements OpcUaNodeObserver {
     private void waitForLatch(CountDownLatch latch) {
         try{
             latch.await(10,TimeUnit.SECONDS);
-            logger.info("Latch released");
+            logger.debug("Latch released");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new RuntimeException(e);
@@ -164,8 +164,7 @@ public class MachineService implements OpcUaNodeObserver {
 
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
-        logger.debug("Node: " + node.getName() + " has new value of: " + newState);
-        logger.info(node + " new value " + newState);
+        logger.debug(node + " new value " + newState);
         if(node.getName().equals(OpcuaNodes.STATE_CURRENT.getName())
                 & awaitingNode == OpcuaNodes.STATE_CURRENT){
             if(Objects.equals(newState, awaitingState)) {
@@ -178,7 +177,7 @@ public class MachineService implements OpcUaNodeObserver {
         }
         if(awaitingNodes.containsKey(node)){
             awaitingNodes.remove(node);
-            logger.info("Node: " + node.getName() + " has new value of: " + newState);
+            logger.debug("Node: " + node.getName() + " has new value of: " + newState);
             batchAttributeLatch.countDown();
         }
         if(currentState == null & node.getName().equals("currentState")) {
