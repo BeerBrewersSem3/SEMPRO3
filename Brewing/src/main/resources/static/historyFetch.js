@@ -1,4 +1,3 @@
-
 function createHistoryElement(data) {
     const row = document.createElement("tr");
     row.id = data.batchId;
@@ -39,15 +38,18 @@ function createHistoryElement(data) {
     });
 }
 
+var dataArray =[];
 function fillTable() {
     fetch("http://localhost:8080/api/v1/batch")
         .then(response => response.json())
         .then(jsonArray => {
-            jsonArray.forEach(data => createHistoryElement(data));
+            jsonArray.forEach(data => {
+                createHistoryElement(data)
+                dataArray.push(data);
+            });
+
         })
         .catch(error => console.error("Error fetching data:", error));
 }
-
-
 
 fillTable();
