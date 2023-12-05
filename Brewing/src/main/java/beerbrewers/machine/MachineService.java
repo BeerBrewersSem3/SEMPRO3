@@ -162,7 +162,6 @@ public class MachineService implements OpcUaNodeObserver {
         }
     }
 
-
     @Override
     public void onNodeUpdate(OpcuaNodes node, String newState) {
         logger.debug("Node: " + node.getName() + " has new value of: " + newState);

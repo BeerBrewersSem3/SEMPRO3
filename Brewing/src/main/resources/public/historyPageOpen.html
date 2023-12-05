@@ -5,6 +5,7 @@
     <title>History</title>
     <link rel="stylesheet" href="./historyOpenStyle.css">
     <script src="switchPage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="insertHistory.js"></script>
     <script src="formatText.js"></script>
 </head>
@@ -92,8 +93,9 @@
                 </table>
             </div>
         </div>
+
         <div class="mainRight">
-            <button class="graphBtn">S
+            <button class="graphBtn" onclick=toggleGraph()>S
                 H
                 O
                 W
@@ -103,6 +105,12 @@
                 A
                 P
                 H</button>
+        </div>
+        <div class="graph" id="graph">
+            <div class="overlay" onclick=toggleGraph()></div>
+            <div class="content">
+                <canvas class="canvas" id="chart"></canvas>
+            </div>
         </div>
     </div>
 </div>
