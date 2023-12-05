@@ -1,7 +1,7 @@
 var stompClient = null;
-function subscribeToStatus(nodeName) {
+function subscribeToStatus(nodeName, unit) {
     stompClient.subscribe('/sensor/data/' + nodeName, (message) => {
-        document.getElementById(nodeName + "Label").innerText = message.body;
+        document.getElementById(nodeName + "Label").innerText = message.body + " " + unit;
     })
 }
 
@@ -47,15 +47,15 @@ function connectWebSocket() {
     stompClient.connect({}, function() {
         console.log("WebSocket connection established");
         maintenanceCounter();
-        subscribeToStatus("temperature");
-        subscribeToStatus("relativeHumidity");
-        subscribeToStatus("vibration");
-        subscribeToStatus("currentBatchId");
-        subscribeToStatus("currentBatchAmount");
-        subscribeToStatus("currentMachineSpeed");
-        subscribeToStatus("prodProduced");
-        subscribeToStatus("prodProcessedCount");
-        subscribeToStatus("prodDefectiveCount");
+        subscribeToStatus("temperature", "°C");
+        subscribeToStatus("relativeHumidity", "%");
+        subscribeToStatus("vibration", "DPS");
+        subscribeToStatus("currentBatchId","");
+        subscribeToStatus("currentBatchAmount", "bottles");
+        subscribeToStatus("currentMachineSpeed", "bottles/s");
+        subscribeToStatus("prodProduced", "bottles");
+        subscribeToStatus("prodProcessedCount", "bottles");
+        subscribeToStatus("prodDefectiveCount","bottles");
         subscribeToInventory("barley");
         subscribeToInventory("malt");
         subscribeToInventory("yeast");
