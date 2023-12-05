@@ -172,6 +172,7 @@ tr:hover td{
     background-color: #555555;
     border: 2px solid white;
     font-size: 20px;
+    margin-left: 5px;
 }
 
 .footer button:hover, .footer button.active{

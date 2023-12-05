@@ -5,7 +5,7 @@ console.log("Batch Id: ",batchId)
 function insertInfo() {
     fetch("http://localhost:8080/api/v1/batch/" + batchId)
         .then(response => response.json())
-        .then(data => {
+        .then(async data => {
             document.getElementById("id").innerText = data.batchId;
             document.getElementById("type").innerText = data.brewName;
             document.getElementById("amount").innerText = data.amount;
@@ -13,12 +13,12 @@ function insertInfo() {
             document.getElementById("successful").innerText = data.completedCount;
             document.getElementById("rejected").innerText = data.defectiveCount;
             document.getElementById("speed").innerText = data.speed;
-            document.getElementById("started").innerText = formatTime(data.startTime);
+            document.getElementById("started").innerText = await formatTime(data.startTime);
             document.getElementById("workerID").innerText = data.operation.worker.name;
             if (data.endTime == null) {
                 document.getElementById("stopped").innerText = "endtime not found";
             }
-            document.getElementById("stopped").innerText = formatTime(data.endTime);
+            document.getElementById("stopped").innerText = await formatTime(data.endTime);
 
         });
 }
@@ -33,7 +33,7 @@ async function createTableEntries(id) {
             const row = document.createElement('tr');
             const timestamp = document.createElement('td');
 
-            timestamp.textContent = formatTime(data[i].timestamp);
+            timestamp.textContent = await formatTime(data[i].timestamp);
             row.appendChild(timestamp);
 
             for (let j = 0; j < 3; j++) {

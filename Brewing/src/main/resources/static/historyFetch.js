@@ -33,23 +33,40 @@ function createHistoryElement(data) {
 
     document.getElementById("historyTable").appendChild(row);
 
-    row.addEventListener("click", function (row) {
-        window.location.href = `historyPageOpen.html?batchId=${data.batchId}`;
+   row.addEventListener("click", function (row) {
+            window.location.href = `historyPageOpen.html?batchId=${data.batchId}`;
     });
 }
 
-var dataArray =[];
+/*
 function fillTable() {
     fetch("http://localhost:8080/api/v1/batch")
         .then(response => response.json())
         .then(jsonArray => {
             jsonArray.forEach(data => {
                 createHistoryElement(data)
-                dataArray.push(data);
             });
 
         })
         .catch(error => console.error("Error fetching data:", error));
 }
 
-fillTable();
+ */
+
+async function fetchHistory() {
+    let dataArray =[];
+    return fetch("http://localhost:8080/api/v1/batch")
+        .then(response => response.json())
+        .then(jsonArray => {
+            jsonArray.forEach(data => {
+                dataArray.push(data);
+            });
+            return dataArray;
+        })
+        .catch(error => console.error("Error fetching data:", error));
+}
+
+async function logIt() {
+    console.log(await fillTable());
+}
+
