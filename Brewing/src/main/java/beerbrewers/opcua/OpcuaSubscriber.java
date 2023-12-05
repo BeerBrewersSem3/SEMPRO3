@@ -43,7 +43,7 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.REL_HUMIDITY);
             subscribe(OpcuaNodes.VIBRATION);
             subscribe(OpcuaNodes.CURRENT_BATCH_ID);
-            subscribe(OpcuaNodes.CURRENT_BATCH_AMOUNT);
+            //subscribe(OpcuaNodes.CURRENT_BATCH_AMOUNT);
             subscribe(OpcuaNodes.CUR_MACH_SPEED);
             subscribe(OpcuaNodes.PROD_PRODUCED);
             subscribe(OpcuaNodes.PROD_PROCESSED_COUNT);
