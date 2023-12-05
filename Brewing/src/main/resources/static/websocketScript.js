@@ -155,7 +155,6 @@ function fillRequired() {
     var selectedOption = brewType.options[brewType.selectedIndex].text;
     if (selectedOption !== "Choose type" && brewAmount.length !== 0) {
         getRequired(selectedOption);
-        console.log("pølle");
     } else {
         setRequired(0,0,0,0,0,0);
         console.log("pøls");
