@@ -7,7 +7,9 @@ var currentIndex = 1;
 var maxIndex = 0;
 
 async function preLoad() {
+    console.time(fetchHistory());
     array = await fetchHistory(0,tableSize);
+    console.timeEnd(fetchHistory());
     array_length = array.length;
     maxIndex = Math.ceil(array_length / tableSize); // Use Math.ceil to round up
 
@@ -90,15 +92,10 @@ function previous() {
 }
 
 
-async function fetchHistory(startIndex,limit) {
-    let dataArray = [];
-    return fetch(`http://localhost:8080/api/v1/batch?start=${startIndex}&limit=${limit}`)
-        .then(response => response.json())
-        .then(jsonArray => {
-            jsonArray.forEach(data => {
-                dataArray.push(data);
-            });
-            return dataArray;
-        })
-        .catch(error => console.error("Error fetching data:", error));
+async function fetchHistory(pageNumber, pageSize) {
+    const startIndex = (pageNumber - 1) * pageSize;
+    const response = await fetch(`http://localhost:8080/api/v1/batch?start=${startIndex}&limit=${pageSize}`);
+    const dataArray = await response.json();
+    return dataArray;
 }
+
