@@ -23,14 +23,10 @@ function insertInfo() {
         });
 }
 
-
-
 async function createTableEntries(id) {
-    let data = await bundleEntries(id)
-    const table = document.getElementById("tableBody")
-    console.log("Sensor Array på batchId: ",data);
-    console.log("Længde af sensor array på batchId: ",data.length);
-    console.log("Mængden af elementer der skal være i table: ",data.length/3)
+    let data = await bundleEntries(id);
+    createGraph(data);
+    const table = document.getElementById("tableBody");
 
     for (let i = 0; i < data.length; i++) {
         if (i % 3 === 0) {
@@ -48,6 +44,60 @@ async function createTableEntries(id) {
             table.appendChild(row);
         }
     }
+}
+
+function createGraph(data) {
+    const timeStamps = [];
+    const temperatures = [];
+    const humidities = [];
+    const vibrations = [];
+
+    for (let i = 0; i < data.length; i++) {
+        if (i % 3 === 0) {
+            timeStamps.push(formatTime(data[i].timestamp));
+
+            for (let j = 0; j < 3; j++) {
+                switch(j) {
+                    case 0:
+                        temperatures.push(data[i+j].sensorValue);
+                        break;
+                    case 1:
+                        humidities.push(data[i+j].sensorValue);
+                        break;
+                    case 2:
+                        vibrations.push(data[i+j].sensorValue);
+                        break;
+                    default:
+                        console.error("Unable to push sensorreading");
+                }
+            }
+        }
+    }
+    new Chart("chart", {
+        type: "line",
+        data: {
+            labels: timeStamps,
+            datasets: [{
+                label:'Temperature (°C)',
+                data: temperatures,
+                borderColor: "red",
+                fill: false
+            }, {
+                label:'Humidity (%)',
+                data: humidities,
+                borderColor: "blue",
+                fill: false
+            }, {
+                label:'Vibration (DPS)',
+                data: vibrations,
+                borderColor: "green",
+                fill: false
+            }]
+        },
+        options: {
+            legend: {display: true}
+        }
+    });
 }
 
 async function bundleEntries(id) {
@@ -70,3 +120,7 @@ async function bundleEntries(id) {
 
 insertInfo();
 createTableEntries(batchId);
+
+function toggleGraph() {
+    document.getElementById("graph").classList.toggle("active");
+}
