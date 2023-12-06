@@ -5,11 +5,19 @@ var startIndex = 1;
 var endIndex = 0;
 var currentIndex = 1;
 var maxIndex = 0;
+var ran = false
+
+
 
 async function preLoad() {
-    console.time(fetchHistory());
-    array = await fetchHistory(0,tableSize);
-    console.timeEnd(fetchHistory());
+    if (!ran) {
+        console.time(fetchHistory());
+        await fetchHistory(0,tableSize);
+        console.log(array);
+        console.timeEnd(fetchHistory());
+        ran = true;
+    }
+
     array_length = array.length;
     maxIndex = Math.ceil(array_length / tableSize); // Use Math.ceil to round up
 
@@ -95,7 +103,6 @@ function previous() {
 async function fetchHistory(pageNumber, pageSize) {
     const startIndex = (pageNumber - 1) * pageSize;
     const response = await fetch(`http://localhost:8080/api/v1/batch?start=${startIndex}&limit=${pageSize}`);
-    const dataArray = await response.json();
-    return dataArray;
+    array = await response.json();
 }
 
