@@ -7,9 +7,8 @@
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/formatText.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/formatText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyFetch.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyFetch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/historyStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/pagination.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +62,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Sprint4-Pagination",
+    "git-widget-placeholder": "Sprint4",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "19",
     "list.type.of.created.stylesheet": "CSS",
@@ -143,6 +142,7 @@
       <workItem from="1701575609661" duration="6430000" />
       <workItem from="1701678524188" duration="20299000" />
       <workItem from="1701724246273" duration="1081000" />
+      <workItem from="1701850332181" duration="1683000" />
     </task>
     <servers />
   </component>

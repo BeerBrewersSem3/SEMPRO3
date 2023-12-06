@@ -118,9 +118,20 @@ async function bundleEntries(id) {
         });
 }
 
-insertInfo();
-createTableEntries(batchId);
-
 function toggleGraph() {
     document.getElementById("graph").classList.toggle("active");
 }
+
+async function run() {
+    document.addEventListener('DOMContentLoaded', async function () {
+        cursorLoadingAnimation();
+        insertInfo();
+        await createTableEntries(batchId);
+        cursorDefault();
+    });
+}
+
+run();
+
+
+run();

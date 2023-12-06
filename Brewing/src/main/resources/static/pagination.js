@@ -11,10 +11,12 @@ var ran = false
 
 async function preLoad() {
     if (!ran) {
+        cursorLoadingAnimation();
         console.time(fetchHistory());
         await fetchHistory(0,tableSize);
         console.log(array);
         console.timeEnd(fetchHistory());
+        cursorDefault();
         ran = true;
     }
 
