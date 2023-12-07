@@ -7,7 +7,6 @@
     <script src="switchPage.js"></script>
     <script src="formatText.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
     <script src="cursorAnimation.js"></script>
 </head>
 <body>
@@ -34,6 +33,15 @@
 
 <div class="mainHorizAdjust">
     <div class="main">
+        <div>
+            <span>Shows:</span>
+            <select id="tableSize">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+        </div>
         <div class="tableWrapper">
             <table class="historyTable" id="historyTable">
                 <thead>
@@ -51,7 +59,7 @@
         </div>
 
         <div class="footer">
-            <span>pee pee poo poo</span>
+            <span id="indexDisplay">pee pee poo poo</span>
             <div class="indexBtns">
                 <button onclick=previousPage()>Previous</button>
                 <button onclick=nextPage()>Next</button>
@@ -60,5 +68,5 @@
     </div>
 </div>
 </body>
-<script src="pagination.js"></script>
+<script defer src="pagination.js"></script>
 </html>
