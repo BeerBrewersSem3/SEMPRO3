@@ -7,6 +7,9 @@ import beerbrewers.operation.OperationService;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -30,8 +33,19 @@ public class BatchService implements OpcUaNodeObserver {
         this.operationService = operationService;
     }
 
-    public List<Batch> getBatches() {
-        return batchRepository.findAll();
+    public BatchResponse getBatches(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+        Page<Batch> batches = batchRepository.findAll(pageable);
+        List<Batch> listOfBatches = batches.getContent();
+        BatchResponse batchResponse = new BatchResponse();
+        batchResponse.setData(listOfBatches);
+        batchResponse.setPageNo(batches.getNumber());
+        batchResponse.setPageSize(batches.getSize());
+        batchResponse.setTotalElements(batches.getTotalElements());
+        batchResponse.setTotalPages(batches.getTotalPages());
+        batchResponse.setLast(batches.isLast());
+
+        return batchResponse;
     }
 
     public Batch getBatch(Long batchId) {

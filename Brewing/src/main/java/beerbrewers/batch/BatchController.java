@@ -17,8 +17,11 @@ public class BatchController {
     }
 
     @GetMapping
-    public List<Batch> getBatches() {
-        return batchService.getBatches();
+    public BatchResponse getBatches(
+            @RequestParam(value = "pageNo",defaultValue = "0",required = false) int pageNo,
+            @RequestParam(value = "pageSize",defaultValue = "5",required = false) int pageSize
+    ) {
+        return batchService.getBatches(pageNo,pageSize);
     }
 
     @GetMapping(path = "{batchId}")

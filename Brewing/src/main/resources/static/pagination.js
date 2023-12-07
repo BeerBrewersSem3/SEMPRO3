@@ -1,72 +1,26 @@
-var array = [];
-var array_length = 0;
-var tableSize = 25;
-var startIndex = 1;
-var endIndex = 0;
-var currentIndex = 1;
-var maxIndex = 0;
-var ran = false
 
-
-
-async function preLoad() {
-    if (!ran) {
-        cursorLoadingAnimation();
-        console.time(fetchHistory());
-        await fetchHistory(0,tableSize);
-        console.log(array);
-        console.timeEnd(fetchHistory());
-        cursorDefault();
-        ran = true;
-    }
-
-    array_length = array.length;
-    maxIndex = Math.ceil(array_length / tableSize); // Use Math.ceil to round up
-
-    if ((array_length % tableSize) > 0) {
-        maxIndex++;
-    }
+function fetchHistory(pageNumber, pageSize) {
+    return fetch(`http://localhost:8080/api/v1/batch?pageNo=${pageNumber}&pageSize=${pageSize}`)
+        .then(response => response.json());
 }
 
-async function displayIndexButton() {
-    await preLoad();
-    $(".indexBtns button").remove();
-    $(".indexBtns").append('<button onclick="previous()">Previous</button>');
-
-    // Display only 3 buttons centered around the current index
-    var start = Math.max(1, currentIndex - 1);
-    var end = Math.min(maxIndex, start + 2);
-
-    for (let i = start; i <= end; i++) {
-        $(".indexBtns").append('<button onclick="indexPagination('+ i +')" index="'+ i +'">'+ i +'</button>');
+async function loadPageArray(pageNumber,pageSize) {
+    const fetched = await fetchHistory(pageNumber,pageSize);
+    pageArray = fetched;
+    console.log(pageArray);
+    console.log(pageArray.data);
+    if(pageArray && pageArray.data) {
+        pageArray = pageArray.data;
+        currentPage = fetched.pageNumber;
+        totalPages = fetched.totalPages;
     }
-    $(".indexBtns").append('<button onclick="next();">Next</button>');
-
-    highlightIndexButton();
-}
-
-displayIndexButton();
-
-function highlightIndexButton() {
-    startIndex = ((currentIndex - 1) * tableSize) + 1;
-    endIndex = Math.min(startIndex + tableSize - 1, array_length);
-
-    $(".footer span").text('Showing '+ startIndex +' to '+ endIndex +' of '+ array_length +' entries');
-    $(".indexBtns button").removeClass('active');
-    $(".indexBtns button[index='" + currentIndex + "']").addClass('active');
-
-    displayTable();
 }
 
 async function displayTable() {
     $(".historyTable tbody tr").remove();
-    var tabStart = startIndex - 1;
-    var tabEnd = endIndex;
 
-    for (let i = tabStart; i < tabEnd; i++) {
-        var entry = array[i];
-
-        var row = document.createElement('tr'); // Create a new tr element
+    for (const entry of pageArray) {
+        var row = document.createElement('tr');
         row.innerHTML =
             '<td>' + entry.batchId + '</td>'+
             '<td>' + entry.brewName + '</td>'+
@@ -83,28 +37,33 @@ async function displayTable() {
 }
 
 
-function next() {
-    if (currentIndex < maxIndex) {
-        startIndex = endIndex + 1; // Update the start index for the next page
-        currentIndex++;
-        displayIndexButton();
-        highlightIndexButton();
+let currentPage = 0;
+async function fetchAndDisplay(pageNumber,pageSize) {
+    cursorLoadingAnimation();
+    await loadPageArray(pageNumber,pageSize);
+    await displayTable();
+    currentPage = pageNumber;
+    console.log(pageSize);
+    cursorDefault();
+}
+
+async function nextPage() {
+    console.log(currentPage);
+    if (currentPage < totalPages - 1) {
+        currentPage++;
+        await fetchAndDisplay(currentPage, 10);
     }
 }
 
-function previous() {
-    if (currentIndex > 1) {
-        currentIndex--;
-        startIndex = Math.max(0, startIndex - tableSize); // Update the start index for the previous page
-        displayIndexButton();
-        highlightIndexButton();
+async function previousPage() {
+    console.log(currentPage);
+    if (currentPage > 0) {
+        currentPage--;
+        await fetchAndDisplay(currentPage, 10);
     }
 }
 
-
-async function fetchHistory(pageNumber, pageSize) {
-    const startIndex = (pageNumber - 1) * pageSize;
-    const response = await fetch(`http://localhost:8080/api/v1/batch?start=${startIndex}&limit=${pageSize}`);
-    array = await response.json();
+function setPageSize() {
+    pageSize = pageArray.size;
 }
-
+fetchAndDisplay(0,10);
