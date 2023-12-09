@@ -1,0 +1,93 @@
+
+
+Wed Dec 06 09:15:38 2023
+No ARsim registration found!
+  Bernecker & Rainer 
+
+
+
+Wed Dec 06 09:15:38 2023
+COMMAND_COLDSTART
+InstanceName : 01da281c655474c0
+
+WorkingPath :
+C:\Users\lasse\Desktop\Simulation\Config1\X20CP1586\
+
+
+
+Wed Dec 06 09:15:38 2023
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Wed Dec 06 09:15:48 2023
+COMMAND_TERMINATE
+
+
+Wed Dec 06 09:15:50 2023
+
+
+Wed Dec 06 09:15:50 2023
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Wed Dec 06 09:53:12 2023
+COMMAND_TERMINATE
+
+
+Wed Dec 06 09:53:13 2023
+
+
+Wed Dec 06 22:13:12 2023
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Wed Dec 06 22:13:24 2023
+COMMAND_TERMINATE
+
+
+Wed Dec 06 22:13:25 2023
+
+
+Wed Dec 06 22:13:25 2023
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Wed Dec 06 23:58:29 2023
+COMMAND_TERMINATE
+
+
+Wed Dec 06 23:58:30 2023
+
+
+Wed Dec 06 23:59:40 2023
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Thu Dec 07 00:00:09 2023
+COMMAND_TERMINATE
+
+
+Thu Dec 07 00:00:10 2023
+
+
+Thu Dec 07 00:00:10 2023
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Thu Dec 07 01:30:41 2023
+COMMAND_TERMINATE
+
+
+Thu Dec 07 01:30:42 2023
