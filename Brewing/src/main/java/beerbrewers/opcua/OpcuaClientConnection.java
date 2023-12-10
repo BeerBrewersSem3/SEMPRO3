@@ -20,25 +20,33 @@ public class OpcuaClientConnection {
     {
         try {
             boolean useSimulation = true;
-            if(useSimulation){
-                client = OpcUaClient.create(
-                        "opc.tcp://localhost:4840"
-                );
-                client.connect().get();
-                logger.info("Connected to OPC UA Sever");
+            boolean useDocker = true;
+            String endpointUrl;
+            String hostname;
+
+            if(useSimulation) {
+                if(useDocker) {
+                    endpointUrl = "opc.tcp://host.docker.internal:4840";
+                    hostname = "host.docker.internal";
+                } else {
+                    endpointUrl = "opc.tcp://localhost:4840";
+                    hostname = "localhost";
+                }
             } else {
-                List<EndpointDescription> endpointDescriptionList = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
-                EndpointDescription configPoint = EndpointUtil.updateUrl(endpointDescriptionList.get(0), "192.168.0.122", 4840);
-                OpcUaClientConfigBuilder configBuilder = new OpcUaClientConfigBuilder();
-                configBuilder.setEndpoint(configPoint);
-                this.client = OpcUaClient.create(configBuilder.build());
-                client.connect().get();
-                logger.info("Connected to OPC UA Server");
+                endpointUrl = "opc.tcp://192.168.0.122:4840";
+                hostname = "192.168.0.122";
             }
+            List<EndpointDescription> endpointDescriptionList = DiscoveryClient.getEndpoints(endpointUrl).get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpointDescriptionList.get(0), hostname, 4840);
+            OpcUaClientConfigBuilder configBuilder = new OpcUaClientConfigBuilder();
+            configBuilder.setEndpoint(configPoint);
+            this.client = OpcUaClient.create(configBuilder.build());
+            client.connect().get();
+            logger.info("Connected to OPC UA Server");
         } catch (UaException | InterruptedException e) {
             logger.error("Connection Error (OPC UA Server)");
         } catch (ExecutionException e) {
-            logger.error("Execution Error (OPC UA Server)");
+            logger.error("Execution Error (OPC UA Server)", e);
         }
     }
     public OpcUaClient getClient() {

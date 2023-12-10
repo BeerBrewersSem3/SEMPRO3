@@ -30,7 +30,8 @@ public class OpcuaSubscriber {
     private static final Logger logger = LoggerFactory.getLogger(OpcuaSubscriber.class);
 
     @Autowired
-    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager){
+    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection,
+                           OpcUaNodeUpdateManager opcUaNodeUpdateManager){
         this.connection = opcuaClientConnection;
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
@@ -68,6 +69,8 @@ public class OpcuaSubscriber {
         }
     }
 
+
+
     public void subscribe(OpcuaNodes node) throws ExecutionException, InterruptedException {
         NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
         UaSubscription uaSubscription = connection.getClient().getSubscriptionManager().createSubscription(10).get();
@@ -85,5 +88,9 @@ public class OpcuaSubscriber {
             }
         });
     }
+
+
+
+
 
 }

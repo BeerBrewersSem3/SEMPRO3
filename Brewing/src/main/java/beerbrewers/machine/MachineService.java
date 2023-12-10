@@ -136,14 +136,6 @@ public class MachineService implements OpcUaNodeObserver {
         websocketService.send("batchStart","");
     }
 
-
-    private void resetLatchAndSendCommand(OpcuaNodes node, Number command) {
-        this.awaitingNode = node;
-        this.batchAttributeLatch =  new CountDownLatch(1);
-        this.opcUaCommander.sendCommand(node, command);
-        waitForLatch(batchAttributeLatch);
-    }
-
     private void resetLatchAndSendCntrlCmd(OpcuaNodes node, Number command) {
         this.awaitingNode = OpcuaNodes.STATE_CURRENT;
         this.awaitingState = commandToStateMap.get(command);
