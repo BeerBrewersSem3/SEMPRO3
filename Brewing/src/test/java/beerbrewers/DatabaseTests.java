@@ -15,8 +15,11 @@ public class DatabaseTests {
 
     @Test
     public void testDataSourceInjection() {
-        assertTrue(supabaseConnection instanceof SupabaseConnection);
         assertNotNull(supabaseConnection);
+        assertTrue(supabaseConnection instanceof SupabaseConnection);
         assertNotNull(supabaseConnection.testQueryForDatabase());
     }
 }
+
+
+

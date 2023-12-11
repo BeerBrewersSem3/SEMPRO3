@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/TestServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/152744bb-b070-4732-ac0b-73a0678af688/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/persistence/SupabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorReadingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorReadingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +31,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -227,6 +221,7 @@
       <workItem from="1701076413561" duration="6815000" />
       <workItem from="1701329183621" duration="13641000" />
       <workItem from="1701342987457" duration="2133000" />
+      <workItem from="1702290987793" duration="848000" />
     </task>
     <servers />
   </component>
