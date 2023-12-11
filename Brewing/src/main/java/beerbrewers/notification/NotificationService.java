@@ -59,8 +59,7 @@ public class NotificationService implements OpcUaNodeObserver {
         }
 
         //Test if statement
-        if(node == OpcUaNode.STATE_CURRENT){
-            System.out.println(newState);
+        if(node == OpcUaNode.TEMPERATURE){
             temperatureService.temperatureWarning(node, newState);
         }
 
