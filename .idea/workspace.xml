@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/PerformanceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/PerformanceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +93,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PerformanceTest">
+  <component name="RunManager" selected="JUnit.PerformanceTest.testStartMachine">
     <configuration name="DatabaseTests.testStartMachine" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Brewing" />
       <extension name="coverage">
@@ -128,7 +125,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorReadingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PerformanceTest.testStartMachine" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Brewing" />
       <extension name="coverage">
         <pattern>
@@ -137,8 +134,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="beerbrewers" />
-      <option name="MAIN_CLASS_NAME" value="beerbrewers.SensorReadingTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="beerbrewers.PerformanceTest" />
+      <option name="METHOD_NAME" value="testStartMachine" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PerformanceTest.testStartMachine" />
         <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.DatabaseTests.testStartMachine" />
         <item itemvalue="JUnit.SensorTest.getSpecificSensor" />
         <item itemvalue="JUnit.beerbrewers in Brewing" />
-        <item itemvalue="JUnit.SensorReadingTest" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +224,7 @@
       <workItem from="1701076413561" duration="6815000" />
       <workItem from="1701329183621" duration="13641000" />
       <workItem from="1701342987457" duration="2133000" />
-      <workItem from="1702290987793" duration="4450000" />
+      <workItem from="1702290987793" duration="7847000" />
     </task>
     <servers />
   </component>
