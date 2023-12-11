@@ -18,9 +18,9 @@ public class TemperatureService {
 
 
     public void temperatureWarning(OpcUaNode node, String newState) {
-        int temp = Integer.parseInt(newState);
+        float temp = Float.parseFloat(newState);
 
-        if (temp < 40 && temp < 60) {
+        if (temp > 40 && temp < 60) {
 
             websocketService.sendNotification(node,newState,"Temperature high: ");
         }
