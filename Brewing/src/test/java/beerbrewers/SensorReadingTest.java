@@ -25,10 +25,6 @@ public class SensorReadingTest {
     SensorReadingTest(SensorReadingRepository sensorReadingRepository, SensorReadingService sensorReadingService) {
         this.sensorReadingService = sensorReadingService;
         this.sensorReadingRepository = sensorReadingRepository;
-//        Worker worker = new Worker("Unit test", "Test Unit");
-//        Operation operation = new Operation(worker);
-//        Sensor sensor = new Sensor("Unit test sensor", 6, "::Program:Test.unitTest");
-//        this.sensorReading = new SensorReading(operation, sensor, new Timestamp(System.currentTimeMillis()), 0);
     }
 
     @Test
@@ -38,3 +34,9 @@ public class SensorReadingTest {
         assertTrue(allSensorReadings.size() > 0);
     }
 }
+
+
+//        Worker worker = new Worker("Unit test", "Test Unit");
+//        Operation operation = new Operation(worker);
+//        Sensor sensor = new Sensor("Unit test sensor", 6, "::Program:Test.unitTest");
+//        this.sensorReading = new SensorReading(operation, sensor, new Timestamp(System.currentTimeMillis()), 0);

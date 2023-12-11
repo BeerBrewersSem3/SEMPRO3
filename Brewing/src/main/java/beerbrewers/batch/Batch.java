@@ -106,6 +106,18 @@ public class Batch {
         this.startTime = new Timestamp(System.currentTimeMillis());
     }
 
+    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed) {
+        this.batchId = batchId;
+        this.operation = operation;
+        this.brewName = brewName;
+        this.amount = amount;
+        this.speed = speed;
+        this.isCompleted = false;
+        this.defectiveCount = 0;
+        this.completedCount = 0;
+        this.startTime = new Timestamp(System.currentTimeMillis());
+    }
+
 
     /**
      * Constructors with batchId

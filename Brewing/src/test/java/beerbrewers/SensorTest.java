@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static java.lang.System.currentTimeMillis;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -25,7 +26,7 @@ public class SensorTest {
     private final SensorRepository sensorRepository;
     private final SensorService sensorService;
     private Sensor sensor;
-
+    private long startTime, endTime;
 
 
     @Autowired
@@ -43,6 +44,7 @@ public class SensorTest {
 
     @Test
     public void getSpecificSensor() {
+        startTime = System.currentTimeMillis();
         Sensor specificSensor1 = this.sensorService.getSensor(1L);
         assertNotNull(specificSensor1);
 
@@ -54,5 +56,11 @@ public class SensorTest {
 
         Sensor specificSensor4 = this.sensorService.getSensor(4L);
         assertNotNull(specificSensor4);
+        endTime = System.currentTimeMillis();
+        System.out.println(startTime);
+        System.out.println(endTime);
+        System.out.println(endTime - startTime);
+
+        //ResetMachineState, StopMachine,
     }
 }
