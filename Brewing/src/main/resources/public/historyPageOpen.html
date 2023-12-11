@@ -5,13 +5,16 @@
     <title>History</title>
     <link rel="stylesheet" href="./historyOpenStyle.css">
     <script src="switchPage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="insertHistory.js"></script>
+    <script src="formatText.js"></script>
+    <script defer src="cursorAnimation.js"></script>
 </head>
 <body>
 <div class="topBar">
     <div class="menuBtns">
         <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
         <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
-        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
     </div>
 
     <div class="header">
@@ -20,7 +23,7 @@
 
     <div class="navRight">
         <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
-        <button class="emerBtn">Emergency Stop!</button>
+        <button class="emerBtn" onclick=emergencyStopMachine()>Emergency Stop!</button>
     </div>
 </div>
 
@@ -33,20 +36,20 @@
         <div class="mainLeft">
             <table class="batchInfo">
                 <tr>
-                    <th class="infoRow">ID:</th>
-                    <td id="ID">???</td>
+                    <th class="infoRow">Batch ID:</th>
+                    <td id="id">???</td>
                 </tr>
                 <tr>
                     <th class="infoRow">Type:</th>
-                    <td id="Type">???</td>
+                    <td id="type">???</td>
                 </tr>
                 <tr>
                     <th class="infoRow">Amount:</th>
-                    <td id="Amount">???</td>
+                    <td id="amount">???</td>
                 </tr>
                 <tr>
-                    <th class="infoRow">Consumed:</th>
-                    <td id="Consumed">???</td>
+                    <th class="infoRow">Produced:</th>
+                    <td id="produced">???</td>
                 </tr>
                 <tr>
                     <th class="infoRow">Successful:</th>
@@ -69,7 +72,7 @@
                     <td id="stopped">???</td>
                 </tr>
                 <tr>
-                    <th class="infoRow">Worker ID:</th>
+                    <th class="infoRow">Worker:</th>
                     <td id="workerID">???</td>
                 </tr>
             </table>
@@ -77,7 +80,7 @@
 
         <div class="mainMiddle">
             <div class="tableWrapper">
-                <table class="historyTable">
+                <table class="openHistoryTable">
                     <thead>
                     <tr class="tableHeader">
                         <th>Timestamp</th>
@@ -86,31 +89,14 @@
                         <th>Vibration</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>01/03-23 18:56</td>
-                        <td>43</td>
-                        <td>80</td>
-                        <td>0.0</td>
-                    </tr>
-                    <tr>
-                        <td>01/03-23 18:56</td>
-                        <td>44</td>
-                        <td>80</td>
-                        <td>0.0</td>
-                    </tr>
-                    <tr>
-                        <td>01/03-23 21:03</td>
-                        <td>44</td>
-                        <td>80</td>
-                        <td>0.47</td>
-                    </tr>
+                    <tbody id="tableBody">
                     </tbody>
                 </table>
             </div>
         </div>
+
         <div class="mainRight">
-            <button class="graphBtn">S
+            <button class="graphBtn" onclick=toggleGraph()>S
                 H
                 O
                 W
@@ -120,6 +106,12 @@
                 A
                 P
                 H</button>
+        </div>
+        <div class="graph" id="graph">
+            <div class="overlay" onclick=toggleGraph()></div>
+            <div class="content">
+                <canvas class="canvas" id="chart"></canvas>
+            </div>
         </div>
     </div>
 </div>

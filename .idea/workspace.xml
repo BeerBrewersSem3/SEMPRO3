@@ -6,10 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/Batch.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/batch/Batch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/DatabaseTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorReadingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorReadingTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/test/java/beerbrewers/SensorTest.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/pagination.js" afterDir="false" />
+>>>>>>> Sprint4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +32,7 @@
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -51,44 +59,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;68bf21090846e0a8ab4fd46a991ab46f&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Sprint4",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "19",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "spring.configuration.checksum": "68bf21090846e0a8ab4fd46a991ab46f",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
+<<<<<<< HEAD
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="beerbrewers" />
     </key>
   </component>
+=======
+}]]></component>
+>>>>>>> Sprint4
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -224,9 +237,22 @@
       <workItem from="1701025295343" duration="793000" />
       <workItem from="1701073019860" duration="2993000" />
       <workItem from="1701076413561" duration="6815000" />
+<<<<<<< HEAD
       <workItem from="1701329183621" duration="13641000" />
       <workItem from="1701342987457" duration="2133000" />
       <workItem from="1702290987793" duration="3774000" />
+=======
+      <workItem from="1701333890835" duration="7180000" />
+      <workItem from="1701343641305" duration="4803000" />
+      <workItem from="1701351208366" duration="16434000" />
+      <workItem from="1701382742877" duration="4785000" />
+      <workItem from="1701431513170" duration="24635000" />
+      <workItem from="1701475336179" duration="319000" />
+      <workItem from="1701575609661" duration="6430000" />
+      <workItem from="1701678524188" duration="20299000" />
+      <workItem from="1701724246273" duration="1081000" />
+      <workItem from="1701850332181" duration="1683000" />
+>>>>>>> Sprint4
     </task>
     <servers />
   </component>

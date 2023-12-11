@@ -5,7 +5,7 @@ function login() {
 }
 
 function openMonitor() {
-    window.location.href = 'monitorPage.html';
+    window.location.href = 'monitor';
 }
 
 function createOperation() {

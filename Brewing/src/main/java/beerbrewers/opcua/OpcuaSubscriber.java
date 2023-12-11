@@ -30,7 +30,8 @@ public class OpcuaSubscriber {
     private static final Logger logger = LoggerFactory.getLogger(OpcuaSubscriber.class);
 
     @Autowired
-    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection, OpcUaNodeUpdateManager opcUaNodeUpdateManager){
+    public OpcuaSubscriber(OpcuaClientConnection opcuaClientConnection,
+                           OpcUaNodeUpdateManager opcUaNodeUpdateManager){
         this.connection = opcuaClientConnection;
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
@@ -60,12 +61,15 @@ public class OpcuaSubscriber {
             subscribe(OpcuaNodes.HOPS);
             subscribe(OpcuaNodes.MALT);
             subscribe(OpcuaNodes.YEAST);
+            subscribe(OpcuaNodes.FILLING_INVENTORY);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
+
+
 
     public void subscribe(OpcuaNodes node) throws ExecutionException, InterruptedException {
         NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
@@ -84,5 +88,9 @@ public class OpcuaSubscriber {
             }
         });
     }
+
+
+
+
 
 }

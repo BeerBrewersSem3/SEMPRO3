@@ -2,6 +2,7 @@ package beerbrewers.opcua;
 
 import beerbrewers.batch.BatchService;
 import beerbrewers.machine.MachineService;
+import beerbrewers.notification.NotificationService;
 import beerbrewers.sensorreading.SensorReadingService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -26,16 +27,18 @@ public class OpcUaNodeUpdateManager {
     private static final Logger logger = LoggerFactory.getLogger(OpcUaNodeUpdateManager.class);
 
     private Map<OpcuaNodes, List<OpcUaNodeObserver>> observers = new ConcurrentHashMap<>();
+    private final NotificationService notificationService;
 
     @Autowired
     public OpcUaNodeUpdateManager(MachineService machineService,
                                   BatchService batchService,
                                   OpcUaDashboardService opcUaDashboardService,
-                                  SensorReadingService sensorReadingService) {
+                                  SensorReadingService sensorReadingService, NotificationService notificationService) {
         this.machineService = machineService;
         this.batchService = batchService;
         this.opcUaDashboardService = opcUaDashboardService;
         this.sensorReadingService = sensorReadingService;
+        this.notificationService = notificationService;
     }
 
     @PostConstruct
@@ -44,6 +47,7 @@ public class OpcUaNodeUpdateManager {
         addObserver(batchService);
         addObserver(opcUaDashboardService);
         addObserver(sensorReadingService);
+        addObserver(notificationService);
     }
 
     public void addObserver(OpcUaNodeObserver opcUaNodeObserver) {
