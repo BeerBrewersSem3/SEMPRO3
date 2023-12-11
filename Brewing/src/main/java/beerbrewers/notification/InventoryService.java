@@ -18,7 +18,7 @@ public class InventoryService {
             case BARLEY -> {
                 float barley = Float.parseFloat(newState);
                 float procent = (float) Math.floor((barley) / 35000 * 100);
-                if (procent < 50 && procent > 10) {
+                if (procent < 50 && procent >= 10) {
                     String message = "Warning - Barley running low. Current stock ";
                     websocketService.sendNotification(node, procent + "%", message);
                 } else if (procent < 10){
@@ -33,7 +33,7 @@ public class InventoryService {
                     String message = "Warning - Yeast running low. Current stock ";
                     websocketService.sendNotification(node, procent + "%", message);
                 } else if (procent < 10){
-                String message = "Critical - Yeast inventory nearly empty";
+                String message = "Critical stock - Yeast inventory nearly empty";
                 websocketService.sendNotification(node,procent + "%", message);
             }
         }
@@ -44,7 +44,7 @@ public class InventoryService {
                     String message = "Warning - Hops running low. Current stock ";
                     websocketService.sendNotification(node, procent + "%", message);
                 } else if (procent < 10){
-                    String message = "Critical - Hops inventory nearly empty";
+                    String message = "Critical stock - Hops inventory nearly empty";
                     websocketService.sendNotification(node,procent + "%", message);
             }
         }
@@ -55,7 +55,7 @@ public class InventoryService {
                     String message = "Warning - Malt running low. Current stock ";
                     websocketService.sendNotification(node, procent + "%", message);
                 } else if (procent < 10){
-                    String message = "Critical - Malt inventory nearly empty";
+                    String message = "Critical stock - Malt inventory nearly empty";
                     websocketService.sendNotification(node,procent + "%", message);
             }
         }
@@ -67,7 +67,7 @@ public class InventoryService {
                     String message = "Warning - Wheat is running low. Current stock";
                     websocketService.sendNotification(node, procent + "%", message);
                 } else if (procent < 10){
-                    String message = "Critical - Wheat inventory nearly empty";
+                    String message = "Critical stock - Wheat inventory nearly empty";
                     websocketService.sendNotification(node,procent + "%", message);
                 }
             }

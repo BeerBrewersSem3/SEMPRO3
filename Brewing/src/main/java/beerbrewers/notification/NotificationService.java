@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class NotificationService implements OpcUaNodeObserver {
@@ -18,9 +19,18 @@ public class NotificationService implements OpcUaNodeObserver {
     private HashMap<OpcUaNode, String> nodeValueMap;
     private final TemperatureService temperatureService;
     private final InventoryService inventoryService;
+    private boolean fillingInventory = false;
     private List<OpcUaNode> subscribeNodes = List.of(
             OpcUaNode.STATE_CURRENT,
             OpcUaNode.TEMPERATURE,
+            OpcUaNode.BARLEY,
+            OpcUaNode.MALT,
+            OpcUaNode.WHEAT,
+            OpcUaNode.HOPS,
+            OpcUaNode.YEAST,
+            OpcUaNode.FILLING_INVENTORY
+    );
+    private List<OpcUaNode> siloNodes = List.of(
             OpcUaNode.BARLEY,
             OpcUaNode.MALT,
             OpcUaNode.WHEAT,
@@ -40,7 +50,11 @@ public class NotificationService implements OpcUaNodeObserver {
     public void onNodeUpdate(OpcUaNode node, String newState) {
         nodeValueMap.put(node, newState);
 
-        if(subscribeNodes.contains(node)){
+        if(Objects.equals(node, OpcUaNode.FILLING_INVENTORY)){
+            fillingInventory = Boolean.parseBoolean(newState);
+        }
+
+        if(siloNodes.contains(node) && !fillingInventory){
             inventoryService.inventoryWarning(node, newState);
         }
 

@@ -13,7 +13,6 @@ function maintenanceCounter() {
         let maintenanceLabel = document.getElementById("maintenance");
 
         let fillLevel = ((counterValue / 30000) * 100)
-        console.log(fillLevel.toString());
 
         maintenanceBar.style.width =  fillLevel + "%";
         maintenanceBar.style.background = colorCalc(fillLevel);
@@ -157,7 +156,6 @@ function fillRequired() {
         getRequired(selectedOption);
     } else {
         setRequired(0,0,0,0,0,0);
-        console.log("pøls");
     }
 }
 brewType.addEventListener("change",fillRequired);
@@ -218,32 +216,59 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-var boolean;
 function subscribeToNotification(nodeName) {
     stompClient.subscribe('/notification/' + nodeName, (message) => {
         let newState = message.body;
-
+        const badge = document.querySelector('.btn__badge');
         const notificationList = document.getElementById('notificationList');
-        const notificationId = 'notification- ' + nodeName;
+        const notificationId = 'notification-' + nodeName;
         const existingNotification = document.getElementById(notificationId);
-        console.log(boolean);
         if (!existingNotification) {
             const newNotification = document.createElement("li");
             newNotification.id = notificationId;
             newNotification.textContent = `${newState}`
             notificationList.appendChild(newNotification);
-            const badge = document.querySelector('.btn__badge');
             badge.textContent = parseInt(badge.textContent) + 1;
-        } else if(boolean === true) {
-            notificationList.innerHTML = "";
         } else {
             existingNotification.textContent = `${newState}`
+            let stringArr = newState.split(":");
+            console.log(stringArr[0]);
+            console.log(stringArr[1]);
+            let valueArr = stringArr[1].split(".");
+            if(stringArr[1]=="10.0%"){
+                badge.textContent = "" + notificationList.children.length;
+            }
         }
     });
 }
     function checkFilling(nodeName) {
         stompClient.subscribe('/sensor/data/' + nodeName, (message) => {
             boolean = message.body;
+            if(boolean) {
+                const list = document.getElementById("notificationList");
+                const barley = document.getElementById("notification-barley");
+                const hops = document.getElementById("notification-hops");
+                const yeast = document.getElementById("notification-yeast");
+                const malt = document.getElementById("notification-malt");
+                const wheat = document.getElementById("notification-wheat");
+                if(barley !== null) {
+                    list.removeChild(barley);
+                }
+                if(hops !== null) {
+                    list.removeChild(hops);
+                }
+                if(yeast !== null) {
+                    list.removeChild(yeast);
+                }
+                if(malt !== null) {
+                    list.removeChild(malt);
+                }
+                if(wheat !== null) {
+                    list.removeChild(wheat);
+                }
+                const badge = document.querySelector('.btn__badge');
+                badge.textContent = "" + list.children.length;
+            }
         });
 
 }

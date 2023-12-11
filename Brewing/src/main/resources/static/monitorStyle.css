@@ -320,7 +320,7 @@ ul {
 }
 
 .btn__badge {
-
+    background: #FF5D5D;
     color: white;
     font-size: 12px;
     position: absolute;
