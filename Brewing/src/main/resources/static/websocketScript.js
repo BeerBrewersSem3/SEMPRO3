@@ -63,7 +63,7 @@ function connectWebSocket() {
         subscribeToInventory("wheat");
         subscribeToNotification("currentState");
         subscribeToNotification("temperature");
-        checkFilling("fillingInventory")
+        checkFilling("fillingInventory");
         subscribeToNotification("barley");
         subscribeToNotification("wheat");
         subscribeToNotification("malt");

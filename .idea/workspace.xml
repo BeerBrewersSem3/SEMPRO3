@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ede7262d-9901-47a1-9952-1c697764872f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/public/historyPageOpen.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/insertHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/monitorStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Brewing/src/main/resources/static/websocketScript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +74,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "spring.configuration.checksum": "68bf21090846e0a8ab4fd46a991ab46f",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -174,5 +174,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/Brewing/src/main/java/beerbrewers/opcua/OpcuaClientConnection.java</url>
+          <line>16</line>
+          <properties field="client" class="beerbrewers.opcua.OpcuaClientConnection" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
