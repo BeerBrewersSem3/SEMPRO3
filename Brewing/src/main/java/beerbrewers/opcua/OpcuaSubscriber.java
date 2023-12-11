@@ -14,8 +14,6 @@ import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,30 +36,30 @@ public class OpcuaSubscriber {
     @PostConstruct
     public void intializeSubscription() {
         try {
-            subscribe(OpcuaNodes.STATE_CURRENT);
-            subscribe(OpcuaNodes.TEMPERATURE);
-            subscribe(OpcuaNodes.REL_HUMIDITY);
-            subscribe(OpcuaNodes.VIBRATION);
-            subscribe(OpcuaNodes.CURRENT_BATCH_ID);
-            subscribe(OpcuaNodes.CURRENT_BATCH_AMOUNT);
-            subscribe(OpcuaNodes.CUR_MACH_SPEED);
-            subscribe(OpcuaNodes.PROD_PRODUCED);
-            subscribe(OpcuaNodes.PROD_PROCESSED_COUNT);
-            subscribe(OpcuaNodes.PROD_DEFECTIVE_COUNT);
-            subscribe(OpcuaNodes.MAINTENANCE_COUNTER);
-            subscribe(OpcuaNodes.MAINTENANCE_TRIGGER);
-            subscribe(OpcuaNodes.MACH_SPEED_WRITE);
-            subscribe(OpcuaNodes.NEXT_BATCH_ID);
-            subscribe(OpcuaNodes.NEXT_PRODUCT_ID);
-            subscribe(OpcuaNodes.NEXT_BATCH_AMOUNT);
-            subscribe(OpcuaNodes.CMD_CHANGE_REQUEST);
-            subscribe(OpcuaNodes.CNTRL_CMD);
-            subscribe(OpcuaNodes.BARLEY);
-            subscribe(OpcuaNodes.WHEAT);
-            subscribe(OpcuaNodes.HOPS);
-            subscribe(OpcuaNodes.MALT);
-            subscribe(OpcuaNodes.YEAST);
-            subscribe(OpcuaNodes.FILLING_INVENTORY);
+            subscribe(OpcUaNode.STATE_CURRENT);
+            subscribe(OpcUaNode.TEMPERATURE);
+            subscribe(OpcUaNode.REL_HUMIDITY);
+            subscribe(OpcUaNode.VIBRATION);
+            subscribe(OpcUaNode.CURRENT_BATCH_ID);
+            subscribe(OpcUaNode.CURRENT_BATCH_AMOUNT);
+            subscribe(OpcUaNode.CUR_MACH_SPEED);
+            subscribe(OpcUaNode.PROD_PRODUCED);
+            subscribe(OpcUaNode.PROD_PROCESSED_COUNT);
+            subscribe(OpcUaNode.PROD_DEFECTIVE_COUNT);
+            subscribe(OpcUaNode.MAINTENANCE_COUNTER);
+            subscribe(OpcUaNode.MAINTENANCE_TRIGGER);
+            subscribe(OpcUaNode.MACH_SPEED_WRITE);
+            subscribe(OpcUaNode.NEXT_BATCH_ID);
+            subscribe(OpcUaNode.NEXT_PRODUCT_ID);
+            subscribe(OpcUaNode.NEXT_BATCH_AMOUNT);
+            subscribe(OpcUaNode.CMD_CHANGE_REQUEST);
+            subscribe(OpcUaNode.CNTRL_CMD);
+            subscribe(OpcUaNode.BARLEY);
+            subscribe(OpcUaNode.WHEAT);
+            subscribe(OpcUaNode.HOPS);
+            subscribe(OpcUaNode.MALT);
+            subscribe(OpcUaNode.YEAST);
+            subscribe(OpcUaNode.FILLING_INVENTORY);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
@@ -71,7 +69,7 @@ public class OpcuaSubscriber {
 
 
 
-    public void subscribe(OpcuaNodes node) throws ExecutionException, InterruptedException {
+    public void subscribe(OpcUaNode node) throws ExecutionException, InterruptedException {
         NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
         UaSubscription uaSubscription = connection.getClient().getSubscriptionManager().createSubscription(10).get();
         ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);

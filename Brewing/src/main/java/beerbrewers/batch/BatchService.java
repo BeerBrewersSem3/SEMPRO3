@@ -1,10 +1,8 @@
 package beerbrewers.batch;
 
 import beerbrewers.opcua.OpcUaNodeObserver;
-import beerbrewers.opcua.OpcUaNodeUpdateManager;
-import beerbrewers.opcua.OpcuaNodes;
+import beerbrewers.opcua.OpcUaNode;
 import beerbrewers.operation.OperationService;
-import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,10 +18,10 @@ public class BatchService implements OpcUaNodeObserver {
     private final BatchRepository batchRepository;
     private final OperationService operationService;
     private Batch currentBatch;
-    private BrewEnum[] brewEnums = {BrewEnum.PILSNER, BrewEnum.WHEAT, BrewEnum.IPA, BrewEnum.STOUT, BrewEnum.ALE, BrewEnum.ALCOHOL_FREE};
-    private List<OpcuaNodes> subscribesNodes = List.of(
-            OpcuaNodes.PROD_PRODUCED,
-            OpcuaNodes.PROD_DEFECTIVE_COUNT
+    private Brew[] brews = {Brew.PILSNER, Brew.WHEAT, Brew.IPA, Brew.STOUT, Brew.ALE, Brew.ALCOHOL_FREE};
+    private List<OpcUaNode> subscribesNodes = List.of(
+            OpcUaNode.PROD_PRODUCED,
+            OpcUaNode.PROD_DEFECTIVE_COUNT
     );
 
     @Autowired
@@ -60,7 +58,7 @@ public class BatchService implements OpcUaNodeObserver {
     public Batch saveAndGetBatch(int brewId, long batchAmount, long batchSpeed) {
         // Create batch instance
 
-        Batch batch = new Batch(operationService.getCurrentRunningOperation(),brewEnums[brewId],batchAmount,batchSpeed);
+        Batch batch = new Batch(operationService.getCurrentRunningOperation(), brews[brewId],batchAmount,batchSpeed);
         // Save the entity to the database
         batchRepository.save(batch);
         currentBatch = batch;
@@ -80,7 +78,7 @@ public class BatchService implements OpcUaNodeObserver {
 
 
     @Override
-    public void onNodeUpdate(OpcuaNodes node, String newState) {
+    public void onNodeUpdate(OpcUaNode node, String newState) {
         if(currentBatch != null) {
             switch(node){
                 case PROD_PRODUCED -> {
@@ -108,7 +106,7 @@ public class BatchService implements OpcUaNodeObserver {
     }
 
     @Override
-    public List<OpcuaNodes> getSubscribedNodes() {
+    public List<OpcUaNode> getSubscribedNodes() {
         return subscribesNodes;
     }
 }

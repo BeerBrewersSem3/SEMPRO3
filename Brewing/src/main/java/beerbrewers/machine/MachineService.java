@@ -26,22 +26,22 @@ public class MachineService implements OpcUaNodeObserver {
     private final WebsocketService websocketService;
     private CountDownLatch batchAttributeLatch;
     private CountDownLatch commandLatch;
-    private OpcuaNodes awaitingNode;
+    private OpcUaNode awaitingNode;
     private String awaitingState;
     private String currentState;
     private static final Logger logger = LoggerFactory.getLogger(MachineService.class);
-    private List<OpcuaNodes> subscribedNodes = List.of(
-            OpcuaNodes.CMD_CHANGE_REQUEST,
-            OpcuaNodes.CNTRL_CMD,
-            OpcuaNodes.STATE_CURRENT,
-            OpcuaNodes.MACH_SPEED_WRITE,
-            OpcuaNodes.NEXT_BATCH_ID,
-            OpcuaNodes.NEXT_PRODUCT_ID,
-            OpcuaNodes.NEXT_BATCH_AMOUNT
+    private List<OpcUaNode> subscribedNodes = List.of(
+            OpcUaNode.CMD_CHANGE_REQUEST,
+            OpcUaNode.CNTRL_CMD,
+            OpcUaNode.STATE_CURRENT,
+            OpcUaNode.MACH_SPEED_WRITE,
+            OpcUaNode.NEXT_BATCH_ID,
+            OpcUaNode.NEXT_PRODUCT_ID,
+            OpcUaNode.NEXT_BATCH_AMOUNT
     );
     private Map<Number, String> commandToStateMap = new ConcurrentHashMap<>();
 
-    private Map<OpcuaNodes, Number> awaitingNodes = new ConcurrentHashMap<>();
+    private Map<OpcUaNode, Number> awaitingNodes = new ConcurrentHashMap<>();
 
     @Autowired
     public MachineService(BatchService      batchService,
@@ -69,23 +69,23 @@ public class MachineService implements OpcUaNodeObserver {
         websocketService.send("batchStart","");
     }
 
-    public void addBatchAttributeCommandToQueue(OpcuaNodes node, Number command){
+    public void addBatchAttributeCommandToQueue(OpcUaNode node, Number command){
         awaitingNodes.put(node,command);
         this.batchAttributeLatch =  new CountDownLatch(awaitingNodes.size());
     }
     public void sendBatchCommands(){
-        for(Map.Entry<OpcuaNodes, Number> entry : awaitingNodes.entrySet()){
+        for(Map.Entry<OpcUaNode, Number> entry : awaitingNodes.entrySet()){
             this.opcUaCommander.sendCommand(entry.getKey(),entry.getValue());
         }
     }
 
     public void setBatchAttributesToMachine(Batch batch){
         websocketService.sendConsoleInfo("Sending batch information to the machine");
-        addBatchAttributeCommandToQueue(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
-        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
-        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
+        addBatchAttributeCommandToQueue(OpcUaNode.MACH_SPEED_WRITE,(float)batch.getSpeed());
+        addBatchAttributeCommandToQueue(OpcUaNode.NEXT_BATCH_ID,batch.getBatchId().floatValue());
+        addBatchAttributeCommandToQueue(OpcUaNode.NEXT_BATCH_AMOUNT,(float)batch.getAmount());
         if(batch.getBrewName().getBrewId() != 0) {
-            addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
+            addBatchAttributeCommandToQueue(OpcUaNode.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
         }
         sendBatchCommands();
         waitForLatch(batchAttributeLatch);
@@ -93,11 +93,11 @@ public class MachineService implements OpcUaNodeObserver {
     }
     public void setBatchAttributesToMachine(Batch batch, long amount){
         websocketService.sendConsoleInfo("Sending batch information to the machine");
-        addBatchAttributeCommandToQueue(OpcuaNodes.MACH_SPEED_WRITE,(float)batch.getSpeed());
-        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_ID,batch.getBatchId().floatValue());
-        addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_BATCH_AMOUNT,(float)amount);
+        addBatchAttributeCommandToQueue(OpcUaNode.MACH_SPEED_WRITE,(float)batch.getSpeed());
+        addBatchAttributeCommandToQueue(OpcUaNode.NEXT_BATCH_ID,batch.getBatchId().floatValue());
+        addBatchAttributeCommandToQueue(OpcUaNode.NEXT_BATCH_AMOUNT,(float)amount);
         if(batch.getBrewName().getBrewId() != 0) {
-            addBatchAttributeCommandToQueue(OpcuaNodes.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
+            addBatchAttributeCommandToQueue(OpcUaNode.NEXT_PRODUCT_ID,(float)batch.getBrewName().getBrewId());
         }
         sendBatchCommands();
         waitForLatch(batchAttributeLatch);
@@ -105,18 +105,18 @@ public class MachineService implements OpcUaNodeObserver {
     }
 
 
-    public void startMachine(){
+    private void startMachine(){
         websocketService.sendConsoleInfo("Starting brewing process");
         if(!Objects.equals(currentState, "2")) {
-            resetLatchAndSendCntrlCmd(OpcuaNodes.CNTRL_CMD, 3);
+            resetLatchAndSendCntrlCmd(OpcUaNode.CNTRL_CMD, 3);
         }
-        resetLatchAndSendCntrlCmd(OpcuaNodes.CNTRL_CMD,1);
-        resetLatchAndSendCntrlCmd(OpcuaNodes.CNTRL_CMD,2);
+        resetLatchAndSendCntrlCmd(OpcUaNode.CNTRL_CMD,1);
+        resetLatchAndSendCntrlCmd(OpcUaNode.CNTRL_CMD,2);
         websocketService.sendConsoleInfo("Brewing process stated");
     }
 
     public void resetMachineState(){
-        resetLatchAndSendCntrlCmd(OpcuaNodes.CNTRL_CMD,3);
+        resetLatchAndSendCntrlCmd(OpcUaNode.CNTRL_CMD,3);
     }
 
     public void stopMachine(){
@@ -136,8 +136,8 @@ public class MachineService implements OpcUaNodeObserver {
         websocketService.send("batchStart","");
     }
 
-    private void resetLatchAndSendCntrlCmd(OpcuaNodes node, Number command) {
-        this.awaitingNode = OpcuaNodes.STATE_CURRENT;
+    private void resetLatchAndSendCntrlCmd(OpcUaNode node, Number command) {
+        this.awaitingNode = OpcUaNode.STATE_CURRENT;
         this.awaitingState = commandToStateMap.get(command);
         this.commandLatch = new CountDownLatch(1);
         this.opcUaCommander.sendCommand(node, command);
@@ -155,10 +155,10 @@ public class MachineService implements OpcUaNodeObserver {
     }
 
     @Override
-    public void onNodeUpdate(OpcuaNodes node, String newState) {
+    public void onNodeUpdate(OpcUaNode node, String newState) {
         logger.debug(node + " new value " + newState);
-        if(node.getName().equals(OpcuaNodes.STATE_CURRENT.getName())
-                & awaitingNode == OpcuaNodes.STATE_CURRENT){
+        if(node.getName().equals(OpcUaNode.STATE_CURRENT.getName())
+                & awaitingNode == OpcUaNode.STATE_CURRENT){
             if(Objects.equals(newState, awaitingState)) {
                 commandLatch.countDown();
             }
@@ -178,7 +178,7 @@ public class MachineService implements OpcUaNodeObserver {
 
     }
 
-    public List<OpcuaNodes> getSubscribedNodes() {
+    public List<OpcUaNode> getSubscribedNodes() {
         return subscribedNodes;
     }
 }

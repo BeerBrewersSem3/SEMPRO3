@@ -1,7 +1,7 @@
 package beerbrewers.recipe;
 
 import beerbrewers.batch.BatchService;
-import beerbrewers.batch.BrewEnum;
+import beerbrewers.batch.Brew;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +22,7 @@ public class RecipeController {
     @GetMapping("/brewTypes")
     public List<Map<String, Object>> getBatches() {
         // Convert BrewEnum values to a list of Maps
-        List<Map<String, Object>> brewTypes = Arrays.stream(BrewEnum.values())
+        List<Map<String, Object>> brewTypes = Arrays.stream(Brew.values())
                 .map(brewEnum -> {
                     Map<String, Object> map = new HashMap<>();
                     map.put("brewId", brewEnum.getBrewId());

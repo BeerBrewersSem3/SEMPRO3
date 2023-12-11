@@ -20,7 +20,7 @@ public class OpcuaCommander {
         this.connection = opcuaClientConnection;
     }
 
-    public boolean sendCommand(OpcuaNodes node, Number command) {
+    public boolean sendCommand(OpcUaNode node, Number command) {
         NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
         Variant variantCommand;
 
@@ -35,7 +35,7 @@ public class OpcuaCommander {
         try {
             connection.getClient().writeValue(nodeId, DataValue.valueOnly(variantCommand)).get();
             logger.info("Command sent to node: " + node.getIdentifier() + " with value: " + command.toString());
-            if(node.equals(OpcuaNodes.CNTRL_CMD)){
+            if(node.equals(OpcUaNode.CNTRL_CMD)){
                 commandChangeRequest(true);
             }
             return true;
@@ -46,7 +46,7 @@ public class OpcuaCommander {
     }
 
     public boolean commandChangeRequest(boolean command){
-        NodeId nodeId = new NodeId(OpcuaNodes.CMD_CHANGE_REQUEST.getNamespaceIndex(),OpcuaNodes.CMD_CHANGE_REQUEST.getIdentifier());
+        NodeId nodeId = new NodeId(OpcUaNode.CMD_CHANGE_REQUEST.getNamespaceIndex(), OpcUaNode.CMD_CHANGE_REQUEST.getIdentifier());
         try {
             connection.getClient().writeValue(nodeId, DataValue.valueOnly(new Variant(command))).get();
             return true;

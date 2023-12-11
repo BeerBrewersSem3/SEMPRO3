@@ -1,10 +1,8 @@
 package beerbrewers.batch;
 
 import beerbrewers.operation.Operation;
-import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity(name = "Batch")
@@ -40,7 +38,7 @@ public class Batch {
             columnDefinition = "TEXT"
     )
     @Enumerated(EnumType.STRING)
-    private BrewEnum brewName;
+    private Brew brewName;
 
     @Column(
             name = "amount",
@@ -95,7 +93,7 @@ public class Batch {
      * @param amount
      * @param speed
      */
-    public Batch(Operation operation, BrewEnum brewName, long amount, long speed) {
+    public Batch(Operation operation, Brew brewName, long amount, long speed) {
         this.operation = operation;
         this.brewName = brewName;
         this.amount = amount;
@@ -119,7 +117,7 @@ public class Batch {
      * @param completedCount
      * @param startTime
      */
-    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
+    public Batch(Long batchId, Operation operation, Brew brewName, long amount, long speed, boolean isCompleted,
                  long defectiveCount, long completedCount, Timestamp startTime) {
         this.batchId = batchId;
         this.operation = operation;
@@ -132,7 +130,7 @@ public class Batch {
         this.startTime = startTime;
     }
 
-    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed, boolean isCompleted,
+    public Batch(Long batchId, Operation operation, Brew brewName, long amount, long speed, boolean isCompleted,
                  long defectiveCount, long completedCount, Timestamp startTime, Timestamp endTime) {
         this.batchId = batchId;
         this.operation = operation;
@@ -186,11 +184,11 @@ public class Batch {
         this.operation = operation;
     }
 
-    public BrewEnum getBrewName() {
+    public Brew getBrewName() {
         return brewName;
     }
 
-    public void setBrewName(BrewEnum brewName) {
+    public void setBrewName(Brew brewName) {
         this.brewName = brewName;
     }
 

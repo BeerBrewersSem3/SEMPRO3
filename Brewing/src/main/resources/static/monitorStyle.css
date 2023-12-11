@@ -319,7 +319,7 @@ ul {
 }
 
 .btn__badge {
-    background: #FF5D5D;
+
     color: white;
     font-size: 12px;
     position: absolute;
@@ -330,8 +330,7 @@ ul {
 }
 
 .pulse-button {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.5);
-    -webkit-animation: pulse 1.5s infinite;
+    -webkit-animation: none;
 }
 
 .pulse-button:hover {

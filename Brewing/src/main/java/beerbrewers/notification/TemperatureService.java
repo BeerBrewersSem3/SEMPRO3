@@ -1,12 +1,10 @@
 package beerbrewers.notification;
 
-import beerbrewers.opcua.OpcuaNodes;
+import beerbrewers.opcua.OpcUaNode;
 import beerbrewers.websocket.WebsocketService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
 
 @Service
 public class TemperatureService {
@@ -19,7 +17,7 @@ public class TemperatureService {
     }
 
 
-    public void temperatureWarning(OpcuaNodes node, String newState) {
+    public void temperatureWarning(OpcUaNode node, String newState) {
         int temp = Integer.parseInt(newState);
 
         if (temp < 40 && temp < 60) {

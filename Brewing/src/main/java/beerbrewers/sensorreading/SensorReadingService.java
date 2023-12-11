@@ -2,14 +2,10 @@ package beerbrewers.sensorreading;
 
 import beerbrewers.batch.BatchService;
 import beerbrewers.opcua.OpcUaNodeObserver;
-import beerbrewers.opcua.OpcuaNodes;
-import beerbrewers.operation.OperationService;
+import beerbrewers.opcua.OpcUaNode;
 import beerbrewers.sensor.Sensor;
 import beerbrewers.sensor.SensorService;
-import jakarta.annotation.PostConstruct;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -35,10 +31,10 @@ public class SensorReadingService implements OpcUaNodeObserver {
 
     private List<Sensor> sensorList;
 
-    private List<OpcuaNodes> subscribedNodes = List.of(
-            OpcuaNodes.REL_HUMIDITY,
-            OpcuaNodes.TEMPERATURE,
-            OpcuaNodes.VIBRATION
+    private List<OpcUaNode> subscribedNodes = List.of(
+            OpcUaNode.REL_HUMIDITY,
+            OpcUaNode.TEMPERATURE,
+            OpcUaNode.VIBRATION
     );
 
     @Autowired
@@ -95,12 +91,12 @@ public class SensorReadingService implements OpcUaNodeObserver {
     }
 
     @Override
-    public void onNodeUpdate(OpcuaNodes node, String newState) {
+    public void onNodeUpdate(OpcUaNode node, String newState) {
         currentSensorValuesMap.put(node.getDatabaseId(), Float.valueOf(newState));
     }
 
     @Override
-    public List<OpcuaNodes> getSubscribedNodes() {
+    public List<OpcUaNode> getSubscribedNodes() {
         return subscribedNodes;
     }
 

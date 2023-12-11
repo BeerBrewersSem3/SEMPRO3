@@ -36,7 +36,7 @@ public class OperationInputs {
             columnDefinition = "TEXT"
     )
     @Enumerated(EnumType.STRING)
-    private OperationInputsEnum name;
+    private OperationInputType name;
 
     @Column(
             name = "timestamp",
@@ -51,13 +51,13 @@ public class OperationInputs {
      */
     protected OperationInputs() {}
 
-    public OperationInputs(Operation operation, OperationInputsEnum name, String timestamp) {
+    public OperationInputs(Operation operation, OperationInputType name, String timestamp) {
         this.operation = operation;
         this.name = name;
         this.timestamp = timestamp;
     }
 
-    public OperationInputs(Long operationInputsId, Operation operation, OperationInputsEnum name, String timestamp) {
+    public OperationInputs(Long operationInputsId, Operation operation, OperationInputType name, String timestamp) {
         this.operationInputsId = operationInputsId;
         this.operation = operation;
         this.name = name;
@@ -80,11 +80,11 @@ public class OperationInputs {
         this.operation = operation;
     }
 
-    public OperationInputsEnum getName() {
+    public OperationInputType getName() {
         return name;
     }
 
-    public void setName(OperationInputsEnum name) {
+    public void setName(OperationInputType name) {
         this.name = name;
     }
 

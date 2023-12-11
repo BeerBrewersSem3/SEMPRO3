@@ -1,6 +1,6 @@
 package beerbrewers.notification;
 import beerbrewers.opcua.OpcUaNodeObserver;
-import beerbrewers.opcua.OpcuaNodes;
+import beerbrewers.opcua.OpcUaNode;
 import beerbrewers.websocket.WebsocketService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,17 +15,17 @@ public class NotificationService implements OpcUaNodeObserver {
 
     private static final Logger logger = LoggerFactory.getLogger(TemperatureService.class);
     private final WebsocketService websocketService;
-    private HashMap<OpcuaNodes, String> nodeValueMap;
+    private HashMap<OpcUaNode, String> nodeValueMap;
     private final TemperatureService temperatureService;
     private final InventoryService inventoryService;
-    private List<OpcuaNodes> subscribeNodes = List.of(
-            OpcuaNodes.STATE_CURRENT,
-            OpcuaNodes.TEMPERATURE,
-            OpcuaNodes.BARLEY,
-            OpcuaNodes.MALT,
-            OpcuaNodes.WHEAT,
-            OpcuaNodes.HOPS,
-            OpcuaNodes.YEAST
+    private List<OpcUaNode> subscribeNodes = List.of(
+            OpcUaNode.STATE_CURRENT,
+            OpcUaNode.TEMPERATURE,
+            OpcUaNode.BARLEY,
+            OpcUaNode.MALT,
+            OpcUaNode.WHEAT,
+            OpcUaNode.HOPS,
+            OpcUaNode.YEAST
     );
 
     @Autowired
@@ -37,7 +37,7 @@ public class NotificationService implements OpcUaNodeObserver {
     }
 
     @Override
-    public void onNodeUpdate(OpcuaNodes node, String newState) {
+    public void onNodeUpdate(OpcUaNode node, String newState) {
         nodeValueMap.put(node, newState);
 
         if(subscribeNodes.contains(node)){
@@ -45,7 +45,7 @@ public class NotificationService implements OpcUaNodeObserver {
         }
 
         //Test if statement
-        if(node == OpcuaNodes.STATE_CURRENT){
+        if(node == OpcUaNode.STATE_CURRENT){
             System.out.println(newState);
             temperatureService.temperatureWarning(node, newState);
         }
@@ -62,7 +62,7 @@ public class NotificationService implements OpcUaNodeObserver {
     }
 
     @Override
-    public List<OpcuaNodes> getSubscribedNodes() {
+    public List<OpcUaNode> getSubscribedNodes() {
         return subscribeNodes;
     }
 }

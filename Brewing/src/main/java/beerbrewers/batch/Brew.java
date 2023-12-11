@@ -1,6 +1,6 @@
 package beerbrewers.batch;
 
-public enum BrewEnum {
+public enum Brew {
 
     PILSNER(0, 4, 2, 1, 1, 4, "Pilsner", 1, 600),
     WHEAT(1, 1, 4, 6, 1, 3,"Wheat", 1, 300),
@@ -20,7 +20,7 @@ public enum BrewEnum {
     private final int minMachSpeed;
     private final int maxMachSpeed;
 
-    BrewEnum(int brewId, int barley, int hops, int wheat, int malt, int yeast, String name, int minMachSpeed, int maxMachSpeed) {
+    Brew(int brewId, int barley, int hops, int wheat, int malt, int yeast, String name, int minMachSpeed, int maxMachSpeed) {
         this.brewId = brewId;
         this.barley = barley;
         this.hops = hops;
@@ -59,14 +59,14 @@ public enum BrewEnum {
         return yeast;
     }
 
-    public static BrewEnum getBrewFromId(int brewId) {
-        BrewEnum[] brewEnums = {BrewEnum.PILSNER,
-                                BrewEnum.WHEAT,
-                                BrewEnum.IPA,
-                                BrewEnum.STOUT,
-                                BrewEnum.ALE,
-                                BrewEnum.ALCOHOL_FREE};
-        return brewEnums[brewId];
+    public static Brew getBrewFromId(int brewId) {
+        Brew[] brews = {Brew.PILSNER,
+                                Brew.WHEAT,
+                                Brew.IPA,
+                                Brew.STOUT,
+                                Brew.ALE,
+                                Brew.ALCOHOL_FREE};
+        return brews[brewId];
     }
 
     @Override

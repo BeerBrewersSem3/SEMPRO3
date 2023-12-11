@@ -26,7 +26,7 @@ public class OpcUaNodeUpdateManager {
 
     private static final Logger logger = LoggerFactory.getLogger(OpcUaNodeUpdateManager.class);
 
-    private Map<OpcuaNodes, List<OpcUaNodeObserver>> observers = new ConcurrentHashMap<>();
+    private Map<OpcUaNode, List<OpcUaNodeObserver>> observers = new ConcurrentHashMap<>();
     private final NotificationService notificationService;
 
     @Autowired
@@ -56,12 +56,12 @@ public class OpcUaNodeUpdateManager {
         });
     }
 
-    public void addObserver(OpcuaNodes node, OpcUaNodeObserver observer) {
+    public void addObserver(OpcUaNode node, OpcUaNodeObserver observer) {
         observers.computeIfAbsent(node, k -> new ArrayList<>()).add(observer);
     }
 
 
-    public void notifyObservers(OpcuaNodes node, String newState) {
+    public void notifyObservers(OpcUaNode node, String newState) {
         List<OpcUaNodeObserver> nodeObservers = observers.getOrDefault(node, Collections.emptyList());
         for (OpcUaNodeObserver observer : nodeObservers) {
             observer.onNodeUpdate(node, newState);

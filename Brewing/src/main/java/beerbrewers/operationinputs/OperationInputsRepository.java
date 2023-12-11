@@ -13,7 +13,7 @@ public interface OperationInputsRepository extends JpaRepository<OperationInputs
 
     OperationInputs findByOperationInputsId(Long operationInputsId);
 
-    List<OperationInputs> findAllByName(Enum<OperationInputsEnum> name);
+    List<OperationInputs> findAllByName(Enum<OperationInputType> name);
 
     List<OperationInputs> findAllByTimestampBetween(String timeStart, String timeEnd);
 

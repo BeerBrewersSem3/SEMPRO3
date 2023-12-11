@@ -1,6 +1,6 @@
 package beerbrewers.operationinputs;
 
-public enum OperationInputsEnum {
+public enum OperationInputType {
     START,
     STOP,
     PAUSE,

@@ -1,5 +1,5 @@
 package beerbrewers.opcua;
-public enum OpcuaNodes {
+public enum OpcUaNode {
 
     /* ADMIN */
     PROD_DEFECTIVE_COUNT(6, "::Program:Cube.Admin.ProdDefectiveCount", "prodDefectiveCount"), // [R] Amount of defective products.
@@ -52,13 +52,13 @@ public enum OpcuaNodes {
 
     private Long databaseId;
 
-    OpcuaNodes(int namespaceIndex, String identifier, String name) {
+    OpcUaNode(int namespaceIndex, String identifier, String name) {
         this.namespaceIndex = namespaceIndex;
         this.identifier = identifier;
         this.name = name;
     }
 
-    OpcuaNodes(int namespaceIndex, String identifier, String name, Long databaseId) {
+    OpcUaNode(int namespaceIndex, String identifier, String name, Long databaseId) {
         this.namespaceIndex = namespaceIndex;
         this.identifier = identifier;
         this.name = name;

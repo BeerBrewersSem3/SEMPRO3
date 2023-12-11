@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface OpcUaNodeObserver {
 
-    void onNodeUpdate(OpcuaNodes node, String newState);
+    void onNodeUpdate(OpcUaNode node, String newState);
 
-    List<OpcuaNodes> getSubscribedNodes();
+    List<OpcUaNode> getSubscribedNodes();
 }

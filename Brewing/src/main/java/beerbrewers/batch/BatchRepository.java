@@ -17,7 +17,7 @@ public interface BatchRepository extends JpaRepository<Batch, Long> {
 
     List<Batch> findAllByOperation(Operation operation);
 
-    List<Batch> findAllByBrewName(BrewEnum brewName);
+    List<Batch> findAllByBrewName(Brew brewName);
 
     Batch findTopByOrderByBatchIdDesc();
 }

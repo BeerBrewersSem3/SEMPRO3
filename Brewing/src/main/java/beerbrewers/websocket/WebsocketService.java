@@ -1,7 +1,6 @@
 package beerbrewers.websocket;
 
-import beerbrewers.opcua.OpcUaDashboardService;
-import beerbrewers.opcua.OpcuaNodes;
+import beerbrewers.opcua.OpcUaNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class WebsocketService {
         simpMessagingTemplate.convertAndSend("/console/message", message);
     }
 
-    public void sendNotification(OpcuaNodes node, String state, String uniqueMessage){
+    public void sendNotification(OpcUaNode node, String state, String uniqueMessage){
         simpMessagingTemplate.convertAndSend("/notification/" + node.getName(), uniqueMessage + ":" + state);
 
     }

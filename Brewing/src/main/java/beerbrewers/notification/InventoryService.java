@@ -1,6 +1,6 @@
 package beerbrewers.notification;
 
-import beerbrewers.opcua.OpcuaNodes;
+import beerbrewers.opcua.OpcUaNode;
 import beerbrewers.websocket.WebsocketService;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ public class InventoryService {
         this.websocketService = websocketService;
     }
 
-    public void inventoryWarning(OpcuaNodes node, String newState) {
+    public void inventoryWarning(OpcUaNode node, String newState) {
         switch (node) {
             case BARLEY -> {
                 float barley = Float.parseFloat(newState);
