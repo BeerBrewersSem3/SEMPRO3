@@ -37,11 +37,12 @@ public class PerformanceTest {
     @Test
     public void testStartMachine() {
         ArrayList<Double> allRunTimes = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 100; i++) {
             long startTime = System.currentTimeMillis();
             machineService.setBatchAttributesToMachine(this.batch);
             machineService.startMachine();
             long endTime = System.currentTimeMillis();
+            machineService.resetMachineState();
             double timeInSeconds = (double) (endTime-startTime) / 1000;
             System.out.println("Iteration #"+(i)+" just ran at " + timeInSeconds + " seconds");
             allRunTimes.add(timeInSeconds);
