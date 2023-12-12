@@ -44,7 +44,7 @@ public class PerformanceTest {
             long endTime = System.currentTimeMillis();
             machineService.resetMachineState();
             double timeInSeconds = (double) (endTime-startTime) / 1000;
-            System.out.println("Iteration #"+(i)+" just ran at " + timeInSeconds + " seconds");
+            System.out.println("Iteration #" +  i + " just ran at " + timeInSeconds + " seconds");
             allRunTimes.add(timeInSeconds);
         }
 
