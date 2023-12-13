@@ -1,28 +1,28 @@
 
 
-Fri Dec 08 01:11:47 2023
+Wed Dec 13 10:16:32 2023
 No ARsim registration found!
   Bernecker & Rainer 
 
 
 
-Fri Dec 08 01:11:47 2023
+Wed Dec 13 10:16:32 2023
 COMMAND_COLDSTART
-InstanceName : 01da296b221c2400
+InstanceName : 01da2da51023db10
 
 WorkingPath :
-C:\Users\lasse\Desktop\Simulation\Config1\X20CP1586\
+C:\Users\lasse\Desktop\Uni\SemPro3\SEMPRO3\Brewing\Simulation\Config1\X20CP1586\
 
 
 
-Fri Dec 08 01:11:47 2023
+Wed Dec 13 10:16:32 2023
 COMMAND_COLDSTART
 Version : E4.34
 
 
 
-Fri Dec 08 01:38:11 2023
+Wed Dec 13 12:39:21 2023
 COMMAND_TERMINATE
 
 
-Fri Dec 08 01:38:12 2023
+Wed Dec 13 12:39:22 2023
