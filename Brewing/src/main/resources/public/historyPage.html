@@ -5,6 +5,9 @@
     <title>HistoryPage</title>
     <link rel="stylesheet" href="./historyStyle.css">
     <script src="switchPage.js"></script>
+    <script src="formatText.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="cursorAnimation.js"></script>
 </head>
 <body>
 
@@ -12,7 +15,6 @@
     <div class="menuBtns">
         <button class="menuBtn" id="monitorBtn" onclick=openMonitor()>Monitor</button>
         <button class="menuBtn" id="historyBtn" onclick="openHistory()">History</button>
-        <button class="menuBtn" id="testBtn" onclick="openTest()">Test Tab</button>
     </div>
 
     <div class="header">
@@ -21,7 +23,7 @@
 
     <div class="navRight">
         <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
-        <button class="emerBtn">Emergency Stop!</button>
+        <button class="emerBtn" onclick=emergencyStopMachine()>Emergency Stop!</button>
     </div>
 </div>
 
@@ -31,8 +33,17 @@
 
 <div class="mainHorizAdjust">
     <div class="main">
+        <div>
+            <span>Shows:</span>
+            <select id="tableSize">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+        </div>
         <div class="tableWrapper">
-            <table class="historyTable">
+            <table class="historyTable" id="historyTable">
                 <thead>
                 <tr class="tableHeader">
                     <th>ID</th>
@@ -42,19 +53,20 @@
                     <th>Stopped</th>
                 </tr>
                 </thead>
-
                 <tbody>
-                <tr onclick=openHistoryOpen()>
-                    <td>1</td>
-                    <td>Pilsner</td>
-                    <td>42069</td>
-                    <td>01/03-23</td>
-                    <td>03/03-23</td>
-                </tr>
                 </tbody>
             </table>
+        </div>
+
+        <div class="footer">
+            <span id="indexDisplay">pee pee poo poo</span>
+            <div class="indexBtns">
+                <button onclick=previousPage()>Previous</button>
+                <button onclick=nextPage()>Next</button>
+            </div>
         </div>
     </div>
 </div>
 </body>
+<script defer src="pagination.js"></script>
 </html>

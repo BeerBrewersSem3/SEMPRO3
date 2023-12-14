@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./monitorStyle.css">
     <link rel="stylesheet" href="./newBatch.css">
     <script src="switchPage.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
     <script defer src="websocketScript.js"></script>
+    <script defer src="machine.js"></script>
+    <script defer src="cursorAnimation.js"></script>
+    <script defer src="console.js"></script>
     <title>Monitor</title>
 </head>
 <body>
@@ -22,8 +26,16 @@
     </div>
 
     <div class="navRight">
-        <img class="siren" src="Icons/siren.svg" alt="Siren for notifications">
-        <button class="emerBtn">Emergency Stop!</button>
+
+        <ul class="notification-drop">
+            <div class="item">
+                <i class="fa fa-bell-o notification-bell" aria-hidden="true"></i> <span class="btn__badge pulse-button">0</span>
+                <ul id="notificationList">
+                </ul>
+            </div>
+        </ul>
+        <button class="emerBtn" onclick=emergencyStopMachine()>Emergency Stop!</button>
+
     </div>
 </div>
 
@@ -155,17 +167,20 @@
         </div>
     </div>
 </div>
+<div class="consoleWindow" id="consoleWindow">
+    <ul class="console" id="console"></ul>
+</div>
 
-<div class="maintenanceAdjust">
-    <div class="maintenanceBox">
-        <img src="Icons/maintenance.png" alt="Maintenance picture">
-        <div class="maintenanceContainer" id="maintenanceContainer">
-            <div id="maintenanceBar" class="maintenanceBar">
-                <label class="maintenance" id="maintenance">0%</label>
-            </div>
+
+<div class="maintenanceBox">
+    <img src="Icons/maintenance.png" alt="Maintenance picture">
+    <div class="maintenanceContainer" id="maintenanceContainer">
+        <div id="maintenanceBar" class="maintenanceBar">
+            <label class="maintenance" id="maintenance">0%</label>
         </div>
     </div>
 </div>
+
 
 
 
@@ -182,8 +197,8 @@
                         <tr>
                             <th>ID</th>
                             <td>
-                                <div class="idContainer">
-                                    <input type="text" class="batchID" id="batchID">
+                                <div class="idContainer" id="batchID">
+                                    
                                 </div>
                             </td>
                         </tr>
@@ -207,7 +222,7 @@
                             <th>Bottles #</th>
                             <td>
                                 <label>
-                                    <input type="text" id="batchAmount" placeholder="Insert Amount">
+                                    <input type="number" id="batchAmount" placeholder="Insert Amount">
                                 </label>
                             </td>
                             <td>
@@ -218,12 +233,14 @@
                             <th>Speed</th>
                             <td>
                                 <label>
-                                    <input type="text" id="batchSpeed" placeholder="Insert Speed">
+                                    <input type="number" id="batchSpeed" placeholder="Insert Speed">
                                 </label>
                             </td>
                         </tr>
                     </table>
-                    <label class="recSpeed">Recommended Speed: <label id="recSpeed">???</label></label>
+                    <label class="machSpeed">Min. Speed <label id="minMachSpeed"></label></label>
+                    <label class="machSpeed">Max. Speed <label id="maxMachSpeed"></label></label>
+                    <label class="machSpeed">Recommended Speed: <label id="recSpeed"></label></label>
                 </div>
 
                 <div class="newBatchBottomMiddle">
@@ -245,24 +262,24 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Barley: <label>???</label></td>
-                                <td>Barley: <label>???</label></td>
+                                <td>Barley: <br> <label id="required_barley"></label></td>
+                                <td>Barley: <br> <label id="stock_barley"></label></td>
                             </tr>
                             <tr>
-                                <td>Hop: <label>???</label></td>
-                                <td>Hop: <label>???</label></td>
+                                <td>Hops: <br> <label id="required_hops"></label></td>
+                                <td>Hops: <br> <label id="stock_hops"></label></td>
                             </tr>
                             <tr>
-                                <td>Malt: <label>???</label></td>
-                                <td>Malt: <label>???</label></td>
+                                <td>Malt: <br> <label id="required_malt"></label></td>
+                                <td>Malt: <br> <label id="stock_malt"></label></td>
                             </tr>
                             <tr>
-                                <td>Wheat: <label>???</label></td>
-                                <td>Wheat: <label>???</label></td>
+                                <td>Wheat: <br> <label id="required_wheat"></label></td>
+                                <td>Wheat: <br> <label id="stock_wheat"></label></td>
                             </tr>
                             <tr>
-                                <td>Yeast: <label>???</label></td>
-                                <td>Yeast: <label>???</label></td>
+                                <td>Yeast: <br> <label id="required_yeast"></label></td>
+                                <td>Yeast: <br> <label id="stock_yeast"></label></td>
                             </tr>
                             </tbody>
                         </table>

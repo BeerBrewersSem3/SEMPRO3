@@ -103,4 +103,8 @@ public class SensorReadingService implements OpcUaNodeObserver {
     public List<OpcuaNodes> getSubscribedNodes() {
         return subscribedNodes;
     }
+
+    public SensorReading getSensorReading(Long sensorReadingId) {
+        return sensorReadingRepository.findBySensorReadingId(sensorReadingId);
+    }
 }

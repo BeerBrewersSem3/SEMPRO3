@@ -1,23 +1,15 @@
 package beerbrewers.opcua;
-import beerbrewers.websocket.WebsocketService;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
-import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
-import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
-import org.eclipse.milo.opcua.stack.core.AttributeId;
+import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
+import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
 import org.eclipse.milo.opcua.stack.core.UaException;
-import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
-import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
-import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
-import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
-import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned;
-import org.eclipse.milo.opcua.stack.core.types.enumerated.MonitoringMode;
-import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateRequest;
-import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
-import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
+import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
+import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 @Component
 public class OpcuaClientConnection {
@@ -27,17 +19,34 @@ public class OpcuaClientConnection {
 
     {
         try {
-            client = OpcUaClient.create(
-                    "opc.tcp://localhost:4840"
-            );
+            boolean useSimulation = true;
+            boolean useDocker = false;
+            String endpointUrl;
+            String hostname;
 
+            if(useSimulation) {
+                if(useDocker) {
+                    endpointUrl = "opc.tcp://host.docker.internal:4840";
+                    hostname = "host.docker.internal";
+                } else {
+                    endpointUrl = "opc.tcp://localhost:4840";
+                    hostname = "localhost";
+                }
+            } else {
+                endpointUrl = "opc.tcp://192.168.0.122:4840";
+                hostname = "192.168.0.122";
+            }
+            List<EndpointDescription> endpointDescriptionList = DiscoveryClient.getEndpoints(endpointUrl).get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpointDescriptionList.get(0), hostname, 4840);
+            OpcUaClientConfigBuilder configBuilder = new OpcUaClientConfigBuilder();
+            configBuilder.setEndpoint(configPoint);
+            this.client = OpcUaClient.create(configBuilder.build());
             client.connect().get();
-            logger.info("Connected to OPC UA Sever");
-
+            logger.info("Connected to OPC UA Server");
         } catch (UaException | InterruptedException e) {
             logger.error("Connection Error (OPC UA Server)");
         } catch (ExecutionException e) {
-            logger.error("Execution Error (OPC UA Server)");
+            logger.error("Execution Error (OPC UA Server)", e);
         }
     }
     public OpcUaClient getClient() {

@@ -1,7 +1,7 @@
 var stompClient = null;
-function subscribeToStatus(nodeName) {
+function subscribeToStatus(nodeName, unit) {
     stompClient.subscribe('/sensor/data/' + nodeName, (message) => {
-        document.getElementById(nodeName + "Label").innerText = message.body;
+        document.getElementById(nodeName + "Label").innerText = message.body + " " + unit;
     })
 }
 
@@ -35,11 +35,9 @@ function colorCalc(fill) {
 
 function subscribeToInventory(nodeName){
     stompClient.subscribe('/sensor/data/' + nodeName, (message)=>{
-        //console.log("Subscribed to: " + message.body);
         let totalStockInPercentage = Math.floor((parseInt(message.body) / 35000) * 100);
-
-        //console.log("The total percantage is: " + totalStockInPercentage)
-        fillSilo(totalStockInPercentage, nodeName)
+        fillSilo(totalStockInPercentage, nodeName);
+        fillStock(nodeName,message.body);
     })
 }
 
@@ -49,25 +47,42 @@ function connectWebSocket() {
     stompClient.connect({}, function() {
         console.log("WebSocket connection established");
         maintenanceCounter();
-        subscribeToStatus("temperature");
-        subscribeToStatus("relativeHumidity");
-        subscribeToStatus("vibration");
-        subscribeToStatus("currentBatchId");
-        subscribeToStatus("currentBatchAmount");
-        subscribeToStatus("currentMachineSpeed");
-        subscribeToStatus("prodProduced");
-        subscribeToStatus("prodProcessedCount");
-        subscribeToStatus("prodDefectiveCount");
+        subscribeToStatus("temperature", "°C");
+        subscribeToStatus("relativeHumidity", "%");
+        subscribeToStatus("vibration", "DPS");
+        subscribeToStatus("currentBatchId","");
+        subscribeToStatus("currentBatchAmount", "bottles");
+        subscribeToStatus("currentMachineSpeed", "bottles/s");
+        subscribeToStatus("prodProduced", "bottles");
+        subscribeToStatus("prodProcessedCount", "bottles");
+        subscribeToStatus("prodDefectiveCount","bottles");
         subscribeToInventory("barley");
         subscribeToInventory("malt");
         subscribeToInventory("yeast");
         subscribeToInventory("hops");
         subscribeToInventory("wheat");
+        subscribeToNotification("currentState");
+        subscribeToNotification("temperature");
+        checkFilling("fillingInventory")
+        subscribeToNotification("barley");
+        subscribeToNotification("wheat");
+        subscribeToNotification("malt");
+        subscribeToNotification("yeast");
+        subscribeToNotification("hops");
         onPageLoad();
+        subscribeToBatchStart();
+        subscribeToConsoleMessages();
+    });
+}
+
+function subscribeToBatchStart(){
+    stompClient.subscribe('/sensor/data/batchStart', (body) => {
+        cursorDefault();
     });
 }
 
 function startBatch() {
+    clearConsole();
     const batchID   = document.getElementById("batchID").value;
     const brewType    = convertBrewType()
     const batchAmount  = document.getElementById("batchAmount").value;
@@ -87,39 +102,16 @@ function startBatch() {
         console.error("WebSocket connection not yet established");
     }
     toggleNewBatch();
+    cursorLoadingAnimation();
 }
 
-function pauseMachine(){
-    stompClient.send("/app/machine/pause", {}, {});
-    document.getElementById("pauseBtn").innerText = "Continue";
-}
-
-function continueBatch() {
-    stompClient.send("/app/machine/continue", {}, {});
-    document.getElementById("pauseBtn").innerText = "Pause";
-}
-
-let isPaused = false;
-
-function toggleSwitchPauseStart() {
-    if (isPaused) {
-        continueBatch();
-    } else {
-        pauseMachine();
-    }
-    isPaused = !isPaused;
-}
-
-function toggleNewBatch() {
-    document.getElementById("newBatch").classList.toggle("active");
-}
 function convertBrewType() {
     const batchType    = document.getElementById("brewType").value;
     switch(batchType) {
         case "Pilsner": return 0;
         case "Wheat": return 1;
         case "IPA": return 2;
-        case "Stout": return 3;
+        case "Stout": return 3;  
         case "Ale": return 4;
         case "Alcohol Free": return 5
     }
@@ -151,14 +143,114 @@ function colCalculator(fill) {
     } else {
         return `rgb(0, 0, 0)`;
     }
-
 }
 
+function fillStock(type,stock) {
+    document.getElementById("stock_" + type).innerText = Math.floor(stock);
+}
 
+const brewType = document.getElementById("brewType");
+const brewAmount = document.getElementById("batchAmount");
+function fillRequired() {
+    var selectedOption = brewType.options[brewType.selectedIndex].text;
+    if (selectedOption !== "Choose type" && brewAmount.length !== 0) {
+        getRequired(selectedOption);
+    } else {
+        setRequired(0,0,0,0,0,0);
+        console.log("pøls");
+    }
+}
+brewType.addEventListener("change",fillRequired);
+brewAmount.addEventListener("input",fillRequired);
+
+function getRequired(type) {
+    const amount = document.getElementById("batchAmount").value;
+    fetch("http://localhost:8080/recipe/brewTypes")
+        .then(response => response.json())
+        .then(jsonArray => {
+            jsonArray.forEach(data => {
+               if (data.name == type) {
+                   setRequired(data.barley,data.hops,data.malt,data.wheat,data.yeast,amount);
+                   setMachSpeed(data.minMachSpeed, data.maxMachSpeed,((data.maxMachSpeed-data.minMachSpeed)/2));
+               }
+            });
+        })
+        .catch(error => console.error("Error fetching data:", error));
+}
+
+function setRequired(barley,hops,malt,wheat,yeast,amount) {
+    document.getElementById("required_barley").innerText = barley * amount;
+    document.getElementById("required_hops").innerText = hops * amount;
+    document.getElementById("required_malt").innerText = malt * amount;
+    document.getElementById("required_wheat").innerText = wheat * amount;
+    document.getElementById("required_yeast").innerText = yeast * amount;
+}
+
+function setMachSpeed(minMachSpeed, maxMachSpeed, recommendedMachSpeed){
+    //let batchSpeedInput = document.getElementById("batchSpeed");
+    //batchSpeedInput.setAttribute("min",minMachSpeed);
+    //batchSpeedInput.setAttribute("max",maxMachSpeed);
+    //batchSpeedInput.value = Math.round(recommendedMachSpeed);
+    document.getElementById("minMachSpeed").innerText = minMachSpeed;
+    document.getElementById("maxMachSpeed").innerText = maxMachSpeed;
+
+    document.getElementById("recSpeed").innerText = Math.round(recommendedMachSpeed);
+}
+
+setRequired(0,0,0,0,0,0);
 connectWebSocket();
 function onPageLoad() {
     console.log("Load");
     stompClient.send("/app/sensor/data/onload", {}, {});
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var item = document.querySelector(".notification-drop .item");
+
+    item.addEventListener("click", function() {
+        var ul = this.querySelector("ul");
+        if (ul) {
+            ul.style.display = (ul.style.display === "none" || ul.style.display === "") ? "block" : "none";
+
+            const badge = document.querySelector('.btn__badge');
+            badge.textContent = "0";
+        }
+    });
+});
+
+var boolean;
+function subscribeToNotification(nodeName) {
+    stompClient.subscribe('/notification/' + nodeName, (message) => {
+        let newState = message.body;
+
+        const notificationList = document.getElementById('notificationList');
+        const notificationId = 'notification- ' + nodeName;
+        const existingNotification = document.getElementById(notificationId);
+        console.log(boolean);
+        if (!existingNotification) {
+            const newNotification = document.createElement("li");
+            newNotification.id = notificationId;
+            newNotification.textContent = `${newState}`
+            notificationList.appendChild(newNotification);
+            const badge = document.querySelector('.btn__badge');
+            badge.textContent = parseInt(badge.textContent) + 1;
+        } else if(boolean === true) {
+            notificationList.innerHTML = "";
+        } else {
+            existingNotification.textContent = `${newState}`
+        }
+    });
+}
+    function checkFilling(nodeName) {
+        stompClient.subscribe('/sensor/data/' + nodeName, (message) => {
+            boolean = message.body;
+        });
+
+}
+
+
+
+
+
 
 

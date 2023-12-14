@@ -33,7 +33,6 @@ public class MachineController {
         long batchAmount = Long.parseLong(batchMap.get("batchAmount"));
         long batchSpeed = Long.parseLong(batchMap.get("batchSpeed"));
 
-
         machineService.startNewBatch(brewId, batchAmount, batchSpeed);
         logger.debug("\n type: " + brewId +
                 "\n amount: " + batchAmount +

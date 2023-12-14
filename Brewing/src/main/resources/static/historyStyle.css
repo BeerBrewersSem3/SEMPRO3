@@ -108,7 +108,7 @@ body{
     padding: 20px 20px 25px;
     width: fit-content;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     background: #555555;
 }
@@ -135,7 +135,8 @@ body{
 .historyTable thead tr{
     font-size: 24px;
     position: sticky;
-    top: 0;
+    top: -1px;
+    background: #555555;
 }
 
 .historyTable tr{
@@ -146,5 +147,38 @@ body{
     padding: 10px 30px;
     color: white;
     text-align: center;
+}
+
+tr:hover{
+    background-color: white;
+
+    cursor: pointer;
+}
+
+tr:hover td{
+    color: black;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: white;
+}
+
+.footer button{
+    padding: 7px 15px;
+    color: white;
+    background-color: #555555;
+    border: 2px solid white;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.footer button:hover, .footer button.active{
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    cursor: pointer;
 }
 /*____________________*^^Table part of History Page^^*____________________*/
