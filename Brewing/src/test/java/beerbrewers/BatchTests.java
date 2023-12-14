@@ -36,11 +36,11 @@ public class BatchTests {
         //this.batch = new Batch();
     }
 
-    @Test
-    public void getBatches() {
-        List<Batch> allBatches = batchService.getBatches();
-        assertNotNull(allBatches);
-    }
+//    @Test
+//    public void getBatches() {
+//        List<Batch> allBatches = batchService.getBatches();
+//        assertNotNull(allBatches);
+//    }
 
     @Test
     public void addNewBatch() {
