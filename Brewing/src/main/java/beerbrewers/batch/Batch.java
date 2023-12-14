@@ -104,7 +104,7 @@ public class Batch {
         this.startTime = new Timestamp(System.currentTimeMillis());
     }
 
-    public Batch(Long batchId, Operation operation, BrewEnum brewName, long amount, long speed) {
+    public Batch(Long batchId, Operation operation, Brew brewName, long amount, long speed) {
         this.batchId = batchId;
         this.operation = operation;
         this.brewName = brewName;
