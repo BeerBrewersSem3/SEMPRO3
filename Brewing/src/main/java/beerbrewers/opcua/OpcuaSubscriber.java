@@ -44,7 +44,7 @@ public class OpcuaSubscriber {
             subscribe(OpcUaNode.CURRENT_BATCH_AMOUNT);
             subscribe(OpcUaNode.CUR_MACH_SPEED);
             subscribe(OpcUaNode.PROD_PRODUCED);
-            subscribe(OpcUaNode.PROD_PROCESSED_COUNT);
+            subscribe(OpcUaNode.PROD_GOOD);
             subscribe(OpcUaNode.PROD_DEFECTIVE_COUNT);
             subscribe(OpcUaNode.MAINTENANCE_COUNTER);
             subscribe(OpcUaNode.MAINTENANCE_TRIGGER);

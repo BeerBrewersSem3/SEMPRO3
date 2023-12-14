@@ -312,8 +312,6 @@ ul {
     }
 }
 
-
-
 .notification-bell{
     font-size: 20px;
     position: relative;
@@ -329,10 +327,6 @@ ul {
     padding: 3px 7px;
     border-radius: 50%;
     margin-right: 10%;
-}
-
-.pulse-button {
-    -webkit-animation: none;
 }
 
 .notification-text{
