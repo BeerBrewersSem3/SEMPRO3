@@ -4,3 +4,8 @@ COPY target/*.jar Brewing.jar
 EXPOSE 8080
 EXPOSE 4840
 ENTRYPOINT ["java", "-jar", "Brewing.jar"]
+
+
+
+
+

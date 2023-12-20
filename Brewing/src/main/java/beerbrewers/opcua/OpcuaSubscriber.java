@@ -34,7 +34,7 @@ public class OpcuaSubscriber {
         this.opcUaNodeUpdateManager = opcUaNodeUpdateManager;
     }
     @PostConstruct
-    public void intializeSubscription() {
+    public void initializeSubscription() {
         try {
             subscribe(OpcUaNode.STATE_CURRENT);
             subscribe(OpcUaNode.TEMPERATURE);
@@ -44,7 +44,7 @@ public class OpcuaSubscriber {
             subscribe(OpcUaNode.CURRENT_BATCH_AMOUNT);
             subscribe(OpcUaNode.CUR_MACH_SPEED);
             subscribe(OpcUaNode.PROD_PRODUCED);
-            subscribe(OpcUaNode.PROD_PROCESSED_COUNT);
+            subscribe(OpcUaNode.PROD_GOOD);
             subscribe(OpcUaNode.PROD_DEFECTIVE_COUNT);
             subscribe(OpcUaNode.MAINTENANCE_COUNTER);
             subscribe(OpcUaNode.MAINTENANCE_TRIGGER);
@@ -71,14 +71,28 @@ public class OpcuaSubscriber {
 
     public void subscribe(OpcUaNode node) throws ExecutionException, InterruptedException {
         NodeId nodeId = new NodeId(node.getNamespaceIndex(), node.getIdentifier());
-        UaSubscription uaSubscription = connection.getClient().getSubscriptionManager().createSubscription(10).get();
-        ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);
-        MonitoringParameters monitoringParameters = new MonitoringParameters(Unsigned.uint(1), 10.0, null, Unsigned.uint(10), true);
-        MonitoredItemCreateRequest monitoredItemCreateRequest = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting, monitoringParameters);
-        CompletableFuture<List<UaMonitoredItem>> completableFuture = uaSubscription.createMonitoredItems(TimestampsToReturn.Both, List.of(monitoredItemCreateRequest));
+        UaSubscription uaSubscription = connection.getClient()
+                                                  .getSubscriptionManager()
+                                                  .createSubscription(10)
+                                                  .get();
+        ReadValueId readValueId = new ReadValueId(nodeId,
+                                                  AttributeId.Value.uid(),
+                                        null,
+                                       null);
+        MonitoringParameters monitoringParameters = new MonitoringParameters(Unsigned.uint(1),
+                                                               10.0,
+                                                                       null,
+                                                                            Unsigned.uint(10),
+                                                                 true);
+        MonitoredItemCreateRequest monitoredItemCreateRequest = new MonitoredItemCreateRequest(readValueId,
+                                                                                               MonitoringMode.Reporting,
+                                                                                               monitoringParameters);
+        CompletableFuture<List<UaMonitoredItem>> completableFuture;
+        completableFuture = uaSubscription.createMonitoredItems(TimestampsToReturn.Both,
+                                                                List.of(monitoredItemCreateRequest));
         completableFuture.thenAccept(items -> {
             for (UaMonitoredItem item : items) {
-                item.setValueConsumer((moniteredItem, dataValue) -> {
+                item.setValueConsumer((monitoredItem, dataValue) -> {
                     state = dataValue.getValue().getValue().toString();
                     logger.debug("The node " + node.getName() + "has a new value of " + state);
                     opcUaNodeUpdateManager.notifyObservers(node, state);

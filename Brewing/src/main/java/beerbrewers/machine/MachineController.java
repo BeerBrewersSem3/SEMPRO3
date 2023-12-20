@@ -24,11 +24,9 @@ public class MachineController {
 
     @MessageMapping("batch/newBatch")
     public void sendBatch(Map<String, String> batchMap) {
-        // Testing retrieval of batch data
         int brewId =  Integer.parseInt(batchMap.get("brewType"));
         long batchAmount = Long.parseLong(batchMap.get("batchAmount"));
         long batchSpeed = Long.parseLong(batchMap.get("batchSpeed"));
-
         machineService.startNewBatch(brewId, batchAmount, batchSpeed);
         logger.debug("\n type: " + brewId +
                 "\n amount: " + batchAmount +

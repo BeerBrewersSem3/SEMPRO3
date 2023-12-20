@@ -48,9 +48,9 @@ async function createTableEntries(id) {
 
 async function createGraph(data) {
     const timeStamps = [];
-    const temperatures = [];
-    const humidities = [];
-    const vibrations = [];
+    const vibration = [];
+    const temperature = [];
+    const humidity = [];
 
     for (let i = 0; i < data.length; i++) {
         if (i % 3 === 0) {
@@ -59,13 +59,13 @@ async function createGraph(data) {
             for (let j = 0; j < 3; j++) {
                 switch (j) {
                     case 0:
-                        temperatures.push(data[i + j].sensorValue);
+                        vibration.push(data[i + j].sensorValue);
                         break;
                     case 1:
-                        humidities.push(data[i + j].sensorValue);
+                        temperature.push(data[i + j].sensorValue);
                         break;
                     case 2:
-                        vibrations.push(data[i + j].sensorValue);
+                        humidity.push(data[i + j].sensorValue);
                         break;
                     default:
                         console.error("Unable to push sensorreading");
@@ -78,18 +78,18 @@ async function createGraph(data) {
         data: {
             labels: timeStamps,
             datasets: [{
-                label: 'Temperature (°C)',
-                data: temperatures,
+                label: 'Vibration (DPS)',
+                data: vibration,
                 borderColor: "red",
                 fill: false
             }, {
-                label: 'Humidity (%)',
-                data: humidities,
+                label: 'Temperature (°C)',
+                data: temperature,
                 borderColor: "blue",
                 fill: false
             }, {
-                label: 'Vibration (DPS)',
-                data: vibrations,
+                label: 'Humidity (%)',
+                data: humidity,
                 borderColor: "green",
                 fill: false
             }]

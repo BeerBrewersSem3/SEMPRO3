@@ -61,8 +61,6 @@ public class SensorReadingService implements OpcUaNodeObserver {
     public List<SensorReading> getSensorReadings() {
         return sensorReadingRepository.findAll();
     }
-
-
     public void addNewSensorReading(SensorReading sensorReading) {
         sensorReadingRepository.save(sensorReading);
     }
@@ -87,7 +85,6 @@ public class SensorReadingService implements OpcUaNodeObserver {
                                 set.getValue()));
             }
         }
-
     }
 
     @Override

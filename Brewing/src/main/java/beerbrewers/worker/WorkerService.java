@@ -31,15 +31,17 @@ public class WorkerService {
      * Be aware that this method does not check if the worker already exists.
      * @param worker
      */
-    public void addNewWorker(Worker worker) {
-        workerRepository.save(worker);
+    public Worker addNewWorker(Worker worker) {
+        return workerRepository.save(worker);
     }
 
-    public void deleteWorker(Long workerId) {
+    public boolean deleteWorker(Long workerId) {
         if (!determineIdPresenceInDB(workerId)) {
             throw new IllegalStateException("Worker with id '" + workerId + "' does not exist.");
+
         }
         workerRepository.deleteById(workerId);
+        return true;
     }
 
     public boolean determineIdPresenceInDB(Long idToCheck) {

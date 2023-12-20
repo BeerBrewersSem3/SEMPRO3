@@ -43,7 +43,8 @@ public class RouteController {
 
     public String convertToString(String htmlString) throws IOException {
         Resource resource = new ClassPathResource("public/" + htmlString + ".html");
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream(),
+                                                                              StandardCharsets.UTF_8))) {
             return reader.lines().collect(Collectors.joining(System.lineSeparator()));
         }
     }

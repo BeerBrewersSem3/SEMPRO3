@@ -51,9 +51,9 @@ function connectWebSocket() {
         subscribeToStatus("vibration", "DPS");
         subscribeToStatus("currentBatchId","");
         subscribeToStatus("currentBatchAmount", "bottles");
-        subscribeToStatus("currentMachineSpeed", "bottles/s");
+        subscribeToStatus("currentMachineSpeed", "%");
         subscribeToStatus("prodProduced", "bottles");
-        subscribeToStatus("prodProcessedCount", "bottles");
+        subscribeToStatus("prodGood", "bottles");
         subscribeToStatus("prodDefectiveCount","bottles");
         subscribeToInventory("barley");
         subscribeToInventory("malt");

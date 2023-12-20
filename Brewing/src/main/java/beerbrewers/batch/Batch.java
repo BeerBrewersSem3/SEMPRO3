@@ -144,6 +144,19 @@ public class Batch {
         this.endTime = endTime;
     }
 
+    public Batch(long batchId, Operation operation, Brew brew, long amount, long speed) {
+        this.batchId = batchId;
+        this.operation = operation;
+        this.brewName = brew;
+        this.amount = amount;
+        this.speed = speed;
+        this.isCompleted = false;
+        this.defectiveCount = 0;
+        this.completedCount = 0;
+        this.startTime = new Timestamp(System.currentTimeMillis());
+        this.endTime = null;
+    }
+
     /**
      * The Batch entity implements the equals and hashCode methods. Since we cannot rely on a natural
      * identifier for equality checks, we need to use the entity id instead for the equals() method. However, we

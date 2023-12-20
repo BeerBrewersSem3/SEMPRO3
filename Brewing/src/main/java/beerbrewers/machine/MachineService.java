@@ -24,7 +24,7 @@ public class MachineService implements OpcUaNodeObserver {
     private final BatchService batchService;
     private final OpcuaCommander opcUaCommander;
     private final WebsocketService websocketService;
-    private CountDownLatch batchAttributeLatch;
+    private CountDownLatch batchAttributeLatch = new CountDownLatch(4);
     private CountDownLatch commandLatch;
     private OpcUaNode awaitingNode;
     private String awaitingState;
@@ -105,7 +105,7 @@ public class MachineService implements OpcUaNodeObserver {
     }
 
 
-    private void startMachine(){
+    public void startMachine(){
         websocketService.sendConsoleInfo("Starting brewing process");
         if(!Objects.equals(currentState, "2")) {
             resetLatchAndSendCntrlCmd(OpcUaNode.CNTRL_CMD, 3);
@@ -158,24 +158,16 @@ public class MachineService implements OpcUaNodeObserver {
     public void onNodeUpdate(OpcUaNode node, String newState) {
         logger.debug(node + " new value " + newState);
         if(node.getName().equals(OpcUaNode.STATE_CURRENT.getName())
-                & awaitingNode == OpcUaNode.STATE_CURRENT){
-            if(Objects.equals(newState, awaitingState)) {
+                & awaitingNode == OpcUaNode.STATE_CURRENT
+                & Objects.equals(newState, awaitingState)) {
                 commandLatch.countDown();
-            }
-        }
-        if(awaitingNode != null && node.getName().equals(awaitingNode.getName())) {
-            logger.debug("INSIDE: Node: " + node.getName() + " has new value of: " + newState);
-            batchAttributeLatch.countDown();
-        }
-        if(awaitingNodes.containsKey(node)){
+        } else if(awaitingNodes.containsKey(node)){
             awaitingNodes.remove(node);
             logger.debug("Node: " + node.getName() + " has new value of: " + newState);
             batchAttributeLatch.countDown();
-        }
-        if(currentState == null & node.getName().equals("currentState")) {
+        } else if(currentState == null & node.getName().equals("currentState")) {
             currentState = newState;
         }
-
     }
 
     public List<OpcUaNode> getSubscribedNodes() {

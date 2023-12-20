@@ -12,7 +12,6 @@ import java.util.List;
 @RequestMapping(path = "api/v1/sensorreading")
 public class SensorReadingController {
     private final SensorReadingService sensorReadingService;
-
     @Autowired
     public SensorReadingController(SensorReadingService sensorReadingService) {
         this.sensorReadingService = sensorReadingService;
@@ -22,7 +21,6 @@ public class SensorReadingController {
     public List<SensorReading> getSensorReadings() {
         return sensorReadingService.getSensorReadings();
     }
-
     @GetMapping(path = "{sensorReadingId}")
     public SensorReading findBySensorReadingId(@PathVariable("sensorReadingId") Long sensorReadingId) {
         return sensorReadingService.getSensorReading(sensorReadingId);

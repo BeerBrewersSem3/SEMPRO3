@@ -25,7 +25,7 @@ public class OpcUaDashboardService implements OpcUaNodeObserver {
             OpcUaNode.CURRENT_BATCH_AMOUNT,
             OpcUaNode.CUR_MACH_SPEED,
             OpcUaNode.PROD_PRODUCED,
-            OpcUaNode.PROD_PROCESSED_COUNT,
+            OpcUaNode.PROD_GOOD,
             OpcUaNode.PROD_DEFECTIVE_COUNT,
             OpcUaNode.MAINTENANCE_COUNTER,
             OpcUaNode.MAINTENANCE_TRIGGER,
@@ -49,7 +49,6 @@ public class OpcUaDashboardService implements OpcUaNodeObserver {
         websocketService.send(node.getName(), newState);
         logger.debug("WebSocket update: " + node.getName() + " has new value of: " + newState);
     }
-
     @Override
     public List<OpcUaNode> getSubscribedNodes() {
         return subscribedNodes;

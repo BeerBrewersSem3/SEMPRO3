@@ -13,7 +13,7 @@ public enum OpcUaNode {
 
     /* PRODUCT */
     PROD_PRODUCED(6, "::Program:product.produced","prodProduced"),
-
+    PROD_GOOD(6,"::Program:product.good","prodGood"),
 
     /* STATUS */
     STATE_CURRENT(6, "::Program:Cube.Status.StateCurrent", "currentState"),                   // [R] Current PackML state
@@ -49,7 +49,6 @@ public enum OpcUaNode {
     private final int namespaceIndex;
     private final String identifier;
     private final String name;
-
     private Long databaseId;
 
     OpcUaNode(int namespaceIndex, String identifier, String name) {

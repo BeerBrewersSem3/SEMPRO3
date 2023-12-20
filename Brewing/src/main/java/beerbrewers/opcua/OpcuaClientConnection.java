@@ -20,7 +20,7 @@ public class OpcuaClientConnection {
     {
         try {
             boolean useSimulation = true;
-            boolean useDocker = true;
+            boolean useDocker = false;
             String endpointUrl;
             String hostname;
 
